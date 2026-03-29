@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqk4fhlimtqbx"]
+
+[ext_resource type="Script" uid="uid://bxce7gxd64gas" path="res://assets/objects/components/DetectableComponent.gd" id="1_5j7hc"]
+[ext_resource type="Script" uid="uid://dp14075vvfe3d" path="res://assets/objects/props/ph-dooropener/door_opener.gd" id="1_g6pac"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="2_g6pac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fxso"]
+size = Vector2(200, 200)
+
+[node name="DoorOpener" type="ColorRect"]
+offset_left = 21000.0
+offset_top = -4100.0
+offset_right = 21200.0
+offset_bottom = -3900.0
+color = Color(0.216, 0.651, 1, 1)
+script = ExtResource("1_g6pac")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(100, 100)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_5j7hc")
+can_bounce_off_it = true
+metadata/_custom_type_script = "uid://bxce7gxd64gas"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1fxso")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_g6pac")
+theme_override_font_sizes/font_size = 40
+text = "i open blue doors!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="interacted" from="Area2D" to="." method="_on_area_2d_interacted"]

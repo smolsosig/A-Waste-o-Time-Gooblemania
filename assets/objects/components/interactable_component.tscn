@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b2hnmq0k3nj4n"]
+
+[ext_resource type="Script" uid="uid://dj6gu7hjlsbej" path="res://assets/objects/components/interactable_component.gd" id="1_717l8"]
+[ext_resource type="PackedScene" uid="uid://bljln884mvwao" path="res://assets/ui/object_prompt/object_prompt.tscn" id="2_4d0aw"]
+
+[node name="InteractableComponent" type="Area2D" unique_id=527762132]
+monitorable = false
+script = ExtResource("1_717l8")
+repeatable = true
+
+[node name="ObjectPrompt" parent="." unique_id=1792614042 instance=ExtResource("2_4d0aw")]
+visible = true

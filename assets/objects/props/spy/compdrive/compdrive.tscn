@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://bglcht4qa321b"]
+
+[ext_resource type="Texture2D" uid="uid://c28bu2me7l8mj" path="res://assets/objects/props/spy/compdrive/compdrive-body.png" id="1_wt622"]
+[ext_resource type="Texture2D" uid="uid://bp66m5pxj7ugf" path="res://assets/objects/props/spy/compdrive/compdrive-tape1.png" id="2_7vm5i"]
+[ext_resource type="Texture2D" uid="uid://cplnuajd8t5gw" path="res://assets/objects/props/spy/compdrive/compdrive-tape2.png" id="3_rb5d7"]
+
+[sub_resource type="GDScript" id="GDScript_nwgbx"]
+script/source = "extends Node2D
+
+@onready var anim_player: AnimationPlayer = get_node(\"AnimationPlayer\")
+
+func _ready() -> void:
+	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+	if rng.randi_range(0, 4) > 1:
+		anim_player.play(\"move\")
+		anim_player.seek(rng.randf_range(0, 0.45))
+		anim_player.speed_scale = (rng.randf_range(0.5, 1))
+"
+
+[sub_resource type="Animation" id="Animation_su6lc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tape1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tape2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_aoq3y"]
+resource_name = "move"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tape1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.349066, -6.63225, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tape2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 0.0, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43ibm"]
+_data = {
+&"RESET": SubResource("Animation_su6lc"),
+&"move": SubResource("Animation_aoq3y")
+}
+
+[node name="Compdrive" type="Node2D"]
+script = SubResource("GDScript_nwgbx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_43ibm")
+}
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0, -100)
+texture = ExtResource("1_wt622")
+
+[node name="Tape1" type="Sprite2D" parent="."]
+position = Vector2(-20, -155)
+texture = ExtResource("2_7vm5i")
+
+[node name="Tape2" type="Sprite2D" parent="."]
+position = Vector2(19, -156)
+texture = ExtResource("3_rb5d7")

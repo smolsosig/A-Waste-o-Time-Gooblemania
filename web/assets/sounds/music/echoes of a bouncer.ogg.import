@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://br3fjt2ptwkvb"
+path="res://.godot/imported/echoes of a bouncer.ogg-c0e1677cfed8abcf2abc0251a5f47971.oggvorbisstr"
+
+[deps]
+
+source_file="res://web/assets/sounds/music/echoes of a bouncer.ogg"
+dest_files=["res://.godot/imported/echoes of a bouncer.ogg-c0e1677cfed8abcf2abc0251a5f47971.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=2.12
+bpm=0.0
+beat_count=0
+bar_beats=4

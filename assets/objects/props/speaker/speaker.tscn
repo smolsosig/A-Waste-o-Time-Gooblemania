@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dusa4mkefmecs"]
+
+[ext_resource type="Texture2D" uid="uid://bx5woat1gt3q5" path="res://assets/objects/props/speaker/speaker.png" id="1_ay00k"]
+[ext_resource type="Script" uid="uid://g1mdrje0qwgv" path="res://assets/objects/props/speaker/speaker.gd" id="2_rjw07"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbdq4"]
+atlas = ExtResource("1_ay00k")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70m75"]
+atlas = ExtResource("1_ay00k")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjw07"]
+atlas = ExtResource("1_ay00k")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxbwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbdq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70m75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjw07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70m75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjw07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbdq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70m75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjw07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70m75")
+}],
+"loop": true,
+"name": &"blaring",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjw07")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 30.0
+}]
+
+[node name="Speaker" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kxbwp")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_rjw07")

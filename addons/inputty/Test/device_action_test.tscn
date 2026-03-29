@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://c2qoup585sfwf"]
+
+[ext_resource type="PackedScene" uid="uid://b5p5raa7ders5" path="res://addons/inputty/Rebind/InputtyRebindScene.tscn" id="1_n7nhl"]
+[ext_resource type="TileSet" uid="uid://c66ber8xa0sm3" path="res://assets/tilesets/clips.tres" id="2_fb563"]
+[ext_resource type="Script" uid="uid://ojpv1uer1w3b" path="res://src/misc/ClipTileMapLayer.gd" id="3_n7nhl"]
+[ext_resource type="PackedScene" uid="uid://dgqg81t4qoloi" path="res://assets/objects/charlie/charlie.scn" id="4_n7nhl"]
+[ext_resource type="PackedScene" uid="uid://b2hnmq0k3nj4n" path="res://assets/objects/components/interactable_component.tscn" id="5_n7nhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfrg"]
+size = Vector2(348, 250)
+
+[node name="DeviceActionTest" type="Node2D" unique_id=462615049]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=500253340]
+
+[node name="InputRemap" parent="CanvasLayer" unique_id=2078114723 instance=ExtResource("1_n7nhl")]
+unique_name_in_owner = true
+offset_right = -1019.0
+offset_bottom = -420.0
+
+[node name="Clips" type="TileMapLayer" parent="." unique_id=621573090]
+z_index = 1
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD//woAAAAHAAAAAAAAAAoAAAAHAAAAAAABAAoAAAAHAAAAAAACAAoAAAAHAAAAAAADAAoAAAAHAAAAAAAEAAoAAAAHAAAAAAAFAAoAAAAHAAAAAAAGAAoAAAAHAAAAAAAHAAoAAAAHAAAAAAAIAAoAAAAHAAAAAAAJAAoAAAAHAAAAAAAKAAoAAAAHAAAAAAALAAoAAAAHAAAAAAAMAAoAAAAHAAAAAAANAAoAAAAHAAAAAAAOAAoAAAAHAAAAAAAPAAoAAAAHAAAAAAAQAAoAAAAHAAAAAAARAAoAAAAHAAAAAAASAAoAAAAHAAAAAAATAAoAAAAHAAAAAAATAAkAAAAHAAAAAAASAAkAAAAHAAAAAAARAAkAAAAHAAAAAAAJAAkAAAAHAAAAAAAIAAkAAAAHAAAAAAAHAAkAAAAHAAAAAAAGAAkAAAAHAAAAAAAFAAkAAAAHAAAAAAAEAAkAAAAHAAAAAAADAAkAAAAHAAAAAAACAAkAAAAHAAAAAAABAAkAAAAHAAAAAAAAAAkAAAAHAAAAAAD//wkAAAAHAAAAAAAKAAkAAAAHAAAAAAALAAkAAAAHAAAAAAAMAAkAAAAHAAAAAAANAAkAAAAHAAAAAAAOAAkAAAAHAAAAAAAPAAkAAAAHAAAAAAAQAAkAAAAHAAAAAAATAAgAAAAHAAAAAAATAAcAAAAHAAAAAAATAAYAAAAHAAAAAAATAAUAAAAHAAAAAAATAAQAAAAHAAAAAAATAAMAAAAHAAAAAAATAAIAAAAHAAAAAAATAAEAAAAHAAAAAAATAAAAAAAHAAAAAAATAP//AAAHAAAAAAASAP//AAAHAAAAAAARAP//AAAHAAAAAAAQAP//AAAHAAAAAAAPAP//AAAHAAAAAAAOAP//AAAHAAAAAAANAP//AAAHAAAAAAAMAP//AAAHAAAAAAALAP//AAAHAAAAAAAKAP//AAAHAAAAAAAJAP//AAAHAAAAAAAIAP//AAAHAAAAAAAHAP//AAAHAAAAAAAGAP//AAAHAAAAAAAFAP//AAAHAAAAAAAEAP//AAAHAAAAAAADAP//AAAHAAAAAAACAP//AAAHAAAAAAABAP//AAAHAAAAAAAAAP//AAAHAAAAAAD/////AAAHAAAAAAD//wAAAAAHAAAAAAD//wEAAAAHAAAAAAD//wIAAAAHAAAAAAD//wMAAAAHAAAAAAD//wQAAAAHAAAAAAD//wUAAAAHAAAAAAD//wYAAAAHAAAAAAD//wcAAAAHAAAAAAD//wgAAAAHAAAAAAA=")
+tile_set = ExtResource("2_fb563")
+physics_quadrant_size = 32
+navigation_enabled = false
+script = ExtResource("3_n7nhl")
+
+[node name="Charlie" parent="." unique_id=210957816 instance=ExtResource("4_n7nhl")]
+position = Vector2(1186, 880)
+
+[node name="InteractableComponent" parent="." unique_id=527762132 instance=ExtResource("5_n7nhl")]
+position = Vector2(1496, 699)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=999034197]
+position = Vector2(0, 115)
+shape = SubResource("RectangleShape2D_0rfrg")

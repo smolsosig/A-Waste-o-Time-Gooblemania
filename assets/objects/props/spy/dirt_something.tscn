@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ghiw6t5miev"]
+
+[ext_resource type="Texture2D" uid="uid://bb2lsuxqt73t8" path="res://assets/objects/props/spy/dirt-something.png" id="1_8fevx"]
+
+[node name="DirtSomething" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-100, 0, -50, -15, 0, -10, 50, -10, 100, 0)
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -50)
+texture = ExtResource("1_8fevx")

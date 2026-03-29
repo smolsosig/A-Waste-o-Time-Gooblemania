@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://cbgfnwdqaf7o4"]
+
+[ext_resource type="Texture2D" uid="uid://bsq4xlo12k6jt" path="res://assets/objects/enemies/ph-boxing/boxing.png" id="1_blwuu"]
+[ext_resource type="Script" uid="uid://crpm7vyy8j5jo" path="res://assets/objects/components/EnemyHitboxComponent.gd" id="2_2ea7n"]
+[ext_resource type="Script" uid="uid://dxdarkjig4ell" path="res://assets/objects/components/EnemyHealthComponent.gd" id="3_2ea7n"]
+[ext_resource type="PackedScene" uid="uid://ckx5147kpr7hk" path="res://assets/objects/components/EnemyHurtboxComponent.tscn" id="3_lnaub"]
+[ext_resource type="PackedScene" uid="uid://4enfme5vbxkk" path="res://assets/objects/components/EnemyMoneyComponent.tscn" id="5_2ea7n"]
+
+[sub_resource type="Animation" id="Animation_o77it"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.9, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -9)]
+}
+
+[sub_resource type="Animation" id="Animation_slro7"]
+resource_name = "hurt"
+length = 0.600003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.6327),
+"transitions": PackedFloat32Array(0, 2, 0, 0),
+"update": 0,
+"values": [Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 0), Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.333333, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(3, 0.5), Vector2(0.5, 2), Vector2(2, 0.75), Vector2(0.8, 1.5), Vector2(1.1, 0.9), Vector2(0.9, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.333333, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, -50), Vector2(0, 33), Vector2(0, -33), Vector2(0, 11), Vector2(0, -9)]
+}
+
+[sub_resource type="Animation" id="Animation_jmcb1"]
+resource_name = "moving"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0.9, 1.1), Vector2(1.1, 0.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -9), Vector2(0, 11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qullg"]
+_data = {
+&"RESET": SubResource("Animation_o77it"),
+&"hurt": SubResource("Animation_slro7"),
+&"moving": SubResource("Animation_jmcb1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70yv3"]
+size = Vector2(100, 200)
+
+[sub_resource type="GDScript" id="GDScript_2ea7n"]
+script/source = "extends EnemyMoneyComponent
+
+
+func _on_enemy_hurtbox_component_hit(_damage: int) -> void:
+	spawn_money()
+"
+
+[node name="boxing" type="Node2D" unique_id=1508768795]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1864555810]
+position = Vector2(0, -100)
+scale = Vector2(0.9, 1.1)
+texture = ExtResource("1_blwuu")
+offset = Vector2(0, -9)
+
+[node name="Node" type="Node" parent="." unique_id=1860576505]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=558486738]
+libraries/ = SubResource("AnimationLibrary_qullg")
+autoplay = &"moving"
+
+[node name="EnemyHitboxComponent" type="Area2D" parent="." unique_id=1480182418]
+script = ExtResource("2_2ea7n")
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent" unique_id=1583237841]
+position = Vector2(0, -100)
+shape = SubResource("RectangleShape2D_70yv3")
+disabled = true
+
+[node name="EnemyHealthComponent" type="Node" parent="." unique_id=1214460415]
+script = ExtResource("3_2ea7n")
+base_health = 315315315315315
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="EnemyHurtboxComponent" parent="." unique_id=763761618 node_paths=PackedStringArray("health_component") instance=ExtResource("3_lnaub")]
+monitoring = false
+health_component = NodePath("../EnemyHealthComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=991899527]
+position = Vector2(0, -100)
+shape = SubResource("RectangleShape2D_70yv3")
+
+[node name="EnemyMoneyComponent" parent="." unique_id=1986514875 instance=ExtResource("5_2ea7n")]
+position = Vector2(1, -145)
+script = SubResource("GDScript_2ea7n")
+money = 20
+
+[connection signal="hit" from="EnemyHurtboxComponent" to="EnemyMoneyComponent" method="_on_enemy_hurtbox_component_hit"]

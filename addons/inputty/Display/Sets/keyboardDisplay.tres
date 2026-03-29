@@ -1,0 +1,912 @@
+[gd_resource type="Resource" script_class="InputtyKeyboardDisplaySet" format=3 uid="uid://c2tf8frcrai8d"]
+
+[ext_resource type="Script" uid="uid://cmhxwklu6tukp" path="res://addons/inputty/Display/InputtyDisplayItem.gd" id="1_8u7sa"]
+[ext_resource type="Texture2D" uid="uid://b2mxb32384nih" path="res://addons/inputty/Display/IconTextures/key_blank.svg" id="2_dwtnn"]
+[ext_resource type="Texture2D" uid="uid://cyx3vs8geikvy" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_escape.png" id="3_38dng"]
+[ext_resource type="Texture2D" uid="uid://bflqr1626mn8m" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_tab_icon.png" id="4_o4881"]
+[ext_resource type="Texture2D" uid="uid://bltdfu2k0o2l6" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_backspace_icon.png" id="5_dtlj1"]
+[ext_resource type="Texture2D" uid="uid://cn4idj0mnkqkq" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_enter.png" id="6_gggcv"]
+[ext_resource type="Texture2D" uid="uid://dcu5bhwiea4ba" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_numpad_enter.png" id="7_rg6tm"]
+[ext_resource type="Texture2D" uid="uid://bd5ax6ltp52wd" path="res://addons/inputty/Display/IconTextures/mouse_wheelleft.svg" id="7_v0xeq"]
+[ext_resource type="Texture2D" uid="uid://c0j1rto06sl8p" path="res://addons/inputty/Display/IconTextures/mouse_wheelright.svg" id="8_42r4i"]
+[ext_resource type="Texture2D" uid="uid://cgwa727texbas" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_insert.png" id="8_gowef"]
+[ext_resource type="Script" uid="uid://dp8lp71itjwck" path="res://addons/inputty/Display/InputtyKeyboardDisplaySet.gd" id="9_7w0vf"]
+[ext_resource type="Texture2D" uid="uid://xwo6hy5vgsqk" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_delete.png" id="9_kbk58"]
+[ext_resource type="Texture2D" uid="uid://ck76ms6yuxhch" path="res://addons/inputty/Display/IconTextures/key_pause.svg" id="10_died6"]
+[ext_resource type="Texture2D" uid="uid://i3un7fr8qvmy" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_printscreen.png" id="11_5cgjo"]
+[ext_resource type="Texture2D" uid="uid://bofvm820ox1fx" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_home.png" id="12_m33yf"]
+[ext_resource type="Texture2D" uid="uid://boiw62w55mgjy" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_end.png" id="13_kr414"]
+[ext_resource type="Texture2D" uid="uid://cp25u4m5l5kv3" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_arrow_left.png" id="14_eiohw"]
+[ext_resource type="Texture2D" uid="uid://d0vk48px31xtp" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_arrow_up.png" id="15_efsgf"]
+[ext_resource type="Texture2D" uid="uid://bnikla0gncgae" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_arrow_right.png" id="16_70iti"]
+[ext_resource type="Texture2D" uid="uid://cpe2wdonieawx" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_arrow_down.png" id="17_0g2n1"]
+[ext_resource type="Texture2D" uid="uid://djxiuwnfmby6g" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_page_up.png" id="18_yria6"]
+[ext_resource type="Texture2D" uid="uid://botsiony6ujeq" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_page_down.png" id="19_beaeh"]
+[ext_resource type="Texture2D" uid="uid://dfen01076ynx0" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_shift_icon.png" id="20_1qwkh"]
+[ext_resource type="Texture2D" uid="uid://de4vj7ee0l2p5" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_ctrl.png" id="21_ik7uy"]
+[ext_resource type="Texture2D" uid="uid://6b8jxlnavprg" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_alt.png" id="22_f01ma"]
+[ext_resource type="Texture2D" uid="uid://ce72tjh2qsidr" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_capslock_icon.png" id="23_nf70u"]
+[ext_resource type="Texture2D" uid="uid://buxgeduli0srs" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_numlock.png" id="24_opila"]
+[ext_resource type="Texture2D" uid="uid://dfhwfj35dtqfq" path="res://addons/inputty/Display/IconTextures/key_scroll.svg" id="25_iyenw"]
+[ext_resource type="Texture2D" uid="uid://b2glot6ha2s7j" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f1.png" id="26_8mu2t"]
+[ext_resource type="Texture2D" uid="uid://hnqxno3vs4es" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f2.png" id="27_4sqfh"]
+[ext_resource type="Texture2D" uid="uid://bb3sjmhaej687" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f3.png" id="28_l3eb2"]
+[ext_resource type="Texture2D" uid="uid://bo4gexjonilat" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f4.png" id="29_do5w1"]
+[ext_resource type="Texture2D" uid="uid://dktxbjqpjoylb" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f5.png" id="30_wcp6u"]
+[ext_resource type="Texture2D" uid="uid://cy61pxfsn56s6" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f6.png" id="31_uhtop"]
+[ext_resource type="Texture2D" uid="uid://m87ebw3jl8a3" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f7.png" id="32_cfnet"]
+[ext_resource type="Texture2D" uid="uid://byk2ngtr0qtai" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f8.png" id="33_gnnoc"]
+[ext_resource type="Texture2D" uid="uid://yfnu4eyvy0we" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f9.png" id="34_tp0fj"]
+[ext_resource type="Texture2D" uid="uid://d3pumyhljt66o" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f10.png" id="35_pi6jm"]
+[ext_resource type="Texture2D" uid="uid://bjxyj3j1w72so" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f11.png" id="36_fre2t"]
+[ext_resource type="Texture2D" uid="uid://by6ir2w5e1uc" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f12.png" id="37_32cwy"]
+[ext_resource type="Texture2D" uid="uid://ocy0j6jtydx6" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_asterisk.png" id="38_tn5na"]
+[ext_resource type="Texture2D" uid="uid://bovvhd61yt450" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_slash_forward.png" id="39_dwmut"]
+[ext_resource type="Texture2D" uid="uid://gyq2yncg402k" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_minus.png" id="40_knurx"]
+[ext_resource type="Texture2D" uid="uid://bs6x0iywbu06l" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_period.png" id="41_43mpt"]
+[ext_resource type="Texture2D" uid="uid://fssnuhvwabao" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_numpad_plus.png" id="42_lljgi"]
+[ext_resource type="Texture2D" uid="uid://bvlh1ubdyvun7" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_0.png" id="43_owq8l"]
+[ext_resource type="Texture2D" uid="uid://d3d83lb7pgwb5" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_1.png" id="44_44v12"]
+[ext_resource type="Texture2D" uid="uid://wkkqlgbl3m61" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_2.png" id="45_m3q07"]
+[ext_resource type="Texture2D" uid="uid://dgv6d048epdk8" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_3.png" id="46_lixqd"]
+[ext_resource type="Texture2D" uid="uid://c7et067wsbmim" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_4.png" id="47_eyt7j"]
+[ext_resource type="Texture2D" uid="uid://ksw4qtc32xlu" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_5.png" id="48_5dqrh"]
+[ext_resource type="Texture2D" uid="uid://ddesoih68m7s7" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_6.png" id="49_pbf0r"]
+[ext_resource type="Texture2D" uid="uid://biarb0m42vadw" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_7.png" id="50_nfhec"]
+[ext_resource type="Texture2D" uid="uid://bl7r0blqub7y1" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_8.png" id="51_3e820"]
+[ext_resource type="Texture2D" uid="uid://bix018ea04mng" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_9.png" id="52_631ai"]
+[ext_resource type="Texture2D" uid="uid://ds2454xf42h7s" path="res://addons/inputty/Display/IconTextures/key_menu.svg" id="53_kgg1l"]
+[ext_resource type="Texture2D" uid="uid://rbtdpy717162" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_space.png" id="54_22jgi"]
+[ext_resource type="Texture2D" uid="uid://1yfj0mcihl81" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_exclamation.png" id="55_4u860"]
+[ext_resource type="Texture2D" uid="uid://y5rc5e11phv5" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_quote.png" id="56_v1xqr"]
+[ext_resource type="Texture2D" uid="uid://b3srn2dvfu7yc" path="res://addons/inputty/Display/IconTextures/key_hash.svg" id="57_shy5f"]
+[ext_resource type="Texture2D" uid="uid://ch8o4hvwkdrlo" path="res://addons/inputty/Display/IconTextures/key_dollar.svg" id="58_a7ynw"]
+[ext_resource type="Texture2D" uid="uid://di7caajsbgkwf" path="res://addons/inputty/Display/IconTextures/key_amp.svg" id="59_8kbt5"]
+[ext_resource type="Texture2D" uid="uid://bvnhwft0r8y71" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_apostrophe.png" id="60_snoj8"]
+[ext_resource type="Texture2D" uid="uid://b7yv8rnel0wym" path="res://addons/inputty/Display/IconTextures/key_parenopen.svg" id="61_kyc2r"]
+[ext_resource type="Texture2D" uid="uid://bjli3n2vn1rak" path="res://addons/inputty/Display/IconTextures/key_parenclose.svg" id="62_i5dqv"]
+[ext_resource type="Texture2D" uid="uid://dcshmg0efrfw0" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_plus.png" id="63_bepxa"]
+[ext_resource type="Texture2D" uid="uid://bd27fngddthqf" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_comma.png" id="64_2yijd"]
+[ext_resource type="Texture2D" uid="uid://djklxbxue5uaw" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_colon.png" id="65_hvrhx"]
+[ext_resource type="Texture2D" uid="uid://c5rb36o86tfli" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_semicolon.png" id="66_lvbgi"]
+[ext_resource type="Texture2D" uid="uid://dbufpthrb8bb6" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_bracket_less.png" id="67_hqr3n"]
+[ext_resource type="Texture2D" uid="uid://cl6lq457s457h" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_equals.png" id="68_o1ub5"]
+[ext_resource type="Texture2D" uid="uid://ckel8o3e35guw" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_bracket_open.png" id="69_rcwir"]
+[ext_resource type="Texture2D" uid="uid://b2j1kptwgxrl4" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_question.png" id="70_twnmp"]
+[ext_resource type="Texture2D" uid="uid://d4b0datfenrur" path="res://addons/inputty/Display/IconTextures/key_at.svg" id="71_mf7h4"]
+[ext_resource type="Texture2D" uid="uid://cdguox3h237qb" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_a.png" id="72_qatfl"]
+[ext_resource type="Texture2D" uid="uid://8w4y14yk3pus" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_b.png" id="73_48kvp"]
+[ext_resource type="Texture2D" uid="uid://bn8fnqpxyt6rg" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_c.png" id="74_hhbug"]
+[ext_resource type="Texture2D" uid="uid://d4k4uj2u5quyn" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_d.png" id="75_a4ksj"]
+[ext_resource type="Texture2D" uid="uid://7oh1qvlpikws" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_e.png" id="76_j8txi"]
+[ext_resource type="Texture2D" uid="uid://cbrq5fj6rfto4" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_f.png" id="77_mxd3c"]
+[ext_resource type="Texture2D" uid="uid://d3eiq0kybttgp" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_g.png" id="78_dvqls"]
+[ext_resource type="Texture2D" uid="uid://dinaxv8j1e6yu" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_h.png" id="79_w37v1"]
+[ext_resource type="Texture2D" uid="uid://be8cvd054pwjw" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_i.png" id="80_7uhu1"]
+[ext_resource type="Texture2D" uid="uid://dshyorl41bbhq" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_j.png" id="81_ff7cf"]
+[ext_resource type="Texture2D" uid="uid://dkcf77fao7ydy" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_k.png" id="82_wx8ok"]
+[ext_resource type="Texture2D" uid="uid://chl50165h0n5o" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_l.png" id="83_niwg7"]
+[ext_resource type="Texture2D" uid="uid://doov6nlw0oucc" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_m.png" id="84_fxl1k"]
+[ext_resource type="Texture2D" uid="uid://evj1y3huipqv" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_n.png" id="85_oaa82"]
+[ext_resource type="Texture2D" uid="uid://mdnru5ev5phq" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_o.png" id="86_k2yk4"]
+[ext_resource type="Texture2D" uid="uid://bpmncnsyrgdxj" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_p.png" id="87_vehp5"]
+[ext_resource type="Texture2D" uid="uid://mftwf7ovc4e6" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_q.png" id="88_gfeav"]
+[ext_resource type="Texture2D" uid="uid://d3824jjxylwvs" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_r.png" id="89_h21a3"]
+[ext_resource type="Texture2D" uid="uid://dqfw4ll5lnni1" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_s.png" id="90_au65v"]
+[ext_resource type="Texture2D" uid="uid://cmmnopx671hr8" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_t.png" id="91_s5j5v"]
+[ext_resource type="Texture2D" uid="uid://lybol384v87m" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_u.png" id="92_fthep"]
+[ext_resource type="Texture2D" uid="uid://cvbv04d1lg1rt" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_v.png" id="93_e1sbs"]
+[ext_resource type="Texture2D" uid="uid://bm3xmwpt3gj1i" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_w.png" id="94_52ysw"]
+[ext_resource type="Texture2D" uid="uid://b80x2sc7vfiye" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_x.png" id="95_h8am2"]
+[ext_resource type="Texture2D" uid="uid://dnbtsmkpqgd0x" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_y.png" id="96_8s4ge"]
+[ext_resource type="Texture2D" uid="uid://8x72cliggycr" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_z.png" id="97_m0vkc"]
+[ext_resource type="Texture2D" uid="uid://bpqrwsidkvfw4" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_slash_back.png" id="98_a2v41"]
+[ext_resource type="Texture2D" uid="uid://k6gjt1ho8g4t" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_bracket_close.png" id="99_op2is"]
+[ext_resource type="Texture2D" uid="uid://dklvy3xw4lwgi" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_caret.png" id="100_gqgvc"]
+[ext_resource type="Texture2D" uid="uid://bd6ji84a1ry3s" path="res://addons/inputty/Display/IconTextures/key_underscore.svg" id="102_ykq0v"]
+[ext_resource type="Texture2D" uid="uid://drw4imroajj00" path="res://addons/inputty/Display/IconTextures/key_backtick.svg" id="103_gt8lo"]
+[ext_resource type="Texture2D" uid="uid://cwrxfxuc5ssvu" path="res://addons/inputty/Display/IconTextures/key_braceopen.svg" id="104_yv5bp"]
+[ext_resource type="Texture2D" uid="uid://ydg0iucjsfp7" path="res://addons/inputty/Display/IconTextures/key_bar.svg" id="105_1vwav"]
+[ext_resource type="Texture2D" uid="uid://pf6ptgg7ckog" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_tilde.png" id="106_j0pi6"]
+[ext_resource type="Texture2D" uid="uid://o7p43iqnq8p7" path="res://addons/inputty/Display/IconTextures/key_braceclose.svg" id="106_komws"]
+[ext_resource type="Texture2D" uid="uid://4ukppx07c7q0" path="res://addons/inputty/Display/IconTextures/key_yen.svg" id="108_o4gjb"]
+[ext_resource type="Texture2D" uid="uid://bw7u13wyi3ngt" path="res://assets/ui/key_icons/keyboard_mouse/mouse_left.png" id="109_38dng"]
+[ext_resource type="Texture2D" uid="uid://d0gdffy51urub" path="res://addons/inputty/Display/IconTextures/key_section.svg" id="109_ou7tb"]
+[ext_resource type="Texture2D" uid="uid://xi1duhv54aee" path="res://assets/ui/key_icons/keyboard_mouse/mouse_right.png" id="110_o4881"]
+[ext_resource type="Texture2D" uid="uid://k0vlgqxtlk5u" path="res://assets/ui/key_icons/keyboard_mouse/mouse_scroll.png" id="111_dtlj1"]
+[ext_resource type="Texture2D" uid="uid://ciex8rq7pa3xh" path="res://assets/ui/key_icons/keyboard_mouse/mouse_scroll_up.png" id="112_gggcv"]
+[ext_resource type="Texture2D" uid="uid://c0amw1mopja0l" path="res://assets/ui/key_icons/keyboard_mouse/mouse_scroll_down.png" id="113_rg6tm"]
+
+[sub_resource type="Resource" id="Resource_arwwp"]
+script = ExtResource("1_8u7sa")
+name = "Key"
+texture = ExtResource("2_dwtnn")
+
+[sub_resource type="Resource" id="Resource_oomju"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194305
+name = "Escape"
+texture = ExtResource("3_38dng")
+
+[sub_resource type="Resource" id="Resource_dv8ek"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194306
+name = "Tab"
+texture = ExtResource("4_o4881")
+
+[sub_resource type="Resource" id="Resource_y4xwu"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194308
+name = "Backspace"
+texture = ExtResource("5_dtlj1")
+
+[sub_resource type="Resource" id="Resource_ivw47"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194309
+name = "Enter"
+texture = ExtResource("6_gggcv")
+
+[sub_resource type="Resource" id="Resource_v7nia"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194310
+name = "KP Enter"
+texture = ExtResource("7_rg6tm")
+
+[sub_resource type="Resource" id="Resource_fjg4f"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194311
+name = "Insert"
+texture = ExtResource("8_gowef")
+
+[sub_resource type="Resource" id="Resource_mvrve"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194312
+name = "Delete"
+texture = ExtResource("9_kbk58")
+
+[sub_resource type="Resource" id="Resource_4eudy"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194313
+name = "Pause"
+texture = ExtResource("10_died6")
+
+[sub_resource type="Resource" id="Resource_5nemi"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194314
+name = "Print Screen"
+texture = ExtResource("11_5cgjo")
+
+[sub_resource type="Resource" id="Resource_qvdmt"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194317
+name = "Home"
+texture = ExtResource("12_m33yf")
+
+[sub_resource type="Resource" id="Resource_deyoo"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194318
+name = "End"
+texture = ExtResource("13_kr414")
+
+[sub_resource type="Resource" id="Resource_v3vi7"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194319
+name = "Left"
+texture = ExtResource("14_eiohw")
+
+[sub_resource type="Resource" id="Resource_2olyy"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194320
+name = "Up"
+texture = ExtResource("15_efsgf")
+
+[sub_resource type="Resource" id="Resource_ja5ib"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194321
+name = "Right"
+texture = ExtResource("16_70iti")
+
+[sub_resource type="Resource" id="Resource_vnjh8"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194322
+name = "Down"
+texture = ExtResource("17_0g2n1")
+
+[sub_resource type="Resource" id="Resource_avrgl"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194323
+name = "Page Up"
+texture = ExtResource("18_yria6")
+
+[sub_resource type="Resource" id="Resource_l5qnb"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194324
+name = "Page Down"
+texture = ExtResource("19_beaeh")
+
+[sub_resource type="Resource" id="Resource_dgtsj"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194325
+name = "Shift"
+texture = ExtResource("20_1qwkh")
+
+[sub_resource type="Resource" id="Resource_ae1rj"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194326
+name = "Control"
+texture = ExtResource("21_ik7uy")
+
+[sub_resource type="Resource" id="Resource_wmefv"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194328
+name = "Alt"
+texture = ExtResource("22_f01ma")
+
+[sub_resource type="Resource" id="Resource_wpcvh"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194329
+name = "Caps Lock"
+texture = ExtResource("23_nf70u")
+
+[sub_resource type="Resource" id="Resource_8yul5"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194330
+name = "Num Lock"
+texture = ExtResource("24_opila")
+
+[sub_resource type="Resource" id="Resource_kukoc"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194331
+name = "Scroll Lock"
+texture = ExtResource("25_iyenw")
+
+[sub_resource type="Resource" id="Resource_dgt25"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194332
+name = "F1"
+texture = ExtResource("26_8mu2t")
+
+[sub_resource type="Resource" id="Resource_iej73"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194333
+name = "F2"
+texture = ExtResource("27_4sqfh")
+
+[sub_resource type="Resource" id="Resource_y3kqr"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194334
+name = "F3"
+texture = ExtResource("28_l3eb2")
+
+[sub_resource type="Resource" id="Resource_lgkw8"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194335
+name = "F4"
+texture = ExtResource("29_do5w1")
+
+[sub_resource type="Resource" id="Resource_e02fs"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194336
+name = "F5"
+texture = ExtResource("30_wcp6u")
+
+[sub_resource type="Resource" id="Resource_4l2rm"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194337
+name = "F6"
+texture = ExtResource("31_uhtop")
+
+[sub_resource type="Resource" id="Resource_ed1cn"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194338
+name = "F7"
+texture = ExtResource("32_cfnet")
+
+[sub_resource type="Resource" id="Resource_5bob5"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194339
+name = "F8"
+texture = ExtResource("33_gnnoc")
+
+[sub_resource type="Resource" id="Resource_xfjyr"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194340
+name = "F9"
+texture = ExtResource("34_tp0fj")
+
+[sub_resource type="Resource" id="Resource_xvnot"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194341
+name = "F10"
+texture = ExtResource("35_pi6jm")
+
+[sub_resource type="Resource" id="Resource_v004a"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194342
+name = "F11"
+texture = ExtResource("36_fre2t")
+
+[sub_resource type="Resource" id="Resource_82p4b"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194343
+name = "F12"
+texture = ExtResource("37_32cwy")
+
+[sub_resource type="Resource" id="Resource_fubip"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194433
+name = "KP *"
+texture = ExtResource("38_tn5na")
+
+[sub_resource type="Resource" id="Resource_ktr6f"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194434
+name = "KP /"
+texture = ExtResource("39_dwmut")
+
+[sub_resource type="Resource" id="Resource_vydxy"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194435
+name = "KP -"
+texture = ExtResource("40_knurx")
+
+[sub_resource type="Resource" id="Resource_5dxu5"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194436
+name = "KP ."
+texture = ExtResource("41_43mpt")
+
+[sub_resource type="Resource" id="Resource_vgxbl"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194437
+name = "KP +"
+texture = ExtResource("42_lljgi")
+
+[sub_resource type="Resource" id="Resource_3u0uu"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194438
+name = "KP 0"
+texture = ExtResource("43_owq8l")
+
+[sub_resource type="Resource" id="Resource_lajpx"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194439
+name = "KP 1"
+texture = ExtResource("44_44v12")
+
+[sub_resource type="Resource" id="Resource_8t7si"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194440
+name = "KP 2"
+texture = ExtResource("45_m3q07")
+
+[sub_resource type="Resource" id="Resource_c2cjo"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194441
+name = "KP 3"
+texture = ExtResource("46_lixqd")
+
+[sub_resource type="Resource" id="Resource_nsgca"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194442
+name = "KP 4"
+texture = ExtResource("47_eyt7j")
+
+[sub_resource type="Resource" id="Resource_4dof6"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194443
+name = "KP 5"
+texture = ExtResource("48_5dqrh")
+
+[sub_resource type="Resource" id="Resource_jpvid"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194444
+name = "KP 6"
+texture = ExtResource("49_pbf0r")
+
+[sub_resource type="Resource" id="Resource_f34x6"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194445
+name = "KP 7"
+texture = ExtResource("50_nfhec")
+
+[sub_resource type="Resource" id="Resource_vcbym"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194446
+name = "KP 8"
+texture = ExtResource("51_3e820")
+
+[sub_resource type="Resource" id="Resource_0ivi7"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194447
+name = "KP 9"
+texture = ExtResource("52_631ai")
+
+[sub_resource type="Resource" id="Resource_pa1gy"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4194370
+name = "Context Menu"
+texture = ExtResource("53_kgg1l")
+
+[sub_resource type="Resource" id="Resource_irmjy"]
+script = ExtResource("1_8u7sa")
+enumIndex = 8388607
+name = "Unknown Key"
+texture = ExtResource("2_dwtnn")
+
+[sub_resource type="Resource" id="Resource_ucnqk"]
+script = ExtResource("1_8u7sa")
+enumIndex = 32
+name = "Space"
+texture = ExtResource("54_22jgi")
+
+[sub_resource type="Resource" id="Resource_2obor"]
+script = ExtResource("1_8u7sa")
+enumIndex = 33
+name = "!"
+texture = ExtResource("55_4u860")
+
+[sub_resource type="Resource" id="Resource_3pevr"]
+script = ExtResource("1_8u7sa")
+enumIndex = 34
+name = "\""
+texture = ExtResource("56_v1xqr")
+
+[sub_resource type="Resource" id="Resource_11p3s"]
+script = ExtResource("1_8u7sa")
+enumIndex = 35
+name = "#"
+texture = ExtResource("57_shy5f")
+
+[sub_resource type="Resource" id="Resource_df81w"]
+script = ExtResource("1_8u7sa")
+enumIndex = 36
+name = "$"
+texture = ExtResource("58_a7ynw")
+
+[sub_resource type="Resource" id="Resource_wip78"]
+script = ExtResource("1_8u7sa")
+enumIndex = 37
+name = "%"
+
+[sub_resource type="Resource" id="Resource_kk7dl"]
+script = ExtResource("1_8u7sa")
+enumIndex = 38
+name = "&"
+texture = ExtResource("59_8kbt5")
+
+[sub_resource type="Resource" id="Resource_fitg4"]
+script = ExtResource("1_8u7sa")
+enumIndex = 39
+name = "'"
+texture = ExtResource("60_snoj8")
+
+[sub_resource type="Resource" id="Resource_sl8xi"]
+script = ExtResource("1_8u7sa")
+enumIndex = 40
+name = "("
+texture = ExtResource("61_kyc2r")
+
+[sub_resource type="Resource" id="Resource_yoh8h"]
+script = ExtResource("1_8u7sa")
+enumIndex = 41
+name = ")"
+texture = ExtResource("62_i5dqv")
+
+[sub_resource type="Resource" id="Resource_sb6it"]
+script = ExtResource("1_8u7sa")
+enumIndex = 42
+name = "*"
+texture = ExtResource("38_tn5na")
+
+[sub_resource type="Resource" id="Resource_odmlk"]
+script = ExtResource("1_8u7sa")
+enumIndex = 43
+name = "+"
+texture = ExtResource("63_bepxa")
+
+[sub_resource type="Resource" id="Resource_hlqrk"]
+script = ExtResource("1_8u7sa")
+enumIndex = 44
+name = ","
+texture = ExtResource("64_2yijd")
+
+[sub_resource type="Resource" id="Resource_qvbyv"]
+script = ExtResource("1_8u7sa")
+enumIndex = 45
+name = "-"
+texture = ExtResource("40_knurx")
+
+[sub_resource type="Resource" id="Resource_wjnp5"]
+script = ExtResource("1_8u7sa")
+enumIndex = 46
+name = "."
+texture = ExtResource("64_2yijd")
+
+[sub_resource type="Resource" id="Resource_hsa6c"]
+script = ExtResource("1_8u7sa")
+enumIndex = 47
+name = "/"
+texture = ExtResource("39_dwmut")
+
+[sub_resource type="Resource" id="Resource_6o7jp"]
+script = ExtResource("1_8u7sa")
+enumIndex = 48
+name = "0"
+texture = ExtResource("43_owq8l")
+
+[sub_resource type="Resource" id="Resource_fl76v"]
+script = ExtResource("1_8u7sa")
+enumIndex = 49
+name = "1"
+texture = ExtResource("44_44v12")
+
+[sub_resource type="Resource" id="Resource_hegig"]
+script = ExtResource("1_8u7sa")
+enumIndex = 50
+name = "2"
+texture = ExtResource("45_m3q07")
+
+[sub_resource type="Resource" id="Resource_3l8dh"]
+script = ExtResource("1_8u7sa")
+enumIndex = 51
+name = "3"
+texture = ExtResource("46_lixqd")
+
+[sub_resource type="Resource" id="Resource_kevjm"]
+script = ExtResource("1_8u7sa")
+enumIndex = 52
+name = "4"
+texture = ExtResource("47_eyt7j")
+
+[sub_resource type="Resource" id="Resource_02kuk"]
+script = ExtResource("1_8u7sa")
+enumIndex = 53
+name = "5"
+texture = ExtResource("48_5dqrh")
+
+[sub_resource type="Resource" id="Resource_easma"]
+script = ExtResource("1_8u7sa")
+enumIndex = 54
+name = "6"
+texture = ExtResource("49_pbf0r")
+
+[sub_resource type="Resource" id="Resource_1nmok"]
+script = ExtResource("1_8u7sa")
+enumIndex = 55
+name = "7"
+texture = ExtResource("50_nfhec")
+
+[sub_resource type="Resource" id="Resource_ci001"]
+script = ExtResource("1_8u7sa")
+enumIndex = 56
+name = "8"
+texture = ExtResource("51_3e820")
+
+[sub_resource type="Resource" id="Resource_y4ujm"]
+script = ExtResource("1_8u7sa")
+enumIndex = 57
+name = "9"
+texture = ExtResource("52_631ai")
+
+[sub_resource type="Resource" id="Resource_3sc6r"]
+script = ExtResource("1_8u7sa")
+enumIndex = 58
+name = ":"
+texture = ExtResource("65_hvrhx")
+
+[sub_resource type="Resource" id="Resource_2sq6n"]
+script = ExtResource("1_8u7sa")
+enumIndex = 59
+name = ";"
+texture = ExtResource("66_lvbgi")
+
+[sub_resource type="Resource" id="Resource_3fo1m"]
+script = ExtResource("1_8u7sa")
+enumIndex = 60
+name = "<"
+texture = ExtResource("67_hqr3n")
+
+[sub_resource type="Resource" id="Resource_5367e"]
+script = ExtResource("1_8u7sa")
+enumIndex = 61
+name = "="
+texture = ExtResource("68_o1ub5")
+
+[sub_resource type="Resource" id="Resource_i8oqp"]
+script = ExtResource("1_8u7sa")
+enumIndex = 62
+name = ">"
+texture = ExtResource("69_rcwir")
+
+[sub_resource type="Resource" id="Resource_4hk1b"]
+script = ExtResource("1_8u7sa")
+enumIndex = 63
+name = "?"
+texture = ExtResource("70_twnmp")
+
+[sub_resource type="Resource" id="Resource_6qqpq"]
+script = ExtResource("1_8u7sa")
+enumIndex = 64
+name = "@"
+texture = ExtResource("71_mf7h4")
+
+[sub_resource type="Resource" id="Resource_w0jsv"]
+script = ExtResource("1_8u7sa")
+enumIndex = 65
+name = "A"
+texture = ExtResource("72_qatfl")
+
+[sub_resource type="Resource" id="Resource_1ktdq"]
+script = ExtResource("1_8u7sa")
+enumIndex = 66
+name = "B"
+texture = ExtResource("73_48kvp")
+
+[sub_resource type="Resource" id="Resource_ump3a"]
+script = ExtResource("1_8u7sa")
+enumIndex = 67
+name = "C"
+texture = ExtResource("74_hhbug")
+
+[sub_resource type="Resource" id="Resource_qt4h7"]
+script = ExtResource("1_8u7sa")
+enumIndex = 68
+name = "D"
+texture = ExtResource("75_a4ksj")
+
+[sub_resource type="Resource" id="Resource_0a73l"]
+script = ExtResource("1_8u7sa")
+enumIndex = 69
+name = "E"
+texture = ExtResource("76_j8txi")
+
+[sub_resource type="Resource" id="Resource_1l60m"]
+script = ExtResource("1_8u7sa")
+enumIndex = 70
+name = "F"
+texture = ExtResource("77_mxd3c")
+
+[sub_resource type="Resource" id="Resource_c2jbx"]
+script = ExtResource("1_8u7sa")
+enumIndex = 71
+name = "G"
+texture = ExtResource("78_dvqls")
+
+[sub_resource type="Resource" id="Resource_04710"]
+script = ExtResource("1_8u7sa")
+enumIndex = 72
+name = "H"
+texture = ExtResource("79_w37v1")
+
+[sub_resource type="Resource" id="Resource_7o3bh"]
+script = ExtResource("1_8u7sa")
+enumIndex = 73
+name = "I"
+texture = ExtResource("80_7uhu1")
+
+[sub_resource type="Resource" id="Resource_fwji8"]
+script = ExtResource("1_8u7sa")
+enumIndex = 74
+name = "J"
+texture = ExtResource("81_ff7cf")
+
+[sub_resource type="Resource" id="Resource_qplv4"]
+script = ExtResource("1_8u7sa")
+enumIndex = 75
+name = "K"
+texture = ExtResource("82_wx8ok")
+
+[sub_resource type="Resource" id="Resource_i3yta"]
+script = ExtResource("1_8u7sa")
+enumIndex = 76
+name = "L"
+texture = ExtResource("83_niwg7")
+
+[sub_resource type="Resource" id="Resource_4h85u"]
+script = ExtResource("1_8u7sa")
+enumIndex = 77
+name = "M"
+texture = ExtResource("84_fxl1k")
+
+[sub_resource type="Resource" id="Resource_kcmmb"]
+script = ExtResource("1_8u7sa")
+enumIndex = 78
+name = "N"
+texture = ExtResource("85_oaa82")
+
+[sub_resource type="Resource" id="Resource_ml7ex"]
+script = ExtResource("1_8u7sa")
+enumIndex = 79
+name = "O"
+texture = ExtResource("86_k2yk4")
+
+[sub_resource type="Resource" id="Resource_rhqg7"]
+script = ExtResource("1_8u7sa")
+enumIndex = 80
+name = "P"
+texture = ExtResource("87_vehp5")
+
+[sub_resource type="Resource" id="Resource_repg2"]
+script = ExtResource("1_8u7sa")
+enumIndex = 81
+name = "Q"
+texture = ExtResource("88_gfeav")
+
+[sub_resource type="Resource" id="Resource_lbto6"]
+script = ExtResource("1_8u7sa")
+enumIndex = 82
+name = "R"
+texture = ExtResource("89_h21a3")
+
+[sub_resource type="Resource" id="Resource_tqd8y"]
+script = ExtResource("1_8u7sa")
+enumIndex = 83
+name = "S"
+texture = ExtResource("90_au65v")
+
+[sub_resource type="Resource" id="Resource_2jdtw"]
+script = ExtResource("1_8u7sa")
+enumIndex = 84
+name = "T"
+texture = ExtResource("91_s5j5v")
+
+[sub_resource type="Resource" id="Resource_yfnid"]
+script = ExtResource("1_8u7sa")
+enumIndex = 85
+name = "U"
+texture = ExtResource("92_fthep")
+
+[sub_resource type="Resource" id="Resource_bc0hc"]
+script = ExtResource("1_8u7sa")
+enumIndex = 86
+name = "V"
+texture = ExtResource("93_e1sbs")
+
+[sub_resource type="Resource" id="Resource_70jy4"]
+script = ExtResource("1_8u7sa")
+enumIndex = 87
+name = "W"
+texture = ExtResource("94_52ysw")
+
+[sub_resource type="Resource" id="Resource_8gr5o"]
+script = ExtResource("1_8u7sa")
+enumIndex = 88
+name = "X"
+texture = ExtResource("95_h8am2")
+
+[sub_resource type="Resource" id="Resource_8kb4i"]
+script = ExtResource("1_8u7sa")
+enumIndex = 89
+name = "Y"
+texture = ExtResource("96_8s4ge")
+
+[sub_resource type="Resource" id="Resource_xggol"]
+script = ExtResource("1_8u7sa")
+enumIndex = 90
+name = "Z"
+texture = ExtResource("97_m0vkc")
+
+[sub_resource type="Resource" id="Resource_4anao"]
+script = ExtResource("1_8u7sa")
+enumIndex = 91
+name = "["
+texture = ExtResource("69_rcwir")
+
+[sub_resource type="Resource" id="Resource_awyke"]
+script = ExtResource("1_8u7sa")
+enumIndex = 92
+name = "\\"
+texture = ExtResource("98_a2v41")
+
+[sub_resource type="Resource" id="Resource_u4dbw"]
+script = ExtResource("1_8u7sa")
+enumIndex = 93
+name = "]"
+texture = ExtResource("99_op2is")
+
+[sub_resource type="Resource" id="Resource_lowp0"]
+script = ExtResource("1_8u7sa")
+enumIndex = 94
+name = "^"
+texture = ExtResource("100_gqgvc")
+
+[sub_resource type="Resource" id="Resource_53u84"]
+script = ExtResource("1_8u7sa")
+enumIndex = 95
+name = "_"
+texture = ExtResource("102_ykq0v")
+
+[sub_resource type="Resource" id="Resource_4pvtl"]
+script = ExtResource("1_8u7sa")
+enumIndex = 96
+name = "`"
+texture = ExtResource("103_gt8lo")
+
+[sub_resource type="Resource" id="Resource_kam4o"]
+script = ExtResource("1_8u7sa")
+enumIndex = 123
+name = "{"
+texture = ExtResource("104_yv5bp")
+
+[sub_resource type="Resource" id="Resource_cfhho"]
+script = ExtResource("1_8u7sa")
+enumIndex = 124
+name = "|"
+texture = ExtResource("105_1vwav")
+
+[sub_resource type="Resource" id="Resource_r51r5"]
+script = ExtResource("1_8u7sa")
+enumIndex = 125
+name = "}"
+texture = ExtResource("106_komws")
+
+[sub_resource type="Resource" id="Resource_wn2pl"]
+script = ExtResource("1_8u7sa")
+enumIndex = 126
+name = "~"
+texture = ExtResource("106_j0pi6")
+
+[sub_resource type="Resource" id="Resource_wry22"]
+script = ExtResource("1_8u7sa")
+enumIndex = 165
+name = "￥"
+texture = ExtResource("108_o4gjb")
+
+[sub_resource type="Resource" id="Resource_23ud3"]
+script = ExtResource("1_8u7sa")
+enumIndex = 167
+name = "§"
+texture = ExtResource("109_ou7tb")
+
+[sub_resource type="Resource" id="Resource_anwl3"]
+script = ExtResource("1_8u7sa")
+name = "Mouse"
+
+[sub_resource type="Resource" id="Resource_5mtfd"]
+script = ExtResource("1_8u7sa")
+enumIndex = 1
+name = "Left Mouse"
+texture = ExtResource("109_38dng")
+
+[sub_resource type="Resource" id="Resource_f5hd3"]
+script = ExtResource("1_8u7sa")
+enumIndex = 2
+name = "Right Mouse"
+texture = ExtResource("110_o4881")
+
+[sub_resource type="Resource" id="Resource_skk38"]
+script = ExtResource("1_8u7sa")
+enumIndex = 3
+name = "Middle Mouse"
+texture = ExtResource("111_dtlj1")
+
+[sub_resource type="Resource" id="Resource_uo5fr"]
+script = ExtResource("1_8u7sa")
+enumIndex = 4
+name = "Mouse Wheel Up"
+texture = ExtResource("112_gggcv")
+
+[sub_resource type="Resource" id="Resource_vlm7s"]
+script = ExtResource("1_8u7sa")
+enumIndex = 5
+name = "Mouse Wheel Down"
+texture = ExtResource("113_rg6tm")
+
+[sub_resource type="Resource" id="Resource_8u7yb"]
+script = ExtResource("1_8u7sa")
+enumIndex = 6
+name = "Mouse Wheel Left"
+texture = ExtResource("7_v0xeq")
+
+[sub_resource type="Resource" id="Resource_76g7w"]
+script = ExtResource("1_8u7sa")
+enumIndex = 7
+name = "Mouse Wheel Right"
+texture = ExtResource("8_42r4i")
+
+[resource]
+script = ExtResource("9_7w0vf")
+name = "Keyboard and Mouse"
+keyboardDisplays = Array[ExtResource("1_8u7sa")]([SubResource("Resource_arwwp"), SubResource("Resource_oomju"), SubResource("Resource_dv8ek"), SubResource("Resource_y4xwu"), SubResource("Resource_ivw47"), SubResource("Resource_v7nia"), SubResource("Resource_fjg4f"), SubResource("Resource_mvrve"), SubResource("Resource_4eudy"), SubResource("Resource_5nemi"), SubResource("Resource_qvdmt"), SubResource("Resource_deyoo"), SubResource("Resource_v3vi7"), SubResource("Resource_2olyy"), SubResource("Resource_ja5ib"), SubResource("Resource_vnjh8"), SubResource("Resource_avrgl"), SubResource("Resource_l5qnb"), SubResource("Resource_dgtsj"), SubResource("Resource_ae1rj"), SubResource("Resource_wmefv"), SubResource("Resource_wpcvh"), SubResource("Resource_8yul5"), SubResource("Resource_kukoc"), SubResource("Resource_dgt25"), SubResource("Resource_iej73"), SubResource("Resource_y3kqr"), SubResource("Resource_lgkw8"), SubResource("Resource_e02fs"), SubResource("Resource_4l2rm"), SubResource("Resource_ed1cn"), SubResource("Resource_5bob5"), SubResource("Resource_xfjyr"), SubResource("Resource_xvnot"), SubResource("Resource_v004a"), SubResource("Resource_82p4b"), SubResource("Resource_fubip"), SubResource("Resource_ktr6f"), SubResource("Resource_vydxy"), SubResource("Resource_5dxu5"), SubResource("Resource_vgxbl"), SubResource("Resource_3u0uu"), SubResource("Resource_lajpx"), SubResource("Resource_8t7si"), SubResource("Resource_c2cjo"), SubResource("Resource_nsgca"), SubResource("Resource_4dof6"), SubResource("Resource_jpvid"), SubResource("Resource_f34x6"), SubResource("Resource_vcbym"), SubResource("Resource_0ivi7"), SubResource("Resource_pa1gy"), SubResource("Resource_irmjy"), SubResource("Resource_ucnqk"), SubResource("Resource_2obor"), SubResource("Resource_3pevr"), SubResource("Resource_11p3s"), SubResource("Resource_df81w"), SubResource("Resource_wip78"), SubResource("Resource_kk7dl"), SubResource("Resource_fitg4"), SubResource("Resource_sl8xi"), SubResource("Resource_yoh8h"), SubResource("Resource_sb6it"), SubResource("Resource_odmlk"), SubResource("Resource_hlqrk"), SubResource("Resource_qvbyv"), SubResource("Resource_wjnp5"), SubResource("Resource_hsa6c"), SubResource("Resource_6o7jp"), SubResource("Resource_fl76v"), SubResource("Resource_hegig"), SubResource("Resource_3l8dh"), SubResource("Resource_kevjm"), SubResource("Resource_02kuk"), SubResource("Resource_easma"), SubResource("Resource_1nmok"), SubResource("Resource_ci001"), SubResource("Resource_y4ujm"), SubResource("Resource_3sc6r"), SubResource("Resource_2sq6n"), SubResource("Resource_3fo1m"), SubResource("Resource_5367e"), SubResource("Resource_i8oqp"), SubResource("Resource_4hk1b"), SubResource("Resource_6qqpq"), SubResource("Resource_w0jsv"), SubResource("Resource_1ktdq"), SubResource("Resource_ump3a"), SubResource("Resource_qt4h7"), SubResource("Resource_0a73l"), SubResource("Resource_1l60m"), SubResource("Resource_c2jbx"), SubResource("Resource_04710"), SubResource("Resource_7o3bh"), SubResource("Resource_fwji8"), SubResource("Resource_qplv4"), SubResource("Resource_i3yta"), SubResource("Resource_4h85u"), SubResource("Resource_kcmmb"), SubResource("Resource_ml7ex"), SubResource("Resource_rhqg7"), SubResource("Resource_repg2"), SubResource("Resource_lbto6"), SubResource("Resource_tqd8y"), SubResource("Resource_2jdtw"), SubResource("Resource_yfnid"), SubResource("Resource_bc0hc"), SubResource("Resource_70jy4"), SubResource("Resource_8gr5o"), SubResource("Resource_8kb4i"), SubResource("Resource_xggol"), SubResource("Resource_4anao"), SubResource("Resource_awyke"), SubResource("Resource_u4dbw"), SubResource("Resource_lowp0"), SubResource("Resource_53u84"), SubResource("Resource_4pvtl"), SubResource("Resource_kam4o"), SubResource("Resource_cfhho"), SubResource("Resource_r51r5"), SubResource("Resource_wn2pl"), SubResource("Resource_wry22"), SubResource("Resource_23ud3")])
+mouseDisplays = Array[ExtResource("1_8u7sa")]([SubResource("Resource_anwl3"), SubResource("Resource_5mtfd"), SubResource("Resource_f5hd3"), SubResource("Resource_skk38"), SubResource("Resource_uo5fr"), SubResource("Resource_vlm7s"), SubResource("Resource_8u7yb"), SubResource("Resource_76g7w")])

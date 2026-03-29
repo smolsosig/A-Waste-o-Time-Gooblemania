@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://bljln884mvwao"]
+
+[ext_resource type="Script" uid="uid://b4d28geyug76o" path="res://assets/ui/object_prompt/object_prompt.gd" id="1_hg03j"]
+[ext_resource type="Texture2D" uid="uid://su70rteroqat" path="res://assets/ui/object_prompt/interactbub.png" id="2_urjbg"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_x3jjr"]
+[ext_resource type="Script" uid="uid://cjadxw4j1bmhw" path="res://addons/inputty/Display/UI/InputtyPromptTextureRect.gd" id="4_kxt68"]
+[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader.gdshader" id="4_yfglv"]
+[ext_resource type="Texture2D" uid="uid://bm3xmwpt3gj1i" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_w.png" id="5_xtgum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfglv"]
+line_spacing = -4.54
+font = ExtResource("3_x3jjr")
+font_size = 30
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovkrw"]
+shader = ExtResource("4_yfglv")
+shader_parameter/thickness = 10.000000475
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
+
+[sub_resource type="Animation" id="Animation_5ynj4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bubble/ActionName:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-150, -222)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubble:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rf1vy"]
+resource_name = "appear"
+length = 0.26667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266666),
+"transitions": PackedFloat32Array(1, 0.3, 1),
+"update": 0,
+"values": [-1.07629, -0.0436332, 0.0349066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166666),
+"transitions": PackedFloat32Array(1, 0.3, 1),
+"update": 0,
+"values": [Vector2(0.633333, 0.633333), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bubble/ActionName:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.16666667),
+"transitions": PackedFloat32Array(1, 0.3, 1),
+"update": 0,
+"values": [Vector2(-146.5, -116.667), Vector2(-146.5, -200), Vector2(-150, -222)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubble:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166666),
+"transitions": PackedFloat32Array(1, 0.3, 1),
+"update": 0,
+"values": [Vector2(0, 33.3333), Vector2(0, 25), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_030y4"]
+resource_name = "disappear"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(3, 0.3),
+"update": 0,
+"values": [0.0436332, 3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(3, 0.3),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bubble/ActionName:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(3, 0.3),
+"update": 0,
+"values": [Vector2(-150, -222), Vector2(-146.5, -100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubble:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_vg46x"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0349066, -0.0436332]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tfqd"]
+_data = {
+&"RESET": SubResource("Animation_5ynj4"),
+&"appear": SubResource("Animation_rf1vy"),
+&"disappear": SubResource("Animation_030y4"),
+&"idle": SubResource("Animation_vg46x")
+}
+
+[node name="ObjectPrompt" type="Node2D" unique_id=845170291]
+z_index = 1
+script = ExtResource("1_hg03j")
+
+[node name="Bubble" type="Sprite2D" parent="." unique_id=1231540210]
+unique_name_in_owner = true
+texture = ExtResource("2_urjbg")
+offset = Vector2(0, -56)
+
+[node name="ActionName" type="Label" parent="Bubble" unique_id=1216988061]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.33774322
+anchor_top = 0.033160035
+anchor_right = 0.33774322
+anchor_bottom = 0.6062825
+offset_left = -192.2179
+offset_top = -226.145
+offset_right = 107.7821
+offset_bottom = -187.78531
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0435307
+pivot_offset_ratio = Vector2(0.5, 1)
+size_flags_horizontal = 4
+text = "do something"
+label_settings = SubResource("LabelSettings_yfglv")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+clip_text = true
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="IconRect" type="TextureRect" parent="Bubble" unique_id=1005062035]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ovkrw")
+offset_left = -25.0
+offset_top = -100.0
+offset_right = 25.0
+offset_bottom = -50.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_xtgum")
+expand_mode = 2
+script = ExtResource("4_kxt68")
+metadata/_custom_type_script = "uid://cjadxw4j1bmhw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1080122819]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0tfqd")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

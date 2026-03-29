@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://buqdxtb5fq84g"]
+
+[ext_resource type="Script" uid="uid://blaomk27y13av" path="res://scenes/game/dialogue.gd" id="1_wxa6m"]
+[ext_resource type="Texture2D" uid="uid://dgg81dc0yh4ny" path="res://assets/ui/dialoguebox/dialoguebox.png" id="2_lrvlq"]
+[ext_resource type="FontFile" uid="uid://xsro81fah7ea" path="res://assets/ui/CharlieType.otf" id="3_y3mo6"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="4_txv1r"]
+[ext_resource type="Texture2D" uid="uid://dxabxhvviyad8" path="res://assets/ui/dialoguebox/cont.png" id="5_n4l2j"]
+[ext_resource type="AudioStream" uid="uid://yv3bfox3vm15" path="res://assets/sounds/ui/dialogue-typing.ogg" id="6_x75m6"]
+
+[sub_resource type="Animation" id="Animation_sssec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(960, 1240)]
+}
+
+[sub_resource type="Animation" id="Animation_qc1kc"]
+resource_name = "hide"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(-4, 2, 0.5),
+"update": 0,
+"values": [Vector2(960, 900), Vector2(960, 850), Vector2(960, 1240)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_dialogue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bqr7s"]
+resource_name = "show"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -3, 1, 1),
+"update": 0,
+"values": [Vector2(960, 1240), Vector2(960, 860), Vector2(960, 910), Vector2(960, 900)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"progress_text"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DialogueText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -3, 1, 1),
+"update": 0,
+"values": [Vector2(426.999, 2000), Vector2(426.999, 760), Vector2(426.999, 841), Vector2(426.999, 831)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41e5t"]
+_data = {
+&"RESET": SubResource("Animation_sssec"),
+&"hide": SubResource("Animation_qc1kc"),
+&"show": SubResource("Animation_bqr7s")
+}
+
+[sub_resource type="Animation" id="Animation_m37ne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1497, 970)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4dkv7"]
+resource_name = "zbop"
+length = 0.500003
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1497, 990), Vector2(1500, 1010)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8yfpq"]
+resource_name = "hide"
+length = 0.500003
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f75pn"]
+_data = {
+&"RESET": SubResource("Animation_m37ne"),
+&"bop": SubResource("Animation_4dkv7"),
+&"hide": SubResource("Animation_8yfpq")
+}
+
+[node name="Dialogue" type="CanvasLayer" unique_id=1551245708 node_paths=PackedStringArray("dialogue_text", "dialogue_box", "anim_player", "cont_anim_player", "continue_signer", "typing_sound")]
+script = ExtResource("1_wxa6m")
+dialogue_text = NodePath("DialogueText")
+dialogue_box = NodePath("DialogueBox")
+anim_player = NodePath("MainAnimPlayer")
+cont_anim_player = NodePath("ContinueAnimPlayer")
+continue_signer = NodePath("Continue")
+typing_sound = NodePath("Typing")
+
+[node name="MainAnimPlayer" type="AnimationPlayer" parent="." unique_id=141046271]
+libraries/ = SubResource("AnimationLibrary_41e5t")
+
+[node name="ContinueAnimPlayer" type="AnimationPlayer" parent="." unique_id=1262311633]
+root_node = NodePath("../Continue")
+libraries/ = SubResource("AnimationLibrary_f75pn")
+
+[node name="DialogueBox" type="Sprite2D" parent="." unique_id=467900562]
+position = Vector2(960, 1240)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_lrvlq")
+
+[node name="DialogueText" type="RichTextLabel" parent="." unique_id=156902556]
+offset_left = 426.999
+offset_top = 831.0
+offset_right = 1495.0
+offset_bottom = 968.9999
+theme_override_fonts/normal_font = ExtResource("3_y3mo6")
+theme_override_fonts/bold_font = ExtResource("4_txv1r")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="TheCenter-er" type="VBoxContainer" parent="." unique_id=1071490179]
+anchors_preset = -1
+anchor_left = 0.198437
+anchor_top = 0.744444
+anchor_right = 0.797396
+anchor_bottom = 0.966667
+offset_left = 45.9999
+offset_top = 316.0
+offset_right = -36.0013
+offset_bottom = 325.999
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.00141139
+alignment = 1
+
+[node name="Continue" type="Sprite2D" parent="." unique_id=1153885126]
+visible = false
+position = Vector2(1497, 970)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_n4l2j")
+
+[node name="Typing" type="AudioStreamPlayer" parent="." unique_id=46794656]
+stream = ExtResource("6_x75m6")
+bus = &"UI SFX"

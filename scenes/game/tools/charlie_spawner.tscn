@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bgbuskhplw40o"]
+
+[ext_resource type="Script" uid="uid://duo6nsn2xxfhm" path="res://scenes/game/tools/charlie_spawner.gd" id="1_1wn3o"]
+[ext_resource type="Texture2D" uid="uid://c1iycqjy0a6qw" path="res://assets/misc/tools/charliespawner.png" id="2_n3usj"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_vibvb"]
+
+[node name="CharlieSpawner" type="Node2D" unique_id=1731331028]
+script = ExtResource("1_1wn3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=283277947]
+position = Vector2(4, -96)
+texture = ExtResource("2_n3usj")
+
+[node name="NumLabel" type="Label" parent="Sprite2D" unique_id=147460544]
+unique_name_in_owner = true
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 25.0
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_vibvb")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1

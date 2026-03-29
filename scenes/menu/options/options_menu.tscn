@@ -1,0 +1,519 @@
+[gd_scene format=3 uid="uid://c1xc6xuyh7j00"]
+
+[ext_resource type="Script" uid="uid://deu6hojgnwfit" path="res://scenes/menu/options/options_menu.gd" id="1_vmlsx"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="2_nb6mw"]
+[ext_resource type="PackedScene" uid="uid://b5p5raa7ders5" path="res://addons/inputty/Rebind/InputtyRebindScene.tscn" id="3_nb6mw"]
+
+[sub_resource type="GDScript" id="GDScript_nb6mw"]
+script/source = "extends Label
+
+func _on_wiblings_slider_value_changed(value: float) -> void:
+	text = str(int(value))
+"
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=428728686]
+layer = 3
+script = ExtResource("1_vmlsx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=981668047]
+modulate = Color(1, 1, 1, 0.19607843)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.11708667, 0.0077999923, 0.26, 1)
+
+[node name="OptionsPanel" type="Panel" parent="." unique_id=58605115]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -395.0
+offset_top = -337.5
+offset_right = 395.0
+offset_bottom = 337.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel" unique_id=202325760]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 770.0
+offset_bottom = 645.0
+
+[node name="OptionsLabel" type="Label" parent="OptionsPanel/VBoxContainer" unique_id=1606752073]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nb6mw")
+text = "a ::: OPTIONS"
+vertical_alignment = 2
+
+[node name="OptionsTabs" type="TabContainer" parent="OptionsPanel/VBoxContainer" unique_id=1498795706]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 3
+
+[node name="Game" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=1788545868]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_neighbor_left = NodePath("../Video")
+focus_neighbor_top = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2/ShowHUD")
+focus_neighbor_right = NodePath("../Video")
+focus_neighbor_bottom = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Language")
+focus_next = NodePath("../Keyboard")
+focus_previous = NodePath("../Video")
+focus_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game" unique_id=800125048]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 530.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer" unique_id=248462133]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer" unique_id=498486308]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1884199992]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=327025333]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "LANGUAGE?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Language" type="OptionButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1837689378]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
+focus_neighbor_top = NodePath("../../../../..")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
+focus_neighbor_bottom = NodePath("../../VBoxContainer2/ShowHUD")
+focus_next = NodePath("../../VBoxContainer2/ShowHUD")
+focus_previous = NodePath("../../VBoxContainer2/ShowHUD")
+disabled = true
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "ENGLISH"
+popup/item_0/id = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1332568713]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1049733970]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SHOW HUD?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShowHUD" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1245257440]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
+focus_neighbor_top = NodePath("../../VBoxContainer/Language")
+focus_neighbor_right = NodePath("../../../../..")
+focus_neighbor_bottom = NodePath("../../../../..")
+focus_next = NodePath("../../../../..")
+focus_previous = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
+button_pressed = true
+text = "YEAH"
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer" unique_id=1907336691]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2113438504]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=987555755]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "CAMERA SHAKE?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CamShake" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=854202131]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer/Language")
+focus_neighbor_top = NodePath("../../../../..")
+focus_neighbor_right = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
+focus_neighbor_bottom = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
+focus_next = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
+focus_previous = NodePath("../../../VBoxContainer/VBoxContainer/Language")
+button_pressed = true
+text = "RATTLE 'N' ROLL"
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1721188161]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2" unique_id=1821308912]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "WIBLINGS ON SCREEN?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2" unique_id=902637143]
+layout_mode = 2
+
+[node name="WiblingsSlider" type="HSlider" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=240868721]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 5.0
+max_value = 50.0
+step = 5.0
+value = 5.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=565903814]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "50"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = SubResource("GDScript_nb6mw")
+
+[node name="Keyboard" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=2066563761]
+visible = false
+layout_mode = 2
+focus_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Keyboard" unique_id=602612057]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_top = 21.5
+offset_right = 375.0
+offset_bottom = 508.5
+grow_horizontal = 2
+
+[node name="InputRemap" parent="OptionsPanel/VBoxContainer/OptionsTabs/Keyboard/MarginContainer" unique_id=2078114723 instance=ExtResource("3_nb6mw")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Audio" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=239375204]
+visible = false
+layout_mode = 2
+focus_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio" unique_id=775753684]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 530.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer" unique_id=1272965266]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer" unique_id=1173367336]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer" unique_id=279930554]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2017093170]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "MASTER VOLUME"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1166048824]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "MUSIC VOLUME"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1601621572]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SOUNDS VOLUME"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1391727959]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1589649502]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="MasterSlider" type="HSlider" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=59698785]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -70.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=2116716803]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -70.0
+max_value = 0.0
+
+[node name="SoundsSlider" type="HSlider" parent="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=773494195]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -70.0
+max_value = 0.0
+
+[node name="Video" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=535628975]
+layout_mode = 2
+focus_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video" unique_id=444976246]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 530.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer" unique_id=854577387]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer" unique_id=1784284973]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1245332035]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1860550778]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1167648643]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "WINDOW RESOLUTION?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindowResolution" type="OptionButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1016282488]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+disabled = true
+alignment = 1
+selected = 0
+item_count = 6
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1440 x 810"
+popup/item_2/id = 2
+popup/item_3/text = "1280 x 720"
+popup/item_3/id = 3
+popup/item_4/text = "1024 x 576"
+popup/item_4/id = 4
+popup/item_5/text = "800 x 540"
+popup/item_5/id = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1295972009]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1116177849]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "WINDOW BORDER?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindowBorder" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1701576524]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+disabled = true
+text = "BORDERED"
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=378749109]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3" unique_id=1629017765]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer" unique_id=1941998933]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SHOW FPS ON HUD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FPS" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer" unique_id=1736741423]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "KEEP IT HIDDEN"
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2078802130]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1883752261]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1189256071]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "DISPLAY MODE?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisplayMode" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1295869327]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+button_pressed = true
+text = "FULLSCREEN"
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=827911718]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2" unique_id=946718482]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "VERTICAL SYNC?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSync" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2" unique_id=1104224034]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+button_pressed = true
+text = "ENABLED"
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=922634296]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3" unique_id=1060113441]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "CAP FPS?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxFPS" type="OptionButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3" unique_id=913434889]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+selected = 3
+fit_to_longest_item = false
+item_count = 5
+popup/item_0/text = "YEAH. 30 FPS"
+popup/item_0/id = 0
+popup/item_1/text = "YEAH. 60 FPS"
+popup/item_1/id = 1
+popup/item_2/text = "YEAH. 120 FPS"
+popup/item_2/id = 2
+popup/item_3/text = "YEAH. 240 FPS"
+popup/item_3/id = 3
+popup/item_4/text = "DON'T. COWARD"
+popup/item_4/id = 4
+
+[node name="SaveExit" type="Button" parent="OptionsPanel" unique_id=1818070462]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 633.0
+offset_right = 757.0
+offset_bottom = 688.0
+focus_neighbor_left = NodePath("../VBoxContainer/OptionsTabs/Game")
+focus_neighbor_top = NodePath("../VBoxContainer/OptionsTabs/Game")
+focus_neighbor_right = NodePath("../VBoxContainer/OptionsTabs/Game")
+focus_neighbor_bottom = NodePath("../VBoxContainer/OptionsTabs/Game")
+focus_next = NodePath("../VBoxContainer/OptionsTabs/Game")
+focus_previous = NodePath("../VBoxContainer/OptionsTabs/Game")
+theme_override_fonts/font = ExtResource("2_nb6mw")
+text = "SAVE & EXIT"
+
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2/ShowHUD" to="." method="_on_show_hud_toggled"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/CamShake" to="." method="_on_cam_shake_toggled"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HBoxContainer/WiblingsSlider" to="." method="_on_wiblings_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HBoxContainer/WiblingsSlider" to="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/HBoxContainer/Label" method="_on_wiblings_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/SoundsSlider" to="." method="_on_sounds_slider_value_changed"]
+[connection signal="item_selected" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/WindowResolution" to="." method="_on_window_resolution_item_selected"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/WindowBorder" to="." method="_on_window_border_toggled"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer/FPS" to="." method="_on_fps_toggled"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/DisplayMode" to="." method="_on_display_mode_toggled"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/VSync" to="." method="_on_v_sync_toggled"]
+[connection signal="item_selected" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3/MaxFPS" to="." method="_on_max_fps_item_selected"]
+[connection signal="pressed" from="OptionsPanel/SaveExit" to="." method="_on_save_exit_pressed"]

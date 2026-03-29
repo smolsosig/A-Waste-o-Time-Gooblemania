@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cx0lbddb6da4w"]
+
+[ext_resource type="Script" uid="uid://bfiensjowqwd6" path="res://addons/newgrounds/scripts/newgrounds.gd" id="1_ktbj2"]
+[ext_resource type="Script" uid="uid://cpe8ttoib4220" path="res://addons/newgrounds/scripts/newgrounds_components.gd" id="2_kgbri"]
+[ext_resource type="Script" uid="uid://ciclk4khxilat" path="res://addons/newgrounds/scripts/newgrounds_offline_data.gd" id="3_28bnn"]
+
+[node name="Newgrounds" type="Node" unique_id=1381939008]
+script = ExtResource("1_ktbj2")
+
+[node name="Components" type="Node" parent="." unique_id=142226570]
+script = ExtResource("2_kgbri")
+
+[node name="OfflineData" type="Node" parent="." unique_id=71521684]
+script = ExtResource("3_28bnn")
+
+[node name="Pinger" type="Timer" parent="." unique_id=725182504]
+wait_time = 60.0
+
+[node name="GameKeys" type="Node" parent="." unique_id=1892134458]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Pinger" to="." method="_refresh_session"]

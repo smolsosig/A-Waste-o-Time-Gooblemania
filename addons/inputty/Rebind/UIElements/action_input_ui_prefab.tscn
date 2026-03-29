@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://102ibh124ie6"]
+
+[ext_resource type="Texture2D" uid="uid://vvu5snybjfm2" path="res://addons/inputty/Rebind/UIElements/removebinding.svg" id="1_sgsvd"]
+[ext_resource type="Texture2D" uid="uid://cbfeg7eb68jvl" path="res://addons/inputty/Rebind/UIElements/addbinding.svg" id="2_1qnrx"]
+
+[node name="ActionInputUIPrefab" type="Control" unique_id=2010745609]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_right = 600.0
+offset_bottom = 46.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=160552680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=1787287342]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0)
+text = "Add an Input"
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=444504723]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+icon = ExtResource("1_sgsvd")
+clip_text = true
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=1714224990]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+icon = ExtResource("2_1qnrx")
+clip_text = true
+icon_alignment = 1

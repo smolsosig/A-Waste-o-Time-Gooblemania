@@ -1,0 +1,350 @@
+[gd_scene format=3 uid="uid://cnrq4o3mpewbl"]
+
+[ext_resource type="Script" uid="uid://d3fahuxmoxf54" path="res://assets/objects/components/mini_dialogue_component.gd" id="1_d0p7y"]
+[ext_resource type="FontFile" uid="uid://xsro81fah7ea" path="res://assets/ui/CharlieType.otf" id="2_tocoe"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_8cemb"]
+[ext_resource type="Texture2D" uid="uid://ci3j38qm025q4" path="res://assets/ui/dialoguebox/tail.png" id="4_dswrt"]
+[ext_resource type="AudioStream" uid="uid://yv3bfox3vm15" path="res://assets/sounds/ui/dialogue-typing.ogg" id="5_8cemb"]
+[ext_resource type="Script" uid="uid://cqcxmvafwh1ae" path="res://src/game-nodes/game_audio_stream_player2d.gd" id="6_dswrt"]
+
+[sub_resource type="Animation" id="Animation_64nqu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-199, -158.00002)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/DialogueText:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.141592653589793]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/Tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(199, 35.999916)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/GameAudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d0p7y"]
+resource_name = "hide"
+length = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-199, -218), Vector2(-199, -158)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/GameAudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_q0amw"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-199, -158.00002), Vector2(-199, -218)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/DialogueText:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [-3.141592653589793, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/Tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(199, 35.999916), Vector2(199, 217)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/GameAudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyio7"]
+_data = {
+&"RESET": SubResource("Animation_64nqu"),
+&"hide": SubResource("Animation_d0p7y"),
+&"show": SubResource("Animation_q0amw")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l103a"]
+bg_color = Color(1, 0.9764706, 0.9137255, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+corner_detail = 5
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0p7y"]
+bg_color = Color(1, 0, 1, 0.102000006)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 0, 1, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+corner_detail = 5
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 30.0
+
+[node name="MiniDialogueComponent" type="Area2D" unique_id=2110471124]
+script = ExtResource("1_d0p7y")
+repeatable = true
+metadata/_custom_type_script = "uid://gnuiimjahpvx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1655776566]
+libraries/ = SubResource("AnimationLibrary_hyio7")
+
+[node name="Panel" type="Panel" parent="." unique_id=539122344]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -158.00002
+offset_right = 199.0
+offset_bottom = -12.000015
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -3.1415927
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l103a")
+
+[node name="DialogueText" type="RichTextLabel" parent="Panel" unique_id=530015253]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 399.0
+offset_bottom = 142.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_tocoe")
+theme_override_fonts/bold_font = ExtResource("3_8cemb")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+vertical_alignment = 1
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="Tail" type="Sprite2D" parent="Panel" unique_id=1254605723]
+position = Vector2(199, 35.999916)
+texture = ExtResource("4_dswrt")
+offset = Vector2(0, -25)
+
+[node name="GameAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Panel" unique_id=1296556852]
+position = Vector2(195, 80)
+stream = ExtResource("5_8cemb")
+bus = &"UI SFX"
+script = ExtResource("6_dswrt")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Placeholder" type="Panel" parent="." unique_id=1835566062]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -218.0
+offset_right = 199.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_d0p7y")
+
+[node name="DialogueText" type="RichTextLabel" parent="Placeholder" unique_id=341114827]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 399.0
+offset_bottom = 142.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(1, 0, 1, 0.5)
+theme_override_fonts/normal_font = ExtResource("2_tocoe")
+theme_override_fonts/bold_font = ExtResource("3_8cemb")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "Sparkle on! It's Wednesday! Don't forget to be yourself!"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="Tail" type="Sprite2D" parent="Placeholder" unique_id=273514215]
+modulate = Color(1, 1, 1, 0.25)
+show_behind_parent = true
+position = Vector2(199, 217)
+texture = ExtResource("4_dswrt")
+offset = Vector2(0, -25)

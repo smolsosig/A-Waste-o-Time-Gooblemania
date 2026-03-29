@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+
+addons/unique_anim_lib
+addons/parallax2d_preview
+addons/newgrounds/keys.gd
+addons/newgrounds/keys.gd.uid
+
+# shut the fuck up dawg jesus
+addons/discord-rpc-gd/bin/windows/~discord_game_sdk_binding_debug.dll

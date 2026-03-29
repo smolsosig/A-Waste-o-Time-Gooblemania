@@ -1,0 +1,30 @@
+[gd_resource type="TileSet" format=3 uid="uid://c66ber8xa0sm3"]
+
+[ext_resource type="Texture2D" uid="uid://dmuxbomdt4wwa" path="res://assets/tilesets/assets/prototype.png" id="1_88hhf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwbwe"]
+texture = ExtResource("1_88hhf")
+texture_region_size = Vector2i(100, 100)
+8:0/0 = 0
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(50, -50, -50, -50, -50, 50, 50, 50)
+9:0/0 = 0
+9:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, 50, -50, 50)
+8:1/0 = 0
+8:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-50, -50, 50, 50, -50, 50)
+9:1/0 = 0
+9:1/0/physics_layer_2/polygon_0/points = PackedVector2Array(-50, -50, 50, 50, -50, 50)
+
+[resource]
+tile_size = Vector2i(100, 100)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 64
+physics_layer_1/collision_mask = 0
+physics_layer_2/collision_layer = 128
+physics_layer_2/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_jwbwe")

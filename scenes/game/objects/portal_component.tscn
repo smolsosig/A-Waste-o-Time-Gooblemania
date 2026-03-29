@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhwcme5gq10jo"]
+
+[ext_resource type="Script" uid="uid://urvs10cinvwf" path="res://scenes/game/objects/portal_component.gd" id="1_da120"]
+
+[node name="PortalComponent" type="Node2D"]
+script = ExtResource("1_da120")

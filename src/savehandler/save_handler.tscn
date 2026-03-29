@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0jowt2ak3w4c"]
+
+[ext_resource type="Script" uid="uid://cvafxa8c4kw0w" path="res://src/savehandler/save_handler_script.gd" id="1_r0sn3"]
+[ext_resource type="Script" uid="uid://cnei7a8gu8jbn" path="res://src/savehandler/player_data_default.gd" id="1_senmt"]
+
+[node name="SaveHandler" type="Node" node_paths=PackedStringArray("player_data_def")]
+script = ExtResource("1_r0sn3")
+player_data_def = NodePath("PlayerDataDefault")
+
+[node name="PlayerDataDefault" type="Node" parent="."]
+script = ExtResource("1_senmt")

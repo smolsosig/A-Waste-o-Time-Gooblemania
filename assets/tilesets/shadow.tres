@@ -1,0 +1,40 @@
+[gd_resource type="TileSet" format=3 uid="uid://c6hfgsiqtf3t7"]
+
+[ext_resource type="Texture2D" uid="uid://bq0udrableha3" path="res://assets/tilesets/assets/shadow.png" id="1_7reym"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqn7l"]
+texture = ExtResource("1_7reym")
+texture_region_size = Vector2i(100, 100)
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:1/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+5:2/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+8:1/0 = 0
+8:2/0 = 0
+7:0/0 = 0
+5:0/0 = 0
+5:3/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(100, 100)
+sources/4 = SubResource("TileSetAtlasSource_bqn7l")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctnffsnlbxg6o"]
+
+[ext_resource type="Texture2D" uid="uid://or2ey5dbdou6" path="res://assets/objects/props/box.png" id="1_ga742"]
+
+[node name="Box" type="StaticBody2D"]
+
+[node name="Box" type="Sprite2D" parent="."]
+texture = ExtResource("1_ga742")
+offset = Vector2(0, -50)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(40, 0, 40, -55, 30, -65, -30, -65, -40, -55, -40, 0)
+one_way_collision = true

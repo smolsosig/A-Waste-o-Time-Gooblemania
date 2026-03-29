@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b5p5raa7ders5"]
+
+[ext_resource type="Script" uid="uid://ccldqfegyw34j" path="res://addons/inputty/Rebind/InputRemap.gd" id="1_7dgvl"]
+[ext_resource type="PackedScene" uid="uid://c6oqelj0uminj" path="res://addons/inputty/Rebind/UIElements/action_rebind_ui_prefab.tscn" id="2_gv0gu"]
+[ext_resource type="PackedScene" uid="uid://ddfj44yrox0ad" path="res://addons/inputty/Rebind/UIElements/property_ui_prefab.tscn" id="3_55wve"]
+
+[node name="InputRemap" type="Control" unique_id=2078114723]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7dgvl")
+actionNames = Array[StringName]([&"player_left", &"player_right", &"player_jump", &"player_up", &"player_down", &"player_a", &"player_b", &"player_switchweapon", &"player_taunt"])
+actionDisplayNames = Array[String](["Move Left", "Move Right", "Jump", "Interact", "Down", "Attack", "Dash", "Switch weapons", "Taunt"])
+actionRebindPrefab = ExtResource("2_gv0gu")
+propertySetupPrefab = ExtResource("3_55wve")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1772294344]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Defaults" type="Button" parent="HBoxContainer" unique_id=729580359]
+custom_minimum_size = Vector2(198, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Defaults"
+clip_text = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=780362601]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1626107818]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="HBoxContainer/Defaults" to="." method="loadDefaults"]

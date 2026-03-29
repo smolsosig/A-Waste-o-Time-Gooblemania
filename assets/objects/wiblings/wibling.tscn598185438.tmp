@@ -1,0 +1,464 @@
+[gd_scene load_steps=33 format=3 uid="uid://c36afypaeqceh"]
+
+[ext_resource type="Texture2D" uid="uid://cmowuitu1yw60" path="res://assets/objects/wiblings/wiblings.png" id="1_dvgk0"]
+[ext_resource type="Script" uid="uid://buf404shdd5rb" path="res://assets/objects/wiblings/wibling.gd" id="1_lxwj6"]
+[ext_resource type="AudioStream" uid="uid://cgj8cfrnwvn0n" path="res://assets/objects/wiblings/sounds/worldimpact1.ogg" id="3_iqinl"]
+[ext_resource type="AudioStream" uid="uid://b43nd58j30xoh" path="res://assets/objects/wiblings/sounds/worldimpact2.ogg" id="4_u8r7q"]
+[ext_resource type="AudioStream" uid="uid://i6f4xko5lqpb" path="res://assets/objects/wiblings/sounds/worldimpact3.ogg" id="5_8cnox"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lxwj6"]
+friction = 5.0
+bounce = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxwj6"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brwye"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f41kc"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqinl"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8r7q"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cnox"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fleh2"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voo1d"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgx8i"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8scbk"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(400, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smw3f"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p15xm"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiem5"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk7xo"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2aip"]
+atlas = ExtResource("1_dvgk0")
+region = Rect2(400, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbxiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxwj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brwye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f41kc")
+}],
+"loop": true,
+"name": &"01",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqinl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8r7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cnox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fleh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voo1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgx8i")
+}],
+"loop": true,
+"name": &"05",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8scbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smw3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p15xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiem5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk7xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2aip")
+}],
+"loop": true,
+"name": &"20",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_iqinl"]
+script/source = "extends AnimatedSprite2D
+
+@onready var opportunity: Timer = $OpportunityTimer
+@onready var blinker: Timer = $BlinkerTimer
+var last_chance: bool = false
+
+func _on_opportunity_timer_timeout() -> void:
+	if last_chance:
+		opportunity.wait_time = 5
+		blinker.start()
+	else:
+		get_parent().queue_free()
+
+func _on_blinker_timer_timeout() -> void:
+	if visible:
+		visible = false
+	else:
+		visible = true
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brwye"]
+radius = 18.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_err5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"01"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+
+[sub_resource type="Animation" id="Animation_85jxj"]
+resource_name = "cash-1"
+length = 0.50000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"01"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -33)]
+}
+
+[sub_resource type="Animation" id="Animation_wces8"]
+resource_name = "cash-20"
+length = 1.0000033
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"20"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(0, 0, 0, 1, 1, 1, 1, 1, 0, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+
+[sub_resource type="Animation" id="Animation_j6dky"]
+resource_name = "cash-5"
+length = 1.0000033
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"05"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(0, 0, 0, 1, 1, 1, 1, 1, 0, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0o2y"]
+_data = {
+&"RESET": SubResource("Animation_err5b"),
+&"cash-1": SubResource("Animation_85jxj"),
+&"cash-20": SubResource("Animation_wces8"),
+&"cash-5": SubResource("Animation_j6dky")
+}
+
+[sub_resource type="GDScript" id="GDScript_lxwj6"]
+script/source = "extends Area2D
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is CharlieDetectableComponent:
+		Staglobals.actual_wibl += get_parent().value
+		
+		var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+		SoundManager.play_sound(load(\"res://assets/objects/wiblings/sounds/collect%s.ogg\" % rng.randi_range(1, 7)))
+		get_parent().queue_free()
+
+
+func _on_timer_timeout() -> void:
+	set_deferred(\"monitoring\", true)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f41kc"]
+radius = 85.00588
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fleh2"]
+random_pitch = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("3_iqinl")
+stream_1/stream = ExtResource("4_u8r7q")
+stream_2/stream = ExtResource("5_8cnox")
+
+[node name="Wibling" type="RigidBody2D" node_paths=PackedStringArray("anim_player")]
+collision_layer = 16
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_lxwj6")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_lxwj6")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_jbxiq")
+animation = &"01"
+script = SubResource("GDScript_iqinl")
+
+[node name="BlinkerTimer" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 0.25
+one_shot = true
+
+[node name="OpportunityTimer" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_brwye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b0o2y")
+}
+
+[node name="CharlieCollector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = SubResource("GDScript_lxwj6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieCollector"]
+shape = SubResource("CircleShape2D_f41kc")
+
+[node name="HoldOnAMinuteTimer" type="Timer" parent="CharlieCollector"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_fleh2")
+volume_db = 2.0
+attenuation = 0.37892914
+bus = &"SFX 1"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AnimatedSprite2D/BlinkerTimer" to="AnimatedSprite2D" method="_on_blinker_timer_timeout"]
+[connection signal="timeout" from="AnimatedSprite2D/OpportunityTimer" to="AnimatedSprite2D" method="_on_opportunity_timer_timeout"]
+[connection signal="area_entered" from="CharlieCollector" to="CharlieCollector" method="_on_area_entered"]
+[connection signal="timeout" from="CharlieCollector/HoldOnAMinuteTimer" to="CharlieCollector" method="_on_timer_timeout"]

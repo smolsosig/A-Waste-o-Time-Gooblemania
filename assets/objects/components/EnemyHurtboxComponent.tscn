@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckx5147kpr7hk"]
+
+[ext_resource type="Script" uid="uid://dp4vffcpt00h1" path="res://assets/objects/components/EnemyHurtboxComponent.gd" id="1_qc7nv"]
+[ext_resource type="PackedScene" uid="uid://cs2220j2k8rlw" path="res://assets/ui/crit_fx.tscn" id="2_5xjhu"]
+[ext_resource type="PackedScene" uid="uid://c3inv0o6rkddb" path="res://assets/ui/damage_num.tscn" id="2_08cjm"]
+
+[node name="EnemyHurtboxComponent" type="Area2D" node_paths=PackedStringArray("damage_num", "crit_fx")]
+script = ExtResource("1_qc7nv")
+damage_num = NodePath("DamageNum")
+crit_fx = NodePath("Crit FX")
+
+[node name="Crit FX" parent="." instance=ExtResource("2_5xjhu")]
+
+[node name="DamageNum" parent="." instance=ExtResource("2_08cjm")]

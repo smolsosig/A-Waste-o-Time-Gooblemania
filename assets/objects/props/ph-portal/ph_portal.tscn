@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cm58nkm0ld3nx"]
+
+[ext_resource type="Script" uid="uid://be7xd1ysucvgg" path="res://assets/objects/props/ph-portal/ph_portal.gd" id="1_lknm1"]
+[ext_resource type="Texture2D" uid="uid://bset571nv7myn" path="res://assets/objects/props/ph-portal/portal.png" id="2_yu3ay"]
+[ext_resource type="PackedScene" uid="uid://b2hnmq0k3nj4n" path="res://assets/objects/components/interactable_component.tscn" id="3_em7um"]
+[ext_resource type="PackedScene" uid="uid://dhwcme5gq10jo" path="res://scenes/game/objects/portal_component.tscn" id="3_kx5xs"]
+[ext_resource type="Script" uid="uid://bkiqs8g3h20yw" path="res://src/misc/output.gd" id="4_t7e05"]
+
+[sub_resource type="Resource" id="Resource_g7wlh"]
+script = ExtResource("4_t7e05")
+output = "interacted"
+target = NodePath("../PortalComponent")
+target_method = &"interacted"
+metadata/_custom_type_script = "uid://bkiqs8g3h20yw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do22n"]
+size = Vector2(142, 200)
+
+[node name="ph_portal" type="Node2D" unique_id=806982651]
+script = ExtResource("1_lknm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=291401604]
+position = Vector2(0, -100)
+texture = ExtResource("2_yu3ay")
+
+[node name="InteractableComponent" parent="." unique_id=222361390 instance=ExtResource("3_em7um")]
+position = Vector2(0, -218)
+text_prompt = "Enter"
+outputs = Array[ExtResource("4_t7e05")]([SubResource("Resource_g7wlh")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=1386101334]
+position = Vector2(0, 118)
+shape = SubResource("RectangleShape2D_do22n")
+
+[node name="PortalComponent" parent="." unique_id=1130566082 instance=ExtResource("3_kx5xs")]
+unique_name_in_owner = true
+position = Vector2(0, -218)

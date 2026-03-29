@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://4enfme5vbxkk"]
+
+[ext_resource type="Script" uid="uid://ct0r2vltbegs1" path="res://assets/objects/components/EnemyMoneyComponent.gd" id="1_yk3ha"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_se3ox"]
+radius = 200.0
+
+[node name="EnemyMoneyComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("1_yk3ha")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_se3ox")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

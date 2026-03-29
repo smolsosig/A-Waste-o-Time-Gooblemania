@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bk4jv00npxjsm"]
+
+[ext_resource type="Script" uid="uid://ombf1vis76fy" path="res://src/music_manager.gd" id="1_8fw30"]
+[ext_resource type="AudioStream" uid="uid://ch8n3gq4pcss0" path="res://assets/sounds/music/null.ogg" id="2_cwx62"]
+
+[node name="MusicManager" type="Node" unique_id=1551867272]
+process_mode = 3
+script = ExtResource("1_8fw30")
+
+[node name="Primary" type="AudioStreamPlayer" parent="." unique_id=1027784245]
+unique_name_in_owner = true
+volume_db = -80.0
+bus = &"Music"
+
+[node name="Secondary" type="AudioStreamPlayer" parent="." unique_id=1961752614]
+unique_name_in_owner = true
+volume_db = -80.0
+bus = &"Music"
+
+[node name="Misc" type="AudioStreamPlayer" parent="." unique_id=137837885]
+unique_name_in_owner = true
+volume_db = -80.0
+bus = &"Music"
+
+[node name="Jingle" type="AudioStreamPlayer" parent="." unique_id=1000291460]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="Soundscape0" type="AudioStreamPlayer" parent="." unique_id=269421473]
+unique_name_in_owner = true
+process_mode = 1
+stream = ExtResource("2_cwx62")
+bus = &"AMBIENT"
+
+[node name="Soundscape1" type="AudioStreamPlayer" parent="." unique_id=1357917889]
+unique_name_in_owner = true
+process_mode = 1
+stream = ExtResource("2_cwx62")
+bus = &"AMBIENT"
+
+[connection signal="finished" from="Jingle" to="." method="_on_jingle_finished"]

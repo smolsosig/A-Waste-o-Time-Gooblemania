@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dcao82tvy5udp"]
+
+[ext_resource type="Texture2D" uid="uid://c1swddod86q5w" path="res://assets/objects/npcs/ph-hector/hector.png" id="1_57gi6"]
+[ext_resource type="PackedScene" uid="uid://b2hnmq0k3nj4n" path="res://assets/objects/components/interactable_component.tscn" id="2_hfjkg"]
+[ext_resource type="Script" uid="uid://bkiqs8g3h20yw" path="res://src/misc/output.gd" id="3_dkrdw"]
+[ext_resource type="PackedScene" uid="uid://dh0b42bkhnsay" path="res://scenes/game/objects/dialogue_component.tscn" id="3_r0xas"]
+
+[sub_resource type="Resource" id="Resource_3ojdn"]
+script = ExtResource("3_dkrdw")
+output = "interacted"
+target = NodePath("../DialogueComponent")
+target_method = &"interacted"
+metadata/_custom_type_script = "uid://bkiqs8g3h20yw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpx32"]
+size = Vector2(221, 200)
+
+[node name="hector" type="Node2D" unique_id=181867845]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1495235161]
+position = Vector2(0, -100)
+texture = ExtResource("1_57gi6")
+
+[node name="InteractableComponent" parent="." unique_id=1091016569 instance=ExtResource("2_hfjkg")]
+position = Vector2(0, -218)
+text_prompt = "TALK TO HECTOR"
+is_action = false
+outputs = Array[ExtResource("3_dkrdw")]([SubResource("Resource_3ojdn")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=371304941]
+position = Vector2(-39.5, 118)
+shape = SubResource("RectangleShape2D_tpx32")
+
+[node name="DialogueComponent" parent="." unique_id=2044345596 instance=ExtResource("3_r0xas")]
+afterloop = true

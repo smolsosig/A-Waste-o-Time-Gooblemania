@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2it6vkevvchg"
+path="res://.godot/imported/vidya game.ogg-34087987cd5ecfa279f86064237105ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/vidya game.ogg"
+dest_files=["res://.godot/imported/vidya game.ogg-34087987cd5ecfa279f86064237105ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

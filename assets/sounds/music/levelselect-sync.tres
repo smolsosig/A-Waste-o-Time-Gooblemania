@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamSynchronized" load_steps=6 format=3 uid="uid://b5smn0ygf2eh4"]
+
+[ext_resource type="AudioStream" uid="uid://dcr2a1wngdo5t" path="res://assets/sounds/music/levelselect-00.ogg" id="1_78oy2"]
+[ext_resource type="AudioStream" uid="uid://pyr5m76fmusf" path="res://assets/sounds/music/levelselect-01.ogg" id="2_o7fjt"]
+[ext_resource type="AudioStream" uid="uid://tqb3x8ajkmvs" path="res://assets/sounds/music/levelselect-02.ogg" id="3_umj74"]
+[ext_resource type="AudioStream" uid="uid://dgb0d0ykai3qs" path="res://assets/sounds/music/levelselect-03.ogg" id="4_0rwv3"]
+[ext_resource type="AudioStream" uid="uid://cef3rvl30xajf" path="res://assets/sounds/music/levelselect-04.ogg" id="5_1grfl"]
+
+[resource]
+stream_count = 5
+stream_0/stream = ExtResource("1_78oy2")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_o7fjt")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_umj74")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("4_0rwv3")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("5_1grfl")
+stream_4/volume = 0.0

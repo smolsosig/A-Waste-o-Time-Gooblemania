@@ -1,0 +1,1239 @@
+[gd_scene format=3 uid="uid://c1t34lmdt6xic"]
+
+[ext_resource type="Script" uid="uid://bjboge3xrpowd" path="res://scenes/game/stage_clear.gd" id="1_l8m08"]
+[ext_resource type="FontFile" uid="uid://ybyd0bklsy2x" path="res://assets/ui/TrebuchetBold.ttf" id="3_unkcn"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_vc3qc"]
+[ext_resource type="Texture2D" uid="uid://dtgt3gxw8wkwu" path="res://assets/ui/stage_end/placeholder_reviews.png" id="4_gkr8w"]
+[ext_resource type="Texture2D" uid="uid://b0t4vvl3afhmr" path="res://assets/ui/stage_end/bar.png" id="5_upqy3"]
+[ext_resource type="Texture2D" uid="uid://b15nmfr2ge4nb" path="res://assets/ui/stage_end/verdict.png" id="7_7g4ys"]
+[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader.gdshader" id="7_d5stg"]
+[ext_resource type="Texture2D" uid="uid://ki72u47l6hl0" path="res://assets/ui/stage_icons/1962fort_A.png" id="8_7xx0y"]
+[ext_resource type="Texture2D" uid="uid://bf5d57xoj5xcw" path="res://assets/ui/stage_end/stageclear.png" id="9_pv3nm"]
+[ext_resource type="Texture2D" uid="uid://b62flm16o8qv8" path="res://assets/ui/stage_end/ringofpower1.png" id="11_bn4aw"]
+[ext_resource type="Texture2D" uid="uid://mus5owax2poq" path="res://assets/ui/stage_end/ringofpower2.png" id="12_053e6"]
+[ext_resource type="AudioStream" uid="uid://bhgcopydyuibo" path="res://assets/sounds/ui/stage_clear_short.ogg" id="12_l4yee"]
+
+[sub_resource type="Animation" id="Animation_brb2y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ready_to_exit")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stageclear:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top/PlaceholderReviews:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top/Headline/Review:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top/Headline/StageTitle:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bars/Time:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, 366)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars/Wiblings:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, 502)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bars/Kills:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, 637)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bars/Deaths:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, 771)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bars/Secrets:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-450, 907)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bars/Verdict:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2400, 522)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Bars/Verdict/PlayerScore:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("StageIcon:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1067, 1300)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("StageIcon:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.28319]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("StageIcon:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".:offset")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Background:color")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("short:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d08ds"]
+resource_name = "SideA"
+length = 9.6
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.33333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_music"
+}, {
+"args": [],
+"method": &"play_music2"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(-3.36359, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.992157, 0.956863, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:ready_to_exit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stageclear:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.33333, 1.75, 2.125),
+"transitions": PackedFloat32Array(0, 1, 5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top/PlaceholderReviews:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.125),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top/Headline/Review:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.33333),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top/Headline/StageTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.41667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bars/Time:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.08333, 3.25),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(-450, 366), Vector2(383, 366)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bars/Wiblings:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.41667, 3.58333),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(-450, 502), Vector2(383, 502)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bars/Kills:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3.75, 3.91667),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(-450, 637), Vector2(383, 637)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bars/Deaths:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.08333, 4.25),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(-450, 771), Vector2(383, 771)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Bars/Secrets:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.41667, 4.58333),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(-450, 907), Vector2(383, 907)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Bars/Verdict:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(4.66667, 4.91667),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(2400, 522), Vector2(1609, 522)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Bars/Verdict/PlayerScore:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 6.66667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("StageIcon:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(2.125, 2.95833),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1067, 1300), Vector2(1067, 532)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("StageIcon:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(2.125, 2.95833),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [-6.28319, -0.0438716]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("StageIcon:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(2.125, 2.95833),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.8, 0.8)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath(".:offset")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1.33333, 1.375, 1.41667, 1.45833, 1.5, 3.125, 3.16667, 3.20833, 3.25, 3.29167, 3.45833, 3.5, 3.54167, 3.58333, 3.625, 3.79167, 3.83333, 3.875, 3.91667, 3.95833, 4.125, 4.16667, 4.20833, 4.25, 4.29167, 4.45833, 4.5, 4.54167, 4.58333, 4.625, 4.70833, 4.75, 4.79167, 4.83333, 4.875, 4.95833, 6.64583, 6.66667, 6.70833, 6.75, 6.79167, 6.83333),
+"transitions": PackedFloat32Array(0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0, 5.4, 1, -2, -2, -2, -2, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0), Vector2(10, 10), Vector2(-10, 5), Vector2(-5, -5), Vector2(5, 5), Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0), Vector2(10, 10), Vector2(-10, 5), Vector2(-5, -5), Vector2(5, 5), Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0), Vector2(10, 10), Vector2(-10, 5), Vector2(-5, -5), Vector2(5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(-148.796, -46.181), Vector2(10, 10), Vector2(-10, 5), Vector2(-5, -5), Vector2(5, 5), Vector2(0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 4.95833, 6.64583, 6.70833),
+"transitions": PackedFloat32Array(0, 5.4, 0.19118416, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("RingOfPower:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(4.9583335, 6.6250033, 7.291673),
+"transitions": PackedFloat32Array(5.407501, 0.24367575, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.065, 0.065), Vector2(0.2, 0.2)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("RingOfPower:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(6.625, 7.29167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nia3b"]
+resource_name = "SideA_nostats"
+length = 9.6
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.1666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_music2"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(-3.36359, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.992157, 0.956863, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:ready_to_exit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stageclear:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.33333, 1.75, 2.125),
+"transitions": PackedFloat32Array(0, 1, 5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top/PlaceholderReviews:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.0416667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top/Headline/Review:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.1666667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top/Headline/StageTitle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.2916667),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.33333, 1.375, 1.41667, 1.45833, 1.5, 3.125, 3.1666698, 3.20834, 3.25, 3.2916698),
+"transitions": PackedFloat32Array(0, -2, -2, -2, -2, 0, -2, -2, -2, -2, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0), Vector2(-10, -10), Vector2(10, -5), Vector2(5, 5), Vector2(-5, -5), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RingOfPower:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("RingOfPower:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AudioStreamPlayer:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("short:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 3.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oikqm"]
+_data = {
+&"RESET": SubResource("Animation_brb2y"),
+&"SideA": SubResource("Animation_d08ds"),
+&"SideA_nostats": SubResource("Animation_nia3b")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c370c"]
+shader = ExtResource("7_d5stg")
+shader_parameter/thickness = 15.0000007125
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = true
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbhyo"]
+font = ExtResource("3_unkcn")
+font_size = 200
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k4khi"]
+font = ExtResource("3_unkcn")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_as431"]
+font = ExtResource("3_unkcn")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc24h"]
+font = ExtResource("3_unkcn")
+font_size = 40
+font_color = Color(0, 0, 0, 0.49019608)
+
+[node name="StageClear" type="CanvasLayer" unique_id=1447824877 node_paths=PackedStringArray("anim_player", "stage_title", "time_score_label", "wibl_score_label", "kill_score_label", "dies_score_label", "secr_score_label", "time_stats", "wibl_stats", "kill_stats", "dies_stats", "secr_stats", "verdict")]
+script = ExtResource("1_l8m08")
+anim_player = NodePath("AnimationPlayer")
+stage_title = NodePath("Top/Headline/StageTitle")
+time_score_label = NodePath("Bars/Time/Score/PlayerScore")
+wibl_score_label = NodePath("Bars/Wiblings/Score/PlayerScore")
+kill_score_label = NodePath("Bars/Kills/Score/PlayerScore")
+dies_score_label = NodePath("Bars/Deaths/Score/PlayerScore")
+secr_score_label = NodePath("Bars/Secrets/Score/PlayerScore")
+time_stats = NodePath("Bars/Time/Body/Stats")
+wibl_stats = NodePath("Bars/Wiblings/Body/Stats")
+kill_stats = NodePath("Bars/Kills/Body/Stats")
+dies_stats = NodePath("Bars/Deaths/Body/Stats")
+secr_stats = NodePath("Bars/Secrets/Body/Stats")
+verdict = NodePath("Bars/Verdict/PlayerScore")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1122744655]
+libraries/ = SubResource("AnimationLibrary_oikqm")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1853115695]
+offset_left = -111.0
+offset_top = -52.0
+offset_right = 1809.0
+offset_bottom = 1028.0
+scale = Vector2(1.1, 1.1)
+color = Color(1, 1, 1, 0)
+
+[node name="Top" type="Node2D" parent="." unique_id=834872315]
+position = Vector2(150, 178)
+
+[node name="Headline" type="HBoxContainer" parent="Top" unique_id=1407645372]
+offset_right = 1344.0
+offset_bottom = 99.0
+theme_override_constants/separation = 0
+
+[node name="Review" type="Label" parent="Top/Headline" unique_id=1661750209]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 85
+text = "REVIEW: "
+vertical_alignment = 1
+
+[node name="StageTitle" type="Label" parent="Top/Headline" unique_id=1538935088]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 85
+text = "1962FORT, SIDE A"
+vertical_alignment = 1
+
+[node name="PlaceholderReviews" type="Sprite2D" parent="Top" unique_id=1618920463]
+position = Vector2(355, -40)
+texture = ExtResource("4_gkr8w")
+
+[node name="Bars" type="Node2D" parent="." unique_id=1956350147]
+
+[node name="Time" type="Sprite2D" parent="Bars" unique_id=105064026]
+self_modulate = Color(0.713726, 0.254902, 0.14902, 1)
+position = Vector2(-450, 366)
+texture = ExtResource("5_upqy3")
+
+[node name="Body" type="VBoxContainer" parent="Bars/Time" unique_id=256951788]
+offset_left = -140.0
+offset_top = -62.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="Bars/Time/Body" unique_id=1658665554]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 50
+text = "SWEET FACTOR"
+
+[node name="Stats" type="Label" parent="Bars/Time/Body" unique_id=1234945641]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 30
+text = "Time completed: 88:88:88"
+
+[node name="Score" type="HBoxContainer" parent="Bars/Time" unique_id=637320207]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -116.0
+offset_right = 34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0688536
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PlayerScore" type="Label" parent="Bars/Time/Score" unique_id=2074554712]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 100
+text = "5"
+
+[node name="Slash" type="Label" parent="Bars/Time/Score" unique_id=2099649455]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 1
+
+[node name="MaxScore" type="Label" parent="Bars/Time/Score" unique_id=1999335135]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 70
+text = "5"
+horizontal_alignment = 2
+
+[node name="Wiblings" type="Sprite2D" parent="Bars" unique_id=1417936269]
+self_modulate = Color(0.807843, 0.329412, 0.160784, 1)
+position = Vector2(-450, 502)
+texture = ExtResource("5_upqy3")
+
+[node name="Body" type="VBoxContainer" parent="Bars/Wiblings" unique_id=394299615]
+offset_left = -140.0
+offset_top = -62.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="Bars/Wiblings/Body" unique_id=1741197036]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 50
+text = "SWAG"
+
+[node name="Stats" type="Label" parent="Bars/Wiblings/Body" unique_id=135582300]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 30
+text = "Wiblings collected: 888"
+
+[node name="Score" type="HBoxContainer" parent="Bars/Wiblings" unique_id=531757748]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -116.0
+offset_right = 34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0688536
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PlayerScore" type="Label" parent="Bars/Wiblings/Score" unique_id=1143203655]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 100
+text = "4"
+
+[node name="Slash" type="Label" parent="Bars/Wiblings/Score" unique_id=1419140994]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 1
+
+[node name="MaxScore" type="Label" parent="Bars/Wiblings/Score" unique_id=255612137]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 70
+text = "4"
+horizontal_alignment = 2
+
+[node name="Kills" type="Sprite2D" parent="Bars" unique_id=1841332738]
+self_modulate = Color(0.905882, 0.407843, 0.172549, 1)
+position = Vector2(-450, 637)
+texture = ExtResource("5_upqy3")
+
+[node name="Body" type="VBoxContainer" parent="Bars/Kills" unique_id=1872999256]
+offset_left = -140.0
+offset_top = -62.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="Bars/Kills/Body" unique_id=1852361681]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 50
+text = "HITS"
+
+[node name="Stats" type="Label" parent="Bars/Kills/Body" unique_id=1761172995]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 30
+text = "Asses whooped: 888"
+
+[node name="Score" type="HBoxContainer" parent="Bars/Kills" unique_id=1029507274]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -116.0
+offset_right = 34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0688536
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PlayerScore" type="Label" parent="Bars/Kills/Score" unique_id=1172337811]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 100
+text = "4"
+
+[node name="Slash" type="Label" parent="Bars/Kills/Score" unique_id=2116572545]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 1
+
+[node name="MaxScore" type="Label" parent="Bars/Kills/Score" unique_id=386678115]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 70
+text = "4"
+horizontal_alignment = 2
+
+[node name="Deaths" type="Sprite2D" parent="Bars" unique_id=1427845421]
+self_modulate = Color(0.917647, 0.478431, 0.156863, 1)
+position = Vector2(-450, 771)
+texture = ExtResource("5_upqy3")
+
+[node name="Body" type="VBoxContainer" parent="Bars/Deaths" unique_id=1184880817]
+offset_left = -140.0
+offset_top = -62.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="Bars/Deaths/Body" unique_id=424724455]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 50
+text = "FUMBLES"
+
+[node name="Stats" type="Label" parent="Bars/Deaths/Body" unique_id=1109225934]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 30
+text = "Times died: 888"
+
+[node name="Score" type="HBoxContainer" parent="Bars/Deaths" unique_id=1878764432]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -116.0
+offset_right = 34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0688536
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PlayerScore" type="Label" parent="Bars/Deaths/Score" unique_id=505421316]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 100
+text = "5"
+
+[node name="Slash" type="Label" parent="Bars/Deaths/Score" unique_id=70318019]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 1
+
+[node name="MaxScore" type="Label" parent="Bars/Deaths/Score" unique_id=2031415646]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 70
+text = "5"
+horizontal_alignment = 2
+
+[node name="Secrets" type="Sprite2D" parent="Bars" unique_id=937852969]
+self_modulate = Color(0.933333, 0.560784, 0.145098, 1)
+position = Vector2(-450, 907)
+texture = ExtResource("5_upqy3")
+
+[node name="Body" type="VBoxContainer" parent="Bars/Secrets" unique_id=1256083097]
+offset_left = -140.0
+offset_top = -62.0
+offset_right = 237.0
+offset_bottom = 60.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="Bars/Secrets/Body" unique_id=1601614588]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 50
+text = "JUICE"
+
+[node name="Stats" type="Label" parent="Bars/Secrets/Body" unique_id=1535014924]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 30
+text = "Secrets found: 8"
+
+[node name="Score" type="HBoxContainer" parent="Bars/Secrets" unique_id=919790264]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -116.0
+offset_right = 34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0688536
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="PlayerScore" type="Label" parent="Bars/Secrets/Score" unique_id=997477947]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 100
+text = "2"
+
+[node name="Slash" type="Label" parent="Bars/Secrets/Score" unique_id=536637633]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 1
+
+[node name="MaxScore" type="Label" parent="Bars/Secrets/Score" unique_id=994788655]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 70
+text = "2"
+horizontal_alignment = 2
+
+[node name="Verdict" type="Sprite2D" parent="Bars" unique_id=31171579]
+position = Vector2(2400, 522)
+texture = ExtResource("7_7g4ys")
+
+[node name="Verdict" type="Label" parent="Bars/Verdict" unique_id=780197951]
+offset_left = -251.0
+offset_top = -168.0
+offset_right = 169.0
+offset_bottom = -51.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("3_unkcn")
+theme_override_font_sizes/font_size = 90
+text = "VERDICT:"
+horizontal_alignment = 1
+
+[node name="PlayerScore" type="Label" parent="Bars/Verdict" unique_id=823335569]
+offset_left = -163.0
+offset_top = -30.0
+offset_right = 75.0
+offset_bottom = 149.0
+rotation = 0.0550975
+theme_override_colors/font_color = Color(1, 0.992157, 0.956863, 1)
+theme_override_fonts/font = ExtResource("3_vc3qc")
+theme_override_font_sizes/font_size = 150
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StageIcon" type="Sprite2D" parent="." unique_id=1667348614]
+material = SubResource("ShaderMaterial_c370c")
+position = Vector2(1067, 1300)
+rotation = -6.28319
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_7xx0y")
+
+[node name="Stageclear" type="Sprite2D" parent="." unique_id=1289057339]
+position = Vector2(960, 540)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_pv3nm")
+
+[node name="RingOfPower" type="Node2D" parent="." unique_id=1328351158]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1561, 572)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Ringofpower1" type="Sprite2D" parent="RingOfPower" unique_id=1285139120]
+position = Vector2(-1138, -872.5)
+texture = ExtResource("11_bn4aw")
+
+[node name="Ringofpower2" type="Sprite2D" parent="RingOfPower" unique_id=1763774115]
+position = Vector2(1138, -872.5)
+texture = ExtResource("12_053e6")
+
+[node name="Ringofpower3" type="Sprite2D" parent="RingOfPower" unique_id=119928708]
+position = Vector2(1138, 872.5)
+rotation = -3.1415925
+texture = ExtResource("11_bn4aw")
+
+[node name="Ringofpower4" type="Sprite2D" parent="RingOfPower" unique_id=2053566914]
+position = Vector2(-1138, 872.5)
+rotation = -3.1415925
+texture = ExtResource("12_053e6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1309645457]
+stream = ExtResource("12_l4yee")
+
+[node name="short" type="Node2D" parent="." unique_id=2111190441]
+visible = false
+
+[node name="Label" type="Label" parent="short" unique_id=277630077]
+offset_left = 148.0
+offset_top = 262.0
+offset_right = 1283.0
+offset_bottom = 495.0
+text = "YOU PASSED"
+label_settings = SubResource("LabelSettings_xbhyo")
+
+[node name="Label2" type="Label" parent="short" unique_id=999290480]
+offset_left = 148.0
+offset_top = 640.0
+offset_right = 1898.0
+offset_bottom = 873.0
+text = "NOW GET OUT"
+label_settings = SubResource("LabelSettings_k4khi")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="short" unique_id=818921324]
+offset_left = 148.0
+offset_top = 772.0
+offset_right = 1898.0
+offset_bottom = 1005.0
+text = "press any key to continue"
+label_settings = SubResource("LabelSettings_as431")
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="short" unique_id=718669218]
+offset_left = 148.0
+offset_top = 836.0
+offset_right = 1898.0
+offset_bottom = 1069.0
+text = "sorry if i was rude"
+label_settings = SubResource("LabelSettings_yc24h")
+horizontal_alignment = 2

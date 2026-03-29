@@ -1,0 +1,4294 @@
+[gd_scene format=3 uid="uid://biyytrdr6sl50"]
+
+[ext_resource type="AudioStream" uid="uid://bj57e3ej6tst0" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket_shoot.ogg" id="2_34bdw"]
+[ext_resource type="Script" uid="uid://c3xkwrrqyxir3" path="res://src/game-nodes/game_animation_player.gd" id="2_ewsbq"]
+[ext_resource type="Texture2D" uid="uid://2hx8jwthefi" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/ph-sprite.png" id="2_lbnvn"]
+[ext_resource type="Script" uid="uid://bkiqs8g3h20yw" path="res://src/misc/output.gd" id="2_ov6xj"]
+[ext_resource type="AudioStream" uid="uid://c1bkpiyfrv4cw" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket_draw.ogg" id="3_1p84u"]
+[ext_resource type="AudioStream" uid="uid://svm257q1h3om" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/phase2.ogg" id="3_krg38"]
+[ext_resource type="Script" uid="uid://cmxuosm5pjf8d" path="res://assets/objects/components/CharlieHealerComponent.gd" id="3_lx26u"]
+[ext_resource type="AudioStream" uid="uid://bhao5es1y1ve6" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/minigun_draw.ogg" id="4_kq60o"]
+[ext_resource type="AudioStream" uid="uid://c2bui7mqr78u" path="res://assets/objects/charlie/sounds/death.ogg" id="5_4hrq4"]
+[ext_resource type="AudioStream" uid="uid://qg3gmhb5fs56" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/minigun.ogg" id="5_aw6sv"]
+[ext_resource type="Texture2D" uid="uid://ogewciqn07wi" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocketlauncher.png" id="5_xrpm8"]
+[ext_resource type="Script" uid="uid://crpm7vyy8j5jo" path="res://assets/objects/components/EnemyHitboxComponent.gd" id="6_ewsbq"]
+[ext_resource type="Texture2D" uid="uid://cc3u5qmoqtuj6" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket.png" id="7_6wgb3"]
+[ext_resource type="AudioStream" uid="uid://c2idy8xd543td" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/charge.ogg" id="7_41pas"]
+[ext_resource type="AudioStream" uid="uid://cld15dy2c6c6a" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/sword_draw.ogg" id="7_duuec"]
+[ext_resource type="AudioStream" uid="uid://bqm1k48uid2fq" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/sword_throw.ogg" id="8_krg38"]
+[ext_resource type="Script" uid="uid://cqcxmvafwh1ae" path="res://src/game-nodes/game_audio_stream_player2d.gd" id="9_cu4mb"]
+[ext_resource type="Texture2D" uid="uid://bc8n4wagwb6yf" path="res://assets/effects/smokepuff.png" id="9_oq6ax"]
+[ext_resource type="AudioStream" uid="uid://biukvoc0fss1t" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/sword_return.ogg" id="9_tp80q"]
+[ext_resource type="Texture2D" uid="uid://c6mv801ecswp6" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/minigun.png" id="11_mjki6"]
+[ext_resource type="AudioStream" uid="uid://drgrwki53ymqt" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/death.ogg" id="12_tp80q"]
+[ext_resource type="Texture2D" uid="uid://by56kh5cvatdl" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/bullets1.png" id="15_g55p5"]
+[ext_resource type="Texture2D" uid="uid://dihaawbr2um5u" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/shield.png" id="15_s1xa4"]
+[ext_resource type="Texture2D" uid="uid://ovb22jbfee1r" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/bullets2.png" id="16_c02ly"]
+[ext_resource type="Texture2D" uid="uid://cywgbopswxe4v" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/explosion.png" id="16_s1xa4"]
+[ext_resource type="Texture2D" uid="uid://cehaufvlrw7wt" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/bullets3.png" id="17_ov6xj"]
+[ext_resource type="Script" uid="uid://dxdarkjig4ell" path="res://assets/objects/components/EnemyHealthComponent.gd" id="18_krg38"]
+[ext_resource type="Script" uid="uid://dp4vffcpt00h1" path="res://assets/objects/components/EnemyHurtboxComponent.gd" id="18_tp80q"]
+[ext_resource type="PackedScene" uid="uid://cs2220j2k8rlw" path="res://assets/ui/crit_fx.tscn" id="19_lo1kp"]
+[ext_resource type="PackedScene" uid="uid://c3inv0o6rkddb" path="res://assets/ui/damage_num.tscn" id="20_ct7mf"]
+[ext_resource type="AudioStream" uid="uid://c0cflgku7x0ie" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket_explode.ogg" id="20_tr4v2"]
+[ext_resource type="Texture2D" uid="uid://cv0pt1dqegwqr" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/sword.png" id="21_lx26u"]
+[ext_resource type="Texture2D" uid="uid://cfc6nqhjvrn5f" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/whoosh.png" id="26_lo1kp"]
+
+[sub_resource type="GDScript" id="GDScript_tp80q"]
+script/source = "extends CharlieTrigger
+
+@export var room_cam: CameraRegion2D
+@export var boss_cam: CameraRegion2D
+
+func ready() -> void:
+	$CockBlocker.position = Vector2(2000, 0)
+
+func _on_twink_logic_done() -> void:
+	room_cam.global_position = Vector2(25700.0, 50.0)
+	boss_cam.global_position = Vector2(26252.0, 1352.0)
+	$CockBlocker.position = Vector2(2000, 0)
+	SoundManager.play_sound(load(\"res://assets/objects/props/ph-door/door_open.ogg\"))
+
+func _on_charlie_entered() -> void:
+	$CockBlocker.position = Vector2(-1000, 0)
+	SoundManager.play_sound(load(\"res://assets/objects/props/ph-door/door_close.ogg\"))
+"
+
+[sub_resource type="Resource" id="Resource_01o8r"]
+script = ExtResource("2_ov6xj")
+target = NodePath("MusicManagerProxy")
+target_method = &"stop_music"
+arguments = [2.0]
+metadata/_custom_type_script = "uid://bkiqs8g3h20yw"
+
+[sub_resource type="Resource" id="Resource_ov6xj"]
+script = ExtResource("2_ov6xj")
+target = NodePath("TwinkLogic")
+target_method = &"start_routine"
+delay = 2.0
+metadata/_custom_type_script = "uid://bkiqs8g3h20yw"
+
+[sub_resource type="Resource" id="Resource_s1xa4"]
+script = ExtResource("2_ov6xj")
+target = NodePath("MusicManagerProxy")
+target_method = &"play_music"
+arguments = ["miniboss-temporary.ogg"]
+delay = 2.0
+metadata/_custom_type_script = "uid://bkiqs8g3h20yw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fxso"]
+size = Vector2(1700, 900)
+
+[sub_resource type="GDScript" id="GDScript_41pas"]
+script/source = "extends Node
+
+# proxy node for MusicManager
+func play_music(music_file: String = \"spy_a.ogg\", player: int = 0, fade_in: float = 0) -> void:
+	MusicManager.play_music(music_file, player, fade_in)
+
+func stop_music(fade_out: float = 0, player: int = 0) -> void:
+	MusicManager.stop_music(fade_out, player)
+"
+
+[sub_resource type="GDScript" id="GDScript_s1xa4"]
+script/source = "extends Node
+
+const rocket_patterns: Array = [1, 2, 3]
+const rocket_patterns_2: Array = [1, 2, 3, 1, 2]
+const attack_patterns: Array = [\"rocket\", \"minigun\", \"rocket\", \"sword\"]
+const attack_patterns_2: Array = [\"rocket\", \"minigun\", \"rocket\", \"minigun\", \"sword\", \"sword2\", \"sword2\"]
+
+signal done
+
+var no_miniguns_please: int = 0
+var minigun_count: int = 0:
+	set(value):
+		if value == 3:
+			no_miniguns_please = 2
+		minigun_count = value
+
+@export var anim_player: AnimationPlayer
+var attack_patterns_used: Array
+var rocket_patterns_used: Array
+var current_position: String = \"r\"
+
+@onready var rockets: Array = [$\"../Rocket1/Rocket1/AnimPlayer\", $\"../Rocket2/Rocket2/AnimPlayer\", $\"../Rocket3/Rocket3/AnimPlayer\"]
+@onready var rocket_containers: Array = [$\"../Rocket1\", $\"../Rocket2\", $\"../Rocket3\"]
+
+var second_phase: bool = false
+var defeated: bool = false
+
+func _ready() -> void:
+	SignalBus.connect(\"reset\", _reset)
+	$\"../Twink/EnemyHurtboxComponent\".set_deferred(\"monitorable\", false)
+
+func _reset() -> void:
+	if !defeated && second_phase:
+		second_phase = false
+	elif defeated:
+		get_parent().set_deferred(\"monitoring\", false)
+
+func start_routine() -> void:
+	$\"../Twink/EnemyHurtboxComponent\".damage_allowed = 0
+	$\"../Twink/EnemyHurtboxComponent\".set_deferred(\"monitorable\", true)
+	
+	if !second_phase:
+		attack_patterns_used = attack_patterns.duplicate()
+	else:
+		attack_patterns_used = attack_patterns_2.duplicate()
+	attack_patterns_used.shuffle()
+	
+	_pick_next_action()
+
+func new_attacks() -> void:
+	attack_patterns_used = attack_patterns_2.duplicate()
+	attack_patterns_used.shuffle()
+
+func _pick_next_action() -> void:
+	if !attack_patterns_used:
+		start_routine()
+	
+	match attack_patterns_used[0]:
+		\"rocket\":
+			anim_player.play(\"rocket_prepare_%s\" % current_position)
+		\"minigun\":
+			if !no_miniguns_please:
+				anim_player.play(\"minigun_%s\" % current_position)
+				minigun_count += 1
+			else:
+				no_miniguns_please -= 1
+				_pick_next_action()
+		\"sword\":
+			if current_position == \"l\": anim_player.play(\"sword_l2r\")
+			else: anim_player.play(\"sword_r2l\")
+		\"sword2\":
+			if current_position == \"l\": anim_player.play(\"sword_l2r_2\")
+			else: anim_player.play(\"sword_r2l_2\")
+	
+	attack_patterns_used.pop_front()
+
+func _rocket_start() -> void:
+	if !second_phase:
+		rocket_patterns_used = rocket_patterns.duplicate()
+	else:
+		rocket_patterns_used = rocket_patterns_2.duplicate()
+	rocket_patterns_used.shuffle()
+	_rocket_fire_anim()
+
+func _rocket_fire_anim() -> void:
+	if !rocket_patterns_used:
+		anim_player.play(\"rocket_end_%s\" % current_position)
+		return
+	
+	anim_player.play(\"rocket_shoot%s_%s\" % [rocket_patterns_used[0], current_position])
+	
+
+func _rocket_fire() -> void:
+	var temp_num: int = rocket_patterns_used[0] - 1
+	rockets[temp_num].stop()
+	rockets[temp_num].play(\"fire\")
+	if current_position == \"r\": rocket_containers[temp_num].scale = Vector2(1, 1)
+	else: rocket_containers[temp_num].scale = Vector2(-1, 1)
+	rocket_patterns_used.pop_front()
+
+func _on_game_animation_player_animation_finished(anim_name: StringName) -> void:
+	# i am gonna get killed for this
+	match anim_name:
+		\"sword_r2l\":
+			current_position = \"l\"
+			start_routine()
+		\"sword_l2r\":
+			current_position = \"r\"
+			start_routine()
+		\"sword_r2l_2\":
+			current_position = \"l\"
+			start_routine()
+		\"sword_l2r_2\":
+			current_position = \"r\"
+			start_routine()
+		\"rocket_prepare_r\":
+			_rocket_start()
+		\"rocket_prepare_l\":
+			_rocket_start()
+		\"rocket_shoot1_l\":
+			_rocket_fire_anim()
+		\"rocket_shoot1_r\":
+			_rocket_fire_anim()
+		\"rocket_shoot2_l\":
+			_rocket_fire_anim()
+		\"rocket_shoot2_r\":
+			_rocket_fire_anim()
+		\"rocket_shoot3_l\":
+			_rocket_fire_anim()
+		\"rocket_shoot3_r\":
+			_rocket_fire_anim()
+		\"rocket_end_l\":
+			_pick_next_action()
+		\"rocket_end_r\":
+			_pick_next_action()
+		\"RESET\":
+			anim_player.stop()
+		\"death\":
+			pass
+		_:
+			_pick_next_action()
+
+
+func _on_enemy_health_component_health_changed(health: int, _decrease: bool) -> void:
+	if health <= 500 && !second_phase:
+		second_phase = true
+		new_attacks()
+		$\"../Phase2Alarm\".play()
+
+func _on_enemy_health_component_died() -> void:
+	get_parent().persistent = true
+	get_parent().enable_on_start = false
+	$\"../CharlieHealerComponent\".set_deferred(\"monitoring\", true)
+	MusicManager.stop_music(0.5)
+	anim_player.stop()
+	anim_player.play(\"death\")
+	await get_tree().create_timer(5).timeout
+	MusicManager.play_music(\"spy_a.ogg\")
+	emit_signal(\"done\")
+"
+
+[sub_resource type="Animation" id="Animation_kq60o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, -34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(750, 300)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/Sounds:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Sounds:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/RPG:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/Minigun:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, 53)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/Minigun:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/Minigun:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MinigunFire:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MinigunFire:monitoring")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MinigunFire/Bullets:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Twink/Shield:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-74, 7)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Twink/Shield:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Twink/Shield:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Twink:flip_h")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Twink/Shield:flip_h")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Twink/RPG:flip_h")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Twink/Minigun:flip_h")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MinigunFire:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 351)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Twink/Minigun:offset")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-56, 10)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Twink/EnemyHitboxComponent:damage")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Twink/DashParticle:emitting")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Twink/Sword:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37.00002, -16.000015)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Twink/Sword:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Twink/Sword:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.8325958]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Twink/Sword/SwordHitbox:monitoring")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Twink/Sword:flip_h")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Twink:modulate")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Twink/EnemyHitboxComponent:monitoring")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Twink/EnemyHurtboxComponent:ranged_damage_multiplier")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Twink/EnemyHurtboxComponent:damage_allowed")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Twink/EnemyHurtboxComponent:monitorable")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Twink/NoMelee-inator:monitorable")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Twink/NoMelee-inator:scale")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ieddo"]
+resource_name = "death"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, -34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Sounds:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink/Sounds:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RPG:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Minigun:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, 53)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/Minigun:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/Minigun:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MinigunFire:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MinigunFire:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MinigunFire/Bullets:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Twink/Shield:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-74, 7)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Twink/Shield:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Twink/Shield:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Twink:flip_h")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Twink/Shield:flip_h")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Twink/RPG:flip_h")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Twink/Minigun:flip_h")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MinigunFire:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 351)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Twink/Minigun:offset")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-56, 10)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Twink/DashParticle:emitting")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Twink/Sword:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37.00002, -16.000015)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Twink/Sword:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Twink/Sword:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.8325958]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Twink/Sword/SwordHitbox:monitoring")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Twink/Sword:flip_h")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Twink:modulate")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(1.4000001, 1.5000001, 1.6333401, 1.7666701, 1.9000001, 2.03334, 2.16667, 2.3000002, 2.43334, 2.5666702, 2.7, 2.8333402, 2.96667, 3.1000001, 3.23334, 3.3333333, 3.3666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/28/type = "audio"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Twink/Sounds")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"clips": [{
+"end_offset": 3.4900403,
+"start_offset": 0.0,
+"stream": ExtResource("5_4hrq4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_tp80q")
+}],
+"times": PackedFloat32Array(0, 1.1666666)
+}
+tracks/28/use_blend = true
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Twink/EnemyHitboxComponent:monitoring")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Twink/EnemyHurtboxComponent:monitorable")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4hrq4"]
+resource_name = "minigun_l"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-680, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Minigun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.53333336, 0.76666665, 1.2666667, 1.3333333, 1.4000001, 1.4666667, 1.5333334, 1.6, 1.6666669, 1.7333335, 1.8000001, 1.8666667, 1.9333335, 2, 2.066667, 2.1333337, 2.2000003, 2.266667, 2.3333335, 2.4, 2.4666672, 2.5333338, 2.6000004, 2.666667, 2.733334, 2.8000007, 2.8666673, 2.9333339, 3.0000005, 3.066667, 3.1333337, 3.2000003, 3.2666674, 3.333334, 3.8666668, 4.066667, 4.266667),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 1),
+"update": 0,
+"values": [Vector2(-20, 74), Vector2(39, 11), Vector2(47, 53), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 53), Vector2(47, 49), Vector2(47, 49), Vector2(47, -11), Vector2(-36, 59)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/Minigun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333333, 0.36666667, 0.6, 0.7666667, 1.2666667, 1.9999999, 2.1333332, 2.2999997, 2.5, 2.7000003, 2.9, 3.1000004, 3.3000002, 3.9333334, 4.1333337, 4.333334),
+"transitions": PackedFloat32Array(0.5, 0.5, 2, 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 1),
+"update": 0,
+"values": [0.0, 0.5235987755982988, -0.5235987755982988, 0.0, 0.0, -0.2617993877991494, 0.0, -1.3089969389957472, 0.0, -1.3089969389957472, 0.0, -1.3089969389957472, 0.0, 0.0, -0.2617993877991494, 0.2617993877991494]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Minigun:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 4.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MinigunFire:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.1333332, 2.3333335, 2.5333338, 2.733334, 2.9333334, 3.1333337, 3.3333335),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [3.141592653589793, 1.832595714594046, 3.141592653589793, 1.832595714594046, 3.141592653589793, 1.832595714594046, 3.141592653589793]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MinigunFire:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.1333332, 3.2333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MinigunFire/Bullets:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.1333332, 3.2333336),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/Sounds")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kq60o")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_aw6sv")
+}],
+"times": PackedFloat32Array(0.23333333, 1.3)
+}
+tracks/7/use_blend = true
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/Minigun:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MinigunFire:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-634, 351)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/Minigun:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, 10)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MinigunFire/Bullets")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.1333332),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"init", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ov6xj"]
+resource_name = "minigun_r"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(680, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Minigun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.53333336, 0.76666665, 1.2666667, 1.3333333, 1.4, 1.4666667, 1.5333334, 1.6, 1.6666667, 1.7333335, 1.8000001, 1.8666667, 1.9333334, 2, 2.0666668, 2.1333334, 2.2000003, 2.266667, 2.3333335, 2.4, 2.466667, 2.5333335, 2.6000001, 2.6666667, 2.7333336, 2.8000004, 2.8666668, 2.9333334, 3.0000002, 3.0666668, 3.1333334, 3.2, 3.266667, 3.3333337, 3.8666666, 4.0666666, 4.2666664),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 1),
+"update": 0,
+"values": [Vector2(20, 74), Vector2(-39, 11), Vector2(-47, 53), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 53), Vector2(-47, 49), Vector2(-47, 49), Vector2(-47, -11), Vector2(36, 59)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/Minigun:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333333, 0.36666667, 0.6, 0.7666667, 1.2666667, 2, 2.1333332, 2.2999997, 2.5, 2.6999998, 2.8999999, 3.0999997, 3.3, 3.9333334, 4.1333337, 4.333334),
+"transitions": PackedFloat32Array(0.5, 0.5, 2, 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 2, 1),
+"update": 0,
+"values": [0.0, -0.5235988, 0.5235988, 0.0, 0.0, 0.2617994, 0.0, 1.3089969389957472, 0.0, 1.3089969389957472, 0.0, 1.3089969389957472, 0.0, 0.0, 0.2617994, -0.2617994]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Minigun:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 4.2666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MinigunFire:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.1333332, 2.3333335, 2.5333335, 2.7333338, 2.9333334, 3.1333337, 3.3333335),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 1.3089969, 0.0, 1.3089969, 0.0, 1.3089969, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MinigunFire:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.1333332, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MinigunFire/Bullets:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.1333332, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/Sounds")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kq60o")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_aw6sv")
+}],
+"times": PackedFloat32Array(0.23333333, 1.2333333)
+}
+tracks/7/use_blend = false
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/Minigun:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MinigunFire:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 351)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/Minigun:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-56, 10)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MinigunFire/Bullets")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(2.1333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"init", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_krg38"]
+resource_name = "rocket_end_l"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(40, -34), Vector2(40, 52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -0.2617994]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_01o8r"]
+resource_name = "rocket_end_r"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-40, -34), Vector2(-40, 52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -0.2617994]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tp80q"]
+resource_name = "rocket_prepare_l"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.40000004, 0.6, 0.8, 1, 1.1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 1, -7.2099996, 2, 1),
+"update": 0,
+"values": [6.283185307179586, -0.5235987755982988, 0.2617993877991494, 0.0, 0.0, 0.5235987755982988, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(63, 75), Vector2(39, -50), Vector2(40, -34)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.2617993877991494, -0.2617993877991494, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.79999995, 1, 1.1),
+"transitions": PackedFloat32Array(-7.2099996, 2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 0.5), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.79999995, 1, 1.1),
+"transitions": PackedFloat32Array(-7.2099996, 2, -2),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, 375), Vector2(-750, 300)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/Sounds:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_1p84u")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Sounds:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/RPG:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/RPG:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mjki6"]
+resource_name = "rocket_prepare_right"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/RPG:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.40000004, 0.6, 0.8, 1, 1.1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 1, -7.2099996, 2, 1),
+"update": 0,
+"values": [-6.283185307179586, 0.5235988, -0.2617994, 0.0, 0.0, -0.5235988, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/RPG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-63, 75), Vector2(-39, -50), Vector2(-40, -34)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-0.2617994, 0.2617993877991494, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.79999995, 1, 1.1),
+"transitions": PackedFloat32Array(-7.2099996, 2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 0.5), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.79999995, 1, 1.1),
+"transitions": PackedFloat32Array(-7.2099996, 2, -2),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, 375), Vector2(750, 300)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/Sounds:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_1p84u")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Sounds:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/RPG:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/RPG:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lx26u"]
+resource_name = "rocket_shoot_l1"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, -240), Vector2(-750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235987755982988, 0.0, -0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(40, -34), Vector2(-7.778, -34.309), Vector2(40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, 0.2617993877991494, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_aw6sv"]
+resource_name = "rocket_shoot1"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, -240), Vector2(750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.5235988, 0.0, 0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-40, -34), Vector2(7.7783623, -34.308853), Vector2(-40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, -0.2617994, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lo1kp"]
+resource_name = "rocket_shoot_l2"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, 25), Vector2(-750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235987755982988, 0.0, -0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(40, -34), Vector2(-7.778, -34.309), Vector2(40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, 0.2617993877991494, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c02ly"]
+resource_name = "rocket_shoot2"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, 25), Vector2(750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.5235988, 0.0, 0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-40, -34), Vector2(7.7783623, -34.308853), Vector2(-40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, -0.2617994, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ct7mf"]
+resource_name = "rocket_shoot_l3"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235987755982988, 0.0, -0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(40, -34), Vector2(-7.778, -34.309), Vector2(40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, 0.2617993877991494, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g55p5"]
+resource_name = "rocket_shoot3"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.73333335, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.5235988, 0.0, 0.5235987755982988, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink/RPG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-40, -34), Vector2(7.7783623, -34.308853), Vector2(-40, -34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/RPG:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.36666667, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [0.0, -0.2617994, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TwinkLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.40000004),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rocket_fire"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink/RocketShoot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_duuec"]
+resource_name = "sword_l2r"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/Shield:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3333333, 2.1, 2.233333, 2.3666666),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [Vector2(56, 63), Vector2(67, -20), Vector2(74, 7), Vector2(74, 7), Vector2(67, -20), Vector2(56, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Shield:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4, 2.1333334, 2.266667, 2.4),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [-6.283185307179586, 0.2617994, 0.0, 0.0, 0.2617994, 6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4666667, 0.6, 1.4333333, 2.1000001, 2.3999999),
+"transitions": PackedFloat32Array(1, -2, 2, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, 300), Vector2(-912, 300), Vector2(-829.364, 300), Vector2(906, 300), Vector2(720, 300), Vector2(750, 300)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Sounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.44346094,
+"start_offset": 0.0,
+"stream": ExtResource("3_1p84u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_41pas")
+}],
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink/Shield:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Shield:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/EnemyHitboxComponent:damage")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 50, 20]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/EnemyHurtboxComponent:ranged_damage_multiplier")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5000001),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [1.0, 1.25, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/EnemyHurtboxComponent:damage_allowed")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [0, 2, 1]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Twink/NoMelee-inator:monitorable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Twink/NoMelee-inator:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2lein"]
+resource_name = "sword_l2r_2"
+length = 4.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/Shield:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3333333, 2.1, 2.233333, 2.3666666),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [Vector2(56, 63), Vector2(67, -20), Vector2(74, 7), Vector2(74, 7), Vector2(67, -20), Vector2(56, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Shield:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4, 2.1333334, 2.266667, 2.4),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [6.283185307179586, -0.2617993877991494, 0.0, 0.0, 0.2617993877991494, 6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4666667, 0.6, 1.4333333, 2.1000001, 2.3999999),
+"transitions": PackedFloat32Array(1, -2, 2, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(-750, 300), Vector2(-750, 300), Vector2(-912, 300), Vector2(-829.364, 300), Vector2(906, 300), Vector2(720, 300), Vector2(750, 300)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Sounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.44346094,
+"start_offset": 0.0,
+"stream": ExtResource("7_duuec")
+}, {
+"end_offset": 0.33625063,
+"start_offset": 0.0,
+"stream": ExtResource("7_41pas")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_krg38")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_tp80q")
+}],
+"times": PackedFloat32Array(0, 0.6, 2.2, 3.2333333)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink/Shield:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Shield:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/EnemyHitboxComponent:damage")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 50, 20]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/Sword:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.06666667, 0.3, 2.2, 2.9, 3.6333334, 3.8),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 2, 2, 1),
+"update": 0,
+"values": [Vector2(42, 113), Vector2(37.00002, -16.000015), Vector2(-37, -16), Vector2(-1450, -16), Vector2(-37, -16), Vector2(51, 120)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/Sword:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.06666667, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Twink/Sword:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.13333334, 0.36666667, 0.6, 1.4666667, 1.6666667, 1.7, 1.8333333, 2.0333333, 2.2, 2.5333333, 2.5666668, 2.9, 2.9333334, 3.2666667, 3.3000002, 3.6333334, 3.8000002),
+"transitions": PackedFloat32Array(0.5, -2, 1, 0.5, 0, -2, -2, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1),
+"update": 0,
+"values": [-1.3089969389957472, -1.832595714594046, 3.141592653589793, 3.141592653589793, -1.832595714594046, 4.447098934081551, 6.2831855, 8.377581, 6.283185307179586, -2.4766222085799536, 3.1782445678816744, -2.4766222085799536, 3.1782445678816744, -2.4766222085799536, 3.1782445678816744, -2.4766222085799536, -2.8797932657906435]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Twink/Sword/SwordHitbox:monitoring")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.6, 3.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Twink/Sword:flip_v")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Twink/EnemyHurtboxComponent:ranged_damage_multiplier")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5000001),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [1.0, 1.25, 1.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Twink/EnemyHurtboxComponent:damage_allowed")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [0, 2, 1]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Twink/NoMelee-inator:monitorable")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Twink/NoMelee-inator:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_c2pcx"]
+resource_name = "sword_r2l"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/Shield:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3333333, 2.1, 2.233333, 2.3666666),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [Vector2(-56, 63), Vector2(-67, -20), Vector2(-74, 7), Vector2(-74, 7), Vector2(-67, -20), Vector2(-56, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Shield:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4, 2.1333334, 2.266667, 2.4),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [-6.283185307179586, 0.2617993877991494, 0.0, 0.0, -0.2617993877991494, -6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4666667, 0.6, 1.4333333, 2.1000001, 2.3999999),
+"transitions": PackedFloat32Array(1, -2, 2, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, 300), Vector2(912, 300), Vector2(829.364, 300), Vector2(-906, 300), Vector2(-720, 300), Vector2(-750, 300)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Sounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.44346094,
+"start_offset": 0.0,
+"stream": ExtResource("3_1p84u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_41pas")
+}],
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink/Shield:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Shield:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/EnemyHitboxComponent:damage")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 50, 20]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/EnemyHurtboxComponent:ranged_damage_multiplier")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5000001),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [1.0, 1.25, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/EnemyHurtboxComponent:damage_allowed")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [0, 2, 1]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Twink/NoMelee-inator:monitorable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Twink/NoMelee-inator:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_sxibv"]
+resource_name = "sword_r2l_2"
+length = 4.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Twink/Shield:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3333333, 2.1, 2.233333, 2.3666666),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [Vector2(-56, 63), Vector2(-67, -20), Vector2(-74, 7), Vector2(-74, 7), Vector2(-67, -20), Vector2(-56, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Twink/Shield:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4, 2.1333334, 2.266667, 2.4),
+"transitions": PackedFloat32Array(0.5, 2, 1, -2, 2, 0.5),
+"update": 0,
+"values": [-6.283185307179586, 0.2617993877991494, 0.0, 0.0, -0.2617993877991494, -6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Twink:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4666667, 0.6, 1.4333333, 2.1000001, 2.3999999),
+"transitions": PackedFloat32Array(1, -2, 2, 1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(750, 300), Vector2(750, 300), Vector2(912, 300), Vector2(829.364, 300), Vector2(-906, 300), Vector2(-720, 300), Vector2(-750, 300)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Twink/Sounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.44346094,
+"start_offset": 0.0,
+"stream": ExtResource("7_duuec")
+}, {
+"end_offset": 0.33625063,
+"start_offset": 0.0,
+"stream": ExtResource("7_41pas")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_krg38")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_tp80q")
+}],
+"times": PackedFloat32Array(0, 0.6, 2.2, 3.2333333)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twink/Shield:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twink:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twink/Shield:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Twink/EnemyHitboxComponent:damage")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 50, 20]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Twink/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Twink/Sword:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.06666667, 0.3, 2.2, 2.9, 3.6333334, 3.8),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 2, 2, 1),
+"update": 0,
+"values": [Vector2(-41.99998, 112.999985), Vector2(37.00002, -16.000015), Vector2(37.00002, -16.000015), Vector2(1450, -16.000015), Vector2(37.00002, -16.000015), Vector2(-50.99998, 119.999985)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Twink/Sword:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.06666667, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Twink/Sword:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.13333334, 0.36666667, 0.6, 1.4666667, 1.6666667, 1.7, 1.9333333, 2.2, 2.5333333, 2.5666668, 2.9, 2.9333334, 3.2666667, 3.3000002, 3.6333334, 3.8000002),
+"transitions": PackedFloat32Array(0.5, -2, 1, 0.5, 0, -2, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1),
+"update": 0,
+"values": [1.3089969, 1.8325958, 0.0, 0.0, 1.8325958, -4.447098934081552, 3.104940739297912, -3.178244567881674, 2.476625, -3.178244567881674, 2.476625, -3.178244567881674, 2.476625, -3.178244567881674, 2.476625, 2.8797934]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Twink/Sword/SwordHitbox:monitoring")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.6, 3.7333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Twink/EnemyHurtboxComponent:ranged_damage_multiplier")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5000001),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [1.0, 1.25, 1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Twink/EnemyHurtboxComponent:damage_allowed")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [0, 2, 1]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Twink/NoMelee-inator:monitorable")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Twink/NoMelee-inator:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Twink/NoMelee-inator/Whoosh:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01o8r"]
+_data = {
+&"RESET": SubResource("Animation_kq60o"),
+&"death": SubResource("Animation_ieddo"),
+&"minigun_l": SubResource("Animation_4hrq4"),
+&"minigun_r": SubResource("Animation_ov6xj"),
+&"rocket_end_l": SubResource("Animation_krg38"),
+&"rocket_end_r": SubResource("Animation_01o8r"),
+&"rocket_prepare_l": SubResource("Animation_tp80q"),
+&"rocket_prepare_r": SubResource("Animation_mjki6"),
+&"rocket_shoot1_l": SubResource("Animation_lx26u"),
+&"rocket_shoot1_r": SubResource("Animation_aw6sv"),
+&"rocket_shoot2_l": SubResource("Animation_lo1kp"),
+&"rocket_shoot2_r": SubResource("Animation_c02ly"),
+&"rocket_shoot3_l": SubResource("Animation_ct7mf"),
+&"rocket_shoot3_r": SubResource("Animation_g55p5"),
+&"sword_l2r": SubResource("Animation_duuec"),
+&"sword_l2r_2": SubResource("Animation_2lein"),
+&"sword_r2l": SubResource("Animation_c2pcx"),
+&"sword_r2l_2": SubResource("Animation_sxibv")
+}
+
+[sub_resource type="Gradient" id="Gradient_c2pcx"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.665025, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfx0b"]
+gradient = SubResource("Gradient_c2pcx")
+
+[sub_resource type="Curve" id="Curve_foijd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0735931, 1), 0.746606, 0.746606, 0, 0, Vector2(0.974026, 0.186813), -1.32, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h165i"]
+curve = SubResource("Curve_foijd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ytf4"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, -1, 0)
+spread = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = -500.0
+angular_velocity_max = 500.0
+gravity = Vector3(0, 600, 0)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_h165i")
+color_ramp = SubResource("GradientTexture1D_nfx0b")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krg38"]
+radius = 78.0
+height = 318.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ewsbq"]
+radius = 50.0
+height = 300.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ieddo"]
+radius = 21.0
+height = 206.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx26u"]
+size = Vector2(49, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hrq4"]
+size = Vector2(114, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct7mf"]
+atlas = ExtResource("26_lo1kp")
+region = Rect2(0, 0, 114, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxibv"]
+atlas = ExtResource("26_lo1kp")
+region = Rect2(114, 0, 114, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lein"]
+atlas = ExtResource("26_lo1kp")
+region = Rect2(228, 0, 114, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieddo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxibv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lein")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtxhx"]
+radius = 25.000015
+height = 112.0
+
+[sub_resource type="Animation" id="Animation_s1xa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket1/Rocket1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(517, -260)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket1/Rocket1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket1/Rocket1:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket1/Rocket1/ExplosionSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket1/Rocket1/ExplosionSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket1/Rocket1/ExplosionSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket1/Rocket1/Explosion:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket1/Rocket1/Sprite2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_41pas"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket1/Rocket1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(517, -260), Vector2(-917, -141)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket1/Rocket1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket1/Rocket1:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket1/Rocket1/ExplosionSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket1/Rocket1/ExplosionSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, 2, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket1/Rocket1/ExplosionSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket1/Rocket1/Explosion:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket1/Rocket1/Sprite2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rocket1/Rocket1/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rocket1/Rocket1/Sound")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ov6xj"]
+_data = {
+&"RESET": SubResource("Animation_s1xa4"),
+&"fire": SubResource("Animation_41pas")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2pcx"]
+radius = 264.04733
+
+[sub_resource type="Animation" id="Animation_tr4v2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket2/Rocket2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(517, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket2/Rocket2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket2/Rocket2/ExplosionSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket2/Rocket2/ExplosionSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket2/Rocket2/ExplosionSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket2/Rocket2/Explosion:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket2/Rocket2/Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket2/Rocket2:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oq6ax"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket2/Rocket2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(517, 0), Vector2(-917, 104.00001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket2/Rocket2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket2/Rocket2:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket2/Rocket2/ExplosionSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket2/Rocket2/ExplosionSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, 2, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket2/Rocket2/ExplosionSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket2/Rocket2/Explosion:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket2/Rocket2/Sprite2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rocket2/Rocket2/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rocket2/Rocket2/Sound")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2pcx"]
+_data = {
+&"RESET": SubResource("Animation_tr4v2"),
+&"fire": SubResource("Animation_oq6ax")
+}
+
+[sub_resource type="Animation" id="Animation_foijd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket3/Rocket3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(517, 260)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket3/Rocket3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket3/Rocket3:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket3/Rocket3/ExplosionSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket3/Rocket3/ExplosionSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket3/Rocket3/ExplosionSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket3/Rocket3/Explosion:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket3/Rocket3/Sprite2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rocket3/Rocket3/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0ytf4"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket3/Rocket3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(517, 260), Vector2(-917, 374)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket3/Rocket3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rocket3/Rocket3:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rocket3/Rocket3/ExplosionSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rocket3/Rocket3/ExplosionSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0, 2, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rocket3/Rocket3/ExplosionSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.6, 0.6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rocket3/Rocket3/Explosion:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rocket3/Rocket3/Sprite2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rocket3/Rocket3/DashParticle:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rocket3/Rocket3/Sound")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq6ax"]
+_data = {
+&"RESET": SubResource("Animation_foijd"),
+&"fire": SubResource("Animation_0ytf4")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kq60o"]
+radius = 141.0
+height = 1450.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr4v2"]
+atlas = ExtResource("15_g55p5")
+region = Rect2(0, 0, 1450, 283)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2pcx"]
+atlas = ExtResource("16_c02ly")
+region = Rect2(0, 0, 1450, 283)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foijd"]
+atlas = ExtResource("17_ov6xj")
+region = Rect2(0, 0, 1450, 283)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ytf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr4v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2pcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foijd")
+}],
+"loop": true,
+"name": &"init",
+"speed": 24.0
+}]
+
+[node name="TacticalTwink" type="Area2D"]
+script = SubResource("GDScript_tp80q")
+outputs = Array[ExtResource("2_ov6xj")]([SubResource("Resource_01o8r"), SubResource("Resource_ov6xj"), SubResource("Resource_s1xa4")])
+metadata/_custom_type_script = "uid://gnuiimjahpvx"
+
+[node name="CharlieHealerComponent" type="Area2D" parent="."]
+script = ExtResource("3_lx26u")
+start_disabled = true
+metadata/_custom_type_script = "uid://cmxuosm5pjf8d"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieHealerComponent"]
+shape = SubResource("RectangleShape2D_1fxso")
+
+[node name="MusicManagerProxy" type="Node" parent="."]
+script = SubResource("GDScript_41pas")
+
+[node name="TwinkLogic" type="Node" parent="." node_paths=PackedStringArray("anim_player")]
+script = SubResource("GDScript_s1xa4")
+anim_player = NodePath("../GameAnimationPlayer")
+
+[node name="Phase2Alarm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_krg38")
+volume_db = 5.0
+bus = &"UI SFX"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1fxso")
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_01o8r")
+}
+script = ExtResource("2_ewsbq")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Twink" type="Sprite2D" parent="."]
+position = Vector2(750, 300)
+texture = ExtResource("2_lbnvn")
+
+[node name="DashParticle" type="GPUParticles2D" parent="Twink"]
+show_behind_parent = true
+emitting = false
+amount = 30
+texture = ExtResource("9_oq6ax")
+lifetime = 0.5
+explosiveness = 0.1
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_0ytf4")
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="Twink"]
+volume_db = 10.0
+bus = &"SFX 1"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="RocketShoot" type="AudioStreamPlayer2D" parent="Twink"]
+stream = ExtResource("2_34bdw")
+volume_db = 10.0
+bus = &"SFX 1"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="EnemyHurtboxComponent" type="Area2D" parent="Twink" node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
+position = Vector2(0, -125)
+monitorable = false
+script = ExtResource("18_tp80q")
+damage_allowed = 3
+can_bounce_off_it = true
+health_component = NodePath("../EnemyHealthComponent")
+crit_fx = NodePath("Crit FX")
+damage_num = NodePath("DamageNum")
+metadata/_custom_type_script = "uid://dp4vffcpt00h1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHurtboxComponent"]
+position = Vector2(0, 125)
+shape = SubResource("CapsuleShape2D_krg38")
+debug_color = Color(0, 0.64705884, 0.2627451, 0.41960785)
+
+[node name="Crit FX" parent="Twink/EnemyHurtboxComponent" instance=ExtResource("19_lo1kp")]
+
+[node name="DamageNum" parent="Twink/EnemyHurtboxComponent" instance=ExtResource("20_ct7mf")]
+
+[node name="EnemyHealthComponent" type="Node" parent="Twink"]
+script = ExtResource("18_krg38")
+base_health = 1000
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="RPG" type="Sprite2D" parent="Twink"]
+visible = false
+position = Vector2(-40, -34)
+texture = ExtResource("5_xrpm8")
+
+[node name="Minigun" type="Sprite2D" parent="Twink"]
+visible = false
+position = Vector2(-47, 53)
+texture = ExtResource("11_mjki6")
+offset = Vector2(-56, 10)
+
+[node name="Shield" type="Sprite2D" parent="Twink"]
+visible = false
+position = Vector2(-74, 7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_s1xa4")
+
+[node name="EnemyHitboxComponent" type="Area2D" parent="Twink"]
+script = ExtResource("6_ewsbq")
+damage = 20
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHitboxComponent"]
+shape = SubResource("CapsuleShape2D_ewsbq")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Sword" type="Sprite2D" parent="Twink"]
+visible = false
+position = Vector2(37.00002, -16.000015)
+rotation = 1.8325958
+texture = ExtResource("21_lx26u")
+offset = Vector2(-101.87607, -9.391663)
+flip_v = true
+
+[node name="SwordHitbox" type="Area2D" parent="Twink/Sword"]
+monitoring = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/Sword/SwordHitbox"]
+position = Vector2(-138.36401, -10)
+rotation = -1.4978158
+shape = SubResource("CapsuleShape2D_ieddo")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="NoMelee-inator" type="Area2D" parent="Twink" node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
+monitoring = false
+monitorable = false
+script = ExtResource("18_tp80q")
+damage_allowed = 2
+can_bounce_off_it = true
+health_component = NodePath("../EnemyHealthComponent")
+crit_fx = NodePath("../EnemyHurtboxComponent/Crit FX")
+damage_num = NodePath("DamageNum")
+metadata/_custom_type_script = "uid://dp4vffcpt00h1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/NoMelee-inator"]
+position = Vector2(-64.5, 0)
+shape = SubResource("RectangleShape2D_lx26u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Twink/NoMelee-inator"]
+position = Vector2(-32, -169.5)
+shape = SubResource("RectangleShape2D_4hrq4")
+
+[node name="Whoosh" type="AnimatedSprite2D" parent="Twink/NoMelee-inator"]
+visible = false
+position = Vector2(-64, 0)
+scale = Vector2(1, 1.5)
+sprite_frames = SubResource("SpriteFrames_ieddo")
+autoplay = "default"
+frame_progress = 0.76865005
+
+[node name="Crit FX" parent="Twink/NoMelee-inator" instance=ExtResource("19_lo1kp")]
+
+[node name="DamageNum" parent="Twink/NoMelee-inator" instance=ExtResource("20_ct7mf")]
+
+[node name="Rocket1" type="Node2D" parent="."]
+
+[node name="Rocket1" type="Area2D" parent="Rocket1"]
+visible = false
+position = Vector2(517, -260)
+rotation = -0.10646509
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket1/Rocket1"]
+visible = false
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("7_6wgb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1"]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_jtxhx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket1/Rocket1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ov6xj")
+}
+script = ExtResource("2_ewsbq")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket1/Rocket1"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-25.270874, 1.8249817)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_s1xa4")
+offset = Vector2(-4.562439, -318.17725)
+
+[node name="Explosion" type="Area2D" parent="Rocket1/Rocket1"]
+position = Vector2(-52, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1/Explosion"]
+shape = SubResource("CircleShape2D_c2pcx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket1/Rocket1"]
+position = Vector2(55, 0)
+amount = 30
+texture = ExtResource("9_oq6ax")
+lifetime = 0.5
+explosiveness = 0.1
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_0ytf4")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket1/Rocket1"]
+stream = ExtResource("20_tr4v2")
+volume_db = 10.0
+bus = &"SFX 1"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Rocket2" type="Node2D" parent="."]
+
+[node name="Rocket2" type="Area2D" parent="Rocket2"]
+visible = false
+position = Vector2(517, 0)
+rotation = -0.10646509
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket2/Rocket2"]
+visible = false
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("7_6wgb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2"]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_jtxhx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket2/Rocket2"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_c2pcx")
+}
+script = ExtResource("2_ewsbq")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket2/Rocket2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-25.270874, 1.8249817)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_s1xa4")
+offset = Vector2(-4.562439, -318.17725)
+
+[node name="Explosion" type="Area2D" parent="Rocket2/Rocket2"]
+position = Vector2(-52, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2/Explosion"]
+shape = SubResource("CircleShape2D_c2pcx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket2/Rocket2"]
+position = Vector2(55, 0)
+amount = 30
+texture = ExtResource("9_oq6ax")
+lifetime = 0.5
+explosiveness = 0.1
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_0ytf4")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket2/Rocket2"]
+stream = ExtResource("20_tr4v2")
+volume_db = 10.0
+bus = &"SFX 1"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Rocket3" type="Node2D" parent="."]
+
+[node name="Rocket3" type="Area2D" parent="Rocket3"]
+visible = false
+position = Vector2(517, 260)
+rotation = -0.10651161
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket3/Rocket3"]
+visible = false
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("7_6wgb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3"]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_jtxhx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket3/Rocket3"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_oq6ax")
+}
+script = ExtResource("2_ewsbq")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket3/Rocket3"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-25.270874, 1.8249817)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_s1xa4")
+offset = Vector2(-4.562439, -318.17725)
+
+[node name="Explosion" type="Area2D" parent="Rocket3/Rocket3"]
+position = Vector2(-52, 0)
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3/Explosion"]
+shape = SubResource("CircleShape2D_c2pcx")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket3/Rocket3"]
+position = Vector2(55, 0)
+emitting = false
+amount = 30
+texture = ExtResource("9_oq6ax")
+lifetime = 0.5
+explosiveness = 0.1
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ParticleProcessMaterial_0ytf4")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket3/Rocket3"]
+stream = ExtResource("20_tr4v2")
+volume_db = 10.0
+bus = &"SFX 1"
+script = ExtResource("9_cu4mb")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="MinigunFire" type="Area2D" parent="."]
+position = Vector2(634, 351)
+monitoring = false
+monitorable = false
+script = ExtResource("6_ewsbq")
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigunFire"]
+position = Vector2(-851, -41)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_kq60o")
+
+[node name="Bullets" type="AnimatedSprite2D" parent="MinigunFire"]
+visible = false
+position = Vector2(-851, -41)
+sprite_frames = SubResource("SpriteFrames_0ytf4")
+animation = &"init"
+autoplay = "init"
+
+[connection signal="done" from="TwinkLogic" to="." method="_on_twink_logic_done"]
+[connection signal="animation_finished" from="GameAnimationPlayer" to="TwinkLogic" method="_on_game_animation_player_animation_finished"]
+[connection signal="died" from="Twink/EnemyHealthComponent" to="TwinkLogic" method="_on_enemy_health_component_died"]
+[connection signal="health_changed" from="Twink/EnemyHealthComponent" to="TwinkLogic" method="_on_enemy_health_component_health_changed"]
