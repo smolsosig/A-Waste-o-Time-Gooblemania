@@ -1,7 +1,7 @@
 @tool
 @icon("res://assets/misc/tools/icons/CharlieTeleporter.png")
 class_name CharlieTeleporter extends CharlieTrigger
-## Teleports Charlie to a specified [code]CharlieTeleporter[/code].
+## [CharlieTrigger] that teleports Charlie to a specified [CharlieSpawn].
 
 @export var tele_target: CharlieSpawner
 
@@ -11,10 +11,7 @@ func _ready() -> void:
 		return
 	
 	repeatable = true
-	
-	var output: Output = Output.new()
-	output.output = "area_entered"
-	output.target = tele_target.get_path()
-	output.target_method = "teleport"
-	
-	on_enter_outputs.append(output)
+
+func _on_area_entered(area: Area2D) -> void:
+	super(area)
+	tele_target.teleport()

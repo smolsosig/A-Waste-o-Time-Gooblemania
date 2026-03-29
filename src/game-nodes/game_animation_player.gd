@@ -1,6 +1,5 @@
 @icon("res://assets/misc/tools/icons/GameAnimationPlayer.png")
-extends AnimationPlayer
-class_name GameAnimationPlayer
+class_name GameAnimationPlayer extends AnimationPlayer
 ## AnimationPlayer that resets when Charlie herself resets.
 
 ## Animation to autoplay upon level (re)start. Useful for opening animations.[br][br]
@@ -18,14 +17,16 @@ class_name GameAnimationPlayer
 @export var pause_when_death: bool = true
 
 func _ready() -> void:
-	SignalBus.connect("charlie_death", death)
-	SignalBus.connect("reset", reset)
-	reset()
+	SignalBus.connect("charlie_death", _death)
+	SignalBus.connect("reset", _resetty)
+	_reset()
 
-func death() -> void:
+func _death() -> void:
 	if pause_when_death: pause()
 
-func reset() -> void:
+# so turns out there's already a func called _reset() on one of the inhereted classes
+# which means i can't use that shit here roflmao
+func _resetty() -> void:
 	play("RESET")
 	
 	if autoplay_anim_when_spawn && (autoplay_when_spawn_num <= Staglobals.current_spawn):
@@ -37,6 +38,7 @@ func reset() -> void:
 		play(autoplay_anim_name)
 		if autoplay_at_random_time: seek(randf_range(0, current_animation_length))
 
+## Dawg, this does exactly what it says.
 func play_at_random_time(anim_name: StringName = &"") -> void:
 	play(anim_name)
 	seek(randf_range(0, current_animation_length))

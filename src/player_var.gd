@@ -241,8 +241,6 @@ func return_setting(section: String, key: String) -> Variant:
 
 func new_config() -> void:
 	config = ConfigFile.new()
-	var pc: bool = true
-	if OS.has_feature("web"): pc = false
 	
 	config.set_value("game", "language", 0)
 	config.set_value("game", "show_hud", true)
@@ -253,13 +251,7 @@ func new_config() -> void:
 	config.set_value("audio", "music_volume", 0)
 	config.set_value("audio", "sounds_volume", 0)
 	
-	# web exports get fucked if we don't set this correctly
-	if pc:
-		config.set_value("video", "window_resolution", 0)
-		config.set_value("video", "display_mode", true)
-	else:
-		config.set_value("video", "window_resolution", 1)
-		config.set_value("video", "display_mode", false)
+	config.set_value("video", "display_mode", false)
 	config.set_value("video", "borderless", false)
 	config.set_value("video", "vsync", true)
 	config.set_value("video", "show_fps", false)
@@ -283,8 +275,6 @@ func load_settings() -> void:
 	AudioServer.set_bus_volume_db(1, config.get_value("audio", "music_volume", 0))
 	AudioServer.set_bus_volume_db(2, config.get_value("audio", "sounds_volume", 0))
 
-	get_window().size = resolutions[config.get_value("video", "window_resolution", 0)]
-	centre_window()
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, config.get_value("video", "borderless"))
 	if config.get_value("video", "display_mode", true):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

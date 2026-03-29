@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var dialogue_text: RichTextLabel
 @export var dialogue_box : Sprite2D
 @export var anim_player: AnimationPlayer
-@export var cont_anim_player : AnimationPlayer
+@export var cont_anim_player: AnimationPlayer
 @export var continue_signer: Sprite2D
 @export var typing_sound: AudioStreamPlayer
 

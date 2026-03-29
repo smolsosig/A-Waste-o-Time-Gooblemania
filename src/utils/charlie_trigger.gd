@@ -4,9 +4,9 @@ class_name CharlieTrigger extends Area2D
 ## An [code]Area2D[/code] which responds to Charlie's presence.
 ##
 ## Charlie goes in, some triggers get emitted. Charlie goes out, other triggers get emitted.[br]
-## The possibilities are endless... though you'll mostly just be calling [code]play()[/code] to [code]GameAnimationPlayer[/code]s.
+## The possibilities are endless... though you'll mostly just be calling [code]play()[/code] to [GameAnimationPlayer]s.
 
-@export_tool_button("Add Collider", "Add") var button: Callable = _create_collider
+@export_tool_button("Add Collider", "Add") var _button: Callable = _create_collider
 
 ## If [code]false[/code], disables trigger on startup. Equivalent to setting [code]monitoring[/code] to [code]false[/code].
 ## Disabling this will require the trigger to be manually reenabled by calling the trigger's [code]enable_monitoring()[/code]
@@ -31,7 +31,9 @@ class_name CharlieTrigger extends Area2D
 ## The complete list of outputs this CharlieTrigger will emit.
 @export var outputs: Array[Output]
 
+## Emitted when Charlie leaves the trigger.
 signal charlie_entered
+## Emitted when Charlie exits the trigger.
 signal charlie_exited
 
 ## Outputs to fire when Charlie enters the trigger. This is automatically appended.

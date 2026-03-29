@@ -1,18 +1,18 @@
-@icon("res://assets/misc/tools/icons/CharlieSpawner.png")
 @tool
-extends Node2D
-class_name CharlieSpawner
+@icon("res://assets/misc/tools/icons/CharlieSpawner.png")
+class_name CharlieSpawner extends Node2D
 ## Marker to spawn/teleport Charlie on. It teleports Charlie to its [code]global_position[/code].
 ##
 ## [b]DO NOT ADD BY ITSELF!!![/b] Use the [code]charlie_spawner.tscn[/code] scene found in
-## [code]res://scenes/game/tools/charlie_spawner.tscn[/code].
+## [code]res://scenes/game/tools/charlie_spawner.tscn[/code].[br][br]
+## Often used in conjunction with [CharlieTeleporter]s.
 
 # START SPAWN = 0. SUBSEQUENT CHECKPOINTS = DIFFERENT NUMBERS
 # IF USED AS TELEPORT MARKER, LEAVE DEFAULT 999 VALUE
 
-## [b]Priority # of this [code]CharlieSpawner[/code].[/b][br][br]
+## [b]Priority # of this [b]CharlieSpawner[/b].[/b][br][br]
 ## Set to [code]0[/code] if starting spawn, then [code]1[/code], [code]2[/code] and onwards for checkpoints.[br]
-## For use as a destination marker for [code]CharlieTeleporter[/code], leave as default value ([code]999[/code]).
+## For use as a destination marker for [CharlieTeleporter, leave as default value ([code]999[/code]).
 @export var spawn_num_id: int = 999:
 	set(new_value):
 		clampi(new_value, 0, 999)
@@ -26,25 +26,27 @@ class_name CharlieSpawner
 ## If [code]true[/code], forces Charlie to walk after the opening anim.
 @export var only_walk: bool = false
 ## When you spawn here, shows the obi 2.5 seconds later. Only recommended for the first spawn.
-## You don't really need to be reminded what the stage is when you spawn on a checkpoint.
+## You don't really need to be reminded what level you're in when you spawn on a checkpoint.
 @export var show_obi: bool = false
 
-var spritey: Sprite2D
+var _spritey: Sprite2D
 
 func _ready() -> void:
 	if !get_children():
 		push_error("%s: Do you not fucking read what THE DOCUMENTATION SAYS DAWG" % name)
 		return
 		
-	spritey = $Sprite2D
+	_spritey = $Sprite2D
 	if Engine.is_editor_hint():
-		spritey.visible = true
+		_spritey.visible = true
 	else:
-		spritey.visible = false
+		_spritey.visible = false
 	
 	SignalBus.connect("reset", tele_spawn)
 	tele_spawn()
 
+## Teleports Charlie to itself, then deploys proprietary smoke and mirrors (hacked-together bullshit)
+## to pretend like you spawned there.
 func tele_spawn() -> void:
 	if !Engine.is_editor_hint():
 		if Staglobals.current_spawn == spawn_num_id:
@@ -63,6 +65,7 @@ func tele_spawn() -> void:
 			SignalBus.emit_signal("charlie_walk", only_walk)
 			Staglobals.freeze_frame_on_hurt = true
 
+## Teleports Charlie to itself with no extra bullshittery.
 func teleport(spawn: bool = false) -> void:
 	var new_pos_y: float
 	# Charlie falls through platforms if I don't give her much foot room????

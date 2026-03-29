@@ -1,12 +1,12 @@
 extends Node
-# GET IT? GET IT? B-BECAUSE STAGE GLOBALS????? LAUGH GOD DAMN IT
+# Stage Globals. That's what it stands for.
 
 var current_stage_fullname: String # "1982Fort, Side A"
 var current_stage_file_location: String: # "res://scenes/game/levels/spy_a.scn"
 	set(value):
 		# this is incredibly retarded.
 		# probably even more incredibly retarded that there apparently used to be a native function
-		# that just returned the filename of the Node, but they took it out for the 4.x branch
+		# that just returned the filename of the Node, but they took it out for the 4.x branch.
 		# so uh, thanks Godot
 		current_stage_filename = value.replace("%s/" % value.get_base_dir(), "")\
 		.replace(".%s" % value.get_extension(), "")
@@ -16,7 +16,7 @@ var current_stage_name: String # "1982Fort"
 var current_stage_side: String # "Side A" ???? idk exactly lmao i wrote this two years ago
 var current_stage_obi: Texture2D
 
-var current_spawn: int
+var current_spawn: int # USE current_spawn IN CONSOLE TO CHANGE
 var current_spawn_anim: String = "null"
 
 var recording_stats: bool = false
@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 		elapsed_time += delta
 		time_check()
 
-func time_check() -> void:
+func time_check() -> void: # this is dumb as fuck
 	actual_time = snapped(elapsed_time, 0.001) * 1000
 	@warning_ignore("integer_division")
 	int_min = actual_time / 60000
@@ -130,13 +130,6 @@ func return_dialogue(key: String) -> String:
 		dialogue = end_dialogue_signal
 	
 	return dialogue
-#endregion
-
-#region discord lmao
-func _ready() -> void:
-	if OS.has_feature("pc"):
-		var run_discord: PackedScene = load("res://src/misc/RunDiscord.tscn")
-		add_child(run_discord.instantiate())
 #endregion
 
 #region money cleanup

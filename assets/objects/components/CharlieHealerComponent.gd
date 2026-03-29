@@ -1,6 +1,7 @@
 @tool
 @icon("res://assets/misc/tools/icons/CharlieHealerComponent.png")
 class_name CharlieHealerComponent extends CharlieTrigger
+## [CharlieTrigger] that... heals Charlie.
 
 ## Amount of health to give Charlie.
 @export var health: int = 25

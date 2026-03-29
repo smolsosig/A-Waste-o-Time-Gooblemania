@@ -18,7 +18,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="A Waste o' Time"
+config/name="A Waste o' Time: Gooblemania"
 run/main_scene="uid://bgux1jkt874ue"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="A Waste o' Time"
@@ -41,7 +41,6 @@ MusicManager="*res://src/MusicManager.tscn"
 Staglobals="*res://src/staglobals.tscn"
 SaveHandler="*res://src/savehandler/save_handler.tscn"
 Console="*uid://ouiu5xh1cs8n"
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 Inputty="*uid://cd6ww8nnin1wr"
 NG="*uid://cx0lbddb6da4w"
 NGCloudSave="*uid://dvbf2k8hnxx0"
@@ -74,7 +73,7 @@ movie_writer/movie_file="D:/SOSIG/jebus/videos/awot shit/yuh.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/cameraregion2d/plugin.cfg", "res://addons/console/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/inputty/plugin.cfg", "res://addons/newgrounds/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/trail_2d/plugin.cfg", "res://addons/unique_anim_lib/plugin.cfg")
+enabled=PackedStringArray("res://addons/cameraregion2d/plugin.cfg", "res://addons/console/plugin.cfg", "res://addons/inputty/plugin.cfg", "res://addons/newgrounds/plugin.cfg", "res://addons/parallax2d_preview/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/trail_2d/plugin.cfg", "res://addons/unique_anim_lib/plugin.cfg")
 
 [filesystem]
 

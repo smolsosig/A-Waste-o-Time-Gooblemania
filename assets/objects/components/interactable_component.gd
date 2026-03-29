@@ -1,29 +1,29 @@
 @tool
 @icon("res://assets/misc/tools/icons/InteractableComponent.png")
 class_name InteractableComponent extends CharlieTrigger
-## Component that allows Charlie to interact with something by way of pressing W.
+## [CharlieTrigger] that allows Charlie to interact with something by way of pressing W.
 ##
 ## [b]DO NOT ADD BY ITSELF!!![/b] Use the [code]interactable_component.tscn[/code] scene found in
 ## [code]res://assets/objects/components/interactable_component.tscn[/code].
 
-## Emitted when the InteractableComponent is interacted with.
+## Emitted when the [InteractableComponent] is, erh, interacted with.
 signal interacted
-## Emitted when the InteractableComponent is interacted with again and [code]unique_first_interaction[/code] is on.
+## Emitted when the [InteractableComponent] is interacted with again and [code]unique_first_interaction[/code] is on.
 signal interacted_again
 ## What the [code]object_prompt[/code] displays. E.g. [code]"Interact"[/code], [code]"Enter"[/code], [code]"Talk"[/code].
-## It is automatically converted to uppercase, so [code]"interact"[/code] and [code]"INTERACT"[/code] will display the same.
+## It is automatically converted to uppercase, so [code]"Shut Charlie up"[/code] and [code]"SHUT CHARLIE UP"[/code] will display the same.
 @export var text_prompt: String = "Interact"
 ## Purely cosmetic variable. If [code]false[/code], displays the dialogue speech bubble.
 ## Set to [code]true[/code] if meant for other actions, such as going inside a door.
 @export var is_action: bool = true
-## The action that the player must press to interact with the InteractableComponent.
+## The action that the player must press to interact with the [InteractableComponent]. Granted, I'm not sure why you'd change this.
 @export var action_name: StringName = &"player_up"
 ## If [code]true[/code], allows a unique first interaction. Useful for dialogue.
 @export var unique_first_interaction: bool = false
 ## If [code]true[/code], only allows a single interaction.[br][br]
-## Use in lieu of setting [code]repeatable[/code] to [code]false[/code], as a stage might need the InteractableComponent to be triggered only once.
+## Use in lieu of setting [code]repeatable[/code] to [code]false[/code], as a stage might need the [InteractableComponent] to be triggered only once.
 @export var only_one_interaction: bool = false
-@onready var object_prompt: Node2D = get_node("ObjectPrompt")
+@onready var _object_prompt: Node2D = get_node("ObjectPrompt")
 
 var _is_charlie_in: bool = false
 var _was_triggered: bool = false
@@ -36,9 +36,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	object_prompt.action_name = action_name
+	_object_prompt.action_name = action_name
 	
-	if !object_prompt:
+	if !_object_prompt:
 		push_error("Missing object prompt. You do not listen. I will not work. Bye!")
 		return
 	
@@ -56,13 +56,13 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	super(area)
 	if area is CharlieDetectableComponent:
-		object_prompt.appear(text_prompt, is_action)
+		_object_prompt.appear(text_prompt, is_action)
 		_is_charlie_in = true
 
 func _on_area_exited(area: Area2D) -> void:
 	super(area)
 	if area is CharlieDetectableComponent:
-		object_prompt.disappear()
+		_object_prompt.disappear()
 		_is_charlie_in = false
 
 func _input(event: InputEvent) -> void:

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bs56qugjgu8lu"]
-
-[ext_resource type="Script" uid="uid://bfocy74iq5aim" path="res://src/misc/run_discord.gd" id="1_7gxlc"]
-
-[node name="RunDiscord" type="Node" unique_id=919520547]
-script = ExtResource("1_7gxlc")

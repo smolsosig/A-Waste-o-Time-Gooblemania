@@ -2,7 +2,7 @@
 class_name DialogueComponent extends Node
 ## Component that handles what dialogue to show.
 ##
-## This is best paired with an [code]InteractableComponent[/code], but anything that calls this Node's
+## This is best paired with an [InteractableComponent], but anything that calls this Node's
 ## [code]interacted()[/code] method will do.
 
 ## The key in the stage's _dialog.gd file that the dialogue UI will show.
