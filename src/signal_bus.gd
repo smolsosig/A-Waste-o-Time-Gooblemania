@@ -1,6 +1,6 @@
 extends Node
 # Here we go again!
-var awot_version: String = "March 29, 2026 Build"
+var awot_version: String = "Gooblemania v1.0.0 Build"
 @export_enum("loading", "menu", "ingame", "misc") var game_mode : int = 1
 var desktop: bool = true
 

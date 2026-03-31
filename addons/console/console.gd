@@ -176,7 +176,6 @@ func _ready() -> void:
 	
 	add_hidden_command("char_thealth", thealth, 2, 0)
 	add_hidden_command("quit_smoking", quit_smoking, 0, 0)
-	add_hidden_command("switch_game", switch_game, 1, 1)
 	add_hidden_command("current_spawn", current_spawn, 1, 1)
 
 
@@ -191,9 +190,7 @@ func info() -> void:
 	[b]::::::::::::::: CONSOLE INFORMATION :::::::::::::::[/b]
 	Developer Console 1.4.0 was made by Nathan \"jitspoe\" Wulf and contributors, and is used under a MIT No Attribution license.\n
 	This console is for inputting commands only, such as changing the level and whatnot.
-	It does not actually display any other vital information, such as the Godot Engine version and other info you might find in a game's log file.\n
-	To open the actual game's console output, [b]close the gAme first And run \"Awot_debug.exe\".[/b]
-	This will run a new instance of the game with the debug console enabled as a separate window.\n\n" % SignalBus.awot_version)
+	It does not actually display any other vital information, such as the Godot Engine version and other info you might find in a game's log file.\n\n" % SignalBus.awot_version)
 
 func quit_smoking() -> void:
 	Console.print_error("I think not!")

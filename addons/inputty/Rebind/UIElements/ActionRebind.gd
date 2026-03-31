@@ -12,8 +12,6 @@ var customAction:InputtyAction
 
 func _ready():
 	$ActionLabel.text = actionDisplay
-	
-	print("%s, %s" % [actionDisplay, customAction.inputs.size()])
 	addInput(0)
 	#for i in customAction.inputs.size():
 		#addInput(i)
