@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/spy_b_reprise.ogg-6c56d17ece70d86e685ae46cbd5
 
 [params]
 
-loop=true
+loop=false
 loop_offset=48.5
 bpm=0.0
 beat_count=0

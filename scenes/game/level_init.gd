@@ -80,7 +80,7 @@ func _ready() -> void:
 	assert(camera, "LevelInit sez: Where's the camera, dawg?")
 	SignalBus.connect("reset", _reset)
 	
-	Staglobals.current_spawn = test_charlie_spawn
+	Staglobals.current_spawn = test_charlie_spawn if !SignalBus.main_game_running else 0
 	Staglobals.money_slots.clear()
 	Staglobals.money_slots_size = 0
 	

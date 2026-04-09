@@ -44,9 +44,6 @@ func _ready() -> void:
 	
 	repeatable = true
 	
-	SignalBus.connect("charlie_cutscene", _fuck_you)
-	SignalBus.connect("charlie_cutscene_stop", _fuck_you_too)
-	
 	for _output: Output in outputs:
 		if _output.output == "interacted":
 			_interacted_outputs.append(_output)
@@ -67,7 +64,6 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(action_name) && _is_charlie_in:
-		set_deferred("monitoring", false)
 		if !unique_first_interaction:
 			_do_shit_int()
 			_emit_outputs(_interacted_outputs)
@@ -82,6 +78,9 @@ func _input(event: InputEvent) -> void:
 				_do_shit_int_triggered()
 				_emit_outputs(_interacted_again_outputs)
 				emit_signal("interacted_again")
+		
+		if only_one_interaction:
+			set_deferred("monitoring", false)
 
 # in the occasion that Charlie dies in the middle of going in a portal
 func _reset() -> void:
@@ -99,8 +98,3 @@ func _do_shit_int_triggered() -> void:
 
 # these simply turn off/on the monitoring thing so that Charlie
 # doesn't once again edge the damn thing
-func _fuck_you(_a: String, _b: String, _c: bool) -> void:
-	set_deferred("monitoring", false)
-
-func _fuck_you_too() -> void:
-	if !only_one_interaction: set_deferred("monitoring", true)

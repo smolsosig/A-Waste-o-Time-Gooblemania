@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/we are fucking under attack!.ogg-8d7c139b0d1b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=4.8
 bpm=0.0
 beat_count=0

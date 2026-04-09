@@ -19,6 +19,7 @@ const level_dir_suff : String = ".scn"
 @onready var timer_value : float  = 1
 
 func _ready() -> void:
+	SignalBus.main_game_running = true
 	SignalBus.desktop = false
 	SignalBus.connect("level_load", level_load)
 	SignalBus.connect("main_menu_load", main_menu_load)
@@ -54,6 +55,7 @@ func level_load(level_name: String) -> void:
 	SoundManager.stop_music(3)
 	MusicManager.stop_music(3, 0)
 	await Fade.fade_out(1, Color.BLACK, "Special").finished
+	SignalBus.emit_signal("switch_scene_web_bandaid")
 	if main_menu:
 		main_menu.queue_free()
 	else:
@@ -96,6 +98,7 @@ func main_menu_load() -> void:
 	req_scene = main_menu_dir
 	print("Requested to load '%s'." % req_scene)
 	ResourceLoader.load_threaded_request(req_scene)
+	SignalBus.emit_signal("switch_scene_web_bandaid")
 	
 	ldscrn = loading_screen.instantiate()
 	add_child(ldscrn)

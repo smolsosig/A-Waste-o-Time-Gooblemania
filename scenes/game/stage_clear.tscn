@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b62flm16o8qv8" path="res://assets/ui/stage_end/ringofpower1.png" id="11_bn4aw"]
 [ext_resource type="Texture2D" uid="uid://mus5owax2poq" path="res://assets/ui/stage_end/ringofpower2.png" id="12_053e6"]
 [ext_resource type="AudioStream" uid="uid://bhgcopydyuibo" path="res://assets/sounds/ui/stage_clear_short.ogg" id="12_l4yee"]
+[ext_resource type="Script" uid="uid://6nap4j4hopgo" path="res://src/game-nodes/game_audio_stream_player.gd" id="13_nia3b"]
+[ext_resource type="AudioStream" uid="uid://c184luxpdbxij" path="res://assets/sounds/music/this_is_gonna_get_me_dmcad.ogg" id="14_xbhyo"]
 
 [sub_resource type="Animation" id="Animation_brb2y"]
 length = 0.001
@@ -647,7 +649,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("AudioStreamPlayer:playing")
+tracks/11/path = NodePath("MainMusic:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1197,8 +1199,15 @@ position = Vector2(-1138, 872.5)
 rotation = -3.1415925
 texture = ExtResource("12_053e6")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1309645457]
+[node name="MainMusic" type="AudioStreamPlayer" parent="." unique_id=808376858]
 stream = ExtResource("12_l4yee")
+script = ExtResource("13_nia3b")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="." unique_id=1371271198]
+stream = ExtResource("14_xbhyo")
+script = ExtResource("13_nia3b")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
 [node name="short" type="Node2D" parent="." unique_id=2111190441]
 visible = false

@@ -32,7 +32,7 @@ extends CharacterBody2D
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent) * -1.0
 @onready var jump_timer: Timer = %JumpTimer
 
-@onready var jump_sound: AudioStreamOggVorbis = load("res://assets/objects/charlie/sounds/jump.ogg")
+@onready var jump_sound: AudioStreamOggVorbis = preload("res://assets/objects/charlie/sounds/jump.ogg")
 var jump_timer_lock: bool = false
 var um_yea_im_def_pressing_jump_lol: bool = false
 

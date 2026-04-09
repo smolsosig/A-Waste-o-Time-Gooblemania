@@ -19,7 +19,7 @@ class_name GameAnimationPlayer extends AnimationPlayer
 func _ready() -> void:
 	SignalBus.connect("charlie_death", _death)
 	SignalBus.connect("reset", _resetty)
-	_reset()
+	_resetty()
 
 func _death() -> void:
 	if pause_when_death: pause()

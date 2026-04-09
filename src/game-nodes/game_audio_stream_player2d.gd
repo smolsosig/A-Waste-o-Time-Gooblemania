@@ -8,10 +8,15 @@ class_name GameAudioStreamPlayer2D
 ## If [code]true[/code], grabs the stream's length and starts at a random time if it's set to autoplay.
 @export var autoplay_at_random_time: bool = false
 
+@export_group("Bandaid Solutions To Bullshit Problems")
+@export var loop_audio: bool = false
+@export var loop_audio_offset: float = 0.0
+
 func _ready() -> void:
 	SignalBus.connect("charlie_death", death)
 	SignalBus.connect("reset", reset)
 	SignalBus.connect("stage_end", death)
+	connect("finished", _finished)
 	
 	reset()
 
@@ -24,3 +29,7 @@ func reset() -> void:
 		if !autoplay_at_random_time: play()
 		else:
 			play(randf_range(0, stream.get_length()))
+
+func _finished() -> void:
+	if loop_audio:
+		play(loop_audio_offset)

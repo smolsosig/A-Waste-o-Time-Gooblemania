@@ -48,4 +48,13 @@ var dialogue: Dictionary = {
 	villager_tutorial3 = "Practice with that wooden Gooble dummy if you wish. It's very durable. The world will end and that thing will still be standing.",
 
 	villager_run1 = "CHARLIE, ARE YOU THERE? [b]F---ING [shake]RUN LIKE HELL!!![/shake][/b] WE'LL GUIDE YOU, [shake][b]GO![/b][/shake]",
+
+	radio_chatter1 = "Golf Whiskey to Golf Echo, do you copy? Don't you ever say our actual names out loud again. Over.",
+	radio_chatter2 = "Golf Whiskey to Golf Echo Sierra. We hear Charlie's gone underground? Please confirm, over.",
+	radio_chatter3 = "Oh, Charlie, is that you? Fantastic. This is Golf Whiskey. There's a direct path to the old lighthouse via the sewers, but be warned, we put a [b]lot[/b] of traps there.",
+	radio_chatter4 = "If you're in luck, they haven't been tested in ages... in which case, after all this, I wish to hear Golf Echo's excuses for why they HAVEN'T BEEN CALIBRATED REGULARLY.",
+	radio_chatter5 = "Good luck. Over and out.",
+	
+	radio_chatter_loop1 = "Golf Uniform Whiskey? Oh, Charlie. Hello!",
+	radio_chatter_loop2 = "[b][shake]GO OUT ALREADY![/shake][/b] There is NO TIME TO WASTE! OVER and OUT!",
 }

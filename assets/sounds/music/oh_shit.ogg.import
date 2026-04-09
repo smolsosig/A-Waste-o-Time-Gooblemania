@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/oh_shit.ogg-de82492d1af4db64cec796eb91f21f27.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0.19
 bpm=0.0
 beat_count=0

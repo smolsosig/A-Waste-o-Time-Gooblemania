@@ -6,6 +6,7 @@ class_name CharlieTrigger extends Area2D
 ## Charlie goes in, some triggers get emitted. Charlie goes out, other triggers get emitted.[br]
 ## The possibilities are endless... though you'll mostly just be calling [code]play()[/code] to [GameAnimationPlayer]s.
 
+@warning_ignore("unused_private_class_variable")
 @export_tool_button("Add Collider", "Add") var _button: Callable = _create_collider
 
 ## If [code]false[/code], disables trigger on startup. Equivalent to setting [code]monitoring[/code] to [code]false[/code].

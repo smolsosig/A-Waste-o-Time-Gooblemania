@@ -9,16 +9,30 @@ class_name CharlieDetectableComponent
 #
 # By default, this should simply just... exist.
 
+@onready var _hitbox: CollisionShape2D = get_node("Hitbox")
+
 func _ready() -> void:
 	SignalBus.connect("charlie_death", death)
 	SignalBus.connect("reset", open_zoom)
+	SignalBus.connect("charlie_cutscene", _fuck_you)
+	SignalBus.connect("charlie_cutscene_finished", _fuck_you_too)
+	SignalBus.connect("charlie_cutscene_stop", _fuck_you_as_well)
 	open_zoom()
 
 func open_zoom() -> void:
-	get_node("Hitbox").set_deferred("disabled", true)
+	_hitbox.set_deferred("disabled", true)
 
 func _on_charlie_open_zoom_endd() -> void:
-	get_node("Hitbox").set_deferred("disabled", false)
+	_hitbox.set_deferred("disabled", false)
 
 func death() -> void:
-	get_node("Hitbox").set_deferred("disabled", true)
+	_hitbox.set_deferred("disabled", true)
+
+func _fuck_you(_a: String, _b: String, _c: bool) -> void:
+	_hitbox.set_deferred("disabled", true)
+
+func _fuck_you_too(_bitch: String) -> void:
+	_hitbox.set_deferred("disabled", false)
+
+func _fuck_you_as_well() -> void:
+	_hitbox.set_deferred("disabled", false)

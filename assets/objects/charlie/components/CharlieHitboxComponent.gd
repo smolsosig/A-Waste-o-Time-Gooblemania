@@ -13,6 +13,7 @@ func _ready() -> void:
 	open_zoom()
 	SignalBus.connect("charlie_cutscene", cutscene)
 	SignalBus.connect("charlie_cutscene_stop", cutscene_end)
+	SignalBus.connect("charlie_cutscene_finished", cutscene_end)
 	SignalBus.connect("charlie_death", die_disable)
 	SignalBus.connect("reset", open_zoom)
 	

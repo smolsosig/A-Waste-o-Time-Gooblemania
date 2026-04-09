@@ -16,8 +16,8 @@ var health_speed : float:
 		if new_value < 0.01:
 			new_value = 0.01
 		health_speed = new_value
-var base_health : int = 125 # This is the only value saved in savefile
-var target_health : int = base_health:
+var base_health: int = 125 # This is the only value saved in savefile
+var target_health: int = base_health:
 	set(new_value):
 		target_health = clampi(new_value, 0, base_health)
 		emit_signal("new_target_health")

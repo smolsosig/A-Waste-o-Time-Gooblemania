@@ -25,6 +25,18 @@ signal hit(damage: int)
 ## When [code]true[/code], flashes the sprite white when damaged.
 @export var flash_white_when_damaged: bool = false
 
+@export_group("Eye for an Eye")
+## If [code]true[/code], gives Charlie health on hit.
+@export var health_on_hit: bool = false
+## Amount of health to give Charlie.
+@export var health_given: int = 20
+## How fast Charlie's health increases.
+@export var health_speed: float = 0.1
+## Disables [health_on_hit] after Charlie hits the hurtbox.
+@export var disable_after_hit: bool = true
+## How much extra damage to multiply when Charlie hits the hurtbox if [health_on_hit] is [code]true[/code].
+@export_range(1, 2, 0.05) var multiply_damage_on_hit: float = 1.25
+
 @export_group("References")
 @export var health_component: EnemyHealthComponent
 ## Requires [code]crit_fx.tscn[/code].
@@ -33,6 +45,8 @@ signal hit(damage: int)
 @export var damage_num: Node2D
 
 @onready var flash_shader: Shader = load("res://assets/effects/shaders/flash.gdshader") if flash_white_when_damaged else null
+
+var _ohshit: AudioStreamOggVorbis = load("res://assets/sounds/ui/enemy_majorhit.ogg")
 
 func _ready() -> void:
 	SignalBus.connect("crit_delivered", set_crit)
@@ -74,7 +88,7 @@ func damage(type: int, dmg: int, crit: bool = false) -> void:
 		if type == 1: damage_multiplier = melee_damage_multiplier
 		elif type == 2: damage_multiplier = ranged_damage_multiplier
 		
-		health_component.health -= dmg * damage_multiplier
+		health_component.health -= dmg * damage_multiplier * (multiply_damage_on_hit if health_on_hit else 1.0)
 		damage_num.play_anim(dmg * damage_multiplier)
 		emit_signal("hit", dmg)
 		
@@ -83,3 +97,9 @@ func damage(type: int, dmg: int, crit: bool = false) -> void:
 			parent.material.set_shader_parameter("active", true)
 			await get_tree().create_timer(0.05).timeout
 			parent.material.set_shader_parameter("active", false)
+	
+	if health_on_hit:
+		SoundManager.play_ui_sound(_ohshit)
+		PlayerVar.target_health = PlayerVar.health + health_given
+		PlayerVar.health_speed = health_speed
+		if disable_after_hit: health_on_hit = false

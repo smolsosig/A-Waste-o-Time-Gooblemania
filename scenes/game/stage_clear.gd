@@ -170,7 +170,7 @@ func play_music() -> void:
 	MusicManager.play_end(side)
 
 func play_music2() -> void:
-	SoundManager.play_music_at_volume(music, 0, 5, "MUSIC")
+	$EndMusic.play_with_fade(5)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_pressed() && ready_to_exit:
