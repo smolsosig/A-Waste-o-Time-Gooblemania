@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/mouse_wheelup.svg-019e9918cb36c226211ac44ba2e
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

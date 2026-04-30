@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/switchpro_plus.svg-9167ed0b1915c7bf25578865ee
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

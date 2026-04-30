@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/ps_mute.svg-ad57a7721bd451acf74375396a5c0f32.
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

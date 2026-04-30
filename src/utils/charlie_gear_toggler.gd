@@ -3,7 +3,7 @@
 class_name CharlieGearToggler extends CharlieTrigger
 ## Allows toggling Charlie's gear on or off at specific points in the level.
 ##
-## Make sure the stuff you're enabling is also enabled in the level's [code]LevelInit[/code]!
+## Make sure the stuff you're enabling is also enabled in the level's [LevelInit]!
 
 ## If [code]false[/code], turns off switching weapons.
 @export var switch_weapons: bool = true

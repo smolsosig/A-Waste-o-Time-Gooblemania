@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_parenclose.svg-2c6cf66dce40907712383b4d87
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

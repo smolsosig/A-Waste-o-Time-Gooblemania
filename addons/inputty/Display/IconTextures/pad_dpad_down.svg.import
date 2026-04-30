@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_dpad_down.svg-6ae09a7ba604ecb163dc2c2e96f
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

@@ -34,7 +34,7 @@ func stop_showing() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.2)
 
-func change_pos(_i: Vector2, _2: bool) -> void:
+func change_pos(_i: Vector2, _2: bool, _3: bool) -> void:
 	var temp_run: bool = run
 	run = false
 	clear_points()

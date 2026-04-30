@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_yen.svg-2e35cd8ecdf2024d3a8c752bc4194ffb.
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

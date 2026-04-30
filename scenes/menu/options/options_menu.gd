@@ -100,7 +100,6 @@ func _ready() -> void:
 	%MusicSlider.value = PlayerVar.return_setting("audio", "music_volume")
 	%SoundsSlider.value = PlayerVar.return_setting("audio", "sounds_volume")
 	
-	%WindowResolution.selected = PlayerVar.return_setting("video", "window_resolution")
 	%WindowBorder.button_pressed = PlayerVar.return_setting("video", "borderless")
 	%DisplayMode.button_pressed = PlayerVar.return_setting("video", "display_mode")
 	%VSync.button_pressed = PlayerVar.return_setting("video", "vsync")

@@ -20,8 +20,13 @@ func _ready() -> void:
 	else:
 		show_pause()
 	
-	if !OS.has_feature("pc"):
-		main_buttons[2].hide()
+	#if !OS.has_feature("pc"):
+		#main_buttons[2].hide()
+	
+	Staglobals.connect("stage_name_changed", stage_name_changed)
+
+func stage_name_changed(stage_name: String) -> void:
+	%StageName.text = stage_name.to_upper()
 
 func show_pause() -> void:
 	anim_player.play("RESET")

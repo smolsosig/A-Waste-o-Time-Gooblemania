@@ -1,6 +1,6 @@
 @icon("res://assets/misc/tools/icons/hurtbox.png")
 class_name EnemyHurtboxComponent extends Area2D
-## Hurtboxes for enemies, or pretty much anything that Charlie can hit and can be dealt damage.
+## Hurtboxes for enemies, or pretty much anything that Charlie can hit and deal damage to.
 ##
 ## Requires [code]damage_num.tscn[/code] and [code]crit_fx.tscn[/code] to function at all!
 
@@ -12,17 +12,17 @@ signal hit(damage: int)
 ## [b]Both:[/b] Both melee and ranged weapons deal damage.[br][br]
 ## [b]Melee:[/b] Only Charlie's melee weapons (bats) can deal damage.[br][br]
 ## [b]Ranged:[/b] Only Charlie's ranged weapons (throwing stars) can deal damage.[br][br]
-## [b]None:[/b] Nothing Charlie could do can deal damage.
+## [b]None:[/b] Nothing Charlie could do can deal damage. Not even lovebombing.
 @export_enum("Both", "Melee", "Ranged", "None") var damage_allowed: int
-## Set how powerful/weak melee damage can be. Useful if you don't want to ban damage types outright.
+## Set how powerful/weak melee damage can be. Useful if you don't want to ban damage types outright, or if you want a certain attack buffed.
 @export_range(0, 2, 0.05) var melee_damage_multiplier: float = 1.0
-## Set how powerful/weak ranged damage can be. Useful if you don't want to ban damage types outright.
+## Set how powerful/weak ranged damage can be. Useful if you don't want to ban damage types outright, or if you want a certain attack buffed.
 @export_range(0, 2, 0.05) var ranged_damage_multiplier: float = 1.0
 ## If [code]true[/code], Charlie can bounce off the enemy if she attacks it in mid-air.
 @export var can_bounce_off_it: bool = false
 ## You don't... need me to explain this to you, right?
 @export var start_disabled: bool = false
-## When [code]true[/code], flashes the sprite white when damaged.
+## When [code]true[/code], flashes the parent node white when damaged.
 @export var flash_white_when_damaged: bool = false
 
 @export_group("Eye for an Eye")
@@ -34,10 +34,12 @@ signal hit(damage: int)
 @export var health_speed: float = 0.1
 ## Disables [health_on_hit] after Charlie hits the hurtbox.
 @export var disable_after_hit: bool = true
-## How much extra damage to multiply when Charlie hits the hurtbox if [health_on_hit] is [code]true[/code].
+## How much extra damage to multiply when Charlie hits the hurtbox if [health_on_hit] is [code]true[/code].[br][br]
+## Thanks for the health, asshole!
 @export_range(1, 2, 0.05) var multiply_damage_on_hit: float = 1.25
 
 @export_group("References")
+## The [EnemyHealthComponent] to check.
 @export var health_component: EnemyHealthComponent
 ## Requires [code]crit_fx.tscn[/code].
 @export var crit_fx: Node2D
@@ -99,7 +101,10 @@ func damage(type: int, dmg: int, crit: bool = false) -> void:
 			parent.material.set_shader_parameter("active", false)
 	
 	if health_on_hit:
-		SoundManager.play_ui_sound(_ohshit)
-		PlayerVar.target_health = PlayerVar.health + health_given
-		PlayerVar.health_speed = health_speed
-		if disable_after_hit: health_on_hit = false
+		give_health_on_hit()
+	
+func give_health_on_hit() -> void:
+	SoundManager.play_ui_sound(_ohshit)
+	PlayerVar.target_health = PlayerVar.health + health_given
+	PlayerVar.health_speed = health_speed
+	if disable_after_hit: health_on_hit = false

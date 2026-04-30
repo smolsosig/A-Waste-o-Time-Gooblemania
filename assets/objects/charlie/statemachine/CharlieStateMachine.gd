@@ -38,10 +38,7 @@ func check_if_can_move() -> bool:
 	return current_state.can_move
 
 func check_can_change_direction() -> bool:
-	if !current_state.can_move:
-		return current_state.can_change_direction
-	else:
-		return true
+	return true if current_state.can_move else current_state.can_change_direction
 
 func switch_states(new_state: CharlieState) -> void:
 	if(current_state != null):
@@ -54,6 +51,7 @@ func switch_states(new_state: CharlieState) -> void:
 		print("Current state: %s | Last state: %s" % [current_state, last_state])
 	
 	current_state.on_enter()
+	charlie.can_move = current_state.can_move
 
 func _reset() -> void:
 	switch_states(get_node("InitState"))

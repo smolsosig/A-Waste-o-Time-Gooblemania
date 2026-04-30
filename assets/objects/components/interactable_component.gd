@@ -8,9 +8,9 @@ class_name InteractableComponent extends CharlieTrigger
 
 ## Emitted when the [InteractableComponent] is, erh, interacted with.
 signal interacted
-## Emitted when the [InteractableComponent] is interacted with again and [code]unique_first_interaction[/code] is on.
+## Emitted when the [InteractableComponent] is interacted with again and [member unique_first_interaction is on.
 signal interacted_again
-## What the [code]object_prompt[/code] displays. E.g. [code]"Interact"[/code], [code]"Enter"[/code], [code]"Talk"[/code].
+## What the [member _object_prompt] displays. E.g. [code]"Interact"[/code], [code]"Enter"[/code], [code]"Talk"[/code].
 ## It is automatically converted to uppercase, so [code]"Shut Charlie up"[/code] and [code]"SHUT CHARLIE UP"[/code] will display the same.
 @export var text_prompt: String = "Interact"
 ## Purely cosmetic variable. If [code]false[/code], displays the dialogue speech bubble.
@@ -21,7 +21,7 @@ signal interacted_again
 ## If [code]true[/code], allows a unique first interaction. Useful for dialogue.
 @export var unique_first_interaction: bool = false
 ## If [code]true[/code], only allows a single interaction.[br][br]
-## Use in lieu of setting [code]repeatable[/code] to [code]false[/code], as a stage might need the [InteractableComponent] to be triggered only once.
+## Use in lieu of setting [member repeatable] to [code]false[/code], as a stage might need the [InteractableComponent] to be triggered only once.
 @export var only_one_interaction: bool = false
 @onready var _object_prompt: Node2D = get_node("ObjectPrompt")
 

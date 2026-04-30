@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_backtick.svg-3b5b80310459c3d6c7f76b1a32ab
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

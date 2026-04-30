@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_bracketopen.svg-662183bf08e93c370f9d2babc
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

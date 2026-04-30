@@ -2,7 +2,7 @@ extends Area2D
 class_name HittableComponent
 
 signal interacted()
-var interact_check: bool = false
+@export var interact_check: bool = false
 
 @export var can_bounce_off_it: bool = false
 

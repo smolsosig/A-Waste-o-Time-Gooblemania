@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_shoulder_right.svg-57b99ebeb8ade88ccc24a4
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_trigger_left.svg-51c14540d9f7aa66a2444730
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

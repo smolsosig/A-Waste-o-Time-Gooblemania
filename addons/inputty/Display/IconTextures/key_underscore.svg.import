@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_underscore.svg-403f61165735290931a0a18915
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

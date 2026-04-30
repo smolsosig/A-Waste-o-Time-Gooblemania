@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_center_start.svg-e747a59bdba70fd3d424afab
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

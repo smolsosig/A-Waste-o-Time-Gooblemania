@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_stickl_right.svg-b7b1f13690e5ecf596d0cc8c
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

@@ -5,7 +5,7 @@ class_name GameAnimationPlayer extends AnimationPlayer
 ## Animation to autoplay upon level (re)start. Useful for opening animations.[br][br]
 ## This is as opposed to setting which animation to autoplay via the AnimationPlayer.
 @export var autoplay_anim_name: String
-## Animation to autoplay when [code]Staglobals.current_spawn[/code] matches [code]autoplay_when_spawn_num[/code].[br][br]
+## Animation to autoplay when [code]Staglobals.current_spawn[/code] matches [member autoplay_when_spawn_num].[br][br]
 ## ... okay, okay. If you want, say, [code]"train_crashed"[/code] to play on the third checkpoint, you put [code]"train_crashed"[/code] here.
 @export var autoplay_anim_when_spawn: String
 ## Autoplay [code]autoplay_anim_when_spawn[/code] when [code]Staglobals.current_spawn[/code] matches [code]autoplay_when_spawn_num[/code].[br][br]

@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/switch_X.svg-722e5d3d07d795f55880e0e6b9d92e98
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

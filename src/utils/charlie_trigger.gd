@@ -10,13 +10,13 @@ class_name CharlieTrigger extends Area2D
 @export_tool_button("Add Collider", "Add") var _button: Callable = _create_collider
 
 ## If [code]false[/code], disables trigger on startup. Equivalent to setting [code]monitoring[/code] to [code]false[/code].
-## Disabling this will require the trigger to be manually reenabled by calling the trigger's [code]enable_monitoring()[/code]
+## Disabling this will require the trigger to be manually reenabled by calling the trigger's [member enable_monitoring]
 ## method or setting the trigger's [code]monitored[/code]
 ## property to [code]true[/code].
 @export var enable_on_start: bool = true
 ## Seconds before any/all [code]area_entered[/code] outputs are fired,
 ## regardless if any output has a delay set.[br][br]
-## If value is not zero, trigger will call [code]do_shit_before()[/code] and
+## If value is not zero, trigger will call [member do_shit_before] and
 ## then set off the timer. Important if the trigger script was extended.
 @export var delay_before_playing: float
 ## If [code]true[/code], trigger can be fired multiple times. Leave as
@@ -28,7 +28,6 @@ class_name CharlieTrigger extends Area2D
 ## to reset the trigger.[br][br]Positively [b]only set this to [code]true[/code]
 ## if you've planned everything ahead.[/b] I hope you know what you're doing.
 @export var persistent: bool = false
-@export_group("Outputs")
 ## The complete list of outputs this CharlieTrigger will emit.
 @export var outputs: Array[Output]
 
@@ -71,7 +70,7 @@ func _ready() -> void:
 func _create_collider() -> void:
 	var new_collider: CollisionShape2D = CollisionShape2D.new()
 	new_collider.shape = RectangleShape2D.new()
-	new_collider.shape.size = Vector2(30, 200)
+	new_collider.shape.size = Vector2(10, 200)
 	new_collider.debug_color = Color(1.0, 0.498, 0.0, 0.42)
 	
 	add_child(new_collider)

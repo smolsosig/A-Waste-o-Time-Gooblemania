@@ -53,11 +53,12 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	SignalBus.connect("charlie_death", stop_following)
 	SignalBus.connect("cam_ok_u_can_follow_now", start_following)
 	SignalBus.connect("stop_cam_please_dawg", stop_following)
-	if Engine.is_editor_hint():
-		return
 	assert(target_node, "Please assign a Node2D to target_node.")
 	assert(camera, "Please assign a Camera2D to camera.")
 	_get_regions()

@@ -42,10 +42,11 @@ signal reset
 signal stop_cam_please_dawg
 signal cam_ok_u_can_follow_now
 signal cam_shake(shake_type: String, normal_speed: bool)
+signal stop_fucking_moving_so_slowly_damn
 
 # why the fuck are there two operations for basically doing the same goddamn thing?
 signal charlie_door_teleport(t_position: Vector2)
-signal charlie_change_pos(t_position: Vector2, spawn: bool)
+signal charlie_change_pos(t_position: Vector2, spawn: bool, carry_velocity: bool)
 
 # freeze frame
 signal freeze_frame(duration: float, time_scale: float)

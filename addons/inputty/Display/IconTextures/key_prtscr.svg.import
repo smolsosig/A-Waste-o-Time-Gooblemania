@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_prtscr.svg-646143585dff98d790e02db943b72a
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

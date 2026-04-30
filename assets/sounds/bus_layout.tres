@@ -50,5 +50,5 @@ bus/6/name = &"AMBIENT"
 bus/6/solo = false
 bus/6/mute = false
 bus/6/bypass_fx = false
-bus/6/volume_db = -20.0
+bus/6/volume_db = -18.984375
 bus/6/send = &"SFX"

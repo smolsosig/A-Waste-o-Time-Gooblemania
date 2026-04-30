@@ -1,0 +1,2120 @@
+[gd_scene format=3 uid="uid://bqhe5vx24tedd"]
+
+[ext_resource type="Script" uid="uid://dxdarkjig4ell" path="res://assets/objects/components/EnemyHealthComponent.gd" id="1_3idwt"]
+[ext_resource type="Texture2D" uid="uid://b54cu4ihhck3b" path="res://web/assets/objects/enemies/gooble-lasermachinegun/gooble-machinegunner.png" id="1_7wbho"]
+[ext_resource type="AudioStream" uid="uid://svm257q1h3om" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/phase2.ogg" id="1_cw5gw"]
+[ext_resource type="Script" uid="uid://bm8ixg8c4wwgg" path="res://web/scenes/game/misc/air_raid.gd" id="1_lhep1"]
+[ext_resource type="Texture2D" uid="uid://dm4y17gqb73bk" path="res://web/assets/objects/enemies/gooble-lasermachinegun/machinegun.png" id="2_3idwt"]
+[ext_resource type="Texture2D" uid="uid://b60n2l7ocjc0o" path="res://web/assets/objects/enemies/gooble-lasermachinegun/laser.png" id="3_qoelj"]
+[ext_resource type="Script" uid="uid://b5rqguvnjmvwa" path="res://src/game-nodes/game_animated_sprite_2d.gd" id="4_cw5gw"]
+[ext_resource type="AudioStream" uid="uid://c3i7riqdkaks4" path="res://web/assets/objects/enemies/gooble-lasermachinegun/static.ogg" id="5_lhep1"]
+[ext_resource type="Script" uid="uid://crpm7vyy8j5jo" path="res://assets/objects/components/EnemyHitboxComponent.gd" id="6_3idwt"]
+[ext_resource type="Script" uid="uid://cqcxmvafwh1ae" path="res://src/game-nodes/game_audio_stream_player2d.gd" id="6_ixsq1"]
+[ext_resource type="AudioStream" uid="uid://dlfxqrqdcmmam" path="res://web/assets/objects/enemies/gooble-lasermachinegun/laser_buildup.ogg" id="7_yugdy"]
+[ext_resource type="Script" uid="uid://6nap4j4hopgo" path="res://src/game-nodes/game_audio_stream_player.gd" id="8_4yis4"]
+[ext_resource type="AudioStream" uid="uid://bxommrq5sqeb4" path="res://web/assets/objects/enemies/gooble-lasermachinegun/laser_release.ogg" id="9_6bjyh"]
+[ext_resource type="AudioStream" uid="uid://bd3tcohhe165q" path="res://web/assets/sounds/gooble-death.ogg" id="9_qoelj"]
+[ext_resource type="Script" uid="uid://c3xkwrrqyxir3" path="res://src/game-nodes/game_animation_player.gd" id="11_bbybp"]
+[ext_resource type="PackedScene" uid="uid://ckx5147kpr7hk" path="res://assets/objects/components/EnemyHurtboxComponent.tscn" id="12_eo8bv"]
+[ext_resource type="Texture2D" uid="uid://xmv75dboto37" path="res://web/assets/objects/enemies/gooble-rpgguy/gooble-rpgguy.png" id="17_6bjyh"]
+[ext_resource type="AudioStream" uid="uid://ccrj1cfgittrt" path="res://web/assets/objects/enemies/gooble-lasermachinegun/death_flatline.ogg" id="17_6jitc"]
+[ext_resource type="Texture2D" uid="uid://d0te2usdbdi4u" path="res://web/assets/objects/enemies/gooble-rpgguy/rpg.png" id="18_u552a"]
+[ext_resource type="AudioStream" uid="uid://c1juaf4ru07ly" path="res://web/assets/objects/enemies/gooble-rpgguy/fire.ogg" id="19_bbybp"]
+[ext_resource type="AudioStream" uid="uid://b2w11f7ojbb8y" path="res://web/assets/objects/enemies/gooble-rpgguy/reload.ogg" id="20_eo8bv"]
+[ext_resource type="Script" uid="uid://bxce7gxd64gas" path="res://assets/objects/components/DetectableComponent.gd" id="21_idnjq"]
+[ext_resource type="Texture2D" uid="uid://cc3u5qmoqtuj6" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket.png" id="21_u552a"]
+[ext_resource type="Texture2D" uid="uid://cywgbopswxe4v" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/explosion.png" id="23_6jitc"]
+[ext_resource type="AudioStream" uid="uid://c0cflgku7x0ie" path="res://assets/objects/enemies/minibosses/tacticaltwink/placeholders/rocket_explode.ogg" id="24_idnjq"]
+[ext_resource type="AudioStream" uid="uid://c360f632ntlkc" path="res://web/assets/ui/finished_airraid.ogg" id="26_cwms7"]
+
+[sub_resource type="GDScript" id="GDScript_qoelj"]
+script/source = "extends CharacterBody2D
+
+var marker: Vector2
+@onready var init_position: Vector2 = global_position
+
+@onready var laser_sprite: AnimatedSprite2D = $GoobleMachinegunner/Machinegun/Laser
+@onready var hurtbox: EnemyHurtboxComponent = $GoobleMachinegunner/EnemyHurtboxComponent
+@onready var hitbox: EnemyHitboxComponent = $GoobleMachinegunner/Machinegun/Laser/EnemyHitboxComponent
+
+@onready var lineup_timer: Timer = $LaserLineup
+@onready var buildup_timer: Timer =  $LaserBuildup
+@onready var finish_buildup_timer: Timer = $LaserFinishBuildup
+@onready var firing_timer: Timer = $LaserFiring
+@onready var sprite_anims: AnimationPlayer = $GoobleMachinegunner/SpriteAnims
+@onready var manager: Node = $\"..\"
+@onready var health: EnemyHealthComponent = $EnemyHealthComponent
+
+func _ready() -> void:
+	SignalBus.connect(\"reset\", _reset)
+
+func _reset() -> void:
+	global_position = marker
+
+func start_routine(new_position: Marker2D) -> void:
+	health.health = health.base_health
+	sprite_anims.stop()
+	sprite_anims.play(\"RESET\")
+	$GoobleMachinegunner/Machinegun.track_location = true
+	$GoobleMachinegunner/Machinegun/Static.play()
+	sprite_anims.play(\"flying_loop\")
+	marker = new_position.global_position
+	hurtbox.set_deferred(\"monitorable\", true)
+	lineup_timer.start()
+
+func _physics_process(delta: float) -> void:
+	global_position = lerp(global_position, marker, 2 * delta)
+	
+func _on_laser_lineup_timeout() -> void:
+	buildup_timer.start()
+	$GoobleMachinegunner/Machinegun/LaserBuildup.play()
+
+func _on_laser_buildup_timeout() -> void:
+	$GoobleMachinegunner/Machinegun/LaserRelease.play()
+	finish_buildup_timer.start()
+
+func _on_laser_finish_buildup_timeout() -> void:
+	sprite_anims.play(\"firing_loop\")
+	hitbox.set_deferred(\"monitoring\", true)
+	laser_sprite.show()
+	laser_sprite.play(\"init\")
+	hurtbox.set_deferred(\"monitorable\", false)
+	firing_timer.start()
+
+func _on_laser_firing_timeout() -> void:
+	marker = init_position
+	laser_sprite.stop()
+	laser_sprite.hide()
+	hitbox.set_deferred(\"monitoring\", false)
+	$GoobleMachinegunner/Machinegun.track_location = false
+	manager.wave_gooble_finished_routine -= 1
+	sprite_anims.play(\"flying_loop\")
+
+func _on_enemy_health_component_died() -> void:
+	print(\"And DOWN goes %s!\" % name)
+	health.health = health.base_health
+	hurtbox.set_deferred(\"monitorable\", false)
+	$GoobleMachinegunner/Machinegun/Death.play()
+	
+	lineup_timer.stop()
+	buildup_timer.stop()
+	$GoobleMachinegunner/Machinegun/LaserBuildup.stop()
+	$GoobleMachinegunner/Machinegun/LaserRelease.stop()
+	
+	manager.wave_gooble_alive_count -= 1
+	manager.wave_gooble_finished_routine -= 1
+	sprite_anims.play(\"death\")
+	marker = init_position
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dv13c"]
+radius = 71.17584
+
+[sub_resource type="GDScript" id="GDScript_r64c0"]
+script/source = "extends Sprite2D
+
+@export var track_location: bool = false
+@export var manager: Node
+
+func _process(_delta: float) -> void:
+	if track_location:
+		look_at(manager.marker.global_position)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48ju0"]
+atlas = ExtResource("3_qoelj")
+region = Rect2(0, 0, 1280, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bo6y"]
+atlas = ExtResource("3_qoelj")
+region = Rect2(0, 180, 1280, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcux1"]
+atlas = ExtResource("3_qoelj")
+region = Rect2(0, 360, 1280, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awi0o"]
+atlas = ExtResource("3_qoelj")
+region = Rect2(0, 540, 1280, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqfyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ju0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bo6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcux1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awi0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ju0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcux1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awi0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bo6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48ju0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awi0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bo6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcux1")
+}],
+"loop": 1,
+"name": &"init",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoelj"]
+size = Vector2(1499, 980)
+
+[sub_resource type="Animation" id="Animation_6bjyh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Machinegun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 144)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u552a"]
+resource_name = "death"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_bbybp"]
+resource_name = "firing_loop"
+length = 0.53333336
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666659, 0.13333334, 0.19999991, 0.26666665, 0.33333334, 0.4, 0.46666667, 0.53333336),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 0), Vector2(0, -10), Vector2(-10, 20), Vector2(0, -20), Vector2(-30, 0), Vector2(5, 5), Vector2(5, -10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Machinegun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666659, 0.13333334, 0.19999991, 0.26666665, 0.33333334, 0.4, 0.46666667, 0.53333336),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(79, 144), Vector2(49, 154), Vector2(109, 124), Vector2(79, 144), Vector2(49, 144), Vector2(109, 144), Vector2(79, 144), Vector2(49, 144), Vector2(79, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_eo8bv"]
+resource_name = "flying_loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Machinegun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.73333335, 1.2333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(79, 144), Vector2(79, 164), Vector2(79, 144)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idnjq"]
+_data = {
+&"RESET": SubResource("Animation_6bjyh"),
+&"death": SubResource("Animation_u552a"),
+&"firing_loop": SubResource("Animation_bbybp"),
+&"flying_loop": SubResource("Animation_eo8bv")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg1wx"]
+radius = 163.0276
+
+[sub_resource type="GDScript" id="GDScript_idnjq"]
+script/source = "extends CharacterBody2D
+
+var marker: Vector2
+@onready var init_position: Vector2 = global_position
+
+@onready var hurtbox: EnemyHurtboxComponent = $GoobleRPGGuy/EnemyHurtboxComponent
+
+@onready var lineup_timer: Timer = $RPGLineup
+@onready var cooldown_timer: Timer = $RPGCooldown
+@onready var sprite_anims: AnimationPlayer = $GoobleRPGGuy/SpriteAnims
+@onready var manager: Node = $\"..\"
+@onready var health: EnemyHealthComponent = $EnemyHealthComponent
+
+@onready var rocket_anims: AnimationPlayer = $GoobleRPGGuy/RPG/Rocket/Rocket/RocketAnim
+
+var deflected: bool = false
+var clip_size: int
+
+func _ready() -> void:
+	SignalBus.connect(\"reset\", _reset)
+
+func _reset() -> void:
+	global_position = marker
+
+func start_routine(new_position: Marker2D) -> void:
+	clip_size = randi_range(3, 5)
+	health.health = health.base_health
+	sprite_anims.stop()
+	sprite_anims.play(\"RESET\")
+	$GoobleRPGGuy/RPG.track_location = true
+	sprite_anims.play(\"flying_loop\")
+	marker = new_position.global_position
+	hurtbox.set_deferred(\"monitorable\", true)
+	lineup_timer.start()
+
+func _physics_process(delta: float) -> void:
+	global_position = lerp(global_position, marker, 2 * delta)
+	
+func cooldown_timer_wait_time() -> void:
+	cooldown_timer.wait_time = randf_range(0.5, 2.5)
+
+func _on_rpg_lineup_timeout() -> void:
+	cooldown_timer_wait_time()
+	cooldown_timer.start()
+
+func _on_rpg_cooldown_timeout() -> void:
+	cooldown_timer_wait_time()
+	if clip_size:
+		clip_size -= 1
+		sprite_anims.play(\"firing\")
+	else:
+		stop_firing()
+
+func stop_firing() -> void:
+	marker = init_position
+	$GoobleRPGGuy/RPG.track_location = false
+	manager.wave_gooble_finished_routine -= 1
+	sprite_anims.play(\"flying_loop\")
+
+func _on_enemy_health_component_died() -> void:
+	print(\"And DOWN goes %s!\" % name)
+	health.health = health.base_health
+	hurtbox.set_deferred(\"monitorable\", false)
+	$GoobleRPGGuy/RPG/Death.play()
+	
+	lineup_timer.stop()
+	cooldown_timer.stop()
+	
+	manager.wave_gooble_alive_count -= 1
+	manager.wave_gooble_finished_routine -= 1
+	sprite_anims.play(\"death\")
+	marker = init_position
+
+
+func _on_hittable_component_interacted() -> void:
+	rocket_anims.play(\"deflect\")
+
+func _on_rocket_anim_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		\"fire\":
+			rocket_anims.play(\"explosion\")
+		\"deflect\":
+			rocket_anims.play(\"RESET\")
+			$Explosion/GameAnimationPlayer.play(\"explooode\")
+			_on_enemy_health_component_died()
+"
+
+[sub_resource type="GDScript" id="GDScript_6jitc"]
+script/source = "extends Sprite2D
+
+@export var track_location: bool = false
+@export var manager: Node
+
+func _process(delta: float) -> void:
+	if track_location:
+		# thank you u/samsfacee
+		rotation = lerp_angle(rotation, rotation + get_angle_to(manager.charlie.global_position), 4.5 * delta)
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ksfch"]
+radius = 48.0
+height = 402.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbybp"]
+radius = 24.0
+height = 278.0
+
+[sub_resource type="Animation" id="Animation_idnjq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(154, 143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RocketSprite:flip_h")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HittableComponent:interact_check")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HittableComponent:monitorable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cwms7"]
+resource_name = "deflect"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1846.25, 143), Vector2(154, 143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RocketSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x0opf"]
+resource_name = "explosion"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.40000004, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RocketAnim")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Explosion/ExplosionSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6jitc"]
+resource_name = "fire"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(154, 143), Vector2(3055, 143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HittableComponent:interact_check")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HittableComponent:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cwms7"]
+_data = {
+&"RESET": SubResource("Animation_idnjq"),
+&"deflect": SubResource("Animation_cwms7"),
+&"explosion": SubResource("Animation_x0opf"),
+&"fire": SubResource("Animation_6jitc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uwee"]
+radius = 511.5486
+
+[sub_resource type="Animation" id="Animation_gj2vv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RPG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 144)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7xkyf"]
+resource_name = "death"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_2317a"]
+resource_name = "firing"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.39999998, 0.49999997, 0.79999995, 1.3, 1.8),
+"transitions": PackedFloat32Array(0.5, -2, 0.5, -2, 0.5, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0), Vector2(-20, -10), Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RPG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.4333333, 0.73333335, 1.2, 1.5000001, 1.8),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(79, 144), Vector2(119, 146.3999), Vector2(49, 124), Vector2(79, 144), Vector2(79, 144), Vector2(119, 78.3999), Vector2(79, 144)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RPG/Fire")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RPG/Reload")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RPG/Rocket/Rocket/RocketAnim")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.36666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"fire", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteAnims")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"flying_loop", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../RPGCooldown")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wi7bb"]
+resource_name = "flying_loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RPG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333333, 0.73333335, 1.2333333),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(79, 144), Vector2(79, 164), Vector2(79, 144)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0psv"]
+_data = {
+&"RESET": SubResource("Animation_gj2vv"),
+&"death": SubResource("Animation_7xkyf"),
+&"firing": SubResource("Animation_2317a"),
+&"flying_loop": SubResource("Animation_wi7bb")
+}
+
+[sub_resource type="Animation" id="Animation_ksfch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0uwee"]
+resource_name = "explooode"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GoobleRPGGuy/RPG/Rocket/Rocket/Explosion/ExplosionSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.40000004, 0.8000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7euo"]
+_data = {
+&"RESET": SubResource("Animation_ksfch"),
+&"explooode": SubResource("Animation_0uwee")
+}
+
+[sub_resource type="Animation" id="Animation_w7euo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("End/Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("End/Explosion:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("End/Explosion:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("End/Explosion:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(66162, -1500)]
+}
+
+[sub_resource type="Animation" id="Animation_xbnjy"]
+resource_name = "end"
+length = 8.333337101284043
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("End/Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("End/Explosion:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3333334, 1.6, 1.8666667, 2.3000002, 2.5666668, 2.8333335, 2.9666667, 3.2333333, 3.5, 3.5333333, 3.8, 4.0666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(2, 2), Vector2(2.5, 2.5), Vector2(0.25, 0.25), Vector2(2, 2), Vector2(2.5, 2.5), Vector2(0.25, 0.25), Vector2(2, 2), Vector2(2.5, 2.5), Vector2(0.25, 0.25), Vector2(2, 2), Vector2(2.5, 2.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("End/Explosion:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6000001, 1.8666667, 2.3000002, 2.566667, 2.8333335, 2.9666667, 3.2333336, 3.5, 3.5333333, 3.8000002, 4.0666666),
+"transitions": PackedFloat32Array(1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("End/Explosion:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3333334, 2.3000002, 2.966667, 3.5333335),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(66162, -1500), Vector2(66444, -1629.998), Vector2(66302.01, -1971.0001), Vector2(66162, -1500)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("End/ExplosionSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.3333334, 2.3000002, 2.966667, 3.5333335, 3.966667, 4.066667, 4.4, 4.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"stop_with_fade"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("End/Jingle")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.7666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5drog"]
+_data = {
+&"RESET": SubResource("Animation_w7euo"),
+&"end": SubResource("Animation_xbnjy")
+}
+
+[node name="AirRaid" type="Node" unique_id=1321035742 node_paths=PackedStringArray("charlie", "marker", "available_positions", "laser_goobles", "rpg_goobles")]
+script = ExtResource("1_lhep1")
+debug = true
+charlie = NodePath("CharacterBody2D")
+marker = NodePath("MainMarker")
+max_waves = 8
+waves_to_begin_second = 4
+available_positions = [NodePath("Positions/Marker2D"), NodePath("Positions/Marker2D2"), NodePath("Positions/Marker2D3"), NodePath("Positions/Marker2D4"), NodePath("Positions/Marker2D5")]
+laser_goobles = [NodePath("LaserGooble")]
+rpg_goobles = [NodePath("RPGGoggle"), NodePath("RPGGrumble"), NodePath("RPGGiggle"), NodePath("RPGGimble")]
+
+[node name="Cooldown" type="Timer" parent="." unique_id=727925355]
+wait_time = 2.0
+one_shot = true
+
+[node name="Siren" type="AudioStreamPlayer" parent="." unique_id=857462161]
+stream = ExtResource("1_cw5gw")
+volume_db = 2.5
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="MainMarker" type="Marker2D" parent="." unique_id=624434996]
+position = Vector2(68080, -2610)
+
+[node name="SpawnMarker" type="Marker2D" parent="." unique_id=713952186]
+position = Vector2(65909, -3249)
+
+[node name="LaserGooble" type="CharacterBody2D" parent="." unique_id=832245959]
+position = Vector2(65814, -3659)
+script = SubResource("GDScript_qoelj")
+
+[node name="EnemyHealthComponent" type="Node" parent="LaserGooble" unique_id=440127848]
+script = ExtResource("1_3idwt")
+base_health = 100
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGooble" unique_id=998538320]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape2D_dv13c")
+
+[node name="GoobleMachinegunner" type="Sprite2D" parent="LaserGooble" unique_id=601984419]
+texture = ExtResource("1_7wbho")
+offset = Vector2(0, 62.035)
+
+[node name="Machinegun" type="Sprite2D" parent="LaserGooble/GoobleMachinegunner" unique_id=562833145 node_paths=PackedStringArray("manager")]
+position = Vector2(79, 144)
+texture = ExtResource("2_3idwt")
+offset = Vector2(3, 28)
+script = SubResource("GDScript_r64c0")
+manager = NodePath("../../..")
+
+[node name="Laser" type="AnimatedSprite2D" parent="LaserGooble/GoobleMachinegunner/Machinegun" unique_id=1763996016]
+visible = false
+position = Vector2(276, -37)
+sprite_frames = SubResource("SpriteFrames_aqfyx")
+animation = &"init"
+offset = Vector2(600, 0)
+script = ExtResource("4_cw5gw")
+metadata/_custom_type_script = "uid://b5rqguvnjmvwa"
+
+[node name="EnemyHitboxComponent" type="Area2D" parent="LaserGooble/GoobleMachinegunner/Machinegun/Laser" unique_id=971406791]
+script = ExtResource("6_3idwt")
+damage = 30
+damage_speed = 0.05
+start_disabled = true
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGooble/GoobleMachinegunner/Machinegun/Laser/EnemyHitboxComponent" unique_id=1812743860]
+position = Vector2(618.5, 0)
+shape = SubResource("RectangleShape2D_qoelj")
+
+[node name="Static" type="AudioStreamPlayer2D" parent="LaserGooble/GoobleMachinegunner/Machinegun" unique_id=1384808206]
+stream = ExtResource("5_lhep1")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+loop_audio = true
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Death" type="AudioStreamPlayer" parent="LaserGooble/GoobleMachinegunner/Machinegun" unique_id=408647415]
+stream = ExtResource("9_qoelj")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="LaserBuildup" type="AudioStreamPlayer" parent="LaserGooble/GoobleMachinegunner/Machinegun" unique_id=964878744]
+stream = ExtResource("7_yugdy")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="LaserRelease" type="AudioStreamPlayer" parent="LaserGooble/GoobleMachinegunner/Machinegun" unique_id=758839902]
+stream = ExtResource("9_6bjyh")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="SpriteAnims" type="AnimationPlayer" parent="LaserGooble/GoobleMachinegunner" unique_id=1661183654]
+libraries/ = SubResource("AnimationLibrary_idnjq")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="EnemyHurtboxComponent" parent="LaserGooble/GoobleMachinegunner" unique_id=436656520 node_paths=PackedStringArray("health_component") instance=ExtResource("12_eo8bv")]
+position = Vector2(13, 57)
+damage_allowed = 2
+start_disabled = true
+flash_white_when_damaged = true
+health_component = NodePath("../../EnemyHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGooble/GoobleMachinegunner/EnemyHurtboxComponent" unique_id=1270600073]
+shape = SubResource("CircleShape2D_kg1wx")
+
+[node name="LaserLineup" type="Timer" parent="LaserGooble" unique_id=1331563094]
+wait_time = 2.75
+one_shot = true
+
+[node name="LaserBuildup" type="Timer" parent="LaserGooble" unique_id=941998199]
+wait_time = 3.0
+one_shot = true
+
+[node name="LaserFinishBuildup" type="Timer" parent="LaserGooble" unique_id=2008049220]
+wait_time = 0.75
+one_shot = true
+
+[node name="LaserFiring" type="Timer" parent="LaserGooble" unique_id=1568014512]
+wait_time = 1.6999999999999995
+one_shot = true
+
+[node name="Flatline" type="AudioStreamPlayer2D" parent="LaserGooble" unique_id=258101213]
+stream = ExtResource("17_6jitc")
+volume_db = 5.0
+max_distance = 2500.0
+attenuation = 0.6155722
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="RPGGoggle" type="CharacterBody2D" parent="." unique_id=1840006574]
+position = Vector2(65803, -3462)
+script = SubResource("GDScript_idnjq")
+
+[node name="EnemyHealthComponent" type="Node" parent="RPGGoggle" unique_id=1129896165]
+script = ExtResource("1_3idwt")
+base_health = 150
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGoggle" unique_id=1638301730]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape2D_dv13c")
+
+[node name="GoobleRPGGuy" type="Sprite2D" parent="RPGGoggle" unique_id=1089951834]
+texture = ExtResource("17_6bjyh")
+offset = Vector2(0, 62.035)
+
+[node name="RPG" type="Sprite2D" parent="RPGGoggle/GoobleRPGGuy" unique_id=1327065579 node_paths=PackedStringArray("manager")]
+position = Vector2(79, 144)
+texture = ExtResource("18_u552a")
+offset = Vector2(-136, 41)
+script = SubResource("GDScript_6jitc")
+manager = NodePath("../../..")
+
+[node name="Death" type="AudioStreamPlayer" parent="RPGGoggle/GoobleRPGGuy/RPG" unique_id=1886805205]
+stream = ExtResource("9_qoelj")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Fire" type="AudioStreamPlayer" parent="RPGGoggle/GoobleRPGGuy/RPG" unique_id=1388867129]
+stream = ExtResource("19_bbybp")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Reload" type="AudioStreamPlayer" parent="RPGGoggle/GoobleRPGGuy/RPG" unique_id=143672148]
+stream = ExtResource("20_eo8bv")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="RocketSpawn" type="Marker2D" parent="RPGGoggle/GoobleRPGGuy/RPG" unique_id=224604929]
+position = Vector2(54, 2)
+
+[node name="Rocket" type="Node2D" parent="RPGGoggle/GoobleRPGGuy/RPG" unique_id=183743276]
+visible = false
+position = Vector2(14, -138)
+scale = Vector2(0.5, 0.5)
+
+[node name="Rocket" type="Area2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket" unique_id=728482654]
+visible = false
+position = Vector2(154, 143)
+monitoring = false
+script = ExtResource("6_3idwt")
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="HittableComponent" type="Area2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=513782462]
+collision_layer = 8
+collision_mask = 0
+monitorable = false
+script = ExtResource("21_idnjq")
+metadata/_custom_type_script = "uid://bxce7gxd64gas"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" unique_id=1380734133]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ksfch")
+
+[node name="RocketSprite" type="Sprite2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1822709344]
+visible = false
+texture = ExtResource("21_u552a")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1071525108]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bbybp")
+
+[node name="RocketAnim" type="AnimationPlayer" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1093615773]
+libraries/ = SubResource("AnimationLibrary_cwms7")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Explosion" type="Area2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=677688943]
+visible = false
+rotation = -1.5707964
+monitoring = false
+script = ExtResource("6_3idwt")
+damage = 30
+damage_speed = 0.25
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Explosion2" type="Sprite2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=1802017403]
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=964334311]
+shape = SubResource("CircleShape2D_0uwee")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=390049259]
+stream = ExtResource("24_idnjq")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="SpriteAnims" type="AnimationPlayer" parent="RPGGoggle/GoobleRPGGuy" unique_id=675961408]
+libraries/ = SubResource("AnimationLibrary_i0psv")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="EnemyHurtboxComponent" parent="RPGGoggle/GoobleRPGGuy" unique_id=1278231421 node_paths=PackedStringArray("health_component") instance=ExtResource("12_eo8bv")]
+position = Vector2(13, 57)
+damage_allowed = 2
+start_disabled = true
+flash_white_when_damaged = true
+disable_after_hit = false
+health_component = NodePath("../../EnemyHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGoggle/GoobleRPGGuy/EnemyHurtboxComponent" unique_id=1724903878]
+shape = SubResource("CircleShape2D_kg1wx")
+
+[node name="RPGLineup" type="Timer" parent="RPGGoggle" unique_id=281327085]
+wait_time = 2.5
+one_shot = true
+
+[node name="RPGCooldown" type="Timer" parent="RPGGoggle" unique_id=1424493501]
+wait_time = 3.0
+one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="RPGGoggle" unique_id=1976481184]
+visible = false
+position = Vector2(23, 194)
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="RPGGoggle/Explosion" unique_id=945839380]
+libraries/ = SubResource("AnimationLibrary_w7euo")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Flatline" type="AudioStreamPlayer2D" parent="RPGGoggle" unique_id=1944504950]
+stream = ExtResource("17_6jitc")
+volume_db = 5.0
+max_distance = 2500.0
+attenuation = 0.6155722
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="RPGGrumble" type="CharacterBody2D" parent="." unique_id=1180044132]
+position = Vector2(65803, -3462)
+script = SubResource("GDScript_idnjq")
+
+[node name="EnemyHealthComponent" type="Node" parent="RPGGrumble" unique_id=1010666727]
+script = ExtResource("1_3idwt")
+base_health = 150
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGrumble" unique_id=574654020]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape2D_dv13c")
+
+[node name="GoobleRPGGuy" type="Sprite2D" parent="RPGGrumble" unique_id=49033909]
+texture = ExtResource("17_6bjyh")
+offset = Vector2(0, 62.035)
+
+[node name="RPG" type="Sprite2D" parent="RPGGrumble/GoobleRPGGuy" unique_id=1201785399 node_paths=PackedStringArray("manager")]
+position = Vector2(79, 144)
+texture = ExtResource("18_u552a")
+offset = Vector2(-136, 41)
+script = SubResource("GDScript_6jitc")
+manager = NodePath("../../..")
+
+[node name="Death" type="AudioStreamPlayer" parent="RPGGrumble/GoobleRPGGuy/RPG" unique_id=1693477392]
+stream = ExtResource("9_qoelj")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Fire" type="AudioStreamPlayer" parent="RPGGrumble/GoobleRPGGuy/RPG" unique_id=1512714287]
+stream = ExtResource("19_bbybp")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Reload" type="AudioStreamPlayer" parent="RPGGrumble/GoobleRPGGuy/RPG" unique_id=1426349624]
+stream = ExtResource("20_eo8bv")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="RocketSpawn" type="Marker2D" parent="RPGGrumble/GoobleRPGGuy/RPG" unique_id=514582876]
+position = Vector2(54, 2)
+
+[node name="Rocket" type="Node2D" parent="RPGGrumble/GoobleRPGGuy/RPG" unique_id=410692593]
+visible = false
+position = Vector2(14, -138)
+scale = Vector2(0.5, 0.5)
+
+[node name="Rocket" type="Area2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket" unique_id=1508386952]
+visible = false
+position = Vector2(154, 143)
+monitoring = false
+script = ExtResource("6_3idwt")
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="HittableComponent" type="Area2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=441695824]
+collision_layer = 8
+collision_mask = 0
+monitorable = false
+script = ExtResource("21_idnjq")
+metadata/_custom_type_script = "uid://bxce7gxd64gas"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" unique_id=1831028246]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ksfch")
+
+[node name="RocketSprite" type="Sprite2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1259746443]
+visible = false
+texture = ExtResource("21_u552a")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1457209131]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bbybp")
+
+[node name="RocketAnim" type="AnimationPlayer" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1708236872]
+libraries/ = SubResource("AnimationLibrary_cwms7")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Explosion" type="Area2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1205701951]
+visible = false
+rotation = -1.5707964
+monitoring = false
+script = ExtResource("6_3idwt")
+damage = 30
+damage_speed = 0.25
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Explosion2" type="Sprite2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=1244867322]
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=26247111]
+shape = SubResource("CircleShape2D_0uwee")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=933678363]
+stream = ExtResource("24_idnjq")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="SpriteAnims" type="AnimationPlayer" parent="RPGGrumble/GoobleRPGGuy" unique_id=2053793743]
+libraries/ = SubResource("AnimationLibrary_i0psv")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="EnemyHurtboxComponent" parent="RPGGrumble/GoobleRPGGuy" unique_id=258228674 node_paths=PackedStringArray("health_component") instance=ExtResource("12_eo8bv")]
+position = Vector2(13, 57)
+damage_allowed = 2
+start_disabled = true
+flash_white_when_damaged = true
+disable_after_hit = false
+health_component = NodePath("../../EnemyHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGrumble/GoobleRPGGuy/EnemyHurtboxComponent" unique_id=1976609879]
+shape = SubResource("CircleShape2D_kg1wx")
+
+[node name="RPGLineup" type="Timer" parent="RPGGrumble" unique_id=718317404]
+wait_time = 2.5
+one_shot = true
+
+[node name="RPGCooldown" type="Timer" parent="RPGGrumble" unique_id=656104088]
+wait_time = 3.0
+one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="RPGGrumble" unique_id=319610925]
+visible = false
+position = Vector2(23, 194)
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="RPGGrumble/Explosion" unique_id=1461083703]
+libraries/ = SubResource("AnimationLibrary_w7euo")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Flatline" type="AudioStreamPlayer2D" parent="RPGGrumble" unique_id=1529822577]
+stream = ExtResource("17_6jitc")
+volume_db = 5.0
+max_distance = 2500.0
+attenuation = 0.6155722
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="RPGGiggle" type="CharacterBody2D" parent="." unique_id=1323095999]
+position = Vector2(65803, -3462)
+script = SubResource("GDScript_idnjq")
+
+[node name="EnemyHealthComponent" type="Node" parent="RPGGiggle" unique_id=96512661]
+script = ExtResource("1_3idwt")
+base_health = 150
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGiggle" unique_id=412183638]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape2D_dv13c")
+
+[node name="GoobleRPGGuy" type="Sprite2D" parent="RPGGiggle" unique_id=1863244978]
+texture = ExtResource("17_6bjyh")
+offset = Vector2(0, 62.035)
+
+[node name="RPG" type="Sprite2D" parent="RPGGiggle/GoobleRPGGuy" unique_id=939627285 node_paths=PackedStringArray("manager")]
+position = Vector2(79, 144)
+texture = ExtResource("18_u552a")
+offset = Vector2(-136, 41)
+script = SubResource("GDScript_6jitc")
+manager = NodePath("../../..")
+
+[node name="Death" type="AudioStreamPlayer" parent="RPGGiggle/GoobleRPGGuy/RPG" unique_id=449767342]
+stream = ExtResource("9_qoelj")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Fire" type="AudioStreamPlayer" parent="RPGGiggle/GoobleRPGGuy/RPG" unique_id=592114628]
+stream = ExtResource("19_bbybp")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Reload" type="AudioStreamPlayer" parent="RPGGiggle/GoobleRPGGuy/RPG" unique_id=973183190]
+stream = ExtResource("20_eo8bv")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="RocketSpawn" type="Marker2D" parent="RPGGiggle/GoobleRPGGuy/RPG" unique_id=1775213125]
+position = Vector2(54, 2)
+
+[node name="Rocket" type="Node2D" parent="RPGGiggle/GoobleRPGGuy/RPG" unique_id=1459428092]
+visible = false
+position = Vector2(14, -138)
+scale = Vector2(0.5, 0.5)
+
+[node name="Rocket" type="Area2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket" unique_id=1651574103]
+visible = false
+position = Vector2(154, 143)
+monitoring = false
+script = ExtResource("6_3idwt")
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="HittableComponent" type="Area2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1726658793]
+collision_layer = 8
+collision_mask = 0
+monitorable = false
+script = ExtResource("21_idnjq")
+metadata/_custom_type_script = "uid://bxce7gxd64gas"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" unique_id=1098323120]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ksfch")
+
+[node name="RocketSprite" type="Sprite2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1120738779]
+visible = false
+texture = ExtResource("21_u552a")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1280362627]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bbybp")
+
+[node name="RocketAnim" type="AnimationPlayer" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1137851320]
+libraries/ = SubResource("AnimationLibrary_cwms7")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Explosion" type="Area2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=970057967]
+visible = false
+rotation = -1.5707964
+monitoring = false
+script = ExtResource("6_3idwt")
+damage = 30
+damage_speed = 0.25
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Explosion2" type="Sprite2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=1278125237]
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=823384842]
+shape = SubResource("CircleShape2D_0uwee")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=132140122]
+stream = ExtResource("24_idnjq")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="SpriteAnims" type="AnimationPlayer" parent="RPGGiggle/GoobleRPGGuy" unique_id=463075784]
+libraries/ = SubResource("AnimationLibrary_i0psv")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="EnemyHurtboxComponent" parent="RPGGiggle/GoobleRPGGuy" unique_id=243607385 node_paths=PackedStringArray("health_component") instance=ExtResource("12_eo8bv")]
+position = Vector2(13, 57)
+damage_allowed = 2
+start_disabled = true
+flash_white_when_damaged = true
+disable_after_hit = false
+health_component = NodePath("../../EnemyHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGiggle/GoobleRPGGuy/EnemyHurtboxComponent" unique_id=1835613557]
+shape = SubResource("CircleShape2D_kg1wx")
+
+[node name="RPGLineup" type="Timer" parent="RPGGiggle" unique_id=534282382]
+wait_time = 2.5
+one_shot = true
+
+[node name="RPGCooldown" type="Timer" parent="RPGGiggle" unique_id=2000457364]
+wait_time = 3.0
+one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="RPGGiggle" unique_id=944907757]
+visible = false
+position = Vector2(23, 194)
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="RPGGiggle/Explosion" unique_id=230759666]
+libraries/ = SubResource("AnimationLibrary_w7euo")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Flatline" type="AudioStreamPlayer2D" parent="RPGGiggle" unique_id=358074278]
+stream = ExtResource("17_6jitc")
+volume_db = 5.0
+max_distance = 2500.0
+attenuation = 0.6155722
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="RPGGimble" type="CharacterBody2D" parent="." unique_id=44634675]
+position = Vector2(65803, -3462)
+script = SubResource("GDScript_idnjq")
+
+[node name="EnemyHealthComponent" type="Node" parent="RPGGimble" unique_id=1206150791]
+script = ExtResource("1_3idwt")
+base_health = 150
+metadata/_custom_type_script = "uid://dxdarkjig4ell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGimble" unique_id=1038284187]
+position = Vector2(0, 95)
+shape = SubResource("CircleShape2D_dv13c")
+
+[node name="GoobleRPGGuy" type="Sprite2D" parent="RPGGimble" unique_id=1231546841]
+texture = ExtResource("17_6bjyh")
+offset = Vector2(0, 62.035)
+
+[node name="RPG" type="Sprite2D" parent="RPGGimble/GoobleRPGGuy" unique_id=1340241029 node_paths=PackedStringArray("manager")]
+position = Vector2(79, 144)
+texture = ExtResource("18_u552a")
+offset = Vector2(-136, 41)
+script = SubResource("GDScript_6jitc")
+manager = NodePath("../../..")
+
+[node name="Death" type="AudioStreamPlayer" parent="RPGGimble/GoobleRPGGuy/RPG" unique_id=782806832]
+stream = ExtResource("9_qoelj")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Fire" type="AudioStreamPlayer" parent="RPGGimble/GoobleRPGGuy/RPG" unique_id=1003306514]
+stream = ExtResource("19_bbybp")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Reload" type="AudioStreamPlayer" parent="RPGGimble/GoobleRPGGuy/RPG" unique_id=545985360]
+stream = ExtResource("20_eo8bv")
+volume_db = 5.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="RocketSpawn" type="Marker2D" parent="RPGGimble/GoobleRPGGuy/RPG" unique_id=1151920912]
+position = Vector2(54, 2)
+
+[node name="Rocket" type="Node2D" parent="RPGGimble/GoobleRPGGuy/RPG" unique_id=1535669905]
+visible = false
+position = Vector2(14, -138)
+scale = Vector2(0.5, 0.5)
+
+[node name="Rocket" type="Area2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket" unique_id=1493053515]
+visible = false
+position = Vector2(154, 143)
+monitoring = false
+script = ExtResource("6_3idwt")
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="HittableComponent" type="Area2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1093630575]
+collision_layer = 8
+collision_mask = 0
+monitorable = false
+script = ExtResource("21_idnjq")
+metadata/_custom_type_script = "uid://bxce7gxd64gas"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" unique_id=500561230]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ksfch")
+
+[node name="RocketSprite" type="Sprite2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=385127017]
+visible = false
+texture = ExtResource("21_u552a")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=584215839]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bbybp")
+
+[node name="RocketAnim" type="AnimationPlayer" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=533791836]
+libraries/ = SubResource("AnimationLibrary_cwms7")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Explosion" type="Area2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket" unique_id=1095472624]
+visible = false
+rotation = -1.5707964
+monitoring = false
+script = ExtResource("6_3idwt")
+damage = 30
+damage_speed = 0.25
+metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
+
+[node name="Explosion2" type="Sprite2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=302713001]
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=1890806122]
+shape = SubResource("CircleShape2D_0uwee")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/Explosion" unique_id=1280154828]
+stream = ExtResource("24_idnjq")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="SpriteAnims" type="AnimationPlayer" parent="RPGGimble/GoobleRPGGuy" unique_id=173995350]
+libraries/ = SubResource("AnimationLibrary_i0psv")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="EnemyHurtboxComponent" parent="RPGGimble/GoobleRPGGuy" unique_id=1102614174 node_paths=PackedStringArray("health_component") instance=ExtResource("12_eo8bv")]
+position = Vector2(13, 57)
+damage_allowed = 2
+start_disabled = true
+flash_white_when_damaged = true
+disable_after_hit = false
+health_component = NodePath("../../EnemyHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RPGGimble/GoobleRPGGuy/EnemyHurtboxComponent" unique_id=1715909949]
+shape = SubResource("CircleShape2D_kg1wx")
+
+[node name="RPGLineup" type="Timer" parent="RPGGimble" unique_id=249031771]
+wait_time = 2.5
+one_shot = true
+
+[node name="RPGCooldown" type="Timer" parent="RPGGimble" unique_id=506239543]
+wait_time = 3.0
+one_shot = true
+
+[node name="Explosion" type="Sprite2D" parent="RPGGimble" unique_id=1154788792]
+visible = false
+position = Vector2(23, 194)
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="RPGGimble/Explosion" unique_id=273131944]
+libraries/ = SubResource("AnimationLibrary_w7euo")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Flatline" type="AudioStreamPlayer2D" parent="RPGGimble" unique_id=1347329305]
+stream = ExtResource("17_6jitc")
+volume_db = 5.0
+max_distance = 2500.0
+attenuation = 0.6155722
+bus = &"SFX 1"
+script = ExtResource("6_ixsq1")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Positions" type="Node" parent="." unique_id=1327423965]
+
+[node name="Marker2D" type="Marker2D" parent="Positions" unique_id=1299997703]
+position = Vector2(67358, -2886)
+
+[node name="Marker2D2" type="Marker2D" parent="Positions" unique_id=788347066]
+position = Vector2(66802, -2950)
+
+[node name="Marker2D3" type="Marker2D" parent="Positions" unique_id=1569088200]
+position = Vector2(67107, -3166)
+
+[node name="Marker2D4" type="Marker2D" parent="Positions" unique_id=960656934]
+position = Vector2(67467, -3276)
+
+[node name="Marker2D5" type="Marker2D" parent="Positions" unique_id=1195059160]
+position = Vector2(67082, -2771)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=492783361]
+
+[node name="End" type="AnimationPlayer" parent="." unique_id=1654476491]
+libraries/ = SubResource("AnimationLibrary_5drog")
+script = ExtResource("11_bbybp")
+metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
+
+[node name="Explosion" type="Sprite2D" parent="End" unique_id=1130790919]
+visible = false
+position = Vector2(66162, -1500)
+rotation = 0.5235988
+texture = ExtResource("23_6jitc")
+offset = Vector2(0, -300)
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="End" unique_id=456312941]
+stream = ExtResource("24_idnjq")
+volume_db = 2.0
+bus = &"SFX 1"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="Jingle" type="AudioStreamPlayer" parent="End" unique_id=706294882]
+stream = ExtResource("26_cwms7")
+bus = &"UI SFX"
+script = ExtResource("8_4yis4")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="died" from="LaserGooble/EnemyHealthComponent" to="LaserGooble" method="_on_enemy_health_component_died"]
+[connection signal="died" from="LaserGooble/EnemyHealthComponent" to="LaserGooble/Flatline" method="play"]
+[connection signal="timeout" from="LaserGooble/LaserLineup" to="LaserGooble" method="_on_laser_lineup_timeout"]
+[connection signal="timeout" from="LaserGooble/LaserBuildup" to="LaserGooble" method="_on_laser_buildup_timeout"]
+[connection signal="timeout" from="LaserGooble/LaserFinishBuildup" to="LaserGooble" method="_on_laser_finish_buildup_timeout"]
+[connection signal="timeout" from="LaserGooble/LaserFiring" to="LaserGooble" method="_on_laser_firing_timeout"]
+[connection signal="died" from="RPGGoggle/EnemyHealthComponent" to="RPGGoggle" method="_on_enemy_health_component_died"]
+[connection signal="died" from="RPGGoggle/EnemyHealthComponent" to="RPGGoggle/Flatline" method="play"]
+[connection signal="interacted" from="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGoggle" method="_on_hittable_component_interacted"]
+[connection signal="interacted" from="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGoggle/GoobleRPGGuy/EnemyHurtboxComponent" method="give_health_on_hit"]
+[connection signal="animation_finished" from="RPGGoggle/GoobleRPGGuy/RPG/Rocket/Rocket/RocketAnim" to="RPGGoggle" method="_on_rocket_anim_animation_finished"]
+[connection signal="timeout" from="RPGGoggle/RPGLineup" to="RPGGoggle" method="_on_rpg_lineup_timeout"]
+[connection signal="timeout" from="RPGGoggle/RPGCooldown" to="RPGGoggle" method="_on_rpg_cooldown_timeout"]
+[connection signal="died" from="RPGGrumble/EnemyHealthComponent" to="RPGGrumble" method="_on_enemy_health_component_died"]
+[connection signal="died" from="RPGGrumble/EnemyHealthComponent" to="RPGGrumble/Flatline" method="play"]
+[connection signal="interacted" from="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGrumble" method="_on_hittable_component_interacted"]
+[connection signal="interacted" from="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGrumble/GoobleRPGGuy/EnemyHurtboxComponent" method="give_health_on_hit"]
+[connection signal="animation_finished" from="RPGGrumble/GoobleRPGGuy/RPG/Rocket/Rocket/RocketAnim" to="RPGGrumble" method="_on_rocket_anim_animation_finished"]
+[connection signal="timeout" from="RPGGrumble/RPGLineup" to="RPGGrumble" method="_on_rpg_lineup_timeout"]
+[connection signal="timeout" from="RPGGrumble/RPGCooldown" to="RPGGrumble" method="_on_rpg_cooldown_timeout"]
+[connection signal="died" from="RPGGiggle/EnemyHealthComponent" to="RPGGiggle" method="_on_enemy_health_component_died"]
+[connection signal="died" from="RPGGiggle/EnemyHealthComponent" to="RPGGiggle/Flatline" method="play"]
+[connection signal="interacted" from="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGiggle" method="_on_hittable_component_interacted"]
+[connection signal="interacted" from="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGiggle/GoobleRPGGuy/EnemyHurtboxComponent" method="give_health_on_hit"]
+[connection signal="animation_finished" from="RPGGiggle/GoobleRPGGuy/RPG/Rocket/Rocket/RocketAnim" to="RPGGiggle" method="_on_rocket_anim_animation_finished"]
+[connection signal="timeout" from="RPGGiggle/RPGLineup" to="RPGGiggle" method="_on_rpg_lineup_timeout"]
+[connection signal="timeout" from="RPGGiggle/RPGCooldown" to="RPGGiggle" method="_on_rpg_cooldown_timeout"]
+[connection signal="died" from="RPGGimble/EnemyHealthComponent" to="RPGGimble" method="_on_enemy_health_component_died"]
+[connection signal="died" from="RPGGimble/EnemyHealthComponent" to="RPGGimble/Flatline" method="play"]
+[connection signal="interacted" from="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGimble" method="_on_hittable_component_interacted"]
+[connection signal="interacted" from="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/HittableComponent" to="RPGGimble/GoobleRPGGuy/EnemyHurtboxComponent" method="give_health_on_hit"]
+[connection signal="animation_finished" from="RPGGimble/GoobleRPGGuy/RPG/Rocket/Rocket/RocketAnim" to="RPGGimble" method="_on_rocket_anim_animation_finished"]
+[connection signal="timeout" from="RPGGimble/RPGLineup" to="RPGGimble" method="_on_rpg_lineup_timeout"]
+[connection signal="timeout" from="RPGGimble/RPGCooldown" to="RPGGimble" method="_on_rpg_cooldown_timeout"]
+[connection signal="animation_finished" from="End" to="." method="_on_game_animation_player_animation_finished"]

@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/xb_share.svg-73de4030e423d33242a4a6ba394f17cc
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

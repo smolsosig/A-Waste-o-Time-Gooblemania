@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/steamdeck_menu.svg-feb526e1d89b167980a5818e6c
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

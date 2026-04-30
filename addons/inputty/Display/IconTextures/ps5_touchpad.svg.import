@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/ps5_touchpad.svg-84d435d109bfc5c85c3f082e5e1e
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

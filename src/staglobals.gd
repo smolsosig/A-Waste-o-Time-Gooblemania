@@ -1,7 +1,10 @@
 extends Node
 # Stage Globals. That's what it stands for.
 
-var current_stage_fullname: String # "1982Fort, Side A"
+var current_stage_fullname: String: # "1982Fort, Side A"
+	set(value):
+		emit_signal("stage_name_changed", value)
+		current_stage_fullname = value 
 var current_stage_file_location: String: # "res://scenes/game/levels/spy_a.scn"
 	set(value):
 		# this is incredibly retarded.
@@ -22,6 +25,7 @@ var current_spawn_anim: String = "null"
 var recording_stats: bool = false
 
 signal wiblings_collected(amount: int)
+signal stage_name_changed(stage_name: String)
 
 var hud_hidden: bool = false
 signal show_hud(yes: bool)

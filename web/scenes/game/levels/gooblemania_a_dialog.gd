@@ -17,6 +17,7 @@ var dialogue: Dictionary = {
 	villager_standby1_rand3 = "If I stay... God. Should I stay or should I go?",
 	villager_standby1_rand4 = "... same as it ever was, same as it ever was...",
 	
+	#region GARCIA EAST
 	villager_sus_mini = "[b]PSST.[/b] Hey! Come here, quick!",
 	villager_sus1 = "[b]You![/b] Head to the roof! There's a door up there, we'll open it for you!",
 	villager_sus2 = "And do it now! Quickly, while [b]THEY[/b] are still on a routine search in the other side of the village!",
@@ -46,15 +47,40 @@ var dialogue: Dictionary = {
 	villager_tutorial1 = "Hell yeah, it's your bat! We kept it... it's been cleaned up and stuff.",
 	villager_tutorial2 = "It's Gooble-resistant, we made sure. You can go and hit one to death, but I don't advise standing still afterwards. Elena, you idiot...",
 	villager_tutorial3 = "Practice with that wooden Gooble dummy if you wish. It's very durable. The world will end and that thing will still be standing.",
-
+	#endregion
+	
 	villager_run1 = "CHARLIE, ARE YOU THERE? [b]F---ING [shake]RUN LIKE HELL!!![/shake][/b] WE'LL GUIDE YOU, [shake][b]GO![/b][/shake]",
 
-	radio_chatter1 = "Golf Whiskey to Golf Echo, do you copy? Don't you ever say our actual names out loud again. Over.",
+	#region GARCIA EAST SEWERS
+	radio_chatter1 = "Golf Whiskey to Golf Echo, do you copy? Don't you ever say our actual names out loud on air again. Over.",
 	radio_chatter2 = "Golf Whiskey to Golf Echo Sierra. We hear Charlie's gone underground? Please confirm, over.",
-	radio_chatter3 = "Oh, Charlie, is that you? Fantastic. This is Golf Whiskey. There's a direct path to the old lighthouse via the sewers, but be warned, we put a [b]lot[/b] of traps there.",
-	radio_chatter4 = "If you're in luck, they haven't been tested in ages... in which case, after all this, I wish to hear Golf Echo's excuses for why they HAVEN'T BEEN CALIBRATED REGULARLY.",
+	radio_chatter3 = "Oh, Charlie, is that you? Fantastic. This is Golf Whiskey. There's a direct path to Garcia North from there, but be warned, we put a [b]lot[/b] of traps in the sewers.",
+	radio_chatter4 = "If you're in luck, they haven't been tested in ages... in which case, after all this, I wish to hear Golf Echo's excuses for why they [shake]HAVEN'T BEEN CALIBRATED REGULARLY.[/shake]",
 	radio_chatter5 = "Good luck. Over and out.",
 	
 	radio_chatter_loop1 = "Golf Uniform Whiskey? Oh, Charlie. Hello!",
 	radio_chatter_loop2 = "[b][shake]GO OUT ALREADY![/shake][/b] There is NO TIME TO WASTE! OVER and OUT!",
+	#endregion
+	
+	#region GARCIA NORTH
+	julie_hicharlie1 = "OH, OH! [b][wave freq=10 amp=50.0]HI CHARLIEEEE!!![/wave][/b] Welcome to Garcia North, the only one with an actual weaponry division; courtesy of us being near the village armory.",
+	julie_hicharlie2 = "We've come up with a new weapon... no, [b]I[/b] did. Don't tell them, but the other guys here are all dumbbells. What's the term, \"stupid\"? Or is it \"slow\"? Maybe it's \"useless\". There's a cuter word for it...",
+	julie_hicharlie3 = "[shake][b]ENOUGH CHITCHAT!!![/b][/shake] Here's your weapon, babe, ranged throwing stars! I call this one the [b]IchistAr![/b] Try it out!",
+	
+	julie_talk2charlie1 = "Y'know, love, someone from Garcia South kept on sending me cassette tapes of love songs.",
+	julie_talk2charlie2 = "I get that maybe they like me, but I don't even like love songs... isn't that weird?",
+	julie_talk2charlie3 = "What about you, babe? What do you wish people got you? Or... do you already have someone who gives you what you want?",
+	
+	julie_talk2charlie_loop1 = "... y'know, love, I'd maybe forgive them if they were a girl. Teehee.",
+	julie_talk2charlie_loop2 = "..... I mean, uh, um. The ceiling fan looks so nice, right, babe?",
+	
+	julie_byecharlie1 = "Pretty good, huh? I'd love to talk more, but there's a pickup carriage in the back waiting for you.",
+	julie_byecharlie2 = "Get those Goobles! Good luck, babe!",
+	#endregion
+	
+	driver_holdon1 = "Girl, hold tight, I drive really quickly with this thing. Ne'ermind the sticker on the horse that says top speed is 30mph.",
+	driver_getready1 = "Girl, get your weapons ready. . . where there's smoke, there's flying Goobles. Please tell me you know how to switch weapons, because I'm not gonna teach you to press TAB to switch to your ranged.",
+	driver_wow1 = "Wow. I've never seen any of my passengers do that before.",
+	driver_wow2 = "Granted, they all die immediately as soon as we get spotted...",
+	driver_wow3 = "It's gonna be a little while befor we get to where we need to be, girl, so I ask you be patient. Least the hard part's over.",
 }

@@ -10,9 +10,11 @@ class_name CharlieSpawner extends Node2D
 # START SPAWN = 0. SUBSEQUENT CHECKPOINTS = DIFFERENT NUMBERS
 # IF USED AS TELEPORT MARKER, LEAVE DEFAULT 999 VALUE
 
-## [b]Priority # of this [b]CharlieSpawner[/b].[/b][br][br]
+## [b]Priority # of this [CharlieSpawner].[/b][br][br]
 ## Set to [code]0[/code] if starting spawn, then [code]1[/code], [code]2[/code] and onwards for checkpoints.[br]
-## For use as a destination marker for [CharlieTeleporter, leave as default value ([code]999[/code]).
+## For use as a destination marker for [CharlieTeleporter]s, leave as default value ([code]999[/code]).
+## [br][br]Ensure each [CharlieSpawner] has a unique ID! Otherwise, Charlie will spawn on the
+## [CharlieSpawner] nearest the bottom of the scene tree.
 @export var spawn_num_id: int = 999:
 	set(new_value):
 		clampi(new_value, 0, 999)
@@ -66,12 +68,12 @@ func tele_spawn() -> void:
 			Staglobals.freeze_frame_on_hurt = true
 
 ## Teleports Charlie to itself with no extra bullshittery.
-func teleport(spawn: bool = false) -> void:
+func teleport(spawn: bool = false, carry_velocity: bool = false) -> void:
 	var new_pos_y: float
 	# Charlie falls through platforms if I don't give her much foot room????
 	new_pos_y = global_position.y - 25 if spawn else global_position.y - 1
 	
-	SignalBus.emit_signal("charlie_change_pos", Vector2i(global_position.x, new_pos_y), spawn)
+	SignalBus.emit_signal("charlie_change_pos", Vector2i(global_position.x, new_pos_y), spawn, carry_velocity)
 	
 	if spawn && show_obi:
 		await get_tree().create_timer(2.5).timeout

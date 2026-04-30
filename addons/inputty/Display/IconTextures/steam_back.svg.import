@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/steam_back.svg-2e261937cb1a37834c4c42f461a8c5
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

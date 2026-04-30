@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/switch_down.svg-68ab98d7ec1c8fec944f212150fb7
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

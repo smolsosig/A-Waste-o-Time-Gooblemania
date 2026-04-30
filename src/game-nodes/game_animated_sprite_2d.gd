@@ -14,6 +14,9 @@ class_name GameAnimatedSprite2D extends AnimatedSprite2D
 ## If [code]true[/code], pauses the animation when Charlie undergoes the death animation.
 @export var pause_when_death: bool = true
 
+@onready var _init_flip_h: bool = flip_h
+@onready var _init_flip_v: bool = flip_v
+
 func _ready() -> void:
 	SignalBus.connect("charlie_death", death)
 	SignalBus.connect("reset", reset)
@@ -29,3 +32,6 @@ func reset() -> void:
 	
 	if autoplay_anim_name:
 		play(autoplay_anim_name)
+	
+	flip_h = _init_flip_h
+	flip_v = _init_flip_v

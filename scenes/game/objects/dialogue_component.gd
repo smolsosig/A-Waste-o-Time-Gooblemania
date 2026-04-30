@@ -22,6 +22,8 @@ func reset() -> void:
 		is_talked = false
 
 func interacted() -> void:
+	if !key: print("%s sez: I have no dialogue key. Means I can't do anything!")
+	
 	SignalBus.emit_signal("charlie_cutscene", "idle", "", false)
 	
 	if !afterloop:

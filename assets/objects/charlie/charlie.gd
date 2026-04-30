@@ -27,6 +27,8 @@ extends CharacterBody2D
 @export var jump_time_to_peak: float = 0.3
 @export var jump_time_to_descent: float = 0.35
 
+var can_move: bool
+
 @onready var jump_velocity: float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak) * -1.0
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent) * -1.0
@@ -120,8 +122,10 @@ func special_jump() -> void:
 	await get_tree().create_timer(0.1).timeout
 	um_yea_im_def_pressing_jump_lol = false
 
-func _door_teleport(t_position: Vector2, spawn: bool = false) -> void:
+func _door_teleport(t_position: Vector2, spawn: bool = false, carry_velocity: bool = false) -> void:
 	global_position = t_position
+	if !carry_velocity:
+		velocity = Vector2.ZERO
 	
 	# in the strange occasion that the CharlieSpawner is above-ground
 	if spawn:

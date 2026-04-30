@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_dpad_left.svg-1be6a13371568817d12e5192a77
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

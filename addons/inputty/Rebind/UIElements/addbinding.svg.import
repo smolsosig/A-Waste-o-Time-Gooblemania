@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/addbinding.svg-f89ee21a0e6082c47dac085b3c897d
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

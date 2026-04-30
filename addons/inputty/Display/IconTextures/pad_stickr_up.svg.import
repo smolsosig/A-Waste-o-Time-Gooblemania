@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/pad_stickr_up.svg-1694a6761f33aec220bdca85e68
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

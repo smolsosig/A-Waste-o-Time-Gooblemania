@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/key_backslash.svg-370f3cb5e985479c8f5c99c7113
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

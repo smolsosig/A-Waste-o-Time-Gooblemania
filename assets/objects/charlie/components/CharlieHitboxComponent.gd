@@ -40,7 +40,7 @@ func cutscene(_a: String, _b: String, _c: bool) -> void:
 	set_deferred("monitorable", false)
 
 # then we let her back in the wild as soon as the cutscene finishes
-func cutscene_end() -> void:
+func cutscene_end(_a: String = "SHUT THE FUCK UP") -> void:
 	set_deferred("monitorable", true)
 
 func open_zoom() -> void:

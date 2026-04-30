@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/ps_triangle.svg-b1a5d01f3c7fbd7fe1ce8739f42ca
 base_scale=0.125
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

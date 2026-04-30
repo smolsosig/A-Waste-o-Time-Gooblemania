@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cmlk5ku4nwiwd"]
+
+[ext_resource type="AudioStream" uid="uid://dyuo3ne5mljiu" path="res://assets/sounds/music/calmroombig.ogg" id="1_gnwpo"]
+[ext_resource type="Script" uid="uid://cuod24l5sr7a5" path="res://web/assets/misc/intermission/intermission.gd" id="1_uurnx"]
+[ext_resource type="Script" uid="uid://6nap4j4hopgo" path="res://src/game-nodes/game_audio_stream_player.gd" id="2_uurnx"]
+
+[node name="Intermission" type="CanvasLayer" unique_id=1385629282]
+script = ExtResource("1_uurnx")
+
+[node name="AwesomeMusic" type="AudioStreamPlayer" parent="." unique_id=560281250]
+stream = ExtResource("1_gnwpo")
+script = ExtResource("2_uurnx")
+loop_audio = true
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
