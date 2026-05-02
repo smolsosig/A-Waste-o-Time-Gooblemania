@@ -2,13 +2,233 @@
 
 [ext_resource type="AudioStream" uid="uid://dyuo3ne5mljiu" path="res://assets/sounds/music/calmroombig.ogg" id="1_gnwpo"]
 [ext_resource type="Script" uid="uid://cuod24l5sr7a5" path="res://web/assets/misc/intermission/intermission.gd" id="1_uurnx"]
+[ext_resource type="Script" uid="uid://dcj0j6xmi64mp" path="res://src/game-nodes/game_timer.gd" id="2_lj3cb"]
 [ext_resource type="Script" uid="uid://6nap4j4hopgo" path="res://src/game-nodes/game_audio_stream_player.gd" id="2_uurnx"]
+[ext_resource type="Texture2D" uid="uid://d103bvulq31kr" path="res://web/assets/ui/intermission/art6.png" id="5_2usy4"]
+[ext_resource type="Texture2D" uid="uid://k78vxopblul7" path="res://web/assets/ui/intermission/start.png" id="5_mvjqo"]
+[ext_resource type="Texture2D" uid="uid://b738opvlojcel" path="res://web/assets/misc/charlie-hand/handremote.png" id="5_nkls5"]
+[ext_resource type="AudioStream" uid="uid://ds7mxeo7eff1v" path="res://web/assets/sounds/charlie-vox-stupidads.ogg" id="5_x17xr"]
+[ext_resource type="Texture2D" uid="uid://b2yiibq0oi37" path="res://web/assets/ui/intermission/art5.png" id="6_3eklq"]
+[ext_resource type="Shader" uid="uid://c3l3fiesowsjx" path="res://web/assets/effects/shaders/crt.gdshader" id="6_7u6bg"]
+[ext_resource type="AudioStream" uid="uid://c0tg6v4rr3jje" path="res://web/assets/sounds/charlie-vox-huh.ogg" id="6_n260b"]
+[ext_resource type="Texture2D" uid="uid://lgl3gy57efql" path="res://web/assets/ui/intermission/art4.png" id="7_dabu3"]
+[ext_resource type="Texture2D" uid="uid://cwqtyjpfcxoj0" path="res://web/assets/ui/intermission/art3.png" id="8_x17xr"]
+[ext_resource type="Texture2D" uid="uid://sjdlnxb8n4fi" path="res://web/assets/ui/intermission/art2.png" id="9_n260b"]
+[ext_resource type="Texture2D" uid="uid://cc2kiq4xq57vc" path="res://web/assets/ui/intermission/art1.png" id="10_mqxfo"]
+[ext_resource type="AudioStream" uid="uid://cbmcvuvgq15d6" path="res://web/assets/ui/remotebuttonpress.ogg" id="14_3eklq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvjqo"]
+shader = ExtResource("6_7u6bg")
+shader_parameter/scanline_count = 300.00001425
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u6bg"]
+atlas = ExtResource("5_nkls5")
+region = Rect2(0, 0, 468, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvjqo"]
+atlas = ExtResource("5_nkls5")
+region = Rect2(468, 0, 468, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0ejf"]
+atlas = ExtResource("5_nkls5")
+region = Rect2(936, 0, 468, 313)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhnrj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u6bg")
+}],
+"loop": 1,
+"name": &"init",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvjqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0ejf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvjqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u6bg")
+}],
+"loop": 0,
+"name": &"press",
+"speed": 8.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_2ubkl"]
+script/source = "extends GameAnimatedSprite2D
+
+var still_hidden: bool = true
+var start_doing_shit: bool = false
+var start_checking_input: bool = false
+
+var mouse_position: Vector2
+@export var top_b_i: Marker2D
+@export var bot_b_i: Marker2D
+@export var top_b_o: Marker2D
+@export var bot_b_o: Marker2D
+
+@onready var parent_global_position: Vector2 = $\"..\".global_position
+
+var x_position: float
+var y_position: float
+var mouse_local_position: Vector2
+
+@onready var offset_y: float = offset.y
+
+func _ready() -> void:
+	super()
+	hide()
+
+func _input(event: InputEvent) -> void:
+	if start_doing_shit && event.is_action_pressed(\"player_a\"):
+		if visible && start_checking_input:
+			$\"../..\".next_ad()
+			$Beep.play()
+			play(\"press\")
+			$Cooldown.start()
+			start_checking_input = false
+			
+		if !visible:
+			show()
+			offset.y += 250
+			var tween: Tween = create_tween()
+			tween.tween_property(self, \"offset\", Vector2(offset.x, offset_y), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			await tween.finished
+			start_checking_input = true
+
+func stop_now() -> void:
+	start_doing_shit = false
+	await get_tree().create_timer(1).timeout
+	var tween: Tween = create_tween()
+	tween.tween_property(self, \"offset\", Vector2(offset.x, offset.y + 250), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await tween.finished
+	hide()
+
+func _process(_delta: float) -> void:
+	if start_doing_shit:
+		mouse_position = get_global_mouse_position()
+		mouse_local_position = mouse_position - parent_global_position
+		
+		position.x = remap(mouse_local_position.x, top_b_i.position.x, top_b_i.position.x * -1, top_b_o.position.x, top_b_o.position.x * -1)
+		position.y = remap(mouse_local_position.y, top_b_i.position.y, bot_b_i.position.y, top_b_o.position.y, bot_b_o.position.y)
+
+
+
+func _on_cooldown_timeout() -> void:
+	start_checking_input = true
+"
 
 [node name="Intermission" type="CanvasLayer" unique_id=1385629282]
 script = ExtResource("1_uurnx")
+debug = true
+
+[node name="AdCooldown" type="Timer" parent="." unique_id=1846970544]
+wait_time = 6.5
+one_shot = true
+script = ExtResource("2_lj3cb")
+metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
 
 [node name="AwesomeMusic" type="AudioStreamPlayer" parent="." unique_id=560281250]
 stream = ExtResource("1_gnwpo")
 script = ExtResource("2_uurnx")
 loop_audio = true
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="CharlieVoxEnd" type="AudioStreamPlayer" parent="." unique_id=1203749649]
+stream = ExtResource("5_x17xr")
+bus = &"SFX"
+script = ExtResource("2_uurnx")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="CharlieVoxHuh" type="AudioStreamPlayer" parent="." unique_id=1265644171]
+stream = ExtResource("6_n260b")
+bus = &"SFX"
+script = ExtResource("2_uurnx")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=915799408]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ads" type="Node2D" parent="." unique_id=1368054536]
+position = Vector2(960, 540)
+
+[node name="Art6" type="Sprite2D" parent="Ads" unique_id=2058111678]
+texture = ExtResource("5_2usy4")
+
+[node name="Art5" type="Sprite2D" parent="Ads" unique_id=701582775]
+texture = ExtResource("6_3eklq")
+
+[node name="Art4" type="Sprite2D" parent="Ads" unique_id=1015164729]
+texture = ExtResource("7_dabu3")
+
+[node name="Art3" type="Sprite2D" parent="Ads" unique_id=201816008]
+texture = ExtResource("8_x17xr")
+
+[node name="Art2" type="Sprite2D" parent="Ads" unique_id=873139011]
+texture = ExtResource("9_n260b")
+
+[node name="Art1" type="Sprite2D" parent="Ads" unique_id=518484847]
+texture = ExtResource("10_mqxfo")
+
+[node name="Start" type="Sprite2D" parent="Ads" unique_id=735164684]
+texture = ExtResource("5_mvjqo")
+
+[node name="ScreenFilter" type="ColorRect" parent="." unique_id=886539767]
+material = SubResource("ShaderMaterial_mvjqo")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Hand" type="Node2D" parent="." unique_id=1364435377]
+position = Vector2(960, 540)
+
+[node name="Hand" type="AnimatedSprite2D" parent="Hand" unique_id=1284966225 node_paths=PackedStringArray("top_b_i", "bot_b_i", "top_b_o", "bot_b_o")]
+position = Vector2(-121, -72)
+scale = Vector2(3.5407348, 3.5407348)
+sprite_frames = SubResource("SpriteFrames_bhnrj")
+animation = &"press"
+offset = Vector2(135.047, 56.385)
+script = SubResource("GDScript_2ubkl")
+top_b_i = NodePath("../TopBoundaryI")
+bot_b_i = NodePath("../BottomBoundaryI")
+top_b_o = NodePath("../TopBoundaryO")
+bot_b_o = NodePath("../BottomBoundaryO")
+autoplay_anim_name = "init"
+metadata/_custom_type_script = "uid://b5rqguvnjmvwa"
+
+[node name="Cooldown" type="Timer" parent="Hand/Hand" unique_id=1991961262]
+wait_time = 0.5
+one_shot = true
+script = ExtResource("2_lj3cb")
+metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
+
+[node name="Beep" type="AudioStreamPlayer" parent="Hand/Hand" unique_id=1113058105]
+stream = ExtResource("14_3eklq")
+volume_db = -4.0
+bus = &"UI SFX"
+script = ExtResource("2_uurnx")
+metadata/_custom_type_script = "uid://6nap4j4hopgo"
+
+[node name="TopBoundaryI" type="Marker2D" parent="Hand" unique_id=2018658306]
+position = Vector2(-960, -540)
+
+[node name="BottomBoundaryI" type="Marker2D" parent="Hand" unique_id=162785717]
+position = Vector2(-960, 540)
+
+[node name="TopBoundaryO" type="Marker2D" parent="Hand" unique_id=703781512]
+position = Vector2(-364, -142)
+
+[node name="BottomBoundaryO" type="Marker2D" parent="Hand" unique_id=1267237310]
+position = Vector2(-364, 425)
+
+[connection signal="timeout" from="AdCooldown" to="." method="next_ad"]
+[connection signal="timeout" from="AdCooldown" to="." method="_on_ad_cooldown_timeout"]
+[connection signal="timeout" from="Hand/Hand/Cooldown" to="Hand/Hand" method="_on_cooldown_timeout"]

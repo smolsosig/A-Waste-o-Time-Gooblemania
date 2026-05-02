@@ -28,6 +28,7 @@ signal wiblings_collected(amount: int)
 signal stage_name_changed(stage_name: String)
 
 var hud_hidden: bool = false
+var cursor_hidden: bool = false
 signal show_hud(yes: bool)
 
 var freeze_frame_on_hurt: bool = true

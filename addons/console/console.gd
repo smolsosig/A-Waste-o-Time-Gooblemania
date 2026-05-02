@@ -105,7 +105,7 @@ func _enter_tree() -> void:
 	rich_label.append_text("\n[b]::::::::::::::: a A WASTE o' TIME Developer's InterActAble Console Kernel :::::::::::::::[/b]
 	\"Terrible name, great performance!\"\n
 	Dev console provided by Placeholder Technologies. Developed by jitspoe and contributors.
-	Hijacked by midgetsausage.\n
+	Hijacked by midnightsausage.\n
 	This console is for inputting commands only; actual output is still printed in the default Godot debug console.
 	Enter \"info\" for more details on that.\n")
 	line_edit.anchor_top = 0.5
@@ -185,7 +185,7 @@ var no_main_menu: String = "You... know you can't really do that in the main men
 func info() -> void:
 	rich_label.append_text("	[b]::::::::::::::: GAME INFORMATION :::::::::::::::[/b]
 	A WASTE o' TIME: %s
-	COPYRIGHT (c) 2026 MIDGETSAUSAGE
+	COPYRIGHT (c) 2026 MIDNIGHTSAUSAGE
 	
 	[b]::::::::::::::: CONSOLE INFORMATION :::::::::::::::[/b]
 	Developer Console 1.4.0 was made by Nathan \"jitspoe\" Wulf and contributors, and is used under a MIT No Attribution license.\n

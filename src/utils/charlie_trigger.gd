@@ -4,17 +4,17 @@ class_name CharlieTrigger extends Area2D
 ## An [code]Area2D[/code] which responds to Charlie's presence.
 ##
 ## Charlie goes in, some triggers get emitted. Charlie goes out, other triggers get emitted.[br]
-## The possibilities are endless... though you'll mostly just be calling [code]play()[/code] to [GameAnimationPlayer]s.
+## The possibilities are endless... though you'll mostly just be calling [method GameAnimationPlayer.play].
 
 @warning_ignore("unused_private_class_variable")
 @export_tool_button("Add Collider", "Add") var _button: Callable = _create_collider
 
-## If [code]false[/code], disables trigger on startup. Equivalent to setting [code]monitoring[/code] to [code]false[/code].
+## If [code]false[/code], disables trigger on startup. Equivalent to setting [member Area2D.monitoring] to [code]false[/code].
 ## Disabling this will require the trigger to be manually reenabled by calling the trigger's [member enable_monitoring]
-## method or setting the trigger's [code]monitored[/code]
+## method or setting the trigger's [member Area2D.monitoring]
 ## property to [code]true[/code].
 @export var enable_on_start: bool = true
-## Seconds before any/all [code]area_entered[/code] outputs are fired,
+## Seconds before any/all [signal Area2D.area_entered] outputs are fired,
 ## regardless if any output has a delay set.[br][br]
 ## If value is not zero, trigger will call [member do_shit_before] and
 ## then set off the timer. Important if the trigger script was extended.
@@ -28,7 +28,7 @@ class_name CharlieTrigger extends Area2D
 ## to reset the trigger.[br][br]Positively [b]only set this to [code]true[/code]
 ## if you've planned everything ahead.[/b] I hope you know what you're doing.
 @export var persistent: bool = false
-## The complete list of outputs this CharlieTrigger will emit.
+## The complete list of outputs this [CharlieTrigger] will emit.
 @export var outputs: Array[Output]
 
 ## Emitted when Charlie leaves the trigger.

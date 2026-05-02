@@ -5,8 +5,11 @@ class_name SoundscapePlayerProxy extends Area2D
 ## This is so you only have to set up one SoundscapePlayer, and any SoundscapePlayerProxy can just
 ## inherit that player's settings. Very convenient!
 
+## The [SoundscapePlayer] to grab the soundscape from.
 @export var soundscape_player: SoundscapePlayer
+## If [code]true[/code], overrides [member SoundscapePlayer.fade_in].
 @export var override_fade_in: bool = false
+## Yeah.
 @export var fade_in: float = 0.5
 
 func _ready() -> void:

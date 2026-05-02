@@ -12,8 +12,8 @@ class_name CameraRegionController2D
 	set(value):
 		camera = value
 		update_configuration_warnings()
-## The [Node2D] that acts as the movement target for the [Camera2D]. This must be assigned for the [CameraRegionController2D] to function properly.
-@export var target_node: Node2D:
+## The [CameraTarget] that acts as the movement target for the [Camera2D]. This must be assigned for the [CameraRegionController2D] to function properly.
+@export var target_node: CameraTarget:
 	set(value):
 		target_node = value
 		update_configuration_warnings()
@@ -59,7 +59,7 @@ func _ready() -> void:
 	SignalBus.connect("charlie_death", stop_following)
 	SignalBus.connect("cam_ok_u_can_follow_now", start_following)
 	SignalBus.connect("stop_cam_please_dawg", stop_following)
-	assert(target_node, "Please assign a Node2D to target_node.")
+	assert(target_node, "Please assign a CameraTarget to target_node.")
 	assert(camera, "Please assign a Camera2D to camera.")
 	_get_regions()
 	_update_current_region()

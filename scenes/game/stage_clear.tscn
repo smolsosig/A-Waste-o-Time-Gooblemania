@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dtgt3gxw8wkwu" path="res://assets/ui/stage_end/placeholder_reviews.png" id="4_gkr8w"]
 [ext_resource type="Texture2D" uid="uid://b0t4vvl3afhmr" path="res://assets/ui/stage_end/bar.png" id="5_upqy3"]
 [ext_resource type="Texture2D" uid="uid://b15nmfr2ge4nb" path="res://assets/ui/stage_end/verdict.png" id="7_7g4ys"]
-[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader.gdshader" id="7_d5stg"]
+[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader" id="7_d5stg"]
 [ext_resource type="Texture2D" uid="uid://ki72u47l6hl0" path="res://assets/ui/stage_icons/1962fort_A.png" id="8_7xx0y"]
 [ext_resource type="Texture2D" uid="uid://bf5d57xoj5xcw" path="res://assets/ui/stage_end/stageclear.png" id="9_pv3nm"]
 [ext_resource type="Texture2D" uid="uid://b62flm16o8qv8" path="res://assets/ui/stage_end/ringofpower1.png" id="11_bn4aw"]

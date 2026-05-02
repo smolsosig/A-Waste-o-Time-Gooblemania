@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://su70rteroqat" path="res://assets/ui/object_prompt/interactbub.png" id="2_urjbg"]
 [ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_x3jjr"]
 [ext_resource type="Script" uid="uid://cjadxw4j1bmhw" path="res://addons/inputty/Display/UI/InputtyPromptTextureRect.gd" id="4_kxt68"]
-[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader.gdshader" id="4_yfglv"]
+[ext_resource type="Shader" uid="uid://dvwaooflb4nki" path="res://assets/ui/outline.gdshader" id="4_yfglv"]
 [ext_resource type="Texture2D" uid="uid://bm3xmwpt3gj1i" path="res://assets/ui/key_icons/keyboard_mouse/keyboard_w.png" id="5_xtgum"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfglv"]

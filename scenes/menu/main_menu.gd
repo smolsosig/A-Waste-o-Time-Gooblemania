@@ -27,7 +27,7 @@ func music_rng() -> void:
 	var rng: int = (randi()%1000)
 	if rng == 315:
 		MusicManager.play_music("titlemusic2.ogg")
-		print("MIDGETSAUSAGE sends her warmest regards!!! (Alt title music played)")
+		print("MIDNIGHTSAUSAGE sends her warmest regards!!! (Alt title music played)")
 	else:
 		print("Better luck next time! (You rolled %s.)" % rng)
 		MusicManager.play_music("titlemusic.ogg")

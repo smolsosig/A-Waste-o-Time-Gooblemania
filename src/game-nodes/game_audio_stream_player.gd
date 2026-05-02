@@ -18,7 +18,7 @@ func _ready() -> void:
 	SignalBus.connect("charlie_death", death)
 	SignalBus.connect("reset", reset)
 	SignalBus.connect("stage_end", death)
-	SignalBus.connect("switch_scene_web_bandaid", stop)
+	SignalBus.connect("switch_scene_web_bandaid", stop_bandaid)
 	
 	connect("finished", _finished)
 	
@@ -32,6 +32,9 @@ func play_with_fade(fade_in: float = 0, from_position: float = 0) -> void:
 	volume_db = -80.0
 	tween = create_tween()
 	tween.tween_property(self, "volume_db", last_volume_db, fade_in).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func stop_bandaid() -> void:
+	stop_with_fade(3)
 
 func stop_with_fade(fade_out: float = 0) -> void:
 	tween = create_tween()

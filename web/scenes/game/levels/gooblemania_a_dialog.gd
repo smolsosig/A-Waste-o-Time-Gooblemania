@@ -79,8 +79,9 @@ var dialogue: Dictionary = {
 	#endregion
 	
 	driver_holdon1 = "Girl, hold tight, I drive really quickly with this thing. Ne'ermind the sticker on the horse that says top speed is 30mph.",
-	driver_getready1 = "Girl, get your weapons ready. . . where there's smoke, there's flying Goobles. Please tell me you know how to switch weapons, because I'm not gonna teach you to press TAB to switch to your ranged.",
+	driver_getready1 = "Girl, get your weapons ready. . . where there's smoke, there's flying Goobles. Please tell me you know how to switch weapons, because I'm not gonna teach you to press [b]TAB[/b] to switch to your ranged.",
+	driver_useyerbat = "Girl, deflect the rockets with your bat! Quit spamming stars!",
 	driver_wow1 = "Wow. I've never seen any of my passengers do that before.",
 	driver_wow2 = "Granted, they all die immediately as soon as we get spotted...",
-	driver_wow3 = "It's gonna be a little while befor we get to where we need to be, girl, so I ask you be patient. Least the hard part's over.",
+	driver_wow3 = "It's gonna be a little while before we get to where we need to be, girl, so I ask you to be patient. Least the hard part's over.",
 }

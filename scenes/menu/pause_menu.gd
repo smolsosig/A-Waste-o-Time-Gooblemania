@@ -29,6 +29,7 @@ func stage_name_changed(stage_name: String) -> void:
 	%StageName.text = stage_name.to_upper()
 
 func show_pause() -> void:
+	PlayerVar.ui_cursor()
 	anim_player.play("RESET")
 	show()
 	anim_player.play("show")
@@ -37,6 +38,7 @@ func show_pause() -> void:
 
 func hide_pause() -> void:
 	emit_signal("unpaused")
+	PlayerVar.ui_cursor(false)
 	anim_player.play_backwards("show")
 
 # TODO check if in-game, or only running a specific scene, by checking SignalBus.game_mode == 2

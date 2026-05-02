@@ -26,6 +26,9 @@ signal stop
 var routine_1: Array[Array] = [["laser"], ["rpg"], ["laser", "rpg"], ["rpg", "rpg"]]
 var routine_2: Array[Array] = [["rpg", "rpg", "laser"], ["rpg", "rpg"], ["rpg", "rpg", "rpg"], ["laser", "rpg", "rpg", "rpg"], ["rpg", "rpg", "rpg", "rpg"], ["rpg", "rpg", "rpg", "rpg", "laser"]]
 
+var tell_player_to_deflect_check: bool = false
+signal tell_player_to_deflect
+
 var wave_count: int = 0
 var wave_gooble_alive_count: int = 0
 var wave_gooble_finished_routine: int = 0:
@@ -44,6 +47,7 @@ func _ready() -> void:
 
 func _reset() -> void:
 	cooldown.stop()
+	tell_player_to_deflect_check = false
 
 func start_routine() -> void:
 	pick_routine()

@@ -52,15 +52,15 @@ vertical_alignment = 2
 [node name="OptionsTabs" type="TabContainer" parent="OptionsPanel/VBoxContainer" unique_id=1498795706]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 3
 
 [node name="Game" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=1788545868]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Video")
 focus_neighbor_top = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2/ShowHUD")
 focus_neighbor_right = NodePath("../Video")
-focus_neighbor_bottom = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Language")
 focus_next = NodePath("../Keyboard")
 focus_previous = NodePath("../Video")
 focus_mode = 2
@@ -91,33 +91,6 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1884199992]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=327025333]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "LANGUAGE?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Language" type="OptionButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1837689378]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
-focus_neighbor_top = NodePath("../../../../..")
-focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
-focus_neighbor_bottom = NodePath("../../VBoxContainer2/ShowHUD")
-focus_next = NodePath("../../VBoxContainer2/ShowHUD")
-focus_previous = NodePath("../../VBoxContainer2/ShowHUD")
-disabled = true
-alignment = 1
-selected = 0
-item_count = 1
-popup/item_0/text = "ENGLISH"
-popup/item_0/id = 0
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Game/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1332568713]
 layout_mode = 2
 
@@ -133,7 +106,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer/CamShake")
-focus_neighbor_top = NodePath("../../VBoxContainer/Language")
 focus_neighbor_right = NodePath("../../../../..")
 focus_neighbor_bottom = NodePath("../../../../..")
 focus_next = NodePath("../../../../..")
@@ -163,12 +135,10 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer/Language")
 focus_neighbor_top = NodePath("../../../../..")
 focus_neighbor_right = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
 focus_neighbor_bottom = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
 focus_next = NodePath("../../../VBoxContainer/VBoxContainer2/ShowHUD")
-focus_previous = NodePath("../../../VBoxContainer/VBoxContainer/Language")
 button_pressed = true
 text = "RATTLE 'N' ROLL"
 alignment = 1
@@ -309,7 +279,6 @@ min_value = -70.0
 max_value = 0.0
 
 [node name="Video" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=535628975]
-visible = false
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 3
@@ -342,24 +311,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/separation = 20
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1295972009]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1116177849]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "WINDOW BORDER?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="WindowBorder" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1701576524]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-disabled = true
-text = "BORDERED"
-alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=378749109]
 custom_minimum_size = Vector2(300, 0)
@@ -479,7 +430,6 @@ text = "SAVE & EXIT"
 [connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/SoundsSlider" to="." method="_on_sounds_slider_value_changed"]
-[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/WindowBorder" to="." method="_on_window_border_toggled"]
 [connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer/FPS" to="." method="_on_fps_toggled"]
 [connection signal="item_selected" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4/MaxFPS" to="." method="_on_max_fps_item_selected"]
 [connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/DisplayMode" to="." method="_on_display_mode_toggled"]

@@ -38,23 +38,6 @@ func _on_sounds_slider_value_changed(value: float) -> void:
 	PlayerVar.save_setting("audio", "sounds_volume", value)
 #endregion
 #region VIDEO SETTINGS
-var picked_resolution: int
-
-func _on_window_resolution_item_selected(index: int) -> void:
-	get_window().size = PlayerVar.resolutions[index]
-	picked_resolution = index
-	PlayerVar.centre_window()
-	PlayerVar.save_setting("video", "window_resolution", index)
-
-func _on_window_border_toggled(toggled_on: bool) -> void:
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, toggled_on)
-	get_window().size = PlayerVar.resolutions[picked_resolution]
-	PlayerVar.save_setting("video", "borderless", toggled_on)
-	if toggled_on:
-		%WindowBorder.text = "BORDERLESS"
-	else:
-		%WindowBorder.text = "BORDERED"
-
 func _on_fps_toggled(toggled_on: bool) -> void:
 	SignalBus.emit_signal("show_fps", toggled_on)
 	PlayerVar.save_setting("video", "show_fps", toggled_on)
@@ -69,11 +52,8 @@ func _on_display_mode_toggled(toggled_on: bool) -> void:
 		%DisplayMode.text = "FULLSCREEN"
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
-		%DisplayMode.text = "WINDOWED"
+		%DisplayMode.text = "NOT FULLSCREEN"
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	%WindowResolution.disabled = toggled_on
-	%WindowBorder.disabled = toggled_on
 
 func _on_v_sync_toggled(toggled_on: bool) -> void:
 	PlayerVar.save_setting("video", "vsync", toggled_on)
@@ -91,7 +71,6 @@ func _on_max_fps_item_selected(index: int) -> void:
 
 #region LOAD 'EM UP
 func _ready() -> void:
-	%Language.selected = PlayerVar.return_setting("game", "language")
 	%ShowHUD.button_pressed = PlayerVar.return_setting("game", "show_hud")
 	%WiblingsSlider.value = PlayerVar.return_setting("game", "money_limit")
 	%CamShake.button_pressed = PlayerVar.return_setting("game", "cam_shake")
@@ -100,7 +79,6 @@ func _ready() -> void:
 	%MusicSlider.value = PlayerVar.return_setting("audio", "music_volume")
 	%SoundsSlider.value = PlayerVar.return_setting("audio", "sounds_volume")
 	
-	%WindowBorder.button_pressed = PlayerVar.return_setting("video", "borderless")
 	%DisplayMode.button_pressed = PlayerVar.return_setting("video", "display_mode")
 	%VSync.button_pressed = PlayerVar.return_setting("video", "vsync")
 	%FPS.button_pressed = PlayerVar.return_setting("video", "show_fps")
@@ -121,7 +99,6 @@ func show_menu() -> void:
 	%Game.grab_focus()
 
 func _on_save_exit_pressed() -> void:
-	PlayerVar.save_config()
 	%OptionsPanel.focus_behavior_recursive = 1
 	%OptionsPanel.mouse_behavior_recursive = 1
 	var tween := create_tween()

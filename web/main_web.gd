@@ -23,7 +23,6 @@ func _ready() -> void:
 	SignalBus.desktop = false
 	SignalBus.connect("level_load", level_load)
 	SignalBus.connect("main_menu_load", main_menu_load)
-	#main_menu.level_start.connect(level_load)
 	Fade.fade_in(1)
 	SignalBus.game_mode = 1
 	print("Game mode: %s" % SignalBus.game_mode)
@@ -31,11 +30,6 @@ func _ready() -> void:
 func main_menu_connect(loaded_scene : Variant) -> void:
 	#This is where you put the main_menu connect things.
 	main_menu = loaded_scene
-	#main_menu.level_start.connect(level_load)
-
-#var i_kinda_like_godot_a_bit = load(main_menu_dir)
-#main_menu = i_kinda_like_godot_a_bit.instantiate()
-#add_child(main_menu)
 
 func _process(_delta : float) -> void:
 	if loading != 0:

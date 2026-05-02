@@ -1,7 +1,7 @@
 @icon("res://assets/misc/tools/icons/Charlie.png")
 extends CharacterBody2D
 
-@export var speed: float = 1100.0
+@export var speed: float = 1000.0
 
 @export var anim_sprite: AnimatedSprite2D
 @export var state_machine: CharlieStateMachine

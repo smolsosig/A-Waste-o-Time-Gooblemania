@@ -31,3 +31,6 @@ func _on_button_pressed() -> void:
 
 func _on_gooble_pressed() -> void:
 	SignalBus.emit_signal("level_load", "gooblemania_a-opening")
+
+func _on_options_menu_pressed() -> void:
+	$OptionsMenu.show_menu()

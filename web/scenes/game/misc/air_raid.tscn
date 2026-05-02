@@ -368,7 +368,7 @@ func stop_firing() -> void:
 	manager.wave_gooble_finished_routine -= 1
 	sprite_anims.play(\"flying_loop\")
 
-func _on_enemy_health_component_died() -> void:
+func _on_enemy_health_component_died(died_via_rpg: bool = false) -> void:
 	print(\"And DOWN goes %s!\" % name)
 	health.health = health.base_health
 	hurtbox.set_deferred(\"monitorable\", false)
@@ -381,6 +381,11 @@ func _on_enemy_health_component_died() -> void:
 	manager.wave_gooble_finished_routine -= 1
 	sprite_anims.play(\"death\")
 	marker = init_position
+	
+	if !died_via_rpg && !manager.tell_player_to_deflect_check:
+		await get_tree().create_timer(1).timeout
+		manager.tell_player_to_deflect.emit()
+		manager.tell_player_to_deflect_check = true
 
 
 func _on_hittable_component_interacted() -> void:
@@ -393,7 +398,7 @@ func _on_rocket_anim_animation_finished(anim_name: StringName) -> void:
 		\"deflect\":
 			rocket_anims.play(\"RESET\")
 			$Explosion/GameAnimationPlayer.play(\"explooode\")
-			_on_enemy_health_component_died()
+			_on_enemy_health_component_died(true)
 "
 
 [sub_resource type="GDScript" id="GDScript_6jitc"]
@@ -1583,7 +1588,7 @@ script = ExtResource("6_ixsq1")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
 [node name="RPGGrumble" type="CharacterBody2D" parent="." unique_id=1180044132]
-position = Vector2(65803, -3462)
+position = Vector2(65803, -3223)
 script = SubResource("GDScript_idnjq")
 
 [node name="EnemyHealthComponent" type="Node" parent="RPGGrumble" unique_id=1010666727]
@@ -1735,7 +1740,7 @@ script = ExtResource("6_ixsq1")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
 [node name="RPGGiggle" type="CharacterBody2D" parent="." unique_id=1323095999]
-position = Vector2(65803, -3462)
+position = Vector2(65803, -3060)
 script = SubResource("GDScript_idnjq")
 
 [node name="EnemyHealthComponent" type="Node" parent="RPGGiggle" unique_id=96512661]
@@ -1887,7 +1892,7 @@ script = ExtResource("6_ixsq1")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
 [node name="RPGGimble" type="CharacterBody2D" parent="." unique_id=44634675]
-position = Vector2(65803, -3462)
+position = Vector2(65803, -3587)
 script = SubResource("GDScript_idnjq")
 
 [node name="EnemyHealthComponent" type="Node" parent="RPGGimble" unique_id=1206150791]
