@@ -20,9 +20,6 @@ func _ready() -> void:
 	else:
 		show_pause()
 	
-	#if !OS.has_feature("pc"):
-		#main_buttons[2].hide()
-	
 	Staglobals.connect("stage_name_changed", stage_name_changed)
 
 func stage_name_changed(stage_name: String) -> void:
@@ -30,6 +27,9 @@ func stage_name_changed(stage_name: String) -> void:
 
 func show_pause() -> void:
 	PlayerVar.ui_cursor()
+	if $Music.tween: $Music.tween.kill()
+	$Music.play()
+	$Music.volume_db = 0
 	anim_player.play("RESET")
 	show()
 	anim_player.play("show")
@@ -37,6 +37,7 @@ func show_pause() -> void:
 	quit_fucking_up_my_pause_menu = true
 
 func hide_pause() -> void:
+	$Music.stop_with_fade(0.5)
 	emit_signal("unpaused")
 	PlayerVar.ui_cursor(false)
 	anim_player.play_backwards("show")

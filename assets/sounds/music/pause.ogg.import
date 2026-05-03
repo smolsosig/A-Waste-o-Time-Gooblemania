@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/pause.ogg-c3081c69abf3a9959a9f38c1bc2f8753.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=2.19
 bpm=0.0
 beat_count=0

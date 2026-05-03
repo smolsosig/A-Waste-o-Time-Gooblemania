@@ -157,6 +157,9 @@ func _reset() -> void:
 func emit_signalbus(...args: Array) -> void:
 	SignalBus.callv("emit_signal", args)
 
+func emit_staglobals(...args: Array) -> void:
+	Staglobals.callv("emit_signal", args)
+
 func emit_soundmanager(...args: Array) -> void:
 	var actual_args: Array = args.duplicate()
 	actual_args.remove_at(0)

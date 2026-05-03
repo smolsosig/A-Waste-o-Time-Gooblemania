@@ -30,6 +30,8 @@ func play_with_fade(fade_in: float = 0, from_position: float = 0) -> void:
 	play(from_position)
 	last_volume_db = volume_db
 	volume_db = -80.0
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "volume_db", last_volume_db, fade_in).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
@@ -37,6 +39,8 @@ func stop_bandaid() -> void:
 	stop_with_fade(3)
 
 func stop_with_fade(fade_out: float = 0) -> void:
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "volume_db", -80, fade_out).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
 	await tween.finished

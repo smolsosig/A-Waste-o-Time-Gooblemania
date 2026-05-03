@@ -72,6 +72,7 @@ var mouse_position: Vector2
 @export var top_b_i: Marker2D
 @export var bot_b_i: Marker2D
 @export var top_b_o: Marker2D
+@export var top_b_o2: Marker2D
 @export var bot_b_o: Marker2D
 
 @onready var parent_global_position: Vector2 = $\"..\".global_position
@@ -89,6 +90,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if start_doing_shit && event.is_action_pressed(\"player_a\"):
 		if visible && start_checking_input:
+			$\"../..\".skipped = true
 			$\"../..\".next_ad()
 			$Beep.play()
 			play(\"press\")
@@ -96,12 +98,16 @@ func _input(event: InputEvent) -> void:
 			start_checking_input = false
 			
 		if !visible:
-			show()
-			offset.y += 250
-			var tween: Tween = create_tween()
-			tween.tween_property(self, \"offset\", Vector2(offset.x, offset_y), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			await tween.finished
-			start_checking_input = true
+			$ShowHand.stop()
+			show_hand()
+			
+func show_hand() -> void:
+	show()
+	offset.y += 250
+	var tween: Tween = create_tween()
+	tween.tween_property(self, \"offset\", Vector2(offset.x, offset_y), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	start_checking_input = true
 
 func stop_now() -> void:
 	start_doing_shit = false
@@ -116,7 +122,7 @@ func _process(_delta: float) -> void:
 		mouse_position = get_global_mouse_position()
 		mouse_local_position = mouse_position - parent_global_position
 		
-		position.x = remap(mouse_local_position.x, top_b_i.position.x, top_b_i.position.x * -1, top_b_o.position.x, top_b_o.position.x * -1)
+		position.x = remap(mouse_local_position.x, top_b_i.position.x, top_b_i.position.x * -1, top_b_o.position.x, top_b_o2.position.x)
 		position.y = remap(mouse_local_position.y, top_b_i.position.y, bot_b_i.position.y, top_b_o.position.y, bot_b_o.position.y)
 
 
@@ -143,17 +149,19 @@ metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
 [node name="CharlieVoxEnd" type="AudioStreamPlayer" parent="." unique_id=1203749649]
 stream = ExtResource("5_x17xr")
+volume_db = -2.0
 bus = &"SFX"
 script = ExtResource("2_uurnx")
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
 [node name="CharlieVoxHuh" type="AudioStreamPlayer" parent="." unique_id=1265644171]
 stream = ExtResource("6_n260b")
+volume_db = -3.0
 bus = &"SFX"
 script = ExtResource("2_uurnx")
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=915799408]
+[node name="BG" type="ColorRect" parent="." unique_id=915799408]
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
@@ -190,7 +198,7 @@ offset_bottom = 1080.0
 [node name="Hand" type="Node2D" parent="." unique_id=1364435377]
 position = Vector2(960, 540)
 
-[node name="Hand" type="AnimatedSprite2D" parent="Hand" unique_id=1284966225 node_paths=PackedStringArray("top_b_i", "bot_b_i", "top_b_o", "bot_b_o")]
+[node name="Hand" type="AnimatedSprite2D" parent="Hand" unique_id=1284966225 node_paths=PackedStringArray("top_b_i", "bot_b_i", "top_b_o", "top_b_o2", "bot_b_o")]
 position = Vector2(-121, -72)
 scale = Vector2(3.5407348, 3.5407348)
 sprite_frames = SubResource("SpriteFrames_bhnrj")
@@ -200,6 +208,7 @@ script = SubResource("GDScript_2ubkl")
 top_b_i = NodePath("../TopBoundaryI")
 bot_b_i = NodePath("../BottomBoundaryI")
 top_b_o = NodePath("../TopBoundaryO")
+top_b_o2 = NodePath("../TopBoundaryO2")
 bot_b_o = NodePath("../BottomBoundaryO")
 autoplay_anim_name = "init"
 metadata/_custom_type_script = "uid://b5rqguvnjmvwa"
@@ -217,6 +226,12 @@ bus = &"UI SFX"
 script = ExtResource("2_uurnx")
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
+[node name="ShowHand" type="Timer" parent="Hand/Hand" unique_id=356970891]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("2_lj3cb")
+metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
+
 [node name="TopBoundaryI" type="Marker2D" parent="Hand" unique_id=2018658306]
 position = Vector2(-960, -540)
 
@@ -226,9 +241,13 @@ position = Vector2(-960, 540)
 [node name="TopBoundaryO" type="Marker2D" parent="Hand" unique_id=703781512]
 position = Vector2(-364, -142)
 
+[node name="TopBoundaryO2" type="Marker2D" parent="Hand" unique_id=1443598229]
+position = Vector2(674, -142)
+
 [node name="BottomBoundaryO" type="Marker2D" parent="Hand" unique_id=1267237310]
 position = Vector2(-364, 425)
 
 [connection signal="timeout" from="AdCooldown" to="." method="next_ad"]
 [connection signal="timeout" from="AdCooldown" to="." method="_on_ad_cooldown_timeout"]
 [connection signal="timeout" from="Hand/Hand/Cooldown" to="Hand/Hand" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="Hand/Hand/ShowHand" to="Hand/Hand" method="show_hand"]

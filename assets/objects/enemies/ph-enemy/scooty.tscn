@@ -127,10 +127,10 @@ tracks/2/path = NodePath("AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.6333333),
-"transitions": PackedFloat32Array(0, 2, 0, 0),
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.53333336, 0.6),
+"transitions": PackedFloat32Array(0, 2, 0, 0, 2),
 "update": 0,
-"values": [Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 0), Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 0), Color(1, 0.733333, 0.666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -274,7 +274,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6n8e7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -282,7 +282,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_16u1s")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walking",
 "speed": 5.0
 }]
@@ -376,6 +376,7 @@ script = SubResource("GDScript_xfoi3")
 script = ExtResource("4_diadq")
 
 [node name="EnemyHurtboxComponent" parent="." unique_id=805051596 node_paths=PackedStringArray("health_component") instance=ExtResource("7_1kj86")]
+flash_white_when_damaged = true
 health_component = NodePath("../EnemyHealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtboxComponent" unique_id=1876940202]
@@ -392,6 +393,7 @@ health_comp = NodePath("../EnemyHealthComponent")
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=248314019]
 position = Vector2(0, -50)
 scale = Vector2(40, 34.267)
+show_rect = false
 
 [node name="EnemyHitboxComponent" type="Area2D" parent="." unique_id=699289400]
 script = ExtResource("15_hlm8h")

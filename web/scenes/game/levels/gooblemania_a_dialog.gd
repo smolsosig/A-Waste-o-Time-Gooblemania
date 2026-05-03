@@ -84,4 +84,9 @@ var dialogue: Dictionary = {
 	driver_wow1 = "Wow. I've never seen any of my passengers do that before.",
 	driver_wow2 = "Granted, they all die immediately as soon as we get spotted...",
 	driver_wow3 = "It's gonna be a little while before we get to where we need to be, girl, so I ask you to be patient. Least the hard part's over.",
+	driver_byebye1 = "Girl, this is our stop. Get in there now.",
+	driver_byebye2 = "You were good, kid. It's a mad world out there now, so stay safe. See you 'round. Don't worry about me.",
+
+	wherethefuck1 = "Where the f- where'd he go? I don't know.",
+	wherethefuck2 = "Don't... don't question it.",
 }

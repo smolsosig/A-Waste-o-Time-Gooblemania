@@ -5,15 +5,10 @@ var current_level: Variant
 var no_edging: bool = false
 var pausable: bool = false
 @onready var pause_menu: CanvasLayer = %PauseMenu
-@onready var pause_music_dir: String = "res://assets/sounds/music/pause.ogg"
-var pause_music: AudioStreamOggVorbis
 
 func _ready() -> void:
 	SignalBus.connect("set_pausable", set_pausable)
 	SignalBus.connect("quit_game", quit_game)
-	
-	ResourceLoader.load_threaded_request(pause_music_dir)
-	pause_music = ResourceLoader.load_threaded_get(pause_music_dir)
 
 func hey_dipshit(level: Variant) -> void:
 	current_level = level
@@ -34,7 +29,6 @@ func _input(event : InputEvent) -> void:
 			get_tree().paused = true
 			pause_menu.show_pause()
 			MusicManager.pause_music(0.5)
-			SoundManager.play_music(pause_music, 0, "Music")
 		elif get_tree().paused && pause_menu.can_unpause:
 			pause_menu.hide_pause()
 

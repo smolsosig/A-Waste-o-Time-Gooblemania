@@ -306,7 +306,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kg1wx"]
-radius = 163.0276
+radius = 70.035706
 
 [sub_resource type="GDScript" id="GDScript_idnjq"]
 script/source = "extends CharacterBody2D

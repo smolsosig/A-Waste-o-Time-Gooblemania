@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cwyu4u88ptsfp" path="res://assets/tilesets/assets/generalprops1.png" id="3_1hsq3"]
 [ext_resource type="Texture2D" uid="uid://2moqcx1x1bp6" path="res://web/assets/tilesets/assets/garcia-gooble.png" id="4_3s65v"]
 [ext_resource type="Texture2D" uid="uid://dbv56rec08l6n" path="res://assets/tilesets/assets/sewers.png" id="4_lqooy"]
+[ext_resource type="Texture2D" uid="uid://bp3pmbvuh4jtf" path="res://assets/tilesets/assets/spy.png" id="6_1hsq3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_md5j2"]
 polygon = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
@@ -415,6 +416,25 @@ texture_region_size = Vector2i(100, 100)
 5:0/0 = 0
 2:6/0 = 0
 3:6/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3s65v"]
+texture = ExtResource("6_1hsq3")
+texture_region_size = Vector2i(100, 100)
+2:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, -40, -40, -40, -40, 50, -50, 50)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, -40, -50, -40)
+4:1/0 = 0
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, -40, -50, -40)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, -40, -50, -40, -40, -50, -40)
 
 [resource]
 tile_size = Vector2i(100, 100)
@@ -425,3 +445,4 @@ sources/1 = SubResource("TileSetAtlasSource_b6q8u")
 sources/2 = SubResource("TileSetAtlasSource_md5j2")
 sources/4 = SubResource("TileSetAtlasSource_vjx8l")
 sources/3 = SubResource("TileSetAtlasSource_cgmhb")
+sources/5 = SubResource("TileSetAtlasSource_3s65v")

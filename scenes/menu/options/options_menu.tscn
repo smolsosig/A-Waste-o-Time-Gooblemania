@@ -52,11 +52,10 @@ vertical_alignment = 2
 [node name="OptionsTabs" type="TabContainer" parent="OptionsPanel/VBoxContainer" unique_id=1498795706]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 3
+current_tab = 0
 
 [node name="Game" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=1788545868]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Video")
 focus_neighbor_top = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer2/ShowHUD")
@@ -279,6 +278,7 @@ min_value = -70.0
 max_value = 0.0
 
 [node name="Video" type="Control" parent="OptionsPanel/VBoxContainer/OptionsTabs" unique_id=535628975]
+visible = false
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 3

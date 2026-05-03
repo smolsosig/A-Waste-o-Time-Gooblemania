@@ -96,6 +96,7 @@ func finished_routine() -> void:
 		do_shit_once = true
 	
 	if wave_count > max_waves:
+		print("### AIR RAID OVER! IT'S DONE! CONGRATULATIONS, CHARLIE! (ALL WAVES CLEARED) #####")
 		emit_signal("stop_internal")
 		$End.play("end")
 		PlayerVar.target_health = PlayerVar.base_health

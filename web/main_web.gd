@@ -71,6 +71,7 @@ func level_load(level_name: String) -> void:
 
 #add loaded scene as child
 func load_em_up(mode : int) -> void:
+	ldscrn.shut_up()
 	await Fade.fade_out(1).finished
 	ldscrn.queue_free()
 	
@@ -80,6 +81,7 @@ func load_em_up(mode : int) -> void:
 		level_container.hey_dipshit(loaded_scene)
 		mode = 2
 		SignalBus.game_mode = 2
+		PlayerVar.set_cursor()
 	else:
 		add_child(loaded_scene)
 		main_menu_connect(loaded_scene)

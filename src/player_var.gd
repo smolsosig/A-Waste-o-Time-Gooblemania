@@ -153,43 +153,39 @@ var wibbie_blessing_active: bool = true
 #endregion
 #region Cursor
 # Why is this placed in PlayerVar? Because there's no other good place for me to put it. LOL
+var pointer: CompressedTexture2D = load("res://assets/ui/cursors/pointer.png")
 var def_cursor: CompressedTexture2D = load("res://assets/ui/cursors/default.png")
 var crosshair: CompressedTexture2D = load("res://assets/ui/cursors/crosshair.png")
 var null_cursor: CompressedTexture2D = load("res://assets/ui/cursors/null.png")
-var cursor_x: float
-var cursor_y: float
-var hotspot_coords: Vector2
+var game_hotspot_coords: Vector2 = Vector2(43, 43)
+var pointer_hotspot_coords: Vector2 = Vector2(20, 16)
 var hide_cursor_in_stage: bool = false
 var cursor_hidden: bool = false
 @onready var last_cursor: Texture2D = def_cursor
 
 func ready_cursor() -> void:
-	cursor_x = def_cursor.get_width() / 2.0
-	cursor_y = def_cursor.get_height() / 2.0
-	hotspot_coords = Vector2(cursor_x, cursor_y)
-	
-	Input.set_custom_mouse_cursor(def_cursor, Input.CURSOR_ARROW, hotspot_coords)
+	Input.set_custom_mouse_cursor(pointer, Input.CURSOR_ARROW, pointer_hotspot_coords)
 
 func set_cursor(be_crosshair: bool = false) -> void:
 	if !be_crosshair:
-		Input.set_custom_mouse_cursor(def_cursor, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(def_cursor, Input.CURSOR_ARROW, game_hotspot_coords)
 		last_cursor = def_cursor
 	else:
-		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, game_hotspot_coords)
 		last_cursor = crosshair
 
 func showhide_cursor(hide: bool = false) -> void:
 	if hide:
-		Input.set_custom_mouse_cursor(null_cursor, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(null_cursor, Input.CURSOR_ARROW, game_hotspot_coords)
 	else:
-		Input.set_custom_mouse_cursor(last_cursor, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(last_cursor, Input.CURSOR_ARROW, game_hotspot_coords)
 	cursor_hidden = hide
 #
 func ui_cursor(ui: bool = true) -> void:
 	if ui:
-		Input.set_custom_mouse_cursor(def_cursor, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(pointer, Input.CURSOR_ARROW, pointer_hotspot_coords)
 	else:
-		Input.set_custom_mouse_cursor(null_cursor if cursor_hidden else last_cursor, Input.CURSOR_ARROW, hotspot_coords)
+		Input.set_custom_mouse_cursor(null_cursor if cursor_hidden else last_cursor, Input.CURSOR_ARROW, game_hotspot_coords)
 #endregion
 
 func _ready() -> void:

@@ -1,6 +1,5 @@
 @icon("res://assets/misc/tools/icons/GameAudioStreamPlayer2D.png")
-extends AudioStreamPlayer2D
-class_name GameAudioStreamPlayer2D
+class_name GameAudioStreamPlayer2D extends AudioStreamPlayer2D
 ## AudioStreamPlayer2D that resets when Charlie herself resets.
 
 ## If [code]true[/code], stops the sound if Charlie dies.
