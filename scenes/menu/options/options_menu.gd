@@ -46,14 +46,8 @@ func _on_fps_toggled(toggled_on: bool) -> void:
 	else:
 		%FPS.text = "YEAH, SHOW ME"
 
-func _on_display_mode_toggled(toggled_on: bool) -> void:
-	PlayerVar.save_setting("video", "display_mode", toggled_on)
-	if toggled_on:
-		%DisplayMode.text = "FULLSCREEN"
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		%DisplayMode.text = "NOT FULLSCREEN"
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+func _on_display_mode_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_v_sync_toggled(toggled_on: bool) -> void:
 	PlayerVar.save_setting("video", "vsync", toggled_on)

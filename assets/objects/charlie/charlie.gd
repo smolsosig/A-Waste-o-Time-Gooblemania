@@ -49,6 +49,8 @@ var dashing: bool = false
 var is_open_zoom_end: bool = false
 signal open_zoom_endd
 
+var dont_fucking_switch_weapons_during_cutscenes_jackass: bool = false
+
 func _ready() -> void:
 	jump_timer.wait_time = jump_time_to_peak
 	SignalBus.connect("charlie_door_teleport", _door_teleport)
@@ -134,7 +136,7 @@ func _door_teleport(t_position: Vector2, spawn: bool = false, carry_velocity: bo
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_switchweapon") && is_open_zoom_end:
-		if PlayerVar.can_switch_weapon:
+		if PlayerVar.can_switch_weapon && !dont_fucking_switch_weapons_during_cutscenes_jackass:
 			if !PlayerVar.melee:
 				PlayerVar.melee = true
 			else:

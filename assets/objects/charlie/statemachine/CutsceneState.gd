@@ -15,6 +15,7 @@ func cutscene(anim_name: String, finished: String, grav_lock: bool = false) -> v
 	emit_signal("interrupt_state", self) # switch to this state
 	
 	charlie.velocity = Vector2.ZERO
+	charlie.dont_fucking_switch_weapons_during_cutscenes_jackass = true
 	
 	cutscene_on = true
 	
@@ -35,6 +36,7 @@ func stop() -> void:
 	else:
 		next_state = air_state
 	
+	charlie.dont_fucking_switch_weapons_during_cutscenes_jackass = false
 	charlie.grav_lock = false
 	
 	if finished_action:

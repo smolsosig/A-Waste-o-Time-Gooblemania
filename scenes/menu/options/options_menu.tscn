@@ -378,17 +378,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1189256071]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "DISPLAY MODE?"
+text = "ENABLE FULLSCREEN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DisplayMode" type="CheckButton" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1295869327]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
+[node name="DisplayMode" type="Button" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=1304204959]
 layout_mode = 2
-button_pressed = true
-text = "FULLSCREEN"
-alignment = 1
+text = "HELL YEAH"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=827911718]
 layout_mode = 2
@@ -432,6 +428,6 @@ text = "SAVE & EXIT"
 [connection signal="value_changed" from="OptionsPanel/VBoxContainer/OptionsTabs/Audio/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/SoundsSlider" to="." method="_on_sounds_slider_value_changed"]
 [connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer/FPS" to="." method="_on_fps_toggled"]
 [connection signal="item_selected" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4/MaxFPS" to="." method="_on_max_fps_item_selected"]
-[connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/DisplayMode" to="." method="_on_display_mode_toggled"]
+[connection signal="pressed" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/DisplayMode" to="." method="_on_display_mode_pressed"]
 [connection signal="toggled" from="OptionsPanel/VBoxContainer/OptionsTabs/Video/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/VSync" to="." method="_on_v_sync_toggled"]
 [connection signal="pressed" from="OptionsPanel/SaveExit" to="." method="_on_save_exit_pressed"]
