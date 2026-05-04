@@ -47,9 +47,21 @@ var marker: Vector2
 
 func _ready() -> void:
 	SignalBus.connect(\"reset\", _reset)
+	SignalBus.connect(\"charlie_about_to_die\", _charlie_about_to_die)
+
+func _charlie_about_to_die() -> void:
+	sprite_anims.stop()
+	lineup_timer.stop()
+	buildup_timer.stop()
 
 func _reset() -> void:
-	global_position = marker
+	marker = init_position
+	global_position = init_position
+	sprite_anims.play(\"RESET\")
+	$GoobleMachinegunner/Machinegun.track_location = false
+	$GoobleMachinegunner/Machinegun/Static.stop()
+	$GoobleMachinegunner/Machinegun/LaserBuildup.stop()
+	$GoobleMachinegunner/Machinegun/LaserRelease.stop()
 
 func start_routine(new_position: Marker2D) -> void:
 	health.health = health.base_health
@@ -329,9 +341,18 @@ var clip_size: int
 
 func _ready() -> void:
 	SignalBus.connect(\"reset\", _reset)
+	SignalBus.connect(\"charlie_about_to_die\", _charlie_about_to_die)
+
+func _charlie_about_to_die() -> void:
+	sprite_anims.stop()
 
 func _reset() -> void:
-	global_position = marker
+	marker = init_position
+	global_position = init_position
+	cooldown_timer.stop()
+	lineup_timer.stop()
+	sprite_anims.stop()
+	stop_firing()
 
 func start_routine(new_position: Marker2D) -> void:
 	clip_size = randi_range(3, 5)
@@ -360,12 +381,13 @@ func _on_rpg_cooldown_timeout() -> void:
 		clip_size -= 1
 		sprite_anims.play(\"firing\")
 	else:
+		manager.wave_gooble_finished_routine -= 1
 		stop_firing()
 
 func stop_firing() -> void:
 	marker = init_position
+	clip_size = 0
 	$GoobleRPGGuy/RPG.track_location = false
-	manager.wave_gooble_finished_routine -= 1
 	sprite_anims.play(\"flying_loop\")
 
 func _on_enemy_health_component_died(died_via_rpg: bool = false) -> void:
@@ -1294,7 +1316,7 @@ _data = {
 &"end": SubResource("Animation_xbnjy")
 }
 
-[node name="AirRaid" type="Node" unique_id=1321035742 node_paths=PackedStringArray("charlie", "marker", "available_positions", "laser_goobles", "rpg_goobles")]
+[node name="AirRaid" type="Node" unique_id=1321035742 node_paths=PackedStringArray("charlie", "marker", "available_positions", "available_positions_sniper", "laser_goobles", "rpg_goobles")]
 script = ExtResource("1_lhep1")
 debug = true
 charlie = NodePath("CharacterBody2D")
@@ -1302,6 +1324,7 @@ marker = NodePath("MainMarker")
 max_waves = 8
 waves_to_begin_second = 4
 available_positions = [NodePath("Positions/Marker2D"), NodePath("Positions/Marker2D2"), NodePath("Positions/Marker2D3"), NodePath("Positions/Marker2D4"), NodePath("Positions/Marker2D5")]
+available_positions_sniper = [NodePath("Positions/Sniper1"), NodePath("Positions/Sniper2")]
 laser_goobles = [NodePath("LaserGooble")]
 rpg_goobles = [NodePath("RPGGoggle"), NodePath("RPGGrumble"), NodePath("RPGGiggle"), NodePath("RPGGimble")]
 
@@ -1328,7 +1351,7 @@ script = SubResource("GDScript_qoelj")
 
 [node name="EnemyHealthComponent" type="Node" parent="LaserGooble" unique_id=440127848]
 script = ExtResource("1_3idwt")
-base_health = 100
+base_health = 75
 metadata/_custom_type_script = "uid://dxdarkjig4ell"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGooble" unique_id=998538320]
@@ -2045,20 +2068,26 @@ metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
 [node name="Positions" type="Node" parent="." unique_id=1327423965]
 
-[node name="Marker2D" type="Marker2D" parent="Positions" unique_id=1299997703]
-position = Vector2(67358, -2886)
+[node name="Sniper1" type="Marker2D" parent="Positions" unique_id=1299997703]
+position = Vector2(67593, -2953)
 
-[node name="Marker2D2" type="Marker2D" parent="Positions" unique_id=788347066]
+[node name="Sniper2" type="Marker2D" parent="Positions" unique_id=960656934]
+position = Vector2(67422, -3259)
+
+[node name="Marker2D" type="Marker2D" parent="Positions" unique_id=788347066]
 position = Vector2(66802, -2950)
 
+[node name="Marker2D2" type="Marker2D" parent="Positions" unique_id=668046384]
+position = Vector2(67316, -3004)
+
 [node name="Marker2D3" type="Marker2D" parent="Positions" unique_id=1569088200]
-position = Vector2(67107, -3166)
+position = Vector2(67076, -3107)
 
-[node name="Marker2D4" type="Marker2D" parent="Positions" unique_id=960656934]
-position = Vector2(67467, -3276)
-
-[node name="Marker2D5" type="Marker2D" parent="Positions" unique_id=1195059160]
+[node name="Marker2D4" type="Marker2D" parent="Positions" unique_id=1195059160]
 position = Vector2(67082, -2771)
+
+[node name="Marker2D5" type="Marker2D" parent="Positions" unique_id=1911349737]
+position = Vector2(67419, -2755)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=492783361]
 

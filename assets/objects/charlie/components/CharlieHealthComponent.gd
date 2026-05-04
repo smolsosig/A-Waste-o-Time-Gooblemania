@@ -30,7 +30,7 @@ func health_change_init() -> void:
 	health_timer.wait_time = PlayerVar.health_speed
 	health_change()
 
-func health_change() -> void: #there is a reason this is no longer a while loop
+func health_change() -> void: # there is a reason this is no longer a while loop
 	if PlayerVar.health != PlayerVar.target_health:
 		health_timer.wait_time = PlayerVar.health_speed
 		if PlayerVar.health > PlayerVar.target_health:
@@ -39,7 +39,7 @@ func health_change() -> void: #there is a reason this is no longer a while loop
 		else:
 			PlayerVar.health += 1
 			PlayerVar.health_state = 2
-		health_timer.start() #and why this doesn't await a timer timeout anymore
+		health_timer.start() # and why this doesn't await a timer timeout anymore
 	else:
 		PlayerVar.health_state = 0
 
@@ -54,6 +54,7 @@ func health_timeout() -> void:
 func _on_grace_timer_timeout() -> void:
 	if PlayerVar.health == 0:
 		SignalBus.emit_signal("charlie_death")
+		print("!!!!!!!!!!!!!!!!!!!! charlie ded !!!!!!!!!!!!!!!!!!!!")
 
 func reset_health() -> void:
 	PlayerVar.health = PlayerVar.base_health
