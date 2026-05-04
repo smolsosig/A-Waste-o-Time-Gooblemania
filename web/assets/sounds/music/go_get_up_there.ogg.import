@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/go_get_up_there.ogg-6e56769b8e89e6209968b0c40
 
 [params]
 
-loop=true
+loop=false
 loop_offset=6.85
 bpm=0.0
 beat_count=0
