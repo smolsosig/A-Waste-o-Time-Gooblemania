@@ -24,7 +24,7 @@ func kill_level() -> void:
 		current_level.queue_free()
 
 func _input(event : InputEvent) -> void:
-	if event.is_action_pressed("ui_back") && pausable:
+	if event.is_action_pressed("player_pause") && pausable:
 		if !get_tree().paused:
 			get_tree().paused = true
 			pause_menu.show_pause()
