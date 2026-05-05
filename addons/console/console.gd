@@ -158,11 +158,6 @@ func _ready() -> void:
 	add_command("help", help, 0, 0, "Displays instructions on how to use the console.")
 	add_command("commands_list", commands_list, 0, 0, "Lists all commands and their descriptions.")
 	add_command("commands", commands, 0, 0, "Lists commands with no descriptions.")
-	#add_command("calc", calculate, ["mathematical expression to evaluate"], 0, "Evaluates the math passed in for quick arithmetic.")
-	#add_command("echo", print_line, ["string"], 1, "Prints given string to the console.")
-	#add_command("echo_warning", print_warning, ["string"], 1, "Prints given string as warning to the console.")
-	#add_command("echo_info", print_info, ["string"], 1, "Prints given string as info to the console.")
-	#add_command("echo_error", print_error, ["string"], 1, "Prints given string as an error to the console.")
 	add_command("pause", pause, 0, 0, "Pauses node processing.")
 	add_command("unpause", unpause, 0, 0, "Unpauses node processing.")
 	
@@ -173,6 +168,7 @@ func _ready() -> void:
 	add_command("stopmusic", stop_music, 0, 0, "Stops music.")
 	add_command("char_die", die, 0, 0, "Charlie dies and it'll be your fault.")
 	add_command("return_dialog", return_dialog, ["dialogue key"], 1, "Returns the dialogue based on the key.")
+	add_command("show_clips", showhide_clips, ["1/0"], 1, "Shows/hides the clip tiles of a level.")
 	
 	add_hidden_command("char_thealth", thealth, 2, 0)
 	add_hidden_command("quit_smoking", quit_smoking, 0, 0)
@@ -237,23 +233,8 @@ func return_dialog(key:String) -> void:
 		else:
 			print_smth("... okay. Well, I can tell you that the dialogue file is loaded, if that's what you want.")
 
-func switch_game(type: String) -> void:
-	if type == "main":
-		MusicManager.stop_music()
-		SoundManager.stop_music()
-		print_smth("Changed game scene to desktop version. Good luck!")
-		get_tree().change_scene_to_file("res://scenes/main.scn")
-		toggle_console()
-	elif type == "web":
-		MusicManager.stop_music()
-		SoundManager.stop_music()
-		print_smth("Changed game scene to web version. Good luck!")
-		get_tree().change_scene_to_file("res://web/main_web.scn")
-		toggle_console()
-	elif !type:
-		print_smth("....... ?")
-	else:
-		print_smth("I don't know nothin' 'bout no \"%s.\"" % type)
+func showhide_clips(key: String) -> void:
+	SignalBus.showhide_clip.emit(bool(int(key)))
 
 func current_spawn(spawn_num: String) -> void:
 	var prior_spawn: int = Staglobals.current_spawn

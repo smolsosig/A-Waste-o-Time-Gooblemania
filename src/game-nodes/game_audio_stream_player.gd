@@ -16,13 +16,13 @@ var tween: Tween
 
 func _ready() -> void:
 	SignalBus.connect("charlie_death", death)
-	SignalBus.connect("reset", reset)
+	SignalBus.connect("reset", _reset)
 	SignalBus.connect("stage_end", death)
 	SignalBus.connect("switch_scene_web_bandaid", stop_bandaid)
 	
 	connect("finished", _finished)
 	
-	reset()
+	_reset()
 
 ## Plays a sound from the beginning, or the given [code]from_position[/code] in seconds, while
 ## fading the sound in in seconds.
@@ -52,7 +52,7 @@ func death() -> void:
 	if tween:
 		tween.kill()
 
-func reset() -> void:
+func _reset() -> void:
 	stop()
 	if autoplay && !playing:
 		if !autoplay_at_random_time: play()

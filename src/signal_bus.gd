@@ -1,6 +1,6 @@
 extends Node
 # Here we go again!
-var awot_version: String = "Gooblemania v1.1.1 Build"
+var awot_version: String = "Gooblemania v1.1.2 Build"
 @export_enum("loading", "menu", "ingame", "misc") var game_mode : int = 1
 var main_game_running: bool = false
 
@@ -70,4 +70,5 @@ signal quit_game
 
 signal show_obi
 
+signal showhide_clip(show: bool)
 # 67

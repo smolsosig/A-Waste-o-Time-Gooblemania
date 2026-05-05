@@ -28,6 +28,8 @@ func reset() -> void:
 		if !autoplay_at_random_time: play()
 		else:
 			play(randf_range(0, stream.get_length()))
+	else:
+		stop()
 
 func _finished() -> void:
 	if loop_audio:

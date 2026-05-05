@@ -57,13 +57,13 @@ func _process(delta: float) -> void:
 			thing = 1.0 if !offset.x else 0.25
 			
 			if move:
-				if Input.is_action_pressed("player_left") || Input.is_action_pressed("player_right"):
+				if (Input.is_action_pressed("player_left") || Input.is_action_pressed("player_right")) && charlie.velocity.x:
 					if Input.is_action_pressed("player_left"):
-						_charlie_offset.x = lerp(offset.x, -lookahead_offset, lerp_weight * delta * thing)
+						_charlie_offset.x = lerp(_charlie_offset.x, -lookahead_offset, lerp_weight * delta * thing)
 					elif Input.is_action_pressed("player_right"):
-						_charlie_offset.x = lerp(offset.x, lookahead_offset, lerp_weight * delta * thing)
+						_charlie_offset.x = lerp(_charlie_offset.x, lookahead_offset, lerp_weight * delta * thing)
 				else:
-					_charlie_offset.x = lerp(offset.x, 0.0, lerp_weight * 0.1 * delta)
+					_charlie_offset.x = lerp(_charlie_offset.x, 0.0, lerp_weight * 0.25 * delta)
 			
 			_combined_position = charlie.global_position + offset + _charlie_offset
 			global_position = _combined_position
