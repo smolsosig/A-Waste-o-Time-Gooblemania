@@ -8,7 +8,7 @@ extends CharlieState
 @export var dash_cooldown: Timer
 @export var idle_timer: Timer
 @export var air_trail: Line2D
-@export var midair_sound: AudioStreamPlayer
+@export var midair_sound: GameAudioStreamPlayer
 
 @export_group("States")
 @export var air_state: CharlieState

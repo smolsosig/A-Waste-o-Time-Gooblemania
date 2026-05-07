@@ -87,7 +87,7 @@ func atk_rng(is_melee: bool = true, guaranteed_crit: bool = false) -> float:
 			SignalBus.emit_signal("freeze_frame", 0.05, 0.5)
 		else:
 			SignalBus.emit_signal("freeze_frame", 0.05, 0.3)
-		SignalBus.emit_signal("cam_shake", "verysmall")
+		SignalBus.cam_shake.emit("verysmall")
 	else:
 		# if we get a number < crit_chance, decide if normal crit or super crit
 		random_numbery = random.randi_range(0, crit_chance)
@@ -95,15 +95,15 @@ func atk_rng(is_melee: bool = true, guaranteed_crit: bool = false) -> float:
 			# normal crit
 			SignalBus.emit_signal("crit_delivered", false)
 			damage = randi_range((damage * 2.5), (damage * 3)) # because 3 was too much???????
-			SignalBus.emit_signal("freeze_frame", 0.05, 0.75)
-			SignalBus.emit_signal("cam_shake", "small")
+			SignalBus.freeze_frame.emit(0.05, 0.75)
+			SignalBus.cam_shake.emit("small")
 			supercrits += 1
 		else:
 			# super crit
 			SignalBus.emit_signal("crit_delivered", true)
 			damage = randi_range((damage * 9.5), (damage * 10))
-			SignalBus.emit_signal("freeze_frame", 0.05, 1.5)
-			SignalBus.emit_signal("cam_shake", "small")
+			SignalBus.freeze_frame.emit(0.05, 1.5)
+		SignalBus.cam_shake.emit("small")
 		crit = true
 	
 	return damage

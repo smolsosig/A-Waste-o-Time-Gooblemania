@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 			global_position = override_target.global_position + offset
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("player_b") && follow_anything:
+	if event.is_action_pressed("player_b") && follow_anything && PlayerVar.dash:
 		follow_anything = false
 		await get_tree().create_timer(0.125).timeout
 		offset.x = 0

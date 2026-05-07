@@ -143,6 +143,7 @@ metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
 
 [node name="AwesomeMusic" type="AudioStreamPlayer" parent="." unique_id=560281250]
 stream = ExtResource("1_gnwpo")
+bus = &"Music"
 script = ExtResource("2_uurnx")
 loop_audio = true
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
@@ -247,7 +248,7 @@ position = Vector2(674, -142)
 [node name="BottomBoundaryO" type="Marker2D" parent="Hand" unique_id=1267237310]
 position = Vector2(-364, 425)
 
-[connection signal="timeout" from="AdCooldown" to="." method="next_ad"]
 [connection signal="timeout" from="AdCooldown" to="." method="_on_ad_cooldown_timeout"]
+[connection signal="timeout" from="AdCooldown" to="." method="next_ad"]
 [connection signal="timeout" from="Hand/Hand/Cooldown" to="Hand/Hand" method="_on_cooldown_timeout"]
 [connection signal="timeout" from="Hand/Hand/ShowHand" to="Hand/Hand" method="show_hand"]

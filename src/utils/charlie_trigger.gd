@@ -115,7 +115,10 @@ func _emit_outputs(_outputs: Array) -> void:
 		if !delay:
 			_emit_output(target, target_method, arguments)
 		else:
-			var timer: SceneTreeTimer = get_tree().create_timer(delay)
+			var timer: GameTimer = GameTimer.new()
+			timer._is_create_timer_substitute = true
+			timer.wait_time = delay
+			add_child(timer)
 			timer.timeout.connect(func() -> void: _emit_delayed_output(num))
 		
 		num += 1

@@ -24,6 +24,8 @@ func _reset() -> void:
 	hide()
 	skipped = false
 	ad_cooldown_timer.wait_time = wait_time
+	for artwork in artworks:
+		artwork.show()
 
 func start_intermission() -> void:
 	show()
