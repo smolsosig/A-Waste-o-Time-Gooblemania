@@ -13,6 +13,7 @@ func _ready() -> void:
 		autostart = true
 		one_shot = true
 		timeout.connect(queue_free)
+		process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func death() -> void:
 	stop()

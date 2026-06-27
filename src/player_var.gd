@@ -164,7 +164,7 @@ var cursor_hidden: bool = false
 @onready var last_cursor: Texture2D = def_cursor
 
 func ready_cursor() -> void:
-	Input.set_custom_mouse_cursor(pointer, Input.CURSOR_ARROW, pointer_hotspot_coords)
+	Input.set_custom_mouse_cursor(def_cursor, Input.CURSOR_ARROW, game_hotspot_coords)
 
 func set_cursor(be_crosshair: bool = false) -> void:
 	if !be_crosshair:

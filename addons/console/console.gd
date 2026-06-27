@@ -169,10 +169,11 @@ func _ready() -> void:
 	add_command("char_die", die, 0, 0, "Charlie dies and it'll be your fault.")
 	add_command("return_dialog", return_dialog, ["dialogue key"], 1, "Returns the dialogue based on the key.")
 	add_command("show_clips", showhide_clips, ["1/0"], 1, "Shows/hides the clip tiles of a level.")
+	add_command("char_showcurrentspawn", currentspawn_show, 0, 0, "Shows current spawn.")
 	
 	add_hidden_command("char_thealth", thealth, 2, 0)
 	add_hidden_command("quit_smoking", quit_smoking, 0, 0)
-	add_hidden_command("current_spawn", current_spawn, 1, 1)
+	add_hidden_command("char_setcurrentspawn", currentspawn_set, 1, 1)
 
 
 #region AWoT commands
@@ -202,12 +203,9 @@ func change_level(map_name: String) -> void:
 		Console.print_error("Level is non-existent, dumbshit.")
 
 func reset() -> void:
-	if SignalBus.game_mode == 2:
-		SignalBus.emit_signal("reset")
-		print_smth("Resetting level via console.")
-		toggle_console()
-	elif SignalBus.game_mode == 1:
-		print_smth(no_main_menu)
+	SignalBus.emit_signal("reset")
+	print_smth("Resetting level via console.")
+	toggle_console()
 
 func play_music(filename: String) -> void:
 	var check := ResourceLoader.exists("res://assets/sounds/music/%s.ogg" % filename)
@@ -236,7 +234,10 @@ func return_dialog(key:String) -> void:
 func showhide_clips(key: String) -> void:
 	SignalBus.showhide_clip.emit(bool(int(key)))
 
-func current_spawn(spawn_num: String) -> void:
+func currentspawn_show() -> void:
+	print_smth("Current spawn is %s." % Staglobals.current_spawn)
+
+func currentspawn_set(spawn_num: String) -> void:
 	var prior_spawn: int = Staglobals.current_spawn
 	Staglobals.current_spawn = int(spawn_num)
 	print_smth("Current spawn now set from %s to %s." % [prior_spawn, spawn_num])

@@ -175,6 +175,7 @@ func medal_unlock(id: int) -> void:
 
 func set_spawn(num: int) -> void:
 	Staglobals.current_spawn = num
+	print("Set spawn to %s!" % num)
 
 func show_hud(yes: bool) -> void:
 	Staglobals.emit_signal("show_hud", yes)

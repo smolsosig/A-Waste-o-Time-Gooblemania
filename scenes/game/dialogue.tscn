@@ -215,19 +215,23 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_lrvlq")
 
 [node name="DialogueText" type="RichTextLabel" parent="." unique_id=156902556]
+clip_contents = false
 offset_left = 426.999
 offset_top = 831.0
 offset_right = 1495.0
-offset_bottom = 968.9999
+offset_bottom = 972.0
 theme_override_fonts/normal_font = ExtResource("3_y3mo6")
 theme_override_fonts/bold_font = ExtResource("4_txv1r")
 theme_override_font_sizes/normal_font_size = 35
 theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
+text = "We've come up with a new weapon... no, [b]I[/b] did. Don't tell them, but the other guys here are all dumbbells. What's the term, \"stupid\"? Or is it \"slow\"? Maybe it's \"useless\". There's a cuter word for it..."
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 vertical_alignment = 1
+meta_underlined = false
+hint_underlined = false
 visible_characters_behavior = 1
 
 [node name="TheCenter-er" type="VBoxContainer" parent="." unique_id=1071490179]

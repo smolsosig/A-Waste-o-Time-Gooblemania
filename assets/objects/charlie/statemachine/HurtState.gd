@@ -17,6 +17,6 @@ func _on_charlie_hurtbox_component_hurt() -> void:
 	charlie.grav_lock = true # freezes charlie mid-air
 	anim_player.play("hurt")
 	sound.play()
-	SignalBus.cam_shake.emit("small", false, self.name)
+	SignalBus.cam_shake.emit("small", false)
 	if Staglobals.freeze_frame_on_hurt:
 		SignalBus.emit_signal("freeze_frame", 0.05, 0.7)

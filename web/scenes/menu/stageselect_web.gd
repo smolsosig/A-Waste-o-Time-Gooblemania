@@ -8,6 +8,7 @@ var await_input: bool = false
 var pressed_key: bool = false
 
 func _ready() -> void:
+	PlayerVar.ui_cursor()
 	$Music1.play()
 	camera.global_position.y = -1080
 	await get_tree().create_timer(1).timeout

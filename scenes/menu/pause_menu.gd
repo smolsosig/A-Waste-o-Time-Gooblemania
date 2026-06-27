@@ -27,7 +27,7 @@ func stage_name_changed(stage_name: String) -> void:
 
 func show_pause() -> void:
 	PlayerVar.ui_cursor()
-	if $Music.tween: $Music.tween.kill()
+	if $Music._tween: $Music._tween.kill()
 	$Music.play()
 	$Music.volume_db = 0
 	anim_player.play("RESET")
@@ -42,10 +42,6 @@ func hide_pause() -> void:
 	PlayerVar.ui_cursor(false)
 	anim_player.play_backwards("show")
 
-# TODO check if in-game, or only running a specific scene, by checking SignalBus.game_mode == 2
-# if not, we just pause the game outright and wait for the dev to unpause the game
-# otherwise, run the pause menu as usual
-
 func _on_resume_pressed() -> void:
 	hide_pause()
 
@@ -57,11 +53,10 @@ func _on_retry_nvm_pressed() -> void:
 	main_buttons[1].grab_focus()
 
 func _on_retry_button_pressed() -> void:
+	can_unpause = false
 	anim_player.play("retry-speeddisc")
 	%RetryVBox.focus_behavior_recursive = 0
 	%RetryVBox.mouse_behavior_recursive = 0
-	can_unpause = false
-	Staglobals.current_spawn = 0
 	SoundManager.stop_music()
 	MusicManager.stop_soundscapes()
 	SoundManager.play_ui_sound(load("res://assets/sounds/level_manager/level_restart.ogg"))
@@ -69,6 +64,7 @@ func _on_retry_button_pressed() -> void:
 	hide()
 	get_tree().paused = false
 	SignalBus.emit_signal("reset")
+	PlayerVar.ui_cursor(false)
 	can_unpause = true
 
 func _on_options_pressed() -> void:

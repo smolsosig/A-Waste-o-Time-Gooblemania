@@ -25,7 +25,6 @@ func _ready() -> void:
 	start()
 
 func start() -> void:
-	$Bandaid.start()
 	fading = false
 	SignalBus.emit_signal("set_pausable", false)
 	SignalBus.emit_signal("stop_cam_please_dawg")
@@ -35,7 +34,6 @@ func start() -> void:
 	offset.x = 0
 	if !no_zooms: Fade.fade_in(2, Color.BLACK, "ZoomIn")
 	else: Fade.fade_in(0.05)
-	drag_vertical_enabled = false
 	position_smoothing_enabled = false
 	anim_player.play("zoom_out")
 
@@ -48,7 +46,7 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		slowed_down_because_im_a_retard_who_didnt_plan_this_ahead = false
 		anim_player.speed_scale = 1
 
-func cam_shake(shake_type: String, normal_speed: bool = false, name: String = "no name") -> void:
+func cam_shake(shake_type: String, normal_speed: bool = false) -> void:
 	if !opening && !fading:
 		if shake_type:
 			anim_player.play("shake_%s" % shake_type)
@@ -60,10 +58,8 @@ func cam_shake(shake_type: String, normal_speed: bool = false, name: String = "n
 			slowed_down_because_im_a_retard_who_didnt_plan_this_ahead = true
 
 func c_d_teleport(_t_position: Vector2 = Vector2.ZERO) -> void:
-	drag_vertical_enabled = false
 	position_smoothing_enabled = false
 	await get_tree().create_timer(0.05).timeout
-	drag_vertical_enabled = true
 	position_smoothing_enabled = true
 
 func stage_end() -> void:
@@ -73,7 +69,6 @@ func stage_end() -> void:
 
 func death() -> void:
 	anim_player.speed_scale = 1
-	drag_vertical_enabled = false
 	global_position = charlie.global_position
 	fading = true
 	anim_player.play("zoom_in")
@@ -82,9 +77,6 @@ func call_zoomout() -> void:
 	if !no_zooms: Fade.fade_out(2, Color.BLACK, "ZoomOut")
 
 func do_normal_shit_idk() -> void:
-	opening = false
 	SignalBus.emit_signal("cam_ok_u_can_follow_now")
 	SignalBus.emit_signal("set_pausable", true)
-
-func _on_bandaid_timeout() -> void:
-	do_normal_shit_idk()
+	opening = false

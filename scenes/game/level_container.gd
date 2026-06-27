@@ -34,7 +34,6 @@ func _input(event : InputEvent) -> void:
 
 func quit_game() -> void:
 	if SignalBus.game_mode == 2 && !no_edging:
-		PlayerVar.set_cursor(false)
 		PlayerVar.can_switch_weapon = false
 		no_edging = true
 		pausable = false

@@ -1,5 +1,7 @@
 class_name ClipTileMapLayer extends TileMapLayer
 ## [TileMapLayer] meant for clip tiles. When the game runs, it turns itself transparent.
+##
+## A console command allows the [ClipTileMapLayer] to be rendered visible in game.
 
 func _ready() -> void:
 	SignalBus.showhide_clip.connect(showhide_clips)

@@ -14,7 +14,7 @@ class_name CameraTarget extends Marker2D
 ## If [code]true[/code], camera looks ahead of Charlie.
 @export var lookahead: bool = true
 ## How much should the camera look ahead of Charlie.
-@export var lookahead_offset: float = 150
+@export var lookahead_offset: float = 175
 ## Yeah.
 @export var lerp_weight: float = 10
 
@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 					elif Input.is_action_pressed("player_right"):
 						_charlie_offset.x = lerp(_charlie_offset.x, lookahead_offset, lerp_weight * delta * thing)
 				else:
-					_charlie_offset.x = lerp(_charlie_offset.x, 0.0, lerp_weight * 0.25 * delta)
+					_charlie_offset.x = lerp(_charlie_offset.x, 0.0, lerp_weight * 0.075 * delta) if _charlie_offset.x > 5 || _charlie_offset.x < -5 else 0
 			
 			_combined_position = charlie.global_position + offset + _charlie_offset
 			global_position = _combined_position
