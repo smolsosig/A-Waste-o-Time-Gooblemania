@@ -1,5 +1,7 @@
 extends Node
 
+var charlie_global_position: Vector2
+
 # THESE ARE PER LEVEL
 
 #region Health
@@ -218,9 +220,12 @@ const languages: Array = [
 	"tl",
 ]
 
+var run_toggle: bool = false
+
 const save_path: String = "user://user_prefs.cfg"
 var config: ConfigFile
 
+#region weird settings
 var language: int
 var show_hud: bool = true:
 	set(value):
@@ -231,6 +236,7 @@ var show_fps: bool = false:
 	set(value):
 		SignalBus.emit_signal("show_fps", value)
 		show_fps = value
+#endregion
 
 #region save/load settings FILE
 func load_config() -> void:
@@ -261,6 +267,7 @@ func new_config() -> void:
 	config.set_value("game", "show_hud", true)
 	config.set_value("game", "money_limit", 20)
 	config.set_value("game", "cam_shake", true)
+	config.set_value("game", "run_toggle", false)
 
 	config.set_value("audio", "master_volume", 0)
 	config.set_value("audio", "music_volume", 0)
@@ -285,6 +292,7 @@ func load_settings() -> void:
 	show_hud = config.get_value("game", "show_hud", true)
 	Staglobals.money_limit = config.get_value("game", "money_limit", 20)
 	cam_shake = config.get_value("game", "cam_shake", true)
+	run_toggle = config.get_value("game", "run_toggle", false)
 
 	AudioServer.set_bus_volume_db(0, config.get_value("audio", "master_volume", 0))
 	AudioServer.set_bus_volume_db(1, config.get_value("audio", "music_volume", 0))

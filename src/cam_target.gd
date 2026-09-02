@@ -62,8 +62,10 @@ func _process(delta: float) -> void:
 						_charlie_offset.x = lerp(_charlie_offset.x, -lookahead_offset, lerp_weight * delta * thing)
 					elif Input.is_action_pressed("player_right"):
 						_charlie_offset.x = lerp(_charlie_offset.x, lookahead_offset, lerp_weight * delta * thing)
-				else:
-					_charlie_offset.x = lerp(_charlie_offset.x, 0.0, lerp_weight * 0.075 * delta) if _charlie_offset.x > 5 || _charlie_offset.x < -5 else 0
+				# Silksong doesn't return the camera to the center, do we even need this? The camera
+				# slowly returning to the center just looks distracting. ngl kind of despise it
+				#else:
+					#_charlie_offset.x = lerp(_charlie_offset.x, 0.0, lerp_weight * 0.015 * delta) if _charlie_offset.x > 5 || _charlie_offset.x < -5 else 0
 			
 			_combined_position = charlie.global_position + offset + _charlie_offset
 			global_position = _combined_position

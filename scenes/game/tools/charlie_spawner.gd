@@ -65,6 +65,7 @@ func tele_spawn() -> void:
 				Staglobals.emit_signal("show_hud", false)
 			
 			SignalBus.emit_signal("charlie_walk", only_walk)
+			Staglobals.only_walk = only_walk
 			Staglobals.freeze_frame_on_hurt = true
 
 ## Teleports Charlie to itself with no extra bullshittery.

@@ -1,7 +1,5 @@
 extends CharlieState
 
-@export var ground_state: CharlieState
-@export var air_state: CharlieState
 @export var timer: GameTimer
 
 @export var thing1: Area2D
@@ -10,7 +8,7 @@ extends CharlieState
 @onready var start_anims: AnimationLibrary = load("res://assets/objects/charlie/start_anims.res")
 
 func on_enter() -> void:
-	ground_state.ok_i_can_actually_jump_now = false
+	csm.states["GroundState"].ok_i_can_actually_jump_now = false
 	
 	if Staglobals.current_spawn_anim == "null":
 		var random_anim_rng: int = randi() % start_anims.get_animation_list_size()
@@ -23,7 +21,7 @@ func on_enter() -> void:
 	timer.start()
 
 func unfreeze() -> void:
-	next_state = ground_state
+	next_state = csm.states["GroundState"]
 	get_node("NoJumpy").start()
 
 func on_exit() -> void:

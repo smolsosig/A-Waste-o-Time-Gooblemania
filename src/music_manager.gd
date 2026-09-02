@@ -114,8 +114,9 @@ func play_jingle(jingle_file: String) -> void:
 
 func play_end(_side: String = "A") -> void:
 	# TODO replace with match side A B C to appro music
-	secondary.stream = load("res://assets/sounds/ui/stage_clear.ogg")
+	secondary.stream = load("res://assets/sounds/ui/stage_clear.ogg") if _side == "A" else load("res://assets/sounds/ui/stage_clear2.ogg")
 	secondary.play()
+	secondary.volume_db = 0
 	primary.stop()
 	misc.stop()
 

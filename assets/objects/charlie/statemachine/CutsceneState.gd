@@ -1,8 +1,5 @@
 extends CharlieState
 
-@export var ground_state: CharlieState
-@export var air_state: CharlieState
-
 var anim_picked: String
 var cutscene_on: bool = false
 var finished_action : String
@@ -31,10 +28,7 @@ func cutscene(anim_name: String, finished: String, grav_lock: bool = false) -> v
 		# you think I give a fuck what idle anim the player picked?
 
 func stop() -> void:
-	if charlie.is_on_floor():
-		next_state = ground_state
-	else:
-		next_state = air_state
+	next_state = csm.states["GroundState"] if charlie.is_on_floor() else csm.states["AirState"]
 	
 	charlie.dont_fucking_switch_weapons_during_cutscenes_jackass = false
 	charlie.grav_lock = false

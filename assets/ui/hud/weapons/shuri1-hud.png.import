@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ui6d5cdfyce4"
-path="res://.godot/imported/shuri1-hud.png-f26a7b418905b7b7451fb178bd9d4f45.ctex"
+path.s3tc="res://.godot/imported/shuri1-hud.png-f26a7b418905b7b7451fb178bd9d4f45.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/hud/weapons/shuri1-hud.png"
-dest_files=["res://.godot/imported/shuri1-hud.png-f26a7b418905b7b7451fb178bd9d4f45.ctex"]
+dest_files=["res://.godot/imported/shuri1-hud.png-f26a7b418905b7b7451fb178bd9d4f45.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/high_quality_mode=0
 compress/lossy_quality=0.7

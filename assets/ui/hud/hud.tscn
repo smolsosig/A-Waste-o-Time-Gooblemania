@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://vdfptbaosyfi"]
+
+[ext_resource type="Script" uid="uid://bnb2ma8cwhmnh" path="res://assets/ui/hud/hud.gd" id="1_4b106"]
+[ext_resource type="FontFile" uid="uid://xsro81fah7ea" path="res://assets/ui/CharlieType.otf" id="2_a3ccx"]
+[ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="3_4kx5v"]
+[ext_resource type="Texture2D" uid="uid://d1hpwyrhiaeq7" path="res://assets/ui/hud/charlie_icons/1neutral.png" id="4_47007"]
+[ext_resource type="Texture2D" uid="uid://bhslckhtqagcb" path="res://assets/ui/hud/hud.png" id="5_cy5sf"]
+[ext_resource type="Texture2D" uid="uid://b02v5rbmefxrq" path="res://assets/ui/hud/numbers.png" id="6_4b106"]
+[ext_resource type="AudioStream" uid="uid://gut1hcyysr3d" path="res://assets/ui/hud/healthchange1.ogg" id="7_60q8c"]
+[ext_resource type="AudioStream" uid="uid://c3lv5pk23gx0d" path="res://assets/ui/hud/healthchange2.ogg" id="8_tfisl"]
+[ext_resource type="AudioStream" uid="uid://cve7fvamyerjn" path="res://assets/ui/hud/healthchange3.ogg" id="9_5akur"]
+[ext_resource type="Script" uid="uid://b3i0w34y6ae7y" path="res://assets/ui/hud/weapons/hud-weapons.gd" id="10_65822"]
+[ext_resource type="Texture2D" uid="uid://bl10xw24nrinj" path="res://assets/ui/hud/weapons/spinner.png" id="11_loyav"]
+[ext_resource type="Texture2D" uid="uid://b723vb5eeh0w5" path="res://assets/ui/hud/weapons/bat1-hud.png" id="12_2cyht"]
+[ext_resource type="Texture2D" uid="uid://ui6d5cdfyce4" path="res://assets/ui/hud/weapons/shuri1-hud.png" id="13_fecl3"]
+
+[sub_resource type="Animation" id="Animation_4b106"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_a3ccx"]
+resource_name = "show"
+
+[sub_resource type="Animation" id="Animation_4kx5v"]
+resource_name = "show->hide"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -315)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.33333334),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_47007"]
+_data = {
+&"RESET": SubResource("Animation_4b106"),
+&"show": SubResource("Animation_a3ccx"),
+&"show->hide": SubResource("Animation_4kx5v")
+}
+
+[sub_resource type="GDScript" id="GDScript_1llwp"]
+script/source = "extends RichTextLabel
+
+func _ready() -> void:
+	SignalBus.connect(\"show_fps\", show_fps)
+	show_fps(PlayerVar.show_fps)
+
+func show_fps(yes: bool) -> void:
+	if yes:
+		show()
+	else:
+		hide()
+
+func _process(_delta: float) -> void:
+	if visible:
+		text = \"[center][b]FPS:[/b] %s[/center]\" % Engine.get_frames_per_second()
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5bb8"]
+streams_count = 3
+stream_0/stream = ExtResource("7_60q8c")
+stream_1/stream = ExtResource("8_tfisl")
+stream_2/stream = ExtResource("9_5akur")
+
+[node name="HUD" type="CanvasLayer" unique_id=350131121 node_paths=PackedStringArray("ones_timer", "tens_timer", "hund_timer", "container", "container_anim_player", "hud", "charlie_face", "ones", "tens", "hundreds", "wibl_counter")]
+script = ExtResource("1_4b106")
+ones_timer = NodePath("Container/Base/Ones/OnesTimer")
+tens_timer = NodePath("Container/Base/Hundreds/TensTimer")
+hund_timer = NodePath("Container/Base/Thousands/HundTimer")
+container = NodePath("Container")
+container_anim_player = NodePath("Container/AnimationPlayer")
+hud = NodePath("Container/Base")
+charlie_face = NodePath("Container/CharlieFace")
+ones = NodePath("Container/Base/Ones")
+tens = NodePath("Container/Base/Hundreds")
+hundreds = NodePath("Container/Base/Thousands")
+wibl_counter = NodePath("Container/Base/Wiblings")
+
+[node name="Container" type="Node2D" parent="." unique_id=856232550]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container" unique_id=7711820]
+libraries/ = SubResource("AnimationLibrary_47007")
+
+[node name="FPS" type="RichTextLabel" parent="Container" unique_id=1031064894]
+offset_left = 327.0
+offset_top = 7.0
+offset_right = 543.0
+offset_bottom = 47.0
+theme_override_fonts/normal_font = ExtResource("2_a3ccx")
+theme_override_fonts/bold_font = ExtResource("3_4kx5v")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[center][b]FPS:[/b] 88[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+script = SubResource("GDScript_1llwp")
+
+[node name="CharlieFace" type="Sprite2D" parent="Container" unique_id=1651465407]
+position = Vector2(160, 156)
+texture = ExtResource("4_47007")
+
+[node name="Base" type="Sprite2D" parent="Container" unique_id=1281468331]
+position = Vector2(287, 127)
+texture = ExtResource("5_cy5sf")
+
+[node name="Ones" type="Sprite2D" parent="Container/Base" unique_id=1717557263]
+position = Vector2(148, -21)
+texture = ExtResource("6_4b106")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 72)
+region_filter_clip_enabled = true
+
+[node name="OnesTimer" type="Timer" parent="Container/Base/Ones" unique_id=291571165]
+wait_time = 0.033
+one_shot = true
+
+[node name="Hundreds" type="Sprite2D" parent="Container/Base" unique_id=791150921]
+position = Vector2(102, -21)
+texture = ExtResource("6_4b106")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 72)
+region_filter_clip_enabled = true
+
+[node name="TensTimer" type="Timer" parent="Container/Base/Hundreds" unique_id=2051341813]
+wait_time = 0.033
+one_shot = true
+
+[node name="Thousands" type="Sprite2D" parent="Container/Base" unique_id=2078615895]
+position = Vector2(56, -21)
+texture = ExtResource("6_4b106")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 72)
+
+[node name="HundTimer" type="Timer" parent="Container/Base/Thousands" unique_id=1568123128]
+wait_time = 0.033
+one_shot = true
+
+[node name="Wiblings" type="Label" parent="Container/Base" unique_id=279172993]
+anchors_preset = -1
+anchor_left = 0.635043
+anchor_top = 0.63533795
+anchor_right = 0.7923077
+anchor_bottom = 0.79699206
+offset_left = -292.5
+offset_top = -133.0
+offset_right = -292.5
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 21)
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_4kx5v")
+theme_override_font_sizes/font_size = 35
+text = "0"
+vertical_alignment = 1
+justification_flags = 0
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthChange" type="AudioStreamPlayer" parent="." unique_id=706348941]
+stream = SubResource("AudioStreamRandomizer_t5bb8")
+bus = &"UI SFX"
+
+[node name="Weapons" type="Node2D" parent="." unique_id=1411472337]
+script = ExtResource("10_65822")
+
+[node name="Spinner" type="Sprite2D" parent="Weapons" unique_id=1385053427]
+position = Vector2(-401, 998)
+texture = ExtResource("11_loyav")
+offset = Vector2(-27, 0)
+
+[node name="Melee" type="Sprite2D" parent="Weapons/Spinner" unique_id=1465724587]
+show_behind_parent = true
+position = Vector2(215, -121)
+texture = ExtResource("12_2cyht")
+
+[node name="Shuri" type="Sprite2D" parent="Weapons/Spinner" unique_id=1035843182]
+show_behind_parent = true
+position = Vector2(-258, 105)
+texture = ExtResource("13_fecl3")
+
+[node name="Timer" type="Timer" parent="Weapons" unique_id=835004057]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Container/Base/Ones/OnesTimer" to="." method="_on_ones_timer_timeout"]
+[connection signal="timeout" from="Container/Base/Hundreds/TensTimer" to="." method="_on_tens_timer_timeout"]
+[connection signal="timeout" from="Container/Base/Thousands/HundTimer" to="." method="_on_hund_timer_timeout"]
+[connection signal="timeout" from="Weapons/Timer" to="Weapons" method="_on_timer_timeout"]

@@ -27,6 +27,8 @@ var recording_stats: bool = false
 signal wiblings_collected(amount: int)
 signal stage_name_changed(stage_name: String)
 
+var only_walk: bool = false
+
 var hud_hidden: bool = false
 var cursor_hidden: bool = false
 signal show_hud(yes: bool)

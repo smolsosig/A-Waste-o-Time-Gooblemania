@@ -9,16 +9,17 @@ class_name CharlieStateMachine extends Node
 ## Shows [code]current_state[/code] and [code]last_state[/code].
 @export var show_state_in_output: bool = false
 
-var states: Array[CharlieState]
+var states: Dictionary
 
 func _ready() -> void:
 	SignalBus.connect("reset", _reset)
 	for child in get_children():
 		if(child is CharlieState):
-			states.append(child)
+			states[child.name] = child
 			
 			# light em up
 			child.charlie = charlie
+			child.csm = self
 			
 			# excuseeeee me princess
 			child.connect("interrupt_state", on_state_interrupt_state)

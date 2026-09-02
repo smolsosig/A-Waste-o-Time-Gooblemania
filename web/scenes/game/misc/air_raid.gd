@@ -2,7 +2,6 @@ extends Node
 
 @export var debug: bool = false
 
-@export var charlie: CharacterBody2D
 var collect_charlie_position: bool = false
 @export var marker: Marker2D
 
@@ -131,3 +130,6 @@ func _on_cooldown_timeout() -> void:
 
 func _on_game_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "end": emit_signal("stop")
+
+func explodey() -> void:
+	SignalBus.cam_shake.emit("small", true)

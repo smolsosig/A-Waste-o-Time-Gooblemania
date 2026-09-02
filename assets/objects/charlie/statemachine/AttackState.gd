@@ -17,7 +17,7 @@ extends CharlieState
 var bat_swing: AudioStreamOggVorbis = preload("res://assets/objects/charlie/sounds/bat_swing.ogg")
 var bat_swing_air: AudioStreamOggVorbis = preload("res://assets/objects/charlie/sounds/bat_swing_air.ogg")
 
-@onready var shuriken_scn: PackedScene = preload("res://assets/objects/charlie/secon/shuriken.scn")
+@onready var shuriken_tscn: PackedScene = preload("res://assets/objects/charlie/secon/shuriken.tscn")
 
 func on_enter() -> void:
 	attack_component.monitoring = true
@@ -90,7 +90,7 @@ func special_jump() -> void:
 		next_state = air_state
 
 func shuriken_spawn() -> void:
-	var shuriken: Node = shuriken_scn.instantiate()
+	var shuriken: Node = shuriken_tscn.instantiate()
 	
 	shuriken.init_position = charlie.global_position
 	

@@ -1,6 +1,5 @@
 extends CharlieState
 
-@export var ground_state: CharlieState
 @export var hitbox: Area2D
 
 @onready var taunt_flair: String = "flairs/taunt_%s" % PlayerVar.taunt_flair
@@ -17,7 +16,7 @@ func on_enter() -> void:
 
 func _on_animation_player_animation_finished(anim_name: String) -> void:
 	if anim_name == taunt_flair:
-		next_state = ground_state
+		next_state = csm.states["GroundState"]
 
 func play_sound() -> void:
 	var sound_played : AudioStreamOggVorbis = load("res://assets/objects/charlie/sounds/taunt_%s.ogg" % sound)

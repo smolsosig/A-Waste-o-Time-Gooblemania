@@ -1,7 +1,7 @@
 @icon("res://assets/misc/tools/icons/Charlie.png")
 extends CharacterBody2D
 
-@export var speed: float = 1000.0
+@export var speed: float = 900.0
 
 @export var anim_sprite: AnimatedSprite2D
 @export var state_machine: CharlieStateMachine
@@ -64,6 +64,8 @@ func _ready() -> void:
 # change it that much, unless it really gets in the way.
 
 func _physics_process(delta : float) -> void:
+	PlayerVar.charlie_global_position = global_position
+	
 	if !grav_lock && !is_on_floor():
 		velocity.y += get_gravity_a() * delta
 	
@@ -91,6 +93,11 @@ func _physics_process(delta : float) -> void:
 	
 	move_and_slide()
 	update_facing_direction()
+	
+	if Input.is_action_pressed("player_walk") && !PlayerVar.run_toggle && !Staglobals.only_walk:
+		is_walking = true
+	elif Input.is_action_just_released("player_walk") && !PlayerVar.run_toggle && !Staglobals.only_walk:
+		is_walking = false
 
 func jump(double: bool) -> void:
 	if !double:

@@ -22,9 +22,6 @@
 [ext_resource type="Script" uid="uid://d2rxb3h63bfan" path="res://assets/objects/charlie/statemachine/InitState.gd" id="20_q70nv"]
 [ext_resource type="Script" uid="uid://dcj0j6xmi64mp" path="res://src/game-nodes/game_timer.gd" id="21_mk7er"]
 [ext_resource type="Script" uid="uid://ifin1yqk8fi" path="res://assets/objects/charlie/statemachine/GroundState.gd" id="22_36rfl"]
-[ext_resource type="AudioStream" uid="uid://bfmdhjea4np1x" path="res://assets/objects/charlie/sounds/tippitytap1.ogg" id="23_o0flm"]
-[ext_resource type="AudioStream" uid="uid://cbydnm7pb5uj2" path="res://assets/objects/charlie/sounds/tippitytap2.ogg" id="24_i24le"]
-[ext_resource type="AudioStream" uid="uid://bo5prbodnn1fk" path="res://assets/objects/charlie/sounds/tippitytap3.ogg" id="25_51xho"]
 [ext_resource type="Script" uid="uid://6nap4j4hopgo" path="res://src/game-nodes/game_audio_stream_player.gd" id="26_3q5os"]
 [ext_resource type="Script" uid="uid://nqvewc5b8n36" path="res://assets/objects/charlie/statemachine/AirState.gd" id="27_xdi3n"]
 [ext_resource type="AudioStream" uid="uid://bobbymgg0pags" path="res://assets/objects/charlie/sounds/jump_loop.ogg" id="28_gv0bv"]
@@ -43,8 +40,35 @@
 [ext_resource type="Script" uid="uid://p0i3ijl0qtts" path="res://assets/objects/charlie/components/CharlieHealthComponent.gd" id="41_j7s77"]
 [ext_resource type="Script" uid="uid://bpyfilvldigsu" path="res://assets/objects/charlie/components/CharlieHitboxComponent.gd" id="42_oxhqb"]
 [ext_resource type="Script" uid="uid://dipb34gusxl7n" path="res://assets/objects/charlie/components/CharlieDetectableComponent.gd" id="43_601tt"]
+[ext_resource type="Script" uid="uid://ki46th30wv6j" path="res://assets/objects/charlie/footstep.gd" id="43_e4jnp"]
+[ext_resource type="AudioStream" uid="uid://20ig00o0vc0q" path="res://assets/objects/charlie/sounds/footsteps/tile1.ogg" id="44_mk7er"]
 [ext_resource type="Script" uid="uid://dh1xivr7myjnb" path="res://assets/objects/charlie/components/CharlieAttackHitbox.gd" id="44_xd58w"]
+[ext_resource type="AudioStream" uid="uid://75bi0ebjmsvf" path="res://assets/objects/charlie/sounds/footsteps/tile2.ogg" id="45_36rfl"]
 [ext_resource type="FontFile" uid="uid://dt7ruvnoop8ni" path="res://assets/ui/CharlieType-Heavy.otf" id="45_l8sqd"]
+[ext_resource type="AudioStream" uid="uid://cscchwct5kb7j" path="res://assets/objects/charlie/sounds/footsteps/tile3.ogg" id="46_o0flm"]
+[ext_resource type="AudioStream" uid="uid://bklfq3bmw5sq3" path="res://assets/objects/charlie/sounds/footsteps/grass1.ogg" id="47_36rfl"]
+[ext_resource type="Script" uid="uid://cqcxmvafwh1ae" path="res://src/game-nodes/game_audio_stream_player2d.gd" id="47_51xho"]
+[ext_resource type="AudioStream" uid="uid://cwia5prnxq7w4" path="res://assets/objects/charlie/sounds/footsteps/grass2.ogg" id="48_o0flm"]
+[ext_resource type="AudioStream" uid="uid://cfo8vdh3vebek" path="res://assets/objects/charlie/sounds/footsteps/grass3.ogg" id="49_i24le"]
+[ext_resource type="AudioStream" uid="uid://doxh1idhmk532" path="res://assets/objects/charlie/sounds/footsteps/wood1.ogg" id="52_xdi3n"]
+[ext_resource type="AudioStream" uid="uid://btksueuon3pee" path="res://assets/objects/charlie/sounds/footsteps/wood2.ogg" id="53_gv0bv"]
+[ext_resource type="AudioStream" uid="uid://dmuo75asww6" path="res://assets/objects/charlie/sounds/footsteps/wood3.ogg" id="54_6dpjx"]
+[ext_resource type="AudioStream" uid="uid://dci3vm07082s2" path="res://assets/objects/charlie/sounds/footsteps/wood4.ogg" id="55_1jan0"]
+[ext_resource type="AudioStream" uid="uid://dqk2j1wjrbmqa" path="res://assets/objects/charlie/sounds/footsteps/carpet1.ogg" id="55_3q5os"]
+[ext_resource type="AudioStream" uid="uid://b8b25mv1q3gii" path="res://assets/objects/charlie/sounds/footsteps/carpet2.ogg" id="56_xdi3n"]
+[ext_resource type="AudioStream" uid="uid://chfdwgolj3ua2" path="res://assets/objects/charlie/sounds/footsteps/carpet3.ogg" id="57_gv0bv"]
+[ext_resource type="AudioStream" uid="uid://c5kj6a5qg5g5w" path="res://assets/objects/charlie/sounds/footsteps/concrete1.ogg" id="57_yphds"]
+[ext_resource type="AudioStream" uid="uid://bp8egxrhpwhk3" path="res://assets/objects/charlie/sounds/footsteps/carpet4.ogg" id="58_6dpjx"]
+[ext_resource type="AudioStream" uid="uid://cwj1nxbtf4qkq" path="res://assets/objects/charlie/sounds/footsteps/concrete2.ogg" id="58_746ki"]
+[ext_resource type="AudioStream" uid="uid://de2vfa11y5pw3" path="res://assets/objects/charlie/sounds/footsteps/concrete3.ogg" id="59_eaihh"]
+[ext_resource type="AudioStream" uid="uid://dnjnc4tiirbp" path="res://assets/objects/charlie/sounds/footsteps/concrete4.ogg" id="60_rygid"]
+[ext_resource type="AudioStream" uid="uid://duv1jovsaoh34" path="res://assets/objects/charlie/sounds/footsteps/snow1.ogg" id="62_d4sl1"]
+[ext_resource type="AudioStream" uid="uid://dqwgo72d5wk2w" path="res://assets/objects/charlie/sounds/footsteps/metal1.ogg" id="62_mk7er"]
+[ext_resource type="AudioStream" uid="uid://bfgbsimufaywb" path="res://assets/objects/charlie/sounds/footsteps/snow2.ogg" id="63_0luxj"]
+[ext_resource type="AudioStream" uid="uid://dsrhc2g4m383u" path="res://assets/objects/charlie/sounds/footsteps/metal2.ogg" id="63_36rfl"]
+[ext_resource type="AudioStream" uid="uid://b6r5wgxmdhakf" path="res://assets/objects/charlie/sounds/footsteps/snow3.ogg" id="64_ldjfu"]
+[ext_resource type="AudioStream" uid="uid://be5jlw03pa3d" path="res://assets/objects/charlie/sounds/footsteps/metal3.ogg" id="64_o0flm"]
+[ext_resource type="AudioStream" uid="uid://dcpn3im58okl4" path="res://assets/objects/charlie/sounds/footsteps/metal4.ogg" id="65_i24le"]
 
 [sub_resource type="Animation" id="Animation_c6v30"]
 resource_name = "RESET"
@@ -487,18 +511,18 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CharlieStateMachine/GroundState/TippityTap")
+tracks/2/path = NodePath("Footstep")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2666667),
+"times": PackedFloat32Array(0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [0.0],
-"method": &"play"
+"args": [],
+"method": &"play_footstep"
 }, {
-"args": [0.0],
-"method": &"play"
+"args": [],
+"method": &"play_footstep"
 }]
 }
 
@@ -590,34 +614,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharlieStateMachine/GroundState/TippityTap")
+tracks/1/path = NodePath("CharlieSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CharlieSprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"run_def"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Footstep")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}, {
+"args": [],
+"method": &"play_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_nfx0b"]
@@ -1949,13 +1973,6 @@ animations = [{
 radius = 35.0
 height = 178.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2yg1d"]
-random_pitch = 1.1
-streams_count = 3
-stream_0/stream = ExtResource("23_o0flm")
-stream_1/stream = ExtResource("24_i24le")
-stream_2/stream = ExtResource("25_51xho")
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_opgst"]
 playback_mode = 1
 random_pitch = 1.2
@@ -1986,14 +2003,57 @@ size = Vector2(194, 211)
 [sub_resource type="CircleShape2D" id="CircleShape2D_b26qa"]
 radius = 161.028
 
-[sub_resource type="GDScript" id="GDScript_re530"]
-script/source = "extends Label
-#
-#@export var dash_state: DashState
-#
-#func _process(_delta: float)  -> void:
-	#text = \"Velocity: %s\\nTARGDIR: %s\" % [get_parent().velocity, dash_state.target_direction.normalized()]
-"
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1jan0"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("44_mk7er")
+stream_1/stream = ExtResource("45_36rfl")
+stream_2/stream = ExtResource("46_o0flm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oxhqb"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("47_36rfl")
+stream_1/stream = ExtResource("48_o0flm")
+stream_2/stream = ExtResource("49_i24le")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_601tt"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("52_xdi3n")
+stream_1/stream = ExtResource("53_gv0bv")
+stream_2/stream = ExtResource("54_6dpjx")
+stream_3/stream = ExtResource("55_1jan0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2yg1d"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("55_3q5os")
+stream_1/stream = ExtResource("56_xdi3n")
+stream_2/stream = ExtResource("57_gv0bv")
+stream_3/stream = ExtResource("58_6dpjx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xd58w"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("57_yphds")
+stream_1/stream = ExtResource("58_746ki")
+stream_2/stream = ExtResource("59_eaihh")
+stream_3/stream = ExtResource("60_rygid")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l8sqd"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("62_d4sl1")
+stream_1/stream = ExtResource("63_0luxj")
+stream_2/stream = ExtResource("64_ldjfu")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0kmwa"]
+streams_count = 4
+stream_0/stream = ExtResource("62_mk7er")
+stream_1/stream = ExtResource("63_36rfl")
+stream_2/stream = ExtResource("64_o0flm")
+stream_3/stream = ExtResource("65_i24le")
 
 [node name="Charlie" type="CharacterBody2D" unique_id=210957816 node_paths=PackedStringArray("anim_sprite", "state_machine", "init_state")]
 process_mode = 1
@@ -2008,10 +2068,12 @@ anim_sprite = NodePath("CharlieSprite")
 state_machine = NodePath("CharlieStateMachine")
 init_state = NodePath("CharlieStateMachine/InitState")
 
-[node name="JumpTimer" type="Timer" parent="." unique_id=834776019]
+[node name="JumpTimer" type="Timer" parent="." unique_id=1007301670]
 unique_name_in_owner = true
 process_callback = 0
 one_shot = true
+script = ExtResource("21_mk7er")
+metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=7706986]
 unique_name_in_owner = true
@@ -2089,10 +2151,8 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 script = ExtResource("19_oqql2")
 charlie = NodePath("..")
 
-[node name="InitState" type="Node" parent="CharlieStateMachine" unique_id=1685535458 node_paths=PackedStringArray("ground_state", "air_state", "timer", "thing1", "thing2")]
+[node name="InitState" type="Node" parent="CharlieStateMachine" unique_id=1685535458 node_paths=PackedStringArray("timer", "thing1", "thing2")]
 script = ExtResource("20_q70nv")
-ground_state = NodePath("../GroundState")
-air_state = NodePath("../AirState")
 timer = NodePath("EndInitState")
 thing1 = NodePath("../../CharlieHurtboxComponent")
 thing2 = NodePath("../../CharlieDetectableComponent")
@@ -2110,7 +2170,7 @@ one_shot = true
 script = ExtResource("21_mk7er")
 metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
 
-[node name="GroundState" type="Node" parent="CharlieStateMachine" unique_id=322238039 node_paths=PackedStringArray("buffer_timer", "jump_parti_timer", "run_particle", "jump_particle", "shuri_cooldown", "dash_cooldown", "idle_timer", "air_trail", "midair_sound", "air_state", "atk_state", "dash_state", "taunt_state", "idle_state")]
+[node name="GroundState" type="Node" parent="CharlieStateMachine" unique_id=322238039 node_paths=PackedStringArray("buffer_timer", "jump_parti_timer", "run_particle", "jump_particle", "shuri_cooldown", "dash_cooldown", "idle_timer", "air_trail", "midair_sound")]
 script = ExtResource("22_36rfl")
 buffer_timer = NodePath("../AirState/BufferTimer")
 jump_parti_timer = NodePath("JumpPartiTimer")
@@ -2121,13 +2181,8 @@ dash_cooldown = NodePath("../DashState/CooldownTimer")
 idle_timer = NodePath("IdleTimer")
 air_trail = NodePath("../../AirTrail")
 midair_sound = NodePath("../AirState/MidairSound")
-air_state = NodePath("../AirState")
-atk_state = NodePath("../AttackState")
-dash_state = NodePath("../DashState")
-taunt_state = NodePath("../TauntState")
-idle_state = NodePath("../IdleState")
 
-[node name="CoyoteTimer" type="Timer" parent="CharlieStateMachine/GroundState" unique_id=624040066]
+[node name="CoyoteTimer" type="Timer" parent="CharlieStateMachine/GroundState" unique_id=851287195]
 wait_time = 0.25
 one_shot = true
 
@@ -2135,22 +2190,13 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="TippityTap" type="AudioStreamPlayer" parent="CharlieStateMachine/GroundState" unique_id=688928155]
-stream = SubResource("AudioStreamRandomizer_2yg1d")
-bus = &"SFX 1"
-script = ExtResource("26_3q5os")
-metadata/_custom_type_script = "uid://6nap4j4hopgo"
-
 [node name="IdleTimer" type="Timer" parent="CharlieStateMachine/GroundState" unique_id=908804537]
 wait_time = 10.0
 one_shot = true
 
-[node name="AirState" type="Node" parent="CharlieStateMachine" unique_id=849293374 node_paths=PackedStringArray("air_trail", "ground_state", "atk_state", "dash_state", "coyote_timer", "shuri_cooldown", "dash_cooldown")]
+[node name="AirState" type="Node" parent="CharlieStateMachine" unique_id=849293374 node_paths=PackedStringArray("air_trail", "coyote_timer", "shuri_cooldown", "dash_cooldown")]
 script = ExtResource("27_xdi3n")
 air_trail = NodePath("../../AirTrail")
-ground_state = NodePath("../GroundState")
-atk_state = NodePath("../AttackState")
-dash_state = NodePath("../DashState")
 coyote_timer = NodePath("../GroundState/CoyoteTimer")
 shuri_cooldown = NodePath("../AttackState/ShuriCooldown")
 dash_cooldown = NodePath("../DashState/CooldownTimer")
@@ -2166,7 +2212,7 @@ metadata/_custom_type_script = "uid://6nap4j4hopgo"
 wait_time = 0.25
 one_shot = true
 
-[node name="DashState" type="Node" parent="CharlieStateMachine" unique_id=2123047859 node_paths=PackedStringArray("dash_particles", "dash_sfx", "air_trail", "ground_state", "air_state", "attack_state")]
+[node name="DashState" type="Node" parent="CharlieStateMachine" unique_id=2123047859 node_paths=PackedStringArray("dash_particles", "dash_sfx", "air_trail")]
 script = ExtResource("29_6dpjx")
 speed = 3000.0
 duration = 0.2
@@ -2174,9 +2220,6 @@ cooldown = 0.35
 dash_particles = NodePath("../../Particles/DashParticle")
 dash_sfx = NodePath("../../DashSound")
 air_trail = NodePath("../../AirTrail")
-ground_state = NodePath("../GroundState")
-air_state = NodePath("../AirState")
-attack_state = NodePath("../AttackState")
 can_move = false
 metadata/_custom_type_script = "uid://btp8xgcwt20u1"
 
@@ -2218,10 +2261,8 @@ metadata/_custom_type_script = "uid://6nap4j4hopgo"
 wait_time = 0.3
 one_shot = true
 
-[node name="HurtState" type="Node" parent="CharlieStateMachine" unique_id=1883487645 node_paths=PackedStringArray("ground_state", "air_state", "sound")]
+[node name="HurtState" type="Node" parent="CharlieStateMachine" unique_id=1883487645 node_paths=PackedStringArray("sound")]
 script = ExtResource("33_746ki")
-ground_state = NodePath("../GroundState")
-air_state = NodePath("../AirState")
 sound = NodePath("HurtSound")
 can_move = false
 
@@ -2231,17 +2272,14 @@ bus = &"SFX 1"
 script = ExtResource("26_3q5os")
 metadata/_custom_type_script = "uid://6nap4j4hopgo"
 
-[node name="TauntState" type="Node" parent="CharlieStateMachine" unique_id=1691316209 node_paths=PackedStringArray("ground_state", "hitbox")]
+[node name="TauntState" type="Node" parent="CharlieStateMachine" unique_id=1691316209 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("37_d4sl1")
-ground_state = NodePath("../GroundState")
 hitbox = NodePath("../../CharlieHurtboxComponent")
 sound = "def"
 can_move = false
 
-[node name="CutsceneState" type="Node" parent="CharlieStateMachine" unique_id=1458981498 node_paths=PackedStringArray("ground_state", "air_state")]
+[node name="CutsceneState" type="Node" parent="CharlieStateMachine" unique_id=1458981498]
 script = ExtResource("38_0luxj")
-ground_state = NodePath("../GroundState")
-air_state = NodePath("../AirState")
 can_move = false
 
 [node name="DeathState" type="Node" parent="CharlieStateMachine" unique_id=714863250 node_paths=PackedStringArray("init_state")]
@@ -2250,13 +2288,8 @@ init_state = NodePath("../InitState")
 can_move = false
 metadata/_custom_type_script = "uid://btp8xgcwt20u1"
 
-[node name="IdleState" type="Node" parent="CharlieStateMachine" unique_id=541469437 node_paths=PackedStringArray("ground_state", "air_state", "attack_state", "dash_state", "taunt_state", "shuri_cooldown", "dash_cooldown")]
+[node name="IdleState" type="Node" parent="CharlieStateMachine" unique_id=541469437 node_paths=PackedStringArray("shuri_cooldown", "dash_cooldown")]
 script = ExtResource("40_ixits")
-ground_state = NodePath("../GroundState")
-air_state = NodePath("../AirState")
-attack_state = NodePath("../AttackState")
-dash_state = NodePath("../DashState")
-taunt_state = NodePath("../TauntState")
 shuri_cooldown = NodePath("../AttackState/ShuriCooldown")
 dash_cooldown = NodePath("../DashState/CooldownTimer")
 can_move = false
@@ -2329,15 +2362,79 @@ debug_color = Color(1, 1, 1, 0.631373)
 [node name="DebugLabel" type="Label" parent="." unique_id=2006100881]
 visible = false
 offset_left = -391.0
-offset_top = -261.0
+offset_top = -281.0
 offset_right = 393.0
-offset_bottom = -219.0
+offset_bottom = -239.0
 theme_override_fonts/font = ExtResource("45_l8sqd")
 theme_override_font_sizes/font_size = 30
 text = "FUCK YOU"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = SubResource("GDScript_re530")
+
+[node name="Footstep" type="RayCast2D" parent="." unique_id=457764465 node_paths=PackedStringArray("sounds")]
+target_position = Vector2(0, 15)
+script = ExtResource("43_e4jnp")
+sounds = {
+"carpet": NodePath("Carpet"),
+"cloth": NodePath("Carpet"),
+"concrete": NodePath("Concrete"),
+"default": NodePath("Tile"),
+"grass": NodePath("Grass"),
+"metal": NodePath("Metal"),
+"rock": NodePath("Concrete"),
+"snow": NodePath("Snow"),
+"tile": NodePath("Tile"),
+"wood": NodePath("Wood")
+}
+
+[node name="Tile" type="AudioStreamPlayer2D" parent="Footstep" unique_id=2041320916]
+stream = SubResource("AudioStreamRandomizer_1jan0")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Grass" type="AudioStreamPlayer2D" parent="Footstep" unique_id=682638584]
+stream = SubResource("AudioStreamRandomizer_oxhqb")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Wood" type="AudioStreamPlayer2D" parent="Footstep" unique_id=1913888895]
+stream = SubResource("AudioStreamRandomizer_601tt")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Carpet" type="AudioStreamPlayer2D" parent="Footstep" unique_id=1933389540]
+stream = SubResource("AudioStreamRandomizer_2yg1d")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Concrete" type="AudioStreamPlayer2D" parent="Footstep" unique_id=468371095]
+stream = SubResource("AudioStreamRandomizer_xd58w")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Snow" type="AudioStreamPlayer2D" parent="Footstep" unique_id=577659902]
+stream = SubResource("AudioStreamRandomizer_l8sqd")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
+
+[node name="Metal" type="AudioStreamPlayer2D" parent="Footstep" unique_id=1139819414]
+stream = SubResource("AudioStreamRandomizer_0kmwa")
+volume_db = 3.0
+bus = &"SFX 1"
+script = ExtResource("47_51xho")
+metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
 [connection signal="open_zoom_endd" from="." to="CharlieHurtboxComponent" method="_on_charlie_open_zoom_endd"]
 [connection signal="open_zoom_endd" from="." to="CharlieDetectableComponent" method="_on_charlie_open_zoom_endd"]

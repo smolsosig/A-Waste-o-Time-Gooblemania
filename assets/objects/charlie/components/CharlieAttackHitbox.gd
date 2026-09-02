@@ -6,7 +6,7 @@ class_name CharlieAttackComponent
 var bat_hit: AudioStreamOggVorbis = load("res://assets/objects/charlie/sounds/bat_hit.ogg")
 var dont_disappear: bool = false
 
-signal attacked
+signal attacked  
 @export_enum("Both", "Melee", "Ranged", "None") var damage_type: int = 1
 @export_group("Hookables")
 @export var atk_state: CharlieState
@@ -26,7 +26,7 @@ func _on_area_entered(area:Area2D) -> void:
 			else:
 				# guaranteed crit if attacked just after dashing :3
 				area.damage(damage_type, PlayerVar.atk_rng(true, true), true)
-				NG.medal_unlock(88760)
+				# UNLOCK ACHIEVEMENT
 			
 		if area is HittableComponent:
 			area.interact()

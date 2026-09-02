@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://clafcobcsofst"]
+
+[ext_resource type="Script" uid="uid://b2pgf1mpk8ibm" path="res://assets/objects/charlie/secon/shuriken.gd" id="1_8dco1"]
+[ext_resource type="Script" uid="uid://di8cyj6vore61" path="res://addons/trail_2d/trail_2d.gd" id="2_t1ux7"]
+[ext_resource type="Texture2D" uid="uid://cacnyba1dkutj" path="res://assets/objects/charlie/secon/shuriken-newgrounds.png" id="3_oa7c3"]
+[ext_resource type="Script" uid="uid://dh1xivr7myjnb" path="res://assets/objects/charlie/components/CharlieAttackHitbox.gd" id="4_sgki1"]
+[ext_resource type="AudioStream" uid="uid://bobbymgg0pags" path="res://assets/objects/charlie/sounds/jump_loop.ogg" id="5_q28gn"]
+[ext_resource type="AudioStream" uid="uid://djjvfjxcwu4k3" path="res://assets/objects/charlie/secon/shuriken_hit1.ogg" id="6_g37yl"]
+[ext_resource type="AudioStream" uid="uid://b1k3rdpab3m6w" path="res://assets/objects/charlie/secon/shuriken_hit2.ogg" id="7_vvi4n"]
+[ext_resource type="AudioStream" uid="uid://sapo2vhvw6xq" path="res://assets/objects/charlie/secon/shuriken_hit_world.ogg" id="8_uchbo"]
+
+[sub_resource type="Curve" id="Curve_ormhn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pndhn"]
+colors = PackedColorArray(1, 0.976471, 0.913725, 0.533333, 1, 0.976, 0.914, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dco1"]
+radius = 11.2448
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_on7yx"]
+radius = 30.0167
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5xhdl"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("6_g37yl")
+stream_1/stream = ExtResource("7_vvi4n")
+
+[sub_resource type="GDScript" id="GDScript_u12sj"]
+script/source = "extends Area2D
+
+@onready var parent := get_parent()
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is EnemyHurtboxComponent:
+		parent.target_direction = parent.global_position - area.global_position
+		
+		parent.velocity = Vector2.ZERO
+		parent.velocity = parent.target_direction.normalized() * (parent.speed * -1)
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vr2vy"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_uchbo")
+
+[node name="Shuriken" type="CharacterBody2D" unique_id=850854980 node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+motion_mode = 1
+platform_floor_layers = 4294901760
+platform_wall_layers = 1
+script = ExtResource("1_8dco1")
+sprite = NodePath("Sprite2D")
+spin_speed = 60
+num_bounces = 2
+
+[node name="Trail2D" type="Line2D" parent="." unique_id=1555820874]
+unique_name_in_owner = true
+show_behind_parent = true
+width = 20.0
+width_curve = SubResource("Curve_ormhn")
+default_color = Color(0.935384, 0, 0.410303, 1)
+gradient = SubResource("Gradient_pndhn")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_t1ux7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=407575871]
+texture = ExtResource("3_oa7c3")
+
+[node name="PhysicsHitbox" type="CollisionShape2D" parent="." unique_id=1344277105]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_8dco1")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1682764294]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_sgki1")
+damage_type = 2
+
+[node name="PhysicsHitbox" type="CollisionShape2D" parent="AttackHitbox" unique_id=1215435778]
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CircleShape2D_on7yx")
+debug_color = Color(1, 0, 0, 0.42)
+
+[node name="DamageTimer" type="Timer" parent="AttackHitbox" unique_id=579217653]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="AirSound" type="AudioStreamPlayer2D" parent="AttackHitbox" unique_id=503179814]
+unique_name_in_owner = true
+stream = ExtResource("5_q28gn")
+volume_db = 10.0
+pitch_scale = 2.0
+autoplay = true
+max_distance = 2500.0
+attenuation = 2.5
+bus = &"SFX 2"
+
+[node name="SFX" type="AudioStreamPlayer" parent="AttackHitbox" unique_id=773139336]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_5xhdl")
+bus = &"SFX 2"
+
+[node name="AimAssist" type="Area2D" parent="." unique_id=1484692885]
+scale = Vector2(2.5, 2.5)
+collision_layer = 0
+collision_mask = 4
+script = SubResource("GDScript_u12sj")
+
+[node name="PhysicsHitbox" type="CollisionShape2D" parent="AimAssist" unique_id=1742237564]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CircleShape2D_on7yx")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="FiveSecCull" type="Timer" parent="." unique_id=2080364439]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="SFXTimer" type="Timer" parent="." unique_id=444848974]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
+
+[node name="WorldImpact" type="AudioStreamPlayer2D" parent="." unique_id=673204394]
+stream = SubResource("AudioStreamRandomizer_vr2vy")
+max_distance = 2500.0
+attenuation = 0.535887
+bus = &"SFX 2"
+
+[connection signal="area_entered" from="AttackHitbox" to="AttackHitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="AimAssist" to="AimAssist" method="_on_area_entered"]
+[connection signal="timeout" from="FiveSecCull" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SFXTimer" to="." method="_on_sfx_timer_timeout"]

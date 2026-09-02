@@ -10,14 +10,7 @@ extends CharlieState
 @export var air_trail: Line2D
 @export var midair_sound: GameAudioStreamPlayer
 
-@export_group("States")
-@export var air_state: CharlieState
-@export var atk_state: CharlieState
-@export var dash_state: CharlieState
-@export var taunt_state: CharlieState
-@export var idle_state: CharlieState
-
-@onready var coyote_timer:= $CoyoteTimer
+@onready var coyote_timer: Timer = $CoyoteTimer
 var jumped: bool = false
 var rotation_called: bool = false
 var ok_i_can_actually_jump_now: bool = false
@@ -25,6 +18,8 @@ var jump_buffered: bool = false
 
 @onready var run_flair: String = "flairs/run_%s" % PlayerVar.run_flair
 @onready var long_idle_flair: String = "flairs/long_idle_%s" % PlayerVar.long_idle_flair
+
+var is_walking: bool = false
 
 func _ready() -> void:
 	run_particle.emitting = false
@@ -36,10 +31,10 @@ func on_enter() -> void:
 	coyote_timer.stop()
 	jump_parti_timer.stop()
 	idle_timer.start()
-	dash_state.dashed = false
-	air_state.has_double_jumped = false
+	csm.states["DashState"].dashed = false
+	csm.states["AirState"].has_double_jumped = false
 	
-	if get_parent().last_state == air_state:
+	if csm.last_state == csm.states["AirState"]:
 		jump_particles()
 	
 	if jump_buffered:
@@ -55,21 +50,13 @@ func jump_particles() -> void:
 func state_process(_delta : float) -> void:
 	if !charlie.is_on_floor() and !jumped:
 		coyote_timer.start()
-		next_state = air_state
+		next_state = csm.states["AirState"]
 	
 	if charlie.velocity.x && !charlie.is_on_wall():
 		if current_anim != run_flair:
-			if !charlie.is_walking:
-				anim_player.play(run_flair)
-			else:
-				anim_player.play("walk")
-		if !run_particle.emitting && !charlie.is_walking:
-			run_particle.emitting = true
-		
-		if charlie.velocity.x > 0:
-			particle_direction(-1)
-		else:
-			particle_direction(1)
+			anim_player.play(run_flair if !charlie.is_walking else "walk")
+		run_particle.emitting = true if !charlie.is_walking else false
+		particle_direction(-1 if charlie.velocity.x > 0 else 1)
 	else:
 		if current_anim != "idle":
 			anim_player.play("idle")
@@ -100,13 +87,16 @@ func state_input(event : InputEvent) -> void:
 	if (event.is_action_pressed("player_taunt")):
 		taunt()
 	if (event.is_action_pressed("player_b")):
-		if PlayerVar.can_dash && PlayerVar.dash && !dash_state.dashed:
+		if PlayerVar.can_dash && PlayerVar.dash && !csm.states["DashState"].dashed:
 			dash()
+	
+	if event.is_action_pressed("player_walk") && PlayerVar.run_toggle && !Staglobals.only_walk:
+		charlie.is_walking = true if charlie.is_walking else false
 
 func _input(event : InputEvent) -> void:
-	if (event.is_action_pressed("player_jump")) && current_state != self:
+	if event.is_action_pressed("player_jump") && (current_state != self):
 		jump_buffered = true
-
+		
 func particle_direction(num : int) -> void:
 	run_particle.process_material.emission_shape_offset.x = 75 * num
 
@@ -122,20 +112,20 @@ func jump() -> void:
 	jump_particles()
 	charlie.jump(false)
 	jumped = true
-	next_state = air_state
+	next_state = csm.states["AirState"]
 
 func attack() -> void:
-	next_state = atk_state
+	next_state = csm.states["AttackState"]
 
 func taunt() -> void:
-	next_state = taunt_state
+	next_state = csm.states["TauntState"]
 
 func dash() -> void:
 	if dash_cooldown.is_stopped():
-		next_state = dash_state
+		next_state = csm.states["DashState"]
 
 func _on_idle_timer_timeout() -> void:
-	next_state = idle_state
+	next_state = csm.states["IdleState"]
 #endregion
 
 func _on_jump_parti_timer_timeout() -> void:

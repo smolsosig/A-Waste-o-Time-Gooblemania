@@ -9,11 +9,6 @@ extends CharlieState
 @export var air_trail: Line2D
 var default_cooldown: int
 
-@export_group("States")
-@export var ground_state: CharlieState
-@export var air_state: CharlieState
-@export var attack_state: CharlieState
-
 var target_position: Vector2
 var target_direction: Vector2
 @onready var dash_timer: Timer = get_node("DashTimer")
@@ -87,11 +82,11 @@ func _on_dash_timer_timeout() -> void:
 		charlie.grav_lock = false
 		if !pressed_attack:
 			if charlie.is_on_floor():
-				next_state = ground_state
+				next_state = csm.states["GroundState"]
 			else:
-				next_state = air_state
+				next_state = csm.states["AirState"]
 		else:
-			next_state = attack_state
+			next_state = csm.states["AttackState"]
 
 func on_exit() -> void:
 	dash_timer.stop()

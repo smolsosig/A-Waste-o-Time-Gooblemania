@@ -15,22 +15,8 @@ extends CanvasLayer
 @onready var char_goddamn: Texture2D = load("res://assets/ui/hud/charlie_icons/5goddamn.png")
 @onready var char_death: Texture2D = load("res://assets/ui/hud/charlie_icons/6death.png")
 #endregion
-#region load numbers
-@onready var zero: Texture2D = load("res://assets/ui/hud/numbers/0.png")
-@onready var one: Texture2D = load("res://assets/ui/hud/numbers/1.png")
-@onready var two: Texture2D = load("res://assets/ui/hud/numbers/2.png")
-@onready var three: Texture2D = load("res://assets/ui/hud/numbers/3.png")
-@onready var four: Texture2D = load("res://assets/ui/hud/numbers/4.png")
-@onready var five: Texture2D = load("res://assets/ui/hud/numbers/5.png")
-@onready var six: Texture2D = load("res://assets/ui/hud/numbers/6.png")
-@onready var seven: Texture2D = load("res://assets/ui/hud/numbers/7.png")
-@onready var eight: Texture2D = load("res://assets/ui/hud/numbers/8.png")
-@onready var nine: Texture2D = load("res://assets/ui/hud/numbers/9.png")
-@onready var trans: Texture2D = load("res://assets/ui/hud/numbers/trans.png")
-
-@onready var hud_num: Array = [zero, one, two, three, four, five, six, seven, eight, nine]
-#endregion
 #region number timers
+@export_group("Timers")
 @export var ones_timer: Timer
 @export var tens_timer: Timer
 @export var hund_timer: Timer
@@ -43,6 +29,7 @@ var previous_health: String
 @onready var crit_sound: AudioStreamOggVorbis = load("res://assets/ui/hud/sound-crit.ogg")
 @onready var supercrit_sound: AudioStreamOggVorbis = load("res://assets/ui/hud/sound-supercrit.ogg")
 
+@export_group("References")
 @export var container: Node2D
 @export var container_anim_player: AnimationPlayer
 @export var hud: Sprite2D
@@ -71,19 +58,16 @@ func _ready() -> void:
 	show_hud(PlayerVar.show_hud)
 	
 	string_health = str(PlayerVar.health).pad_zeros(3)
-	hundreds.texture = hud_num[int(string_health[0])]
-	tens.texture = hud_num[int(string_health[1])]
-	ones.texture = hud_num[int(string_health[2])]
+	change_ones(int(string_health[2]))
+	change_tens(int(string_health[1]))
+	change_hund(int(string_health[0]))
 
 func show_obi() -> void:
 	var obi_inst: CanvasLayer = obi_scene.instantiate()
 	add_child(obi_inst)
 
 func show_hud(yes: bool) -> void:
-	if yes:
-		visible = true
-	else:
-		visible = false
+	visible = yes
 
 func show_hud_stage(yes: bool = true) -> void:
 	if yes && PlayerVar.show_hud:
@@ -99,9 +83,9 @@ func change_health() -> void:
 	previous_health = string_health
 	string_health = str(PlayerVar.health).pad_zeros(3)
 	
-	change_ones(int(string_health[2]))
-	change_tens(int(string_health[1]))
-	change_hund(int(string_health[0]))
+	queue_ones(int(string_health[2]))
+	queue_tens(int(string_health[1]))
+	queue_hund(int(string_health[0]))
 	
 	if (!string_health == str(PlayerVar.target_health).pad_zeros(3)):
 		var tween : Tween = create_tween()
@@ -117,32 +101,41 @@ func change_health() -> void:
 		0.25).set_trans(Tween.TRANS_EXPO)
 		tween.parallel().tween_property(container, "rotation", 0, 0.25)
 
-func change_ones(num: int) -> void:
+func queue_ones(num: int) -> void:
 	ones_temp = num
 	if ones_timer.is_stopped && (int(previous_health[2]) != num):
 		ones_timer.start()
-		ones.texture = trans
+		change_ones(10)
 
-func change_tens(num: int) -> void:
+func queue_tens(num: int) -> void:
 	tens_temp = num
 	if tens_timer.is_stopped && (int(previous_health[1]) != num):
 		tens_timer.start()
-		tens.texture = trans
+		change_tens(10)
 
-func change_hund(num: int) -> void:
+func queue_hund(num: int) -> void:
 	hund_temp = num
 	if hund_timer.is_stopped && (int(previous_health[0]) != num):
 		hund_timer.start()
-		hundreds.texture = trans
+		change_hund(10)
+
+func change_ones(num: int) -> void:
+	ones.region_rect = Rect2(48 * float(num), 0, 48, 72)
+
+func change_tens(num: int) -> void:
+	tens.region_rect = Rect2(48 * float(num), 0, 48, 72)
+
+func change_hund(num: int) -> void:
+	hundreds.region_rect = Rect2(48 * float(num), 0, 48, 72)
 
 func _on_ones_timer_timeout() -> void:
-	ones.texture = hud_num[ones_temp]
+	change_ones(ones_temp)
 
 func _on_tens_timer_timeout() -> void:
-	tens.texture = hud_num[tens_temp]
+	change_tens(tens_temp)
 
 func _on_hund_timer_timeout() -> void:
-	hundreds.texture = hud_num[hund_temp]
+	change_hund(hund_temp)
 #endregion
 
 func wibl_collect(amount: int) -> void:

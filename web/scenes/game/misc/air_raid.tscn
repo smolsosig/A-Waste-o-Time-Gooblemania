@@ -103,6 +103,7 @@ func _on_laser_firing_timeout() -> void:
 	sprite_anims.play(\"flying_loop\")
 
 func _on_enemy_health_component_died() -> void:
+	SignalBus.cam_shake.emit(\"small\", true)
 	print(\"And DOWN goes %s!\" % name)
 	health.health = health.base_health
 	hurtbox.set_deferred(\"monitorable\", false)
@@ -280,6 +281,26 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(79, 144), Vector2(49, 154), Vector2(109, 124), Vector2(79, 144), Vector2(49, 144), Vector2(109, 144), Vector2(79, 144), Vector2(49, 144), Vector2(79, 144)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eo8bv"]
 resource_name = "flying_loop"
@@ -391,6 +412,7 @@ func stop_firing() -> void:
 	sprite_anims.play(\"flying_loop\")
 
 func _on_enemy_health_component_died(died_via_rpg: bool = false) -> void:
+	SignalBus.cam_shake.emit(\"small\", true)
 	print(\"And DOWN goes %s!\" % name)
 	health.health = health.base_health
 	hurtbox.set_deferred(\"monitorable\", false)
@@ -432,7 +454,7 @@ script/source = "extends Sprite2D
 func _process(delta: float) -> void:
 	if track_location:
 		# thank you u/samsfacee
-		rotation = lerp_angle(rotation, rotation + get_angle_to(manager.charlie.global_position), 4.5 * delta)
+		rotation = lerp_angle(rotation, rotation + get_angle_to(PlayerVar.charlie_global_position), 4.5 * delta)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ksfch"]
@@ -767,6 +789,20 @@ tracks/7/keys = {
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../../../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explodey"
 }]
 }
 
@@ -1309,6 +1345,53 @@ tracks/5/keys = {
 "method": &"play"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.3333334, 2.3000002, 2.7, 2.966667, 3.3333335, 3.5333335, 3.766667, 3.9333336, 4.1000004, 4.266667, 4.666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}, {
+"args": [],
+"method": &"explodey"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5drog"]
 _data = {
@@ -1316,10 +1399,9 @@ _data = {
 &"end": SubResource("Animation_xbnjy")
 }
 
-[node name="AirRaid" type="Node" unique_id=1321035742 node_paths=PackedStringArray("charlie", "marker", "available_positions", "available_positions_sniper", "laser_goobles", "rpg_goobles")]
+[node name="AirRaid" type="Node" unique_id=1321035742 node_paths=PackedStringArray("marker", "available_positions", "available_positions_sniper", "laser_goobles", "rpg_goobles")]
 script = ExtResource("1_lhep1")
 debug = true
-charlie = NodePath("CharacterBody2D")
 marker = NodePath("MainMarker")
 max_waves = 8
 waves_to_begin_second = 4

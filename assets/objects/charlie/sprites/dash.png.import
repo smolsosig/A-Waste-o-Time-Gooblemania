@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dje371vpf1fqg"
-path="res://.godot/imported/dash.png-5a0434d26f0c8de785e1a2b11bf6c605.ctex"
+path.s3tc="res://.godot/imported/dash.png-5a0434d26f0c8de785e1a2b11bf6c605.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/objects/charlie/sprites/dash.png"
-dest_files=["res://.godot/imported/dash.png-5a0434d26f0c8de785e1a2b11bf6c605.ctex"]
+dest_files=["res://.godot/imported/dash.png-5a0434d26f0c8de785e1a2b11bf6c605.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
