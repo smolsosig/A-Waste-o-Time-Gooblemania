@@ -3153,7 +3153,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2lein")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 15.0
 }]
@@ -3895,53 +3895,53 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_foijd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"init",
 "speed": 24.0
 }]
 
-[node name="TacticalTwink" type="Area2D"]
+[node name="TacticalTwink" type="Area2D" unique_id=381184778]
 script = SubResource("GDScript_tp80q")
 outputs = Array[ExtResource("2_ov6xj")]([SubResource("Resource_01o8r"), SubResource("Resource_ov6xj"), SubResource("Resource_s1xa4")])
 metadata/_custom_type_script = "uid://gnuiimjahpvx"
 
-[node name="CharlieHealerComponent" type="Area2D" parent="."]
+[node name="CharlieHealerComponent" type="Area2D" parent="." unique_id=832905243]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 script = ExtResource("3_lx26u")
-start_disabled = true
 metadata/_custom_type_script = "uid://cmxuosm5pjf8d"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieHealerComponent"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieHealerComponent" unique_id=1535145683]
 shape = SubResource("RectangleShape2D_1fxso")
 
-[node name="MusicManagerProxy" type="Node" parent="."]
+[node name="MusicManagerProxy" type="Node" parent="." unique_id=419085100]
 script = SubResource("GDScript_41pas")
 
-[node name="TwinkLogic" type="Node" parent="." node_paths=PackedStringArray("anim_player")]
+[node name="TwinkLogic" type="Node" parent="." unique_id=1530478590 node_paths=PackedStringArray("anim_player")]
 script = SubResource("GDScript_s1xa4")
 anim_player = NodePath("../GameAnimationPlayer")
 
-[node name="Phase2Alarm" type="AudioStreamPlayer2D" parent="."]
+[node name="Phase2Alarm" type="AudioStreamPlayer2D" parent="." unique_id=1847165430]
 stream = ExtResource("3_krg38")
 volume_db = 5.0
 bus = &"UI SFX"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1225877652]
 shape = SubResource("RectangleShape2D_1fxso")
 
-[node name="GameAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_01o8r")
-}
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="." unique_id=564552214]
+libraries/ = SubResource("AnimationLibrary_01o8r")
 script = ExtResource("2_ewsbq")
 metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
 
-[node name="Twink" type="Sprite2D" parent="."]
+[node name="Twink" type="Sprite2D" parent="." unique_id=621623532]
 position = Vector2(750, 300)
 texture = ExtResource("2_lbnvn")
 
-[node name="DashParticle" type="GPUParticles2D" parent="Twink"]
+[node name="DashParticle" type="GPUParticles2D" parent="Twink" unique_id=388174526]
 show_behind_parent = true
 emitting = false
 amount = 30
@@ -3951,20 +3951,20 @@ explosiveness = 0.1
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = SubResource("ParticleProcessMaterial_0ytf4")
 
-[node name="Sounds" type="AudioStreamPlayer2D" parent="Twink"]
+[node name="Sounds" type="AudioStreamPlayer2D" parent="Twink" unique_id=1910987015]
 volume_db = 10.0
 bus = &"SFX 1"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="RocketShoot" type="AudioStreamPlayer2D" parent="Twink"]
+[node name="RocketShoot" type="AudioStreamPlayer2D" parent="Twink" unique_id=372909314]
 stream = ExtResource("2_34bdw")
 volume_db = 10.0
 bus = &"SFX 1"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="EnemyHurtboxComponent" type="Area2D" parent="Twink" node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
+[node name="EnemyHurtboxComponent" type="Area2D" parent="Twink" unique_id=1002018314 node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
 position = Vector2(0, -125)
 monitorable = false
 script = ExtResource("18_tp80q")
@@ -3975,47 +3975,47 @@ crit_fx = NodePath("Crit FX")
 damage_num = NodePath("DamageNum")
 metadata/_custom_type_script = "uid://dp4vffcpt00h1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHurtboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHurtboxComponent" unique_id=1218191096]
 position = Vector2(0, 125)
 shape = SubResource("CapsuleShape2D_krg38")
 debug_color = Color(0, 0.64705884, 0.2627451, 0.41960785)
 
-[node name="Crit FX" parent="Twink/EnemyHurtboxComponent" instance=ExtResource("19_lo1kp")]
+[node name="Crit FX" parent="Twink/EnemyHurtboxComponent" unique_id=1171871807 instance=ExtResource("19_lo1kp")]
 
-[node name="DamageNum" parent="Twink/EnemyHurtboxComponent" instance=ExtResource("20_ct7mf")]
+[node name="DamageNum" parent="Twink/EnemyHurtboxComponent" unique_id=547745955 instance=ExtResource("20_ct7mf")]
 
-[node name="EnemyHealthComponent" type="Node" parent="Twink"]
+[node name="EnemyHealthComponent" type="Node" parent="Twink" unique_id=341440228]
 script = ExtResource("18_krg38")
 base_health = 1000
 metadata/_custom_type_script = "uid://dxdarkjig4ell"
 
-[node name="RPG" type="Sprite2D" parent="Twink"]
+[node name="RPG" type="Sprite2D" parent="Twink" unique_id=1499996000]
 visible = false
 position = Vector2(-40, -34)
 texture = ExtResource("5_xrpm8")
 
-[node name="Minigun" type="Sprite2D" parent="Twink"]
+[node name="Minigun" type="Sprite2D" parent="Twink" unique_id=795166806]
 visible = false
 position = Vector2(-47, 53)
 texture = ExtResource("11_mjki6")
 offset = Vector2(-56, 10)
 
-[node name="Shield" type="Sprite2D" parent="Twink"]
+[node name="Shield" type="Sprite2D" parent="Twink" unique_id=1441063288]
 visible = false
 position = Vector2(-74, 7)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_s1xa4")
 
-[node name="EnemyHitboxComponent" type="Area2D" parent="Twink"]
+[node name="EnemyHitboxComponent" type="Area2D" parent="Twink" unique_id=1897510207]
 script = ExtResource("6_ewsbq")
 damage = 20
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/EnemyHitboxComponent" unique_id=2015681972]
 shape = SubResource("CapsuleShape2D_ewsbq")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="Sword" type="Sprite2D" parent="Twink"]
+[node name="Sword" type="Sprite2D" parent="Twink" unique_id=1699563227]
 visible = false
 position = Vector2(37.00002, -16.000015)
 rotation = 1.8325958
@@ -4023,19 +4023,19 @@ texture = ExtResource("21_lx26u")
 offset = Vector2(-101.87607, -9.391663)
 flip_v = true
 
-[node name="SwordHitbox" type="Area2D" parent="Twink/Sword"]
+[node name="SwordHitbox" type="Area2D" parent="Twink/Sword" unique_id=1158256743]
 monitoring = false
 script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/Sword/SwordHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/Sword/SwordHitbox" unique_id=148619009]
 position = Vector2(-138.36401, -10)
 rotation = -1.4978158
 shape = SubResource("CapsuleShape2D_ieddo")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="NoMelee-inator" type="Area2D" parent="Twink" node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
+[node name="NoMelee-inator" type="Area2D" parent="Twink" unique_id=1283369752 node_paths=PackedStringArray("health_component", "crit_fx", "damage_num")]
 monitoring = false
 monitorable = false
 script = ExtResource("18_tp80q")
@@ -4046,15 +4046,15 @@ crit_fx = NodePath("../EnemyHurtboxComponent/Crit FX")
 damage_num = NodePath("DamageNum")
 metadata/_custom_type_script = "uid://dp4vffcpt00h1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/NoMelee-inator"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Twink/NoMelee-inator" unique_id=1683293905]
 position = Vector2(-64.5, 0)
 shape = SubResource("RectangleShape2D_lx26u")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Twink/NoMelee-inator"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Twink/NoMelee-inator" unique_id=1320118750]
 position = Vector2(-32, -169.5)
 shape = SubResource("RectangleShape2D_4hrq4")
 
-[node name="Whoosh" type="AnimatedSprite2D" parent="Twink/NoMelee-inator"]
+[node name="Whoosh" type="AnimatedSprite2D" parent="Twink/NoMelee-inator" unique_id=516450535]
 visible = false
 position = Vector2(-64, 0)
 scale = Vector2(1, 1.5)
@@ -4062,13 +4062,13 @@ sprite_frames = SubResource("SpriteFrames_ieddo")
 autoplay = "default"
 frame_progress = 0.76865005
 
-[node name="Crit FX" parent="Twink/NoMelee-inator" instance=ExtResource("19_lo1kp")]
+[node name="Crit FX" parent="Twink/NoMelee-inator" unique_id=1792797443 instance=ExtResource("19_lo1kp")]
 
-[node name="DamageNum" parent="Twink/NoMelee-inator" instance=ExtResource("20_ct7mf")]
+[node name="DamageNum" parent="Twink/NoMelee-inator" unique_id=1570623580 instance=ExtResource("20_ct7mf")]
 
-[node name="Rocket1" type="Node2D" parent="."]
+[node name="Rocket1" type="Node2D" parent="." unique_id=1687662615]
 
-[node name="Rocket1" type="Area2D" parent="Rocket1"]
+[node name="Rocket1" type="Area2D" parent="Rocket1" unique_id=291207614]
 visible = false
 position = Vector2(517, -260)
 rotation = -0.10646509
@@ -4078,25 +4078,23 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="Sprite2D" type="Sprite2D" parent="Rocket1/Rocket1"]
+[node name="Sprite2D" type="Sprite2D" parent="Rocket1/Rocket1" unique_id=1189930490]
 visible = false
 scale = Vector2(0.39999998, 0.39999998)
 texture = ExtResource("7_6wgb3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1" unique_id=254293494]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_jtxhx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket1/Rocket1"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket1/Rocket1" unique_id=1524716979]
 root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_ov6xj")
-}
+libraries/ = SubResource("AnimationLibrary_ov6xj")
 script = ExtResource("2_ewsbq")
 metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
 
-[node name="ExplosionSprite" type="Sprite2D" parent="Rocket1/Rocket1"]
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket1/Rocket1" unique_id=2066486881]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-25.270874, 1.8249817)
@@ -4105,7 +4103,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_s1xa4")
 offset = Vector2(-4.562439, -318.17725)
 
-[node name="Explosion" type="Area2D" parent="Rocket1/Rocket1"]
+[node name="Explosion" type="Area2D" parent="Rocket1/Rocket1" unique_id=396699283]
 position = Vector2(-52, 0)
 monitoring = false
 monitorable = false
@@ -4113,11 +4111,11 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1/Explosion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket1/Rocket1/Explosion" unique_id=1650247568]
 shape = SubResource("CircleShape2D_c2pcx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="DashParticle" type="GPUParticles2D" parent="Rocket1/Rocket1"]
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket1/Rocket1" unique_id=1343078687]
 position = Vector2(55, 0)
 amount = 30
 texture = ExtResource("9_oq6ax")
@@ -4126,16 +4124,16 @@ explosiveness = 0.1
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = SubResource("ParticleProcessMaterial_0ytf4")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket1/Rocket1"]
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket1/Rocket1" unique_id=229689197]
 stream = ExtResource("20_tr4v2")
 volume_db = 10.0
 bus = &"SFX 1"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="Rocket2" type="Node2D" parent="."]
+[node name="Rocket2" type="Node2D" parent="." unique_id=1770352038]
 
-[node name="Rocket2" type="Area2D" parent="Rocket2"]
+[node name="Rocket2" type="Area2D" parent="Rocket2" unique_id=1302862019]
 visible = false
 position = Vector2(517, 0)
 rotation = -0.10646509
@@ -4145,25 +4143,23 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="Sprite2D" type="Sprite2D" parent="Rocket2/Rocket2"]
+[node name="Sprite2D" type="Sprite2D" parent="Rocket2/Rocket2" unique_id=62788129]
 visible = false
 scale = Vector2(0.39999998, 0.39999998)
 texture = ExtResource("7_6wgb3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2" unique_id=290035136]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_jtxhx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket2/Rocket2"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket2/Rocket2" unique_id=1194549234]
 root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_c2pcx")
-}
+libraries/ = SubResource("AnimationLibrary_c2pcx")
 script = ExtResource("2_ewsbq")
 metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
 
-[node name="ExplosionSprite" type="Sprite2D" parent="Rocket2/Rocket2"]
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket2/Rocket2" unique_id=317440930]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-25.270874, 1.8249817)
@@ -4172,7 +4168,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_s1xa4")
 offset = Vector2(-4.562439, -318.17725)
 
-[node name="Explosion" type="Area2D" parent="Rocket2/Rocket2"]
+[node name="Explosion" type="Area2D" parent="Rocket2/Rocket2" unique_id=350874842]
 position = Vector2(-52, 0)
 monitoring = false
 monitorable = false
@@ -4180,11 +4176,11 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2/Explosion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket2/Rocket2/Explosion" unique_id=990398401]
 shape = SubResource("CircleShape2D_c2pcx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="DashParticle" type="GPUParticles2D" parent="Rocket2/Rocket2"]
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket2/Rocket2" unique_id=1550599234]
 position = Vector2(55, 0)
 amount = 30
 texture = ExtResource("9_oq6ax")
@@ -4193,16 +4189,16 @@ explosiveness = 0.1
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = SubResource("ParticleProcessMaterial_0ytf4")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket2/Rocket2"]
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket2/Rocket2" unique_id=930231720]
 stream = ExtResource("20_tr4v2")
 volume_db = 10.0
 bus = &"SFX 1"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="Rocket3" type="Node2D" parent="."]
+[node name="Rocket3" type="Node2D" parent="." unique_id=1684180447]
 
-[node name="Rocket3" type="Area2D" parent="Rocket3"]
+[node name="Rocket3" type="Area2D" parent="Rocket3" unique_id=715566947]
 visible = false
 position = Vector2(517, 260)
 rotation = -0.10651161
@@ -4212,25 +4208,23 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="Sprite2D" type="Sprite2D" parent="Rocket3/Rocket3"]
+[node name="Sprite2D" type="Sprite2D" parent="Rocket3/Rocket3" unique_id=597732563]
 visible = false
 scale = Vector2(0.39999998, 0.39999998)
 texture = ExtResource("7_6wgb3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3" unique_id=1707482001]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_jtxhx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket3/Rocket3"]
+[node name="AnimPlayer" type="AnimationPlayer" parent="Rocket3/Rocket3" unique_id=1939839676]
 root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_oq6ax")
-}
+libraries/ = SubResource("AnimationLibrary_oq6ax")
 script = ExtResource("2_ewsbq")
 metadata/_custom_type_script = "uid://c3xkwrrqyxir3"
 
-[node name="ExplosionSprite" type="Sprite2D" parent="Rocket3/Rocket3"]
+[node name="ExplosionSprite" type="Sprite2D" parent="Rocket3/Rocket3" unique_id=886752423]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-25.270874, 1.8249817)
@@ -4239,7 +4233,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_s1xa4")
 offset = Vector2(-4.562439, -318.17725)
 
-[node name="Explosion" type="Area2D" parent="Rocket3/Rocket3"]
+[node name="Explosion" type="Area2D" parent="Rocket3/Rocket3" unique_id=311081801]
 position = Vector2(-52, 0)
 monitoring = false
 monitorable = false
@@ -4247,11 +4241,11 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3/Explosion"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket3/Rocket3/Explosion" unique_id=1765916663]
 shape = SubResource("CircleShape2D_c2pcx")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="DashParticle" type="GPUParticles2D" parent="Rocket3/Rocket3"]
+[node name="DashParticle" type="GPUParticles2D" parent="Rocket3/Rocket3" unique_id=226269871]
 position = Vector2(55, 0)
 emitting = false
 amount = 30
@@ -4261,14 +4255,14 @@ explosiveness = 0.1
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = SubResource("ParticleProcessMaterial_0ytf4")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket3/Rocket3"]
+[node name="Sound" type="AudioStreamPlayer2D" parent="Rocket3/Rocket3" unique_id=2037337403]
 stream = ExtResource("20_tr4v2")
 volume_db = 10.0
 bus = &"SFX 1"
 script = ExtResource("9_cu4mb")
 metadata/_custom_type_script = "uid://cqcxmvafwh1ae"
 
-[node name="MinigunFire" type="Area2D" parent="."]
+[node name="MinigunFire" type="Area2D" parent="." unique_id=235030545]
 position = Vector2(634, 351)
 monitoring = false
 monitorable = false
@@ -4276,12 +4270,12 @@ script = ExtResource("6_ewsbq")
 start_disabled = true
 metadata/_custom_type_script = "uid://crpm7vyy8j5jo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigunFire"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigunFire" unique_id=282009359]
 position = Vector2(-851, -41)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_kq60o")
 
-[node name="Bullets" type="AnimatedSprite2D" parent="MinigunFire"]
+[node name="Bullets" type="AnimatedSprite2D" parent="MinigunFire" unique_id=970952028]
 visible = false
 position = Vector2(-851, -41)
 sprite_frames = SubResource("SpriteFrames_0ytf4")

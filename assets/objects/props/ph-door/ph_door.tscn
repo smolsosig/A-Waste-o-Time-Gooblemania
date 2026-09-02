@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tyxcconyogg3"]
+[gd_scene format=3 uid="uid://tyxcconyogg3"]
 
 [ext_resource type="Texture2D" uid="uid://d1vdfa4cmmve1" path="res://assets/objects/props/ph-door/door_old.png" id="1_0188w"]
 [ext_resource type="Script" uid="uid://bo254uknq8heg" path="res://assets/objects/props/ph-door/ph_door.gd" id="1_avjnx"]
@@ -389,7 +389,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6vt14")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -418,7 +418,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k044a")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -426,49 +426,47 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2w1h"]
 size = Vector2(1723, 592)
 
-[node name="PlaceholderDoor" type="StaticBody2D"]
+[node name="PlaceholderDoor" type="StaticBody2D" unique_id=1252177393]
 script = ExtResource("1_avjnx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042072376]
 shape = SubResource("RectangleShape2D_s5kkw")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_weuy5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1121524080]
+libraries/ = SubResource("AnimationLibrary_weuy5")
 
-[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=112847051]
 clip_children = 1
 position = Vector2(0, 0.500005)
 sprite_frames = SubResource("SpriteFrames_5o4t6")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Sprite2D2"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Sprite2D2" unique_id=587651360]
 visible = false
 position = Vector2(0, -18.5)
 sprite_frames = SubResource("SpriteFrames_iitrb")
 frame = 1
 offset = Vector2(0, -200)
 
-[node name="Blinker" type="AnimatedSprite2D" parent="Sprite2D2"]
+[node name="Blinker" type="AnimatedSprite2D" parent="Sprite2D2" unique_id=479976059]
 visible = false
 position = Vector2(0, -18.5)
 sprite_frames = SubResource("SpriteFrames_iitrb")
 
-[node name="SequenceManagerComponent" type="Node" parent="."]
+[node name="SequenceManagerComponent" type="Node" parent="." unique_id=467286461]
 script = ExtResource("3_lrycj")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=64892375]
 visible = false
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1236877696]
 position = Vector2(34.5, 0)
 shape = SubResource("RectangleShape2D_e2w1h")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1638432302]
 stream = ExtResource("4_rm1wb")
 bus = &"UI SFX"
 

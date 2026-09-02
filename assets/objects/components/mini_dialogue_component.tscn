@@ -252,6 +252,9 @@ expand_margin_right = 30.0
 expand_margin_bottom = 30.0
 
 [node name="MiniDialogueComponent" type="Area2D" unique_id=2110471124]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 script = ExtResource("1_d0p7y")
 repeatable = true
 metadata/_custom_type_script = "uid://gnuiimjahpvx"

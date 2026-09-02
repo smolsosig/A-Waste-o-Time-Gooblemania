@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/1962fort_B.png-cdd25d15733733a6f21f3667bb0400
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqk4fhlimtqbx"]
+[gd_scene format=3 uid="uid://dqk4fhlimtqbx"]
 
 [ext_resource type="Script" uid="uid://bxce7gxd64gas" path="res://assets/objects/components/DetectableComponent.gd" id="1_5j7hc"]
 [ext_resource type="Script" uid="uid://dp14075vvfe3d" path="res://assets/objects/props/ph-dooropener/door_opener.gd" id="1_g6pac"]
@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fxso"]
 size = Vector2(200, 200)
 
-[node name="DoorOpener" type="ColorRect"]
+[node name="DoorOpener" type="ColorRect" unique_id=671119238]
 offset_left = 21000.0
 offset_top = -4100.0
 offset_right = 21200.0
@@ -15,7 +15,7 @@ offset_bottom = -3900.0
 color = Color(0.216, 0.651, 1, 1)
 script = ExtResource("1_g6pac")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=190179916]
 position = Vector2(100, 100)
 collision_layer = 8
 collision_mask = 0
@@ -23,10 +23,10 @@ script = ExtResource("1_5j7hc")
 can_bounce_off_it = true
 metadata/_custom_type_script = "uid://bxce7gxd64gas"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1184512934]
 shape = SubResource("RectangleShape2D_1fxso")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1818130988]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 200.0

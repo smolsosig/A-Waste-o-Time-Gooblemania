@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://csnw7jgorpdgw"]
+[gd_scene format=3 uid="uid://csnw7jgorpdgw"]
 
 [ext_resource type="Texture2D" uid="uid://oqgmrls124r" path="res://assets/objects/props/ph-hittable/hit1.png" id="1_stibk"]
 [ext_resource type="Script" uid="uid://belonwic3mpd6" path="res://assets/objects/props/ph-hittable/ph_hittable.gd" id="2_52xvs"]
@@ -7,18 +7,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bxo1"]
 size = Vector2(140.871, 140.871)
 
-[node name="Hittable" type="Sprite2D"]
+[node name="Hittable" type="Sprite2D" unique_id=532156754]
 scale = Vector2(1.65, 1.65)
 texture = ExtResource("1_stibk")
 script = ExtResource("2_52xvs")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=828596660]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_bmi4n")
 can_bounce_off_it = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1567710018]
 shape = SubResource("RectangleShape2D_8bxo1")
 
 [connection signal="interacted" from="Area2D" to="." method="_on_area_2d_interacted"]

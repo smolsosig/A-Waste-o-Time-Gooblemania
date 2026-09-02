@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvcd70q3kb7pg"]
+[gd_scene format=3 uid="uid://dvcd70q3kb7pg"]
 
 [ext_resource type="Texture2D" uid="uid://bvet8kev0cuc3" path="res://assets/objects/props/signs/arrow-1x1.png" id="1_rnlai"]
 [ext_resource type="Texture2D" uid="uid://bsbu7sgra3yww" path="res://assets/objects/props/signs/arrow-1x3.png" id="2_yswho"]
@@ -83,7 +83,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jbs5g")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1x1",
 "speed": 5.0
 }, {
@@ -103,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a4ons")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1x3",
 "speed": 5.0
 }, {
@@ -123,7 +123,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lxl68")
 }],
-"loop": true,
+"loop": 1,
 "name": &"2x3",
 "speed": 5.0
 }]
@@ -222,13 +222,11 @@ _data = {
 &"2x3-turn": SubResource("Animation_mx6s1")
 }
 
-[node name="SignPropDynamic" type="AnimatedSprite2D"]
+[node name="SignPropDynamic" type="AnimatedSprite2D" unique_id=1281113544]
 sprite_frames = SubResource("SpriteFrames_qemrd")
 animation = &"1x1"
 offset = Vector2(50, 50)
 script = ExtResource("4_ue1jk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_htniq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1933106173]
+libraries/ = SubResource("AnimationLibrary_htniq")

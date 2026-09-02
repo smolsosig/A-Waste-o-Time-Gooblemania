@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bglcht4qa321b"]
+[gd_scene format=3 uid="uid://bglcht4qa321b"]
 
 [ext_resource type="Texture2D" uid="uid://c28bu2me7l8mj" path="res://assets/objects/props/spy/compdrive/compdrive-body.png" id="1_wt622"]
 [ext_resource type="Texture2D" uid="uid://bp66m5pxj7ugf" path="res://assets/objects/props/spy/compdrive/compdrive-tape1.png" id="2_7vm5i"]
@@ -79,22 +79,20 @@ _data = {
 &"move": SubResource("Animation_aoq3y")
 }
 
-[node name="Compdrive" type="Node2D"]
+[node name="Compdrive" type="Node2D" unique_id=702864238]
 script = SubResource("GDScript_nwgbx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_43ibm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2046743001]
+libraries/ = SubResource("AnimationLibrary_43ibm")
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=1031345247]
 position = Vector2(0, -100)
 texture = ExtResource("1_wt622")
 
-[node name="Tape1" type="Sprite2D" parent="."]
+[node name="Tape1" type="Sprite2D" parent="." unique_id=251315755]
 position = Vector2(-20, -155)
 texture = ExtResource("2_7vm5i")
 
-[node name="Tape2" type="Sprite2D" parent="."]
+[node name="Tape2" type="Sprite2D" parent="." unique_id=686406760]
 position = Vector2(19, -156)
 texture = ExtResource("3_rb5d7")

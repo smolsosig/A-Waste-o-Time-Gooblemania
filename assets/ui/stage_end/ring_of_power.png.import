@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/ring_of_power.png-539f2a9e3c3c9627f3dd27655d3
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

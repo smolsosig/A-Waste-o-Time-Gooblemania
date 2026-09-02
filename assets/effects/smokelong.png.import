@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/smokelong.png-3157849c334c5970159368bc160ee4b
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4xdh5r5sgjsd"]
+[gd_scene format=3 uid="uid://b4xdh5r5sgjsd"]
 
 [ext_resource type="Texture2D" uid="uid://dv8safcdhp1xs" path="res://assets/objects/npcs/ph-sign/charliesign.png" id="1_3pmab"]
 [ext_resource type="Texture2D" uid="uid://pigd2rr2ri4t" path="res://assets/objects/npcs/ph-sign/hand.png" id="2_4wdyw"]
@@ -40,20 +40,18 @@ _data = {
 &"wave": SubResource("Animation_m0a7x")
 }
 
-[node name="CharlieSign" type="Node2D"]
+[node name="CharlieSign" type="Node2D" unique_id=810543496]
 
-[node name="Charliesign" type="Sprite2D" parent="."]
+[node name="Charliesign" type="Sprite2D" parent="." unique_id=509629748]
 position = Vector2(0, -94)
 texture = ExtResource("1_3pmab")
 
-[node name="Hand" type="Sprite2D" parent="."]
+[node name="Hand" type="Sprite2D" parent="." unique_id=1511318809]
 position = Vector2(-48, -98)
 rotation = -0.523598
 texture = ExtResource("2_4wdyw")
 offset = Vector2(-1, -28)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hs5y3")
-}
-autoplay = "wave"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=325740646]
+libraries/ = SubResource("AnimationLibrary_hs5y3")
+autoplay = &"wave"

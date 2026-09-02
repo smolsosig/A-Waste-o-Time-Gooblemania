@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/shuri1-hud.png-f26a7b418905b7b7451fb178bd9d4f
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

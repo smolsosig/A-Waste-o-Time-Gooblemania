@@ -248,7 +248,7 @@ position = Vector2(674, -142)
 [node name="BottomBoundaryO" type="Marker2D" parent="Hand" unique_id=1267237310]
 position = Vector2(-364, 425)
 
-[connection signal="timeout" from="AdCooldown" to="." method="_on_ad_cooldown_timeout"]
 [connection signal="timeout" from="AdCooldown" to="." method="next_ad"]
+[connection signal="timeout" from="AdCooldown" to="." method="_on_ad_cooldown_timeout"]
 [connection signal="timeout" from="Hand/Hand/Cooldown" to="Hand/Hand" method="_on_cooldown_timeout"]
 [connection signal="timeout" from="Hand/Hand/ShowHand" to="Hand/Hand" method="show_hand"]

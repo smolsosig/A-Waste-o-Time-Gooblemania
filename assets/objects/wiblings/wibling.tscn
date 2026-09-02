@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c36afypaeqceh"]
+[gd_scene format=3 uid="uid://c36afypaeqceh"]
 
 [ext_resource type="Texture2D" uid="uid://cmowuitu1yw60" path="res://assets/objects/wiblings/wiblings.png" id="1_dvgk0"]
 [ext_resource type="Script" uid="uid://buf404shdd5rb" path="res://assets/objects/wiblings/wibling.gd" id="1_lxwj6"]
@@ -86,7 +86,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f41kc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"01",
 "speed": 5.0
 }, {
@@ -109,7 +109,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jgx8i")
 }],
-"loop": true,
+"loop": 1,
 "name": &"05",
 "speed": 5.0
 }, {
@@ -132,7 +132,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n2aip")
 }],
-"loop": true,
+"loop": 1,
 "name": &"20",
 "speed": 5.0
 }]
@@ -409,7 +409,7 @@ stream_0/stream = ExtResource("3_iqinl")
 stream_1/stream = ExtResource("4_u8r7q")
 stream_2/stream = ExtResource("5_8cnox")
 
-[node name="Wibling" type="RigidBody2D" node_paths=PackedStringArray("anim_player")]
+[node name="Wibling" type="RigidBody2D" unique_id=1663269128 node_paths=PackedStringArray("anim_player")]
 collision_layer = 16
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_lxwj6")
@@ -418,53 +418,51 @@ max_contacts_reported = 1
 script = ExtResource("1_lxwj6")
 anim_player = NodePath("AnimationPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=277282019]
 modulate = Color(1, 1, 1, 0.14901961)
 material = SubResource("CanvasItemMaterial_8cnox")
 scale = Vector2(0.27734375, 0.27734375)
 texture = ExtResource("2_u8r7q")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1231011565]
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_jbxiq")
 animation = &"01"
 script = SubResource("GDScript_iqinl")
 
-[node name="BlinkerTimer" type="Timer" parent="AnimatedSprite2D"]
+[node name="BlinkerTimer" type="Timer" parent="AnimatedSprite2D" unique_id=521493639]
 wait_time = 0.25
 one_shot = true
 
-[node name="OpportunityTimer" type="Timer" parent="AnimatedSprite2D"]
+[node name="OpportunityTimer" type="Timer" parent="AnimatedSprite2D" unique_id=1093140162]
 wait_time = 15.0
 one_shot = true
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1176087416]
 position = Vector2(0, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_brwye")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_b0o2y")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2000084882]
+libraries/ = SubResource("AnimationLibrary_b0o2y")
 
-[node name="CharlieCollector" type="Area2D" parent="."]
+[node name="CharlieCollector" type="Area2D" parent="." unique_id=394682296]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 monitorable = false
 script = SubResource("GDScript_lxwj6")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieCollector"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharlieCollector" unique_id=1234239056]
 shape = SubResource("CircleShape2D_f41kc")
 
-[node name="HoldOnAMinuteTimer" type="Timer" parent="CharlieCollector"]
+[node name="HoldOnAMinuteTimer" type="Timer" parent="CharlieCollector" unique_id=1629295743]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2124502249]
 stream = SubResource("AudioStreamRandomizer_fleh2")
 volume_db = 10.0
 attenuation = 0.37892914

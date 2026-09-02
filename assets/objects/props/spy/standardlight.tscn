@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfgx8v1dlvqhl"]
+[gd_scene format=3 uid="uid://bfgx8v1dlvqhl"]
 
 [ext_resource type="Texture2D" uid="uid://7nyevf84qfi4" path="res://assets/objects/props/spy/standardlight.png" id="1_ppmy8"]
 [ext_resource type="Texture2D" uid="uid://biaukqnscmlan" path="res://assets/effects/lights/light-spot.png" id="2_g5esn"]
 
-[node name="Standardlight" type="Node2D"]
+[node name="Standardlight" type="Node2D" unique_id=1364988866]
 
-[node name="Standardlight" type="Sprite2D" parent="."]
+[node name="Standardlight" type="Sprite2D" parent="." unique_id=1013153672]
 position = Vector2(0, 50)
 texture = ExtResource("1_ppmy8")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1868697606]
 position = Vector2(0, 60)
 color = Color(0.975206, 0.933004, 0.840343, 1)
 energy = 0.5
