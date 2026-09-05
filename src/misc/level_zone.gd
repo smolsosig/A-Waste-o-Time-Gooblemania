@@ -4,17 +4,11 @@ class_name LevelZone extends VisibleOnScreenNotifier2D
 ## Likewise, when not visible on screen, disables and hides the node.
 
 func _ready() -> void:
-	screen_entered.connect(on_screen)
-	screen_exited.connect(off_screen)
+	screen_entered.connect(toggle_visibility.bind(true))
+	screen_exited.connect(toggle_visibility.bind(false))
 
-func on_screen() -> void:
+func toggle_visibility(gotta_show: bool = true) -> void:
 	if get_children():
 		for child in get_children():
-			child.process_mode = Node.PROCESS_MODE_INHERIT
-			child.show()
-
-func off_screen() -> void:
-	if get_children():
-		for child in get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-			child.hide()
+			child.process_mode = Node.PROCESS_MODE_INHERIT if gotta_show else Node.PROCESS_MODE_DISABLED
+			if child is CanvasItem: child.visible = gotta_show

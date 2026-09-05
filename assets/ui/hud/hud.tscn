@@ -79,6 +79,12 @@ _data = {
 &"show->hide": SubResource("Animation_4kx5v")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5bb8"]
+streams_count = 3
+stream_0/stream = ExtResource("7_60q8c")
+stream_1/stream = ExtResource("8_tfisl")
+stream_2/stream = ExtResource("9_5akur")
+
 [sub_resource type="GDScript" id="GDScript_1llwp"]
 script/source = "extends RichTextLabel
 
@@ -96,12 +102,6 @@ func _process(_delta: float) -> void:
 	if visible:
 		text = \"[center][b]FPS:[/b] %s[/center]\" % Engine.get_frames_per_second()
 "
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5bb8"]
-streams_count = 3
-stream_0/stream = ExtResource("7_60q8c")
-stream_1/stream = ExtResource("8_tfisl")
-stream_2/stream = ExtResource("9_5akur")
 
 [node name="HUD" type="CanvasLayer" unique_id=350131121 node_paths=PackedStringArray("ones_timer", "tens_timer", "hund_timer", "container", "container_anim_player", "hud", "charlie_face", "ones", "tens", "hundreds", "wibl_counter")]
 script = ExtResource("1_4b106")
@@ -122,21 +122,6 @@ unique_name_in_owner = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container" unique_id=7711820]
 libraries/ = SubResource("AnimationLibrary_47007")
-
-[node name="FPS" type="RichTextLabel" parent="Container" unique_id=1031064894]
-offset_left = 327.0
-offset_top = 7.0
-offset_right = 543.0
-offset_bottom = 47.0
-theme_override_fonts/normal_font = ExtResource("2_a3ccx")
-theme_override_fonts/bold_font = ExtResource("3_4kx5v")
-theme_override_font_sizes/normal_font_size = 30
-theme_override_font_sizes/bold_font_size = 30
-bbcode_enabled = true
-text = "[center][b]FPS:[/b] 88[/center]"
-scroll_active = false
-shortcut_keys_enabled = false
-script = SubResource("GDScript_1llwp")
 
 [node name="CharlieFace" type="Sprite2D" parent="Container" unique_id=1651465407]
 position = Vector2(160, 156)
@@ -225,6 +210,21 @@ texture = ExtResource("13_fecl3")
 [node name="Timer" type="Timer" parent="Weapons" unique_id=835004057]
 wait_time = 2.0
 one_shot = true
+
+[node name="FPS" type="RichTextLabel" parent="." unique_id=1523792609]
+offset_left = 327.0
+offset_top = 7.0
+offset_right = 543.0
+offset_bottom = 47.0
+theme_override_fonts/normal_font = ExtResource("2_a3ccx")
+theme_override_fonts/bold_font = ExtResource("3_4kx5v")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[center][b]FPS:[/b] 88[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+script = SubResource("GDScript_1llwp")
 
 [connection signal="timeout" from="Container/Base/Ones/OnesTimer" to="." method="_on_ones_timer_timeout"]
 [connection signal="timeout" from="Container/Base/Hundreds/TensTimer" to="." method="_on_tens_timer_timeout"]
