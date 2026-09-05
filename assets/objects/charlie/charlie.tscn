@@ -2372,7 +2372,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Footstep" type="RayCast2D" parent="." unique_id=457764465 node_paths=PackedStringArray("sounds")]
-target_position = Vector2(0, 15)
+target_position = Vector2(0, 5)
 script = ExtResource("43_e4jnp")
 sounds = {
 "carpet": NodePath("Carpet"),

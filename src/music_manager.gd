@@ -175,7 +175,7 @@ func play_soundscape(sound: Resource, fade_in: float = 0) -> void:
 	temp_current_soundscape ^= 1
 	current_soundscape ^= 1
 	
-	soundscape_tween.tween_property(soundscapes[temp_current_soundscape], "volume_db", -80, fade_in * 2)\
+	soundscape_tween.tween_property(soundscapes[temp_current_soundscape], "volume_db", -80, fade_in)\
 	.set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
 	soundscape_tween.set_parallel()
 	soundscape_tween.tween_property(soundscapes[current_soundscape], "volume_db", 0, fade_in)\
