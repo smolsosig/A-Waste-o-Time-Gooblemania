@@ -3,7 +3,7 @@ extends CharlieState
 @export var speed: float = 4000
 @export var duration: float = 0.3
 @export var cooldown: float = 0.25
-@export var dash_particles: GPUParticles2D
+@export var dash_particles: Node2D
 @export var dash_sfx: AudioStreamPlayer2D
 @onready var default_speed: float = speed
 @export var air_trail: Line2D

@@ -2,8 +2,8 @@ extends CharlieState
 
 @export var buffer_timer: Timer
 @export var jump_parti_timer: Timer
-@export var run_particle: GPUParticles2D
-@export var jump_particle: GPUParticles2D
+@export var run_particle: Node2D
+@export var jump_particle: Node2D
 @export var shuri_cooldown: Timer
 @export var dash_cooldown: Timer
 @export var idle_timer: Timer
@@ -56,7 +56,8 @@ func state_process(_delta : float) -> void:
 		if current_anim != run_flair:
 			anim_player.play(run_flair if !charlie.is_walking else "walk")
 		run_particle.emitting = true if !charlie.is_walking else false
-		particle_direction(-1 if charlie.velocity.x > 0 else 1)
+		run_particle.direction.x = (-1 if charlie.velocity.x > 0 else 1)
+		#particle_direction(-1 if charlie.velocity.x > 0 else 1)
 	else:
 		if current_anim != "idle":
 			anim_player.play("idle")

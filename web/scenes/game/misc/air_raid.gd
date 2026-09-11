@@ -5,7 +5,7 @@ extends Node
 var collect_charlie_position: bool = false
 @export var marker: Marker2D
 
-@export var max_waves: int = 6
+@export var max_waves: int = 7
 @export var waves_to_begin_second: int = 3
 @export var available_positions: Array[Marker2D]
 @export var available_positions_sniper: Array[Marker2D]

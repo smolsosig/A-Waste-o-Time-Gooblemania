@@ -779,6 +779,14 @@ scale_max = 1.25
 scale_curve = SubResource("CurveTexture_cd110")
 color_ramp = SubResource("GradientTexture1D_yjph6")
 
+[sub_resource type="Curve" id="Curve_51xho"]
+_data = [Vector2(0, 0.06422019), 0.0, 8.80734, 0, 0, Vector2(0.28819442, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.6421998, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yutty"]
+offsets = PackedFloat32Array(0.52290076, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvvmv"]
 atlas = ExtResource("6_k3t71")
 region = Rect2(0, 0, 237, 237)
@@ -2100,7 +2108,8 @@ metadata/_custom_type_script = "uid://di8cyj6vore61"
 [node name="Particles" type="Node2D" parent="." unique_id=2022518179]
 
 [node name="RunParticle" type="GPUParticles2D" parent="Particles" unique_id=2068127044]
-position = Vector2(0, -33)
+visible = false
+position = Vector2(-217, -33)
 emitting = false
 amount = 6
 texture = ExtResource("5_3tuta")
@@ -2110,6 +2119,7 @@ visibility_rect = Rect2(-512, -512, 1024, 1024)
 process_material = SubResource("ParticleProcessMaterial_edooa")
 
 [node name="JumpParticle" type="GPUParticles2D" parent="Particles" unique_id=933705641]
+visible = false
 position = Vector2(0, -33)
 emitting = false
 amount = 40
@@ -2120,6 +2130,7 @@ visibility_rect = Rect2(-512, -512, 1024, 1024)
 process_material = SubResource("ParticleProcessMaterial_bsihp")
 
 [node name="DashParticle" type="GPUParticles2D" parent="Particles" unique_id=162274861]
+visible = false
 position = Vector2(0, -85)
 emitting = false
 amount = 30
@@ -2128,6 +2139,60 @@ lifetime = 0.5
 explosiveness = 0.1
 visibility_rect = Rect2(-512, -512, 1024, 1024)
 process_material = SubResource("ParticleProcessMaterial_bsihp")
+
+[node name="RunParticleCPU" type="CPUParticles2D" parent="Particles" unique_id=2133165199]
+position = Vector2(0, -36)
+emitting = false
+amount = 4
+texture = ExtResource("5_3tuta")
+lifetime = 0.8
+randomness = 0.91
+direction = Vector2(0, -1)
+spread = 10.0
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+angle_min = -50.0
+angle_max = 50.0
+scale_amount_curve = SubResource("Curve_51xho")
+color_ramp = SubResource("Gradient_yutty")
+
+[node name="JumpParticleCPU" type="CPUParticles2D" parent="Particles" unique_id=509268055]
+position = Vector2(0, -36)
+emitting = false
+amount = 40
+texture = ExtResource("5_3tuta")
+lifetime = 0.5
+explosiveness = 0.1
+randomness = 0.91
+direction = Vector2(0, -1)
+initial_velocity_min = 350.0
+initial_velocity_max = 350.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+angle_min = -50.0
+angle_max = 50.0
+scale_amount_curve = SubResource("Curve_51xho")
+color_ramp = SubResource("Gradient_yutty")
+
+[node name="DashParticleCPU" type="CPUParticles2D" parent="Particles" unique_id=1359211858]
+position = Vector2(0, -36)
+emitting = false
+amount = 30
+texture = ExtResource("5_3tuta")
+lifetime = 0.5
+explosiveness = 0.1
+randomness = 0.91
+direction = Vector2(0, -1)
+initial_velocity_min = 350.0
+initial_velocity_max = 350.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+angle_min = -50.0
+angle_max = 50.0
+scale_amount_curve = SubResource("Curve_51xho")
+color_ramp = SubResource("Gradient_yutty")
 
 [node name="CharlieSprite" type="AnimatedSprite2D" parent="." unique_id=1664932550 node_paths=PackedStringArray("charlie", "state_machine", "air_state", "attack_state")]
 unique_name_in_owner = true
@@ -2174,8 +2239,8 @@ metadata/_custom_type_script = "uid://dcj0j6xmi64mp"
 script = ExtResource("22_36rfl")
 buffer_timer = NodePath("../AirState/BufferTimer")
 jump_parti_timer = NodePath("JumpPartiTimer")
-run_particle = NodePath("../../Particles/RunParticle")
-jump_particle = NodePath("../../Particles/JumpParticle")
+run_particle = NodePath("../../Particles/RunParticleCPU")
+jump_particle = NodePath("../../Particles/JumpParticleCPU")
 shuri_cooldown = NodePath("../AttackState/ShuriCooldown")
 dash_cooldown = NodePath("../DashState/CooldownTimer")
 idle_timer = NodePath("IdleTimer")
@@ -2217,7 +2282,7 @@ script = ExtResource("29_6dpjx")
 speed = 3000.0
 duration = 0.2
 cooldown = 0.35
-dash_particles = NodePath("../../Particles/DashParticle")
+dash_particles = NodePath("../../Particles/DashParticleCPU")
 dash_sfx = NodePath("../../DashSound")
 air_trail = NodePath("../../AirTrail")
 can_move = false

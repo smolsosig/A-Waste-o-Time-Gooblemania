@@ -59,5 +59,9 @@ func next_ad() -> void:
 			music.stop()
 			await get_tree().create_timer(1).timeout
 			hide()
+			Fade.fade_out(0.1)
 			PlayerVar.showhide_cursor()
 			yeah_we_done.emit()
+
+func fade_in() -> void:
+	Fade.fade_in(2)

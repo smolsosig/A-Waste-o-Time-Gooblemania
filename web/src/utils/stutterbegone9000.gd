@@ -5,6 +5,7 @@ class_name StutterBegone9000 extends Node2D
 ## Meant to try and alleviate shader precompilation. This is my second attempt.
 
 func _ready() -> void:
+	await get_tree().create_timer(0.5).timeout # so the fake screen can run
 	var child: Node = get_child(0)
 	child.global_position = PlayerVar.charlie_global_position
 	await get_tree().create_timer(0.5).timeout

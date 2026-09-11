@@ -93,10 +93,7 @@ func _ready() -> void:
 	show_fps(PlayerVar.show_fps)
 
 func show_fps(yes: bool) -> void:
-	if yes:
-		show()
-	else:
-		hide()
+	visible = yes
 
 func _process(_delta: float) -> void:
 	if visible:
@@ -212,10 +209,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="FPS" type="RichTextLabel" parent="." unique_id=1523792609]
+visible = false
 offset_left = 327.0
 offset_top = 7.0
 offset_right = 543.0
 offset_bottom = 47.0
+theme_override_colors/default_color = Color(0.9411765, 0.9254902, 0.8980392, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/normal_font = ExtResource("2_a3ccx")
 theme_override_fonts/bold_font = ExtResource("3_4kx5v")
 theme_override_font_sizes/normal_font_size = 30

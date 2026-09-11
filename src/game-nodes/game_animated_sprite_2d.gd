@@ -11,6 +11,8 @@ class_name GameAnimatedSprite2D extends AnimatedSprite2D
 ## Autoplay [code]autoplay_anim_when_spawn[/code] when [code]Staglobals.current_spawn[/code] matches [code]autoplay_when_spawn_num[/code].[br][br]
 ## ... okay, okay. If you want, say, [code]"train_crashed"[/code] to play on the [b]third[/b] checkpoint, you put [code]3[/code] here.
 @export var autoplay_when_spawn_num: int
+## Autoplays the, erh, autoplay animation at a random time.
+@export var autoplay_at_random_time: bool = false
 ## If [code]true[/code], pauses the animation when Charlie undergoes the death animation.
 @export var pause_when_death: bool = true
 
@@ -27,11 +29,19 @@ func death() -> void:
 
 func reset() -> void:
 	if autoplay_anim_when_spawn && (autoplay_when_spawn_num <= Staglobals.current_spawn):
-		play(autoplay_anim_when_spawn)
+		_weird_autoplay_random_thing(autoplay_anim_when_spawn)
 		return
 	
 	if autoplay_anim_name:
-		play(autoplay_anim_name)
+		_weird_autoplay_random_thing(autoplay_anim_name)
 	
 	flip_h = _init_flip_h
 	flip_v = _init_flip_v
+
+# idk how to name this
+func _weird_autoplay_random_thing(anim_name: String) -> void:
+	if !autoplay_anim_name: play(anim_name)
+	else:
+		play(anim_name)
+		frame = randi_range(0, sprite_frames.get_frame_count(anim_name))
+	return

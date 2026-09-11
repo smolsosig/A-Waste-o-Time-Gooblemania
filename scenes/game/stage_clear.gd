@@ -172,8 +172,8 @@ func play_music() -> void:
 func play_music2() -> void:
 	$EndMusic.play_with_fade(5)
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_pressed() && ready_to_exit:
+func _process(_delta: float) -> void:
+	if Input.is_anything_pressed() && ready_to_exit:
 		SignalBus.emit_signal("level_load", next_level_decider())
 		ready_to_exit = false
 

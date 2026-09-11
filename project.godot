@@ -23,6 +23,9 @@ run/main_scene="uid://bgux1jkt874ue"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="A Waste o' Time"
 config/features=PackedStringArray("4.8", "GL Compatibility")
+boot_splash/bg_color=Color(0.1134, 0.14, 0.11428666, 1)
+boot_splash/stretch_mode=4
+boot_splash/image="uid://hh17stta7dm7"
 config/icon="res://icon.svg"
 
 [audio]
