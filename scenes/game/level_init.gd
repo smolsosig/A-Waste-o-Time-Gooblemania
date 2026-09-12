@@ -118,15 +118,12 @@ func whitelist() -> void:
 	
 	# if only ranged is allowed, switch immediately to ranged weapon and turn off weapon switching
 	if !can_use_melee && can_use_range:
-		if PlayerVar.melee:
-			PlayerVar.melee = false
+		if PlayerVar.melee: PlayerVar.melee = false
 		PlayerVar.can_switch_weapon = false
 	# if you can use both, allow weapon switching
-	elif can_use_melee && can_use_range:
-		PlayerVar.can_switch_weapon = true
+	elif can_use_melee && can_use_range: PlayerVar.can_switch_weapon = true
 	# if only melee is allowed, or if both weapons are banned, just turn off weapon switching
-	else:
-		PlayerVar.can_switch_weapon = false
+	else: PlayerVar.can_switch_weapon = false
 
 func play_music() -> void:
 	if music_play_on_init:

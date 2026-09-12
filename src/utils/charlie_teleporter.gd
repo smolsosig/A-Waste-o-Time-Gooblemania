@@ -19,5 +19,6 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	super(area)
-	tele_target.teleport(false, carry_velocity)
-	if instant_camera: SignalBus.emit_signal("stop_fucking_moving_so_slowly_damn")
+	if area is CharlieDetectableComponent:
+		tele_target.teleport(false, carry_velocity)
+		if instant_camera: SignalBus.emit_signal("stop_fucking_moving_so_slowly_damn")
