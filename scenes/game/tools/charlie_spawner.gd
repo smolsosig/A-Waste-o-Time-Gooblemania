@@ -25,6 +25,8 @@ class_name CharlieSpawner extends Node2D
 @export var custom_anim_name: String = "null"
 ## If [code]false[/code], hides the HUD when spawning.
 @export var show_hud: bool = true
+## If [code]true[/code], camera plays zoomout animation.
+@export var camera_zoom_out: bool = true
 ## If [code]true[/code], forces Charlie to walk after the opening anim.
 @export var only_walk: bool = false
 ## When you spawn here, shows the obi 2.5 seconds later. Only recommended for the first spawn.
@@ -75,6 +77,7 @@ func teleport(spawn: bool = false, carry_velocity: bool = false) -> void:
 	new_pos_y = global_position.y - 25 if spawn else global_position.y - 1
 	
 	SignalBus.emit_signal("charlie_change_pos", Vector2i(global_position.x, new_pos_y), spawn, carry_velocity)
+	Staglobals.current_spawn_zoomout = camera_zoom_out
 	
 	if spawn && show_obi:
 		await get_tree().create_timer(2.5).timeout

@@ -13,6 +13,8 @@ var fading: bool = false
 var stage_end_scene: Resource = load("uid://c1t34lmdt6xic")
 var slowed_down_because_im_a_retard_who_didnt_plan_this_ahead: bool = false
 
+@onready var level_start_sfx : AudioStreamOggVorbis = load("res://assets/sounds/level_manager/level_start.ogg")
+
 func _ready() -> void:
 	SignalBus.connect("cam_shake", cam_shake)
 	SignalBus.connect("charlie_door_teleport", c_d_teleport)
@@ -32,10 +34,33 @@ func start() -> void:
 	opening = true
 	anim_player.speed_scale = 1
 	offset.x = 0
-	if !no_zooms: Fade.fade_in(2, Color.BLACK, "ZoomIn")
-	else: Fade.fade_in(0.05)
+	_check_fade_in()
 	position_smoothing_enabled = false
 	anim_player.play("zoom_out")
+
+# these two methods are immensely unbelievably retarded
+func _check_fade_in() -> void:
+	if no_zooms: # no_zooms gets top priority
+		_fade_in(false)
+		return
+	elif Staglobals.current_spawn_zoomout: # then the stage setting
+		_fade_in()
+		return
+	else:
+		_fade_in(false)
+		return
+
+# ts kinda misleading because it means the little iris thing that zooms out
+# not the actual camera zooming out motion which the game still does regardless
+# but who gives a fuck lmfao
+func _fade_in(yeah_fade: bool = true) -> void:
+	if yeah_fade:
+		Fade.fade_in(2, Color.BLACK, "ZoomIn")
+		if Staglobals.current_spawn_zoomout_sfx: SoundManager.play_ui_sound(level_start_sfx)
+	else:
+		Fade.fade_in(0.05)
+		if !Staglobals.current_spawn_zoomout: Staglobals.current_spawn_zoomout = true
+# end immensely unbelievably retarded code
 
 func _process(_delta: float) -> void:
 	if opening:
@@ -74,7 +99,7 @@ func death() -> void:
 	anim_player.play("zoom_in")
 
 func call_zoomout() -> void:
-	if !no_zooms: Fade.fade_out(2, Color.BLACK, "ZoomOut")
+	if !no_zooms: Fade.fade_out(2, Color.BLACK, "ZoomIn", true)
 
 func do_normal_shit_idk() -> void:
 	SignalBus.emit_signal("cam_ok_u_can_follow_now")

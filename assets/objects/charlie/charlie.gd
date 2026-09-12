@@ -100,25 +100,19 @@ func _physics_process(delta : float) -> void:
 		is_walking = false
 
 func jump(double: bool) -> void:
-	if !double:
-		SoundManager.play_sound(jump_sound)
-	else:
-		SoundManager.play_sound_with_pitch(jump_sound, 1.25)
+	if !double: SoundManager.play_sound(jump_sound)
+	else: SoundManager.play_sound_with_pitch(jump_sound, 1.25)
 	velocity.y = jump_velocity
 	jump_timer.start()
 
 func update_facing_direction() -> void:
 	if state_machine.check_if_can_move() || state_machine.check_can_change_direction():
-		if direction.x > 0:
-			anim_sprite.flip_h = false
-		elif direction.x < 0:
-			anim_sprite.flip_h = true
-
+		# do not i repeat do NOT turn this shit into a ternary operator
+		if direction.x > 0: anim_sprite.flip_h = false
+		elif direction.x < 0: anim_sprite.flip_h = true
+		
 func get_gravity_a() -> float:
-	if (velocity.y < 0.0):
-		return jump_gravity
-	else:
-		return fall_gravity
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func open_zoom_end() -> void:
 	emit_signal("open_zoom_endd")
@@ -144,10 +138,7 @@ func _door_teleport(t_position: Vector2, spawn: bool = false, carry_velocity: bo
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_switchweapon") && is_open_zoom_end:
 		if PlayerVar.can_switch_weapon && !dont_fucking_switch_weapons_during_cutscenes_jackass:
-			if !PlayerVar.melee:
-				PlayerVar.melee = true
-			else:
-				PlayerVar.melee = false
+			PlayerVar.melee = true if !PlayerVar.melee else false
 
 func _walk(yes: bool = false) -> void:
 	is_walking = yes

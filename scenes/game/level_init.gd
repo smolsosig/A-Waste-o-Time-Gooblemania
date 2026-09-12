@@ -8,9 +8,6 @@ class_name LevelInit extends Node2D
 ## Set to [code]sideless[/code] if it's not a main level.
 @export_enum("sideless", "A", "B", "C") var side: String = "sideless"
 
-## If [code]true[/code], plays a zoom-out sound every time the level starts.
-@export var play_sound_on_start: bool = true
-
 ## The texture of the stage's obi strip, used for its titlecard.
 @export var obi_texture: Texture2D
 
@@ -71,7 +68,6 @@ class_name LevelInit extends Node2D
 # Sets custom Charlie spawn. Don't forget to disable when finished.
 @export var test_charlie_spawn: int = 0
 
-@onready var level_start_sfx : AudioStreamOggVorbis = load("res://assets/sounds/level_manager/level_start.ogg")
 @onready var charlie: CharacterBody2D = get_node("Charlie")
 @onready var camera: Camera2D = get_node("GameCamera")
 
@@ -150,8 +146,6 @@ func _reset() -> void:
 	play_music()
 	Staglobals.actual_wibl = 0
 	Staglobals.ideal_kill = 0
-	if play_sound_on_start:
-		SoundManager.play_ui_sound(level_start_sfx)
 
 # thank you 4.5
 func emit_signalbus(...args: Array) -> void:
@@ -169,6 +163,10 @@ func emit_musicmanager(...args: Array) -> void:
 	var actual_args: Array = args.duplicate()
 	actual_args.remove_at(0)
 	MusicManager.callv(args[0], actual_args)
+
+func fade(fade_in: bool = true, time: float = 1.0, color: Color = Color.BLACK, pattern: String = "", reverse: bool = true, smooth: bool = false) -> void:
+	if fade_in: Fade.fade_in(time, color, pattern, reverse, smooth)
+	else: Fade.fade_out(time, color, pattern, reverse, smooth)
 
 func medal_unlock(id: int) -> void:
 	NG.medal_unlock(id)

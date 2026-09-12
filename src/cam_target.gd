@@ -14,7 +14,7 @@ class_name CameraTarget extends Marker2D
 ## If [code]true[/code], camera looks ahead of Charlie.
 @export var lookahead: bool = true
 ## How much should the camera look ahead of Charlie.
-@export var lookahead_offset: float = 175
+@export var lookahead_offset: float = 100
 ## Yeah.
 @export var lerp_weight: float = 10
 

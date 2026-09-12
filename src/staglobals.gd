@@ -21,6 +21,8 @@ var current_stage_obi: Texture2D
 
 var current_spawn: int # USE current_spawn IN CONSOLE TO CHANGE
 var current_spawn_anim: String = "null"
+var current_spawn_zoomout: bool = true
+var current_spawn_zoomout_sfx: bool = true
 
 var recording_stats: bool = false
 
