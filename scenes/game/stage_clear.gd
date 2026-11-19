@@ -55,7 +55,6 @@ func _ready() -> void:
 		calculate_scores_root()
 		show_scores()
 		Staglobals.player_score = player_score
-		SaveHandler.save_level_info()
 	else:
 		anim_player.play("SideA_nostats")
 	
